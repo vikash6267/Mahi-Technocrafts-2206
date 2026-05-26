@@ -1,65 +1,98 @@
-import Image from "next/image";
+import { getSiteData, getApprovedReviews } from '@/lib/db';
+import HomeClient from './HomeClient';
 
-export default function Home() {
+// Enable dynamic rendering so database updates show up instantly
+export const revalidate = 0;
+
+export default async function Page() {
+  const data = await getSiteData();
+  const reviews = await getApprovedReviews();
+
+  const websiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Mahi Technocrafts',
+    url: 'https://mahitechnocrafts.in',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: 'https://mahitechnocrafts.in/blog?q={search_term_string}',
+      'query-input': 'required name=search_term_string'
+    }
+  };
+
+  const localBusinessSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ProfessionalService',
+    name: 'Mahi Technocrafts',
+    description: 'Mahi Technocrafts is a premium tech company and the best software developer near me in Bhopal, crafting world-class digital solutions including web development, mobile apps, UI/UX designs, and custom AI systems.',
+    url: 'https://mahitechnocrafts.in',
+    logo: 'https://mahitechnocrafts.in/logo.png',
+    image: 'https://mahitechnocrafts.in/logo.png',
+    telephone: `+91${data.contactInfo.phone}`,
+    email: data.contactInfo.email,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Hamidia Rd, Badabagh, Shahjahanabad',
+      addressLocality: 'Bhopal',
+      addressRegion: 'Madhya Pradesh',
+      postalCode: '462001',
+      addressCountry: 'IN'
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 23.250550,
+      longitude: 77.394857
+    },
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: [
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday'
+      ],
+      opens: '09:00',
+      closes: '19:00'
+    },
+    sameAs: [
+      'https://www.instagram.com/mahi_technocrafts/',
+      'https://www.linkedin.com/company/mahi-technocrafts/'
+    ],
+    priceRange: '$$'
+  };
+
+  const faqSchema = data.faq && data.faq.length > 0 ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: data.faq.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.a
+      }
+    }))
+  } : null;
+
+  const schemas: any[] = [websiteSchema, localBusinessSchema];
+  if (faqSchema) {
+    schemas.push(faqSchema);
+  }
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <>
+      {schemas.map((schema, idx) => (
+        <script
+          key={idx}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(schema).replace(/</g, '\\u003c')
+          }}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      ))}
+      <HomeClient data={data} reviews={reviews} />
+    </>
   );
 }

@@ -1,0 +1,127 @@
+{
+  "hero": {
+    "tagline": "Your Imagination, Our Creation",
+    "description": "At Mahi Technocrafts, we craft world-class, premium digital solutions that empower businesses to scale, innovate, and dominate. Experience futuristic design, custom software engineering, and enterprise-grade performance.",
+    "ctaPrimary": "Get Started",
+    "ctaSecondary": "Explore Services",
+    "stats": [
+      { "id": "1", "value": "150+", "label": "Projects Completed" },
+      { "id": "2", "value": "80+", "label": "Clients Served" },
+      { "id": "3", "value": "8+", "label": "Years Experience" },
+      { "id": "4", "value": "25+", "label": "Team Members" }
+    ]
+  },
+  "about": {
+    "story": "Founded with a vision to bridge the gap between complex engineering and elegant design, Mahi Technocrafts has evolved into a premier tech agency. We don't just write code; we design experiences that inspire trust and drive growth.",
+    "mission": "To empower global enterprises and startups with cutting-edge technology, scalable architectures, and visually stunning interfaces that elevate their brand value.",
+    "vision": "To become a global beacon of digital craftsmanship, pioneering human-centric artificial intelligence and next-generation web technologies.",
+    "whyChooseUs": [
+      "Futuristic, pixel-perfect UI/UX design matching global SaaS leaders.",
+      "High-performance, secure, and clean scalable architectures.",
+      "Dedicated post-launch maintenance and 24/7 technical support.",
+      "Agile delivery with complete transparency and client-first communication."
+    ]
+  },
+  "founder": {
+    "name": "Vikash Maheshwari",
+    "designation": "Founder & CEO",
+    "message": "Technology is the canvas, and code is the paint. At Mahi Technocrafts, we believe in crafting digital ecosystems that aren't just functional, but cinematic. We treat every line of code, every pixel, and every animation with absolute dedication to perfection. We are here to bring your boldest ideas to life.",
+    "image": "/images/founder.jpg",
+    "socials": {
+      "instagram": "https://www.instagram.com/mahi_technocrafts/",
+      "linkedin": "#",
+      "twitter": "#"
+    }
+  },
+  "services": [
+    {
+      "id": "web-dev",
+      "icon": "Code2",
+      "title": "Web Development",
+      "description": "Custom Next.js & React applications optimized for search speed, high conversions, and pixel-perfect aesthetics."
+    },
+    {
+      "id": "mobile-dev",
+      "icon": "Smartphone",
+      "title": "Mobile App Development",
+      "description": "High-fidelity cross-platform Flutter & React Native applications engineered for performance and fluid UI interactions."
+    },
+    {
+      "id": "uiux-design",
+      "icon": "Palette",
+      "title": "UI/UX Design",
+      "description": "Premium user journeys, wireframes, and high-fidelity clickable mockups following Apple & Stripe-grade guidelines."
+    },
+    {
+      "id": "ai-solutions",
+      "icon": "BrainCircuit",
+      "title": "AI Solutions",
+      "description": "Bespoke LLM integrations, retrieval-augmented generation pipelines, and smart automation systems for modern workforces."
+    },
+    {
+      "id": "erp-crm",
+      "icon": "Database",
+      "title": "ERP & CRM Systems",
+      "description": "Enterprise resource planning and customer relationship databases built for scaling team operations smoothly."
+    },
+    {
+      "id": "cloud-services",
+      "icon": "Cloud",
+      "title": "Cloud & DevOps Solutions",
+      "description": "AWS/GCP serverless setups, auto-scaling architectures, and continuous deployment pipelines maintaining 99.9% uptime."
+    }
+  ],
+  "portfolio": [
+    {
+      "id": "project-1",
+      "title": "Nova SaaS Dashboard",
+      "category": "Web Development",
+      "description": "A high-performance SaaS admin control center with micro-frontend architecture and interactive Canvas graphs.",
+      "image": "/images/nova-saas.jpg",
+      "tech": ["Next.js", "TypeScript", "Tailwind CSS", "Recharts", "Framer Motion"],
+      "liveUrl": "#"
+    },
+    {
+      "id": "project-2",
+      "title": "Elysian E-Commerce",
+      "category": "E-Commerce Solutions",
+      "description": "Next-gen storefront with instant search filters, local caching state, and unified custom payment checkouts.",
+      "image": "/images/elysian-ecommerce.jpg",
+      "tech": ["Next.js", "Tailwind CSS", "Stripe API", "Redux Toolkit", "GSAP"],
+      "liveUrl": "#"
+    },
+    {
+      "id": "project-3",
+      "title": "Aether AI Assistant",
+      "category": "AI Solutions",
+      "description": "An interactive chatbot suite for real estate brokers utilizing natural language search and custom vector embeddings.",
+      "image": "/images/aether-ai.jpg",
+      "tech": ["Python", "FastAPI", "Next.js", "OpenAI API", "Pinecone"],
+      "liveUrl": "#"
+    }
+  ],
+  "faq": [
+    {
+      "q": "What services does Mahi Technocrafts offer?",
+      "a": "We offer premium Web Development, Mobile App Development, UI/UX Design, Custom AI Integrations, Cloud DevOps setup, and Enterprise ERP/CRM solutions."
+    },
+    {
+      "q": "How long does a standard web project take to develop?",
+      "a": "A standard landing page or portfolio takes 2-4 weeks, while a full enterprise web application ranges from 8-12 weeks depending on features, integrations, and testing."
+    },
+    {
+      "q": "Are your websites optimized for Google Search SEO?",
+      "a": "Absolutely. SEO is built into our core foundation. We use Next.js server-side rendering, semantic HTML, structured JSON-LD schema, optimized metadata, automatic open graph cards, and rapid load speed architectures."
+    },
+    {
+      "q": "Do you provide post-launch maintenance?",
+      "a": "Yes! We provide flexible support agreements that cover security patches, content edits, cloud environment monitoring, and performance audits."
+    }
+  ],
+  "contactInfo": {
+    "email": "support@mahitechnocrafts.in",
+    "phone": "6267144122",
+    "address": "Hamidia Rd, Badabagh, Shahjahanabad, Bhopal, Madhya Pradesh 462001",
+    "googleMapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3665.819385966398!2d77.39485777602073!3d23.2505504789505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397c4273dfc9d2f3%3A0xe2126f50b4d45d8b!2sBadabagh%2C%20Bhopal%2C%20Madhya%20Pradesh%20462001!5e0!3m2!1sen!2sin!4v1716712395723!5m2!1sen!2sin"
+  }
+}
