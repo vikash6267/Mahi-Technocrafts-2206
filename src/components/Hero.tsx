@@ -2,8 +2,8 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Sparkles, Terminal, Code2, Globe, Heart } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ArrowRight, Sparkles, Code2, Users, Award } from 'lucide-react';
 import { SiteData } from '@/lib/db';
 
 interface HeroProps {
@@ -12,15 +12,13 @@ interface HeroProps {
 
 export default function Hero({ data }: HeroProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [activeTab, setActiveTab] = useState<'react' | 'config'>('react');
   
   // Count up stats
   const [statsValues, setStatsValues] = useState<number[]>([0, 0, 0, 0]);
 
   useEffect(() => {
-    // Staggered counting trigger
     const targets = [150, 80, 8, 25];
-    const duration = 2000;
+    const duration = 1800; // Snappy count-up
     const intervalTime = 30;
     const steps = duration / intervalTime;
 
@@ -29,8 +27,7 @@ export default function Hero({ data }: HeroProps) {
       step++;
       setStatsValues(
         targets.map((target) => {
-          const val = Math.min(Math.round((step / steps) * target), target);
-          return val;
+          return Math.min(Math.round((step / steps) * target), target);
         })
       );
 
@@ -67,9 +64,9 @@ export default function Hero({ data }: HeroProps) {
     }
 
     const particles: ParticleType[] = [];
-    const particleCount = Math.min(Math.round((width * height) / 12000), 100);
-    const connectionDistance = 125;
-    const mouse = { x: -1000, y: -1000, radius: 200 };
+    const particleCount = Math.min(Math.round((width * height) / 12000), 90);
+    const connectionDistance = 120;
+    const mouse = { x: -1000, y: -1000, radius: 180 };
 
     class Particle implements ParticleType {
       x: number;
@@ -83,31 +80,30 @@ export default function Hero({ data }: HeroProps) {
       constructor() {
         this.x = Math.random() * width;
         this.y = Math.random() * height;
-        this.vx = (Math.random() - 0.5) * 0.7;
-        this.vy = (Math.random() - 0.5) * 0.7;
-        this.size = Math.random() * 2.5 + 1.5;
-        this.color = Math.random() > 0.5 ? '#0072f5' : '#7928ca';
-        this.alpha = Math.random() * 0.5 + 0.3;
+        this.vx = (Math.random() - 0.5) * 0.6;
+        this.vy = (Math.random() - 0.5) * 0.6;
+        this.size = Math.random() * 2 + 1;
+        this.color = Math.random() > 0.5 ? '#0ea5e9' : '#f97316'; // Cyan & Orange theme particles
+        this.alpha = Math.random() * 0.4 + 0.2;
       }
 
       update() {
         this.x += this.vx;
         this.y += this.vy;
 
-        // Warp borders
         if (this.x < 0) this.x = width;
         if (this.x > width) this.x = 0;
         if (this.y < 0) this.y = height;
         if (this.y > height) this.y = 0;
 
-        // Mouse interaction (gravity pull)
+        // Mouse attraction/repulsion
         const dx = this.x - mouse.x;
         const dy = this.y - mouse.y;
         const dist = Math.hypot(dx, dy);
         if (dist < mouse.radius) {
           const force = (mouse.radius - dist) / mouse.radius;
-          this.x -= (dx / dist) * force * 1.8;
-          this.y -= (dy / dist) * force * 1.8;
+          this.x -= (dx / dist) * force * 1.5;
+          this.y -= (dy / dist) * force * 1.5;
         }
       }
 
@@ -137,20 +133,18 @@ export default function Hero({ data }: HeroProps) {
       mouse.y = -1000;
     };
 
-    // Click to create explosion
     const handleClick = (e: MouseEvent) => {
       const clickX = e.clientX;
       const clickY = e.clientY;
-      for (let i = 0; i < 8; i++) {
+      for (let i = 0; i < 6; i++) {
         const p = new Particle();
         p.x = clickX;
         p.y = clickY;
-        p.vx = (Math.random() - 0.5) * 5;
-        p.vy = (Math.random() - 0.5) * 5;
-        p.size = Math.random() * 3 + 2;
+        p.vx = (Math.random() - 0.5) * 4;
+        p.vy = (Math.random() - 0.5) * 4;
+        p.size = Math.random() * 2.5 + 1.5;
         particles.push(p);
-        // Cap list size
-        if (particles.length > 150) particles.shift();
+        if (particles.length > 130) particles.shift();
       }
     };
 
@@ -164,11 +158,10 @@ export default function Hero({ data }: HeroProps) {
     window.addEventListener('click', handleClick);
     window.addEventListener('resize', handleResize);
 
-    // Render loop
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // Draw connections
+      // Connect particles
       for (let i = 0; i < particles.length; i++) {
         const p1 = particles[i];
         p1.update();
@@ -179,12 +172,12 @@ export default function Hero({ data }: HeroProps) {
           const dist = Math.hypot(p1.x - p2.x, p1.y - p2.y);
 
           if (dist < connectionDistance) {
-            const alpha = (1 - dist / connectionDistance) * 0.16;
+            const alpha = (1 - dist / connectionDistance) * 0.12;
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(121, 40, 202, ${alpha})`;
-            ctx.lineWidth = 0.85;
+            ctx.strokeStyle = `rgba(14, 165, 233, ${alpha})`; // Blue connecting lines
+            ctx.lineWidth = 0.7;
             ctx.stroke();
           }
         }
@@ -205,13 +198,13 @@ export default function Hero({ data }: HeroProps) {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden py-24 grid-backdrop">
+    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden py-24 bg-[#fafaff] grid-backdrop">
       {/* Background Interactive Nodes Canvas */}
-      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none z-0 opacity-55 dark:opacity-85" />
+      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none z-0 opacity-60" />
 
       {/* Floating Glowing Gradients */}
-      <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-brand-blue/10 dark:bg-brand-blue/15 rounded-full blur-[140px] pointer-events-none z-0" />
-      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-brand-purple/10 dark:bg-brand-purple/15 rounded-full blur-[140px] pointer-events-none z-0" />
+      <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-brand-blue/8 rounded-full blur-[140px] pointer-events-none z-0" />
+      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-brand-purple/8 rounded-full blur-[140px] pointer-events-none z-0" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
         
@@ -222,30 +215,41 @@ export default function Hero({ data }: HeroProps) {
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-slate-200/50 dark:border-slate-800 text-xs font-semibold tracking-wider uppercase text-brand-blue shadow-sm"
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 border border-slate-200/60 text-xs font-semibold tracking-wider uppercase text-brand-blue shadow-sm"
           >
-            <Sparkles size={12} className="animate-spin text-purple-500" />
+            <Sparkles size={12} className="animate-spin text-brand-purple" />
             Empowering Startups & Enterprises
           </motion.div>
 
           {/* Heading Text Reveal */}
           <div className="space-y-4">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-black tracking-tight leading-[1.08] text-slate-900 dark:text-white">
+            <motion.h1 
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="text-4xl sm:text-5xl md:text-6xl font-display font-black tracking-tight leading-[1.08] text-slate-900 relative"
+            >
               Your{' '}
-              <span className="text-gradient drop-shadow-sm">
+              <span className="text-gradient drop-shadow-sm relative inline-block">
                 Imagination
+                {/* Floating decorative outline circle */}
+                <motion.span 
+                  animate={{ scale: [1, 1.08, 1], rotate: 360 }}
+                  transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                  className="absolute -right-6 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full border-2 border-brand-purple/80 pointer-events-none hidden sm:inline-block"
+                />
               </span>
               <br />
               Our Creation.
-            </h1>
+            </motion.h1>
             
             {/* Description */}
             <motion.p
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="text-slate-600 dark:text-slate-350 text-sm sm:text-base leading-relaxed max-w-xl"
+              transition={{ duration: 0.8, delay: 0.15, ease: 'easeOut' }}
+              className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-xl"
             >
               {data.description}
             </motion.p>
@@ -255,12 +259,12 @@ export default function Hero({ data }: HeroProps) {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
+            transition={{ duration: 0.8, delay: 0.25, ease: 'easeOut' }}
             className="flex flex-col sm:flex-row gap-4 pt-2"
           >
             <Link
               href="/contact"
-              className="px-8 py-4 bg-brand-blue hover:bg-brand-blue/90 text-white font-semibold text-xs tracking-wider uppercase rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-brand-blue/20 dark:shadow-brand-blue/10 cursor-pointer transition-all hover:-translate-y-0.5 duration-200"
+              className="px-8 py-4 bg-brand-blue hover:bg-brand-blue/95 text-white font-bold text-xs tracking-wider uppercase rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-brand-blue/20 cursor-pointer transition-all hover:-translate-y-0.5 active:translate-y-0 duration-200"
             >
               Get Started
               <ArrowRight size={14} />
@@ -268,141 +272,134 @@ export default function Hero({ data }: HeroProps) {
 
             <Link
               href="/services"
-              className="px-8 py-4 glass hover:bg-slate-100 dark:hover:bg-slate-900/60 border border-slate-250 dark:border-slate-800 text-slate-800 dark:text-white font-semibold text-xs tracking-wider uppercase rounded-xl flex items-center justify-center gap-2 cursor-pointer transition-all hover:-translate-y-0.5 duration-200"
+              className="px-8 py-4 bg-white hover:bg-slate-50 border border-slate-200/80 text-slate-800 font-bold text-xs tracking-wider uppercase rounded-xl flex items-center justify-center gap-2 cursor-pointer transition-all hover:-translate-y-0.5 active:translate-y-0 duration-200"
             >
               Explore Services
             </Link>
           </motion.div>
         </div>
 
-        {/* Right Column: Code Editor Mockup with spinning border-beam */}
+        {/* Right Column: Code Editor Mockup frame with Developer photo */}
         <div className="lg:col-span-6 relative flex justify-center items-center">
-          
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2, type: 'spring', damping: 20 }}
-            className="w-full max-w-lg rounded-2xl glass border border-slate-250 dark:border-slate-800/80 shadow-2xl overflow-hidden flex flex-col h-[360px] beam-border select-none"
+            transition={{ duration: 0.8, delay: 0.2, type: 'spring', damping: 22 }}
+            className="w-full max-w-lg rounded-3xl bg-white border border-slate-200/80 shadow-2xl overflow-hidden flex flex-col h-[340px] relative select-none"
           >
             {/* Header bar */}
-            <div className="px-5 py-3 border-b border-slate-200 dark:border-slate-850 flex items-center justify-between bg-slate-50/50 dark:bg-slate-900/30">
+            <div className="px-5 py-3.5 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
               <div className="flex gap-2">
                 <span className="w-3 h-3 rounded-full bg-red-500" />
                 <span className="w-3 h-3 rounded-full bg-yellow-500" />
                 <span className="w-3 h-3 rounded-full bg-green-500" />
               </div>
 
-              {/* IDE tabs */}
+              {/* Fake IDE tabs */}
               <div className="flex gap-4">
-                <button
-                  onClick={() => setActiveTab('react')}
-                  className={`text-[10px] font-bold uppercase tracking-wider cursor-pointer ${
-                    activeTab === 'react' ? 'text-brand-blue' : 'text-slate-400'
-                  }`}
-                >
+                <span className="text-[10px] font-bold uppercase tracking-wider text-brand-blue">
                   App.tsx
-                </button>
-                <button
-                  onClick={() => setActiveTab('config')}
-                  className={`text-[10px] font-bold uppercase tracking-wider cursor-pointer ${
-                    activeTab === 'config' ? 'text-brand-blue' : 'text-slate-400'
-                  }`}
-                >
+                </span>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
                   next.config.ts
-                </button>
+                </span>
               </div>
             </div>
 
-            {/* Code Body */}
-            <div className="p-6 font-mono text-xs flex-1 overflow-auto bg-slate-950/80 dark:bg-slate-950/95 leading-relaxed text-slate-300">
-              <AnimatePresence mode="wait">
-                {activeTab === 'react' ? (
-                  <motion.div
-                    key="react"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                    className="space-y-1.5"
-                  >
-                    <div><span className="text-pink-500">import</span> React <span className="text-pink-500">from</span> <span className="text-green-400">&apos;react&apos;</span>;</div>
-                    <div><span className="text-pink-500">import</span> {'{ getSiteData }'} <span className="text-pink-500">from</span> <span className="text-green-400">&apos;@/lib/db&apos;</span>;</div>
-                    <br />
-                    <div><span className="text-pink-500">export default async function</span> <span className="text-blue-400">Page</span>() {'{'}</div>
-                    <div className="pl-4"><span className="text-pink-500">const</span> {'{ hero }'} = <span className="text-blue-400">getSiteData</span>();</div>
-                    <br />
-                    <div className="pl-4"><span className="text-pink-500">return</span> (</div>
-                    <div className="pl-8 text-slate-500">&lt;<span className="text-blue-400">HeroSection</span>&gt;</div>
-                    <div className="pl-12 text-slate-400">&lt;<span className="text-blue-400">h1</span> className=<span className="text-green-400">&quot;font-display font-black&quot;</span>&gt;</div>
-                    <div className="pl-16 text-yellow-300">{'{'}hero.tagline{'}'}</div>
-                    <div className="pl-12 text-slate-400">&lt;/<span className="text-blue-400">h1</span>&gt;</div>
-                    <div className="pl-8 text-slate-500">&lt;/<span className="text-blue-400">HeroSection</span>&gt;</div>
-                    <div className="pl-4">);</div>
-                    <div>{'}'}</div>
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="config"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                    className="space-y-1.5"
-                  >
-                    <div><span className="text-pink-500">import type</span> {'{ NextConfig }'} <span className="text-pink-500">from</span> <span className="text-green-400">&apos;next&apos;</span>;</div>
-                    <br />
-                    <div><span className="text-pink-500">const</span> config: NextConfig = {'{'}</div>
-                    <div className="pl-4"><span className="text-blue-400">reactCompiler</span>: <span className="text-pink-500">true</span>,</div>
-                    <div className="pl-4"><span className="text-blue-400">experimental</span>: {'{'}</div>
-                    <div className="pl-8"><span className="text-blue-400">useCache</span>: <span className="text-pink-500">true</span>,</div>
-                    <div className="pl-8"><span className="text-blue-400">instantNavigation</span>: <span className="text-pink-500">true</span></div>
-                    <div className="pl-4">{'}'}</div>
-                    <div>{'};'}</div>
-                    <br />
-                    <div><span className="text-pink-500">export default</span> config;</div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+            {/* Mockup Body containing the developer image */}
+            <div className="relative flex-1 overflow-hidden bg-slate-950">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/media__1779869067980.png"
+                alt="Mahi Technocrafts Developer workspace"
+                className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+              />
             </div>
           </motion.div>
 
           {/* Floating Neon Badge */}
           <motion.div
-            animate={{ y: [0, -10, 0] }}
+            animate={{ y: [0, -8, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute -bottom-6 -left-6 p-4 rounded-xl glass border border-slate-200 dark:border-slate-800 shadow-2xl flex items-center gap-3 select-none"
+            className="absolute -bottom-6 -left-6 p-4 rounded-2xl bg-white/95 border border-slate-200 shadow-2xl flex items-center gap-3 select-none z-20"
           >
-            <div className="w-7 h-7 rounded-lg bg-green-500/10 text-green-500 flex items-center justify-center">
-              <Globe size={14} className="animate-pulse" />
+            <div className="w-8 h-8 rounded-xl bg-green-500/10 text-green-500 flex items-center justify-center flex-shrink-0">
+              {/* Green indicator checkmark */}
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7"></path>
+              </svg>
             </div>
             <div>
               <span className="text-[9px] uppercase tracking-wider text-slate-400 block font-semibold">Uptime Status</span>
-              <span className="text-xs font-bold text-slate-800 dark:text-white">99.9% Operational</span>
+              <span className="text-xs font-bold text-slate-800">99.9% Operational</span>
             </div>
           </motion.div>
         </div>
       </div>
 
       {/* Stats Section Overlay */}
-      <div className="max-w-7xl mx-auto px-6 w-full pt-16 mt-16 relative z-10 border-t border-slate-200/50 dark:border-slate-900/60">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {data.stats.map((stat, i) => (
-            <motion.div
-              key={stat.id}
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 + i * 0.1 }}
-              className="text-center md:text-left space-y-1 group"
-            >
-              <h3 className="text-3xl md:text-4xl font-display font-black text-slate-800 dark:text-white tracking-tight group-hover:text-brand-blue transition-colors">
-                {/* Counted value */}
-                {statsValues[i]}{stat.value.includes('+') ? '+' : ''}
-              </h3>
-              <p className="text-[10px] uppercase tracking-wider text-slate-500 dark:text-slate-400 font-bold">
-                {stat.label}
-              </p>
-            </motion.div>
-          ))}
+      <div className="max-w-7xl mx-auto px-6 w-full pt-16 mt-16 relative z-10 border-t border-slate-200/50">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+          {data.stats.map((stat, i) => {
+            // Mapping distinct colors, icons, and shadows for cards
+            const config = [
+              {
+                icon: <Code2 size={20} className="text-blue-500" />,
+                iconBg: "bg-blue-500/10",
+                cardBg: "bg-blue-50/20 border-blue-100/50 hover:bg-blue-50/30",
+                shadow: "hover:shadow-blue-500/5",
+              },
+              {
+                icon: <Users size={20} className="text-emerald-500" />,
+                iconBg: "bg-emerald-500/10",
+                cardBg: "bg-emerald-50/20 border-emerald-100/50 hover:bg-emerald-50/30",
+                shadow: "hover:shadow-emerald-500/5",
+              },
+              {
+                icon: <Award size={20} className="text-purple-500" />,
+                iconBg: "bg-purple-500/10",
+                cardBg: "bg-purple-50/20 border-purple-100/50 hover:bg-purple-50/30",
+                shadow: "hover:shadow-purple-500/5",
+              },
+              {
+                icon: <Users size={20} className="text-orange-500" />,
+                iconBg: "bg-orange-500/10",
+                cardBg: "bg-orange-50/20 border-orange-100/50 hover:bg-orange-50/30",
+                shadow: "hover:shadow-orange-500/5",
+              },
+            ][i] || {
+              icon: <Code2 size={20} className="text-brand-blue" />,
+              iconBg: "bg-brand-blue/10",
+              cardBg: "bg-white/50 border-slate-200/50",
+              shadow: "hover:shadow-slate-500/5",
+            };
+
+            return (
+              <motion.div
+                key={stat.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 + i * 0.1 }}
+                whileHover={{ y: -5, scale: 1.01 }}
+                className={`flex items-center gap-4 p-5 rounded-2xl border ${config.cardBg} transition-all duration-300 shadow-sm ${config.shadow} group`}
+              >
+                {/* Icon Container */}
+                <div className={`w-12 h-12 rounded-xl ${config.iconBg} flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110`}>
+                  {config.icon}
+                </div>
+                
+                {/* Details */}
+                <div className="space-y-0.5 text-left">
+                  <h3 className="text-2xl md:text-3xl font-display font-black text-slate-800 tracking-tight leading-none">
+                    {statsValues[i]}{stat.value.includes('+') ? '+' : ''}
+                  </h3>
+                  <p className="text-[9px] uppercase tracking-wider text-slate-500 font-bold leading-tight">
+                    {stat.label}
+                  </p>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
