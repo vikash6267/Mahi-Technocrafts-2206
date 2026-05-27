@@ -104,7 +104,7 @@ export default function Founder({ data }: FounderProps) {
               {/* Founder Image placeholder / avatar container */}
               <div className="w-full h-full bg-slate-900 flex flex-col justify-end p-8 relative">
                 {/* Generative mesh glow in picture card */}
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent z-10" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent z-10" />
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full bg-brand-purple/30 blur-[40px] pointer-events-none group-hover:scale-125 transition-transform duration-500" />
                 
                 {data.image ? (
@@ -112,7 +112,7 @@ export default function Founder({ data }: FounderProps) {
                   <img
                     src={data.image}
                     alt={data.name}
-                    className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-500"
+                    className="absolute inset-0 w-full h-full object-cover opacity-95 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
                   />
                 ) : (
                   <div className="absolute inset-0 flex items-center justify-center text-slate-700/30 text-8xl font-display font-black select-none pointer-events-none">
