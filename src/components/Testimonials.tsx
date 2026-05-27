@@ -124,10 +124,10 @@ export default function Testimonials({ initialReviews = [] }: TestimonialsProps)
         <div className="flex justify-center mt-12">
           <Link
             href="/reviews"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-blue/10 hover:bg-brand-blue/20 text-brand-blue text-xs font-semibold uppercase tracking-wider transition-all duration-300 border border-brand-blue/20 hover:border-brand-blue/40"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-brand-blue hover:bg-brand-blue/95 text-white text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-lg shadow-brand-blue/20 hover:shadow-brand-blue/35 hover:-translate-y-0.5 active:translate-y-0"
           >
             <PenTool size={14} />
-            Share Your Experience
+            Share Your Feedback
           </Link>
         </div>
 

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import LoadingScreen from '@/components/LoadingScreen';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
@@ -15,11 +15,14 @@ import ContactForm from '@/components/ContactForm';
 import { SiteData, ReviewItem } from '@/lib/db';
 
 export default function HomeClient({ data, reviews }: { data: SiteData; reviews: ReviewItem[] }) {
+  // Loader commented out per user request
+  /*
   const [isLoading, setIsLoading] = useState(true);
 
   if (isLoading) {
     return <LoadingScreen onComplete={() => setIsLoading(false)} />;
   }
+  */
 
   return (
     <div className="relative animate-fadeIn">
