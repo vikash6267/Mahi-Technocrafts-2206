@@ -1,8 +1,8 @@
 import { getSiteData, getApprovedReviews } from '@/lib/db';
 import HomeClient from './HomeClient';
 
-// Enable dynamic rendering so database updates show up instantly
-export const revalidate = 0;
+// Enable ISR (Incremental Static Regeneration) for instant load speeds
+export const revalidate = 10;
 
 export default async function Page() {
   const data = await getSiteData();

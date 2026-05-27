@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles, Code2, Users, Award } from 'lucide-react';
 import { SiteData } from '@/lib/db';
+import Image from 'next/image';
 
 interface HeroProps {
   data: SiteData['hero'];
@@ -308,11 +309,13 @@ export default function Hero({ data }: HeroProps) {
 
             {/* Mockup Body containing the developer image */}
             <div className="relative flex-1 overflow-hidden bg-slate-950">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src="/herosection.png"
                 alt="Mahi Technocrafts Developer workspace"
-                className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover transition-transform duration-700 hover:scale-105"
               />
             </div>
           </motion.div>

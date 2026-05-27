@@ -69,12 +69,23 @@ export default function BlogList({ initialBlogs }: { initialBlogs: BlogItem[] })
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.3 }}
               key={blog.slug}
-              className="group p-6 rounded-2xl glass border border-slate-200/50 dark:border-slate-800/80 shadow-md flex flex-col justify-between h-[380px] relative overflow-hidden interactive-hover cursor-pointer"
+              className="group p-6 rounded-2xl glass border border-slate-200/50 dark:border-slate-800/80 shadow-md flex flex-col justify-between relative overflow-hidden interactive-hover cursor-pointer"
             >
               {/* Card visual background elements */}
               <div className="absolute inset-0 bg-gradient-to-tr from-brand-blue/5 to-brand-purple/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
-              <div className="space-y-4">
+              <div className="space-y-4 w-full">
+                {/* Cover Image */}
+                {blog.coverImage && (
+                  <div className="relative w-full h-44 rounded-xl overflow-hidden mb-2 border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 flex items-center justify-center">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={blog.coverImage}
+                      alt={blog.imageAlt || blog.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                )}
                 {/* Meta details */}
                 <div className="flex items-center gap-3 text-[10px] text-slate-400 font-semibold uppercase tracking-wider">
                   <span className="flex items-center gap-1">

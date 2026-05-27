@@ -25,7 +25,8 @@ import {
   LayoutGrid,
   Briefcase,
   ExternalLink,
-  Info
+  Info,
+  Edit
 } from 'lucide-react';
 import { SiteData, BlogItem, ContactSubmission, BlogFAQ, ProjectItem, ServiceItem, ReviewItem, CareerItem } from '@/lib/db';
 
@@ -77,6 +78,7 @@ export default function AdminDashboardPage() {
   // Toggle for blogs create editor
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [isHtmlMode, setIsHtmlMode] = useState(false);
+  const [editingBlogSlug, setEditingBlogSlug] = useState<string | null>(null);
 
   // New items temp states (Services & Projects CRUD)
   const [serviceForm, setServiceForm] = useState<Omit<ServiceItem, 'id'>>({
@@ -386,7 +388,38 @@ export default function AdminDashboardPage() {
     }));
   };
 
-  // Add a new blog post
+  // Trigger editing of an existing blog
+  const handleEditBlog = (blog: BlogItem) => {
+    setBlogForm({
+      slug: blog.slug,
+      title: blog.title,
+      excerpt: blog.excerpt || '',
+      content: blog.content,
+      author: blog.author || 'Vikash Maheshwari',
+      coverImage: blog.coverImage || '/images/blog-default.jpg',
+      imageAlt: blog.imageAlt || '',
+      category: blog.category || 'Web Development',
+      tags: Array.isArray(blog.tags) ? blog.tags.join(', ') : blog.tags || 'Next.js, Tailwind, React',
+      metaTitle: blog.metaTitle || '',
+      metaDescription: blog.metaDescription || '',
+      focusKeyword: blog.focusKeyword || '',
+      canonicalUrl: blog.canonicalUrl || '',
+      ogTitle: blog.ogTitle || '',
+      ogDescription: blog.ogDescription || '',
+      ogImage: blog.ogImage || '',
+      enableBlogSchema: blog.enableBlogSchema !== undefined ? blog.enableBlogSchema : true,
+      enableFaqSchema: blog.enableFaqSchema !== undefined ? blog.enableFaqSchema : false,
+      faqs: blog.faqs || []
+    });
+    
+    // Automatically set HTML mode if the content contains HTML styles
+    setIsHtmlMode(blog.content.includes('style=') || blog.content.includes('<div'));
+    
+    setEditingBlogSlug(blog.slug);
+    setShowCreateForm(true);
+  };
+
+  // Add or update a blog post
   const handleAddBlog = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSaving(true);
@@ -406,6 +439,15 @@ export default function AdminDashboardPage() {
     };
 
     try {
+      // If slug was renamed during edit, delete the old blog post
+      if (editingBlogSlug && editingBlogSlug !== payload.slug) {
+        try {
+          await fetch(`/api/blog?slug=${editingBlogSlug}`, { method: 'DELETE' });
+        } catch (err) {
+          console.error('Failed to delete old slug during rename:', err);
+        }
+      }
+
       const res = await fetch('/api/blog', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -413,7 +455,8 @@ export default function AdminDashboardPage() {
       });
 
       if (res.ok) {
-        setSaveStatus('Blog post published successfully!');
+        setSaveStatus(editingBlogSlug ? 'Blog post updated successfully!' : 'Blog post published successfully!');
+        setEditingBlogSlug(null);
         const listRes = await fetch('/api/blog');
         if (listRes.ok) setBlogsList(await listRes.json());
 
@@ -1192,7 +1235,31 @@ export default function AdminDashboardPage() {
                   </button>
                 ) : (
                   <button
-                    onClick={() => setShowCreateForm(false)}
+                    onClick={() => {
+                      setShowCreateForm(false);
+                      setEditingBlogSlug(null);
+                      setBlogForm({
+                        slug: '',
+                        title: '',
+                        excerpt: '',
+                        content: '<h3>Introduce your topic</h3><p>Start typing your rich article text here...</p>',
+                        author: 'Vikash Maheshwari',
+                        coverImage: '/images/blog-default.jpg',
+                        imageAlt: '',
+                        category: 'Web Development',
+                        tags: 'Next.js, Tailwind, React',
+                        metaTitle: '',
+                        metaDescription: '',
+                        focusKeyword: '',
+                        canonicalUrl: '',
+                        ogTitle: '',
+                        ogDescription: '',
+                        ogImage: '',
+                        enableBlogSchema: true,
+                        enableFaqSchema: false,
+                        faqs: []
+                      });
+                    }}
                     className="px-4 py-2.5 bg-white border border-slate-200 hover:bg-slate-50 text-slate-650 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 cursor-pointer shadow-sm transition-colors"
                   >
                     <ArrowLeft size={14} /> Back to Blog List
@@ -1571,8 +1638,10 @@ export default function AdminDashboardPage() {
                       disabled={isSaving}
                       className="px-6 py-4 bg-brand-blue hover:bg-brand-blue/90 text-white rounded-xl font-bold text-xs tracking-wider uppercase flex items-center gap-2 cursor-pointer transition-colors shadow-sm shadow-brand-blue/25"
                     >
-                      {isSaving ? 'Publishing Post...' : 'Publish Blog Post'}
-                      <Plus size={14} />
+                      {editingBlogSlug 
+                        ? (isSaving ? 'Saving Changes...' : 'Save Changes') 
+                        : (isSaving ? 'Publishing Post...' : 'Publish Blog Post')}
+                      {editingBlogSlug ? <CheckCircle size={14} /> : <Plus size={14} />}
                     </button>
                     {saveStatus && <span className="text-xs text-purple-600 font-bold">{saveStatus}</span>}
                   </div>
@@ -1606,6 +1675,13 @@ export default function AdminDashboardPage() {
                           </div>
                           
                           <div className="flex items-center gap-2">
+                            <button
+                              onClick={() => handleEditBlog(blog)}
+                              className="p-2.5 rounded-xl border border-slate-200 hover:bg-blue-50 text-blue-500 hover:text-blue-650 cursor-pointer transition-colors"
+                              title="Edit Post"
+                            >
+                              <Edit size={14} />
+                            </button>
                             <button
                               onClick={() => handleDeleteBlog(blog.slug)}
                               className="p-2.5 rounded-xl border border-slate-200 hover:bg-red-50 text-red-500 hover:text-red-650 cursor-pointer transition-colors"

@@ -9,7 +9,7 @@ export const metadata = {
   }
 };
 
-export const revalidate = 0;
+export const revalidate = 10;
 
 export default async function BlogPage() {
   const blogs = await getBlogs();

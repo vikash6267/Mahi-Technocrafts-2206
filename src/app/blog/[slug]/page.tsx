@@ -57,7 +57,7 @@ export async function generateMetadata({ params }: PageProps) {
   };
 }
 
-export const revalidate = 0;
+export const revalidate = 10;
 
 export default async function BlogDetailPage({ params }: PageProps) {
   const { slug } = await params;
@@ -158,7 +158,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
         
         {/* Main Article Content */}
-        <article className="lg:col-span-8 space-y-8">
+        <article className={headings.length > 0 ? "lg:col-span-9 space-y-8" : "lg:col-span-12 space-y-8"}>
           {/* Header */}
           <div className="space-y-4 pb-6 border-b border-slate-200/50 dark:border-slate-850">
             <div className="flex flex-wrap items-center gap-4 text-xs text-slate-400 font-semibold uppercase tracking-wider">
@@ -196,12 +196,12 @@ export default async function BlogDetailPage({ params }: PageProps) {
 
           {/* Cover Image */}
           {blog.coverImage && (
-            <div className="relative w-full aspect-video md:aspect-[21/9] rounded-3xl overflow-hidden border border-slate-200/50 dark:border-slate-800/80 shadow-lg">
+            <div className="relative w-full max-h-[480px] rounded-3xl overflow-hidden border border-slate-200/50 dark:border-slate-800/80 shadow-lg bg-slate-100/50 dark:bg-slate-900/50 flex items-center justify-center">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={blog.coverImage}
                 alt={blog.imageAlt || blog.title}
-                className="w-full h-full object-cover"
+                className="max-w-full max-h-[480px] w-auto h-auto object-contain"
               />
             </div>
           )}
@@ -242,8 +242,8 @@ export default async function BlogDetailPage({ params }: PageProps) {
         </article>
 
         {/* Sidebar widgets (Table of Contents) */}
-        <aside className="lg:col-span-4 lg:sticky lg:top-24 space-y-6 hidden lg:block">
-          {headings.length > 0 && (
+        {headings.length > 0 && (
+          <aside className="lg:col-span-3 lg:sticky lg:top-24 space-y-6 hidden lg:block">
             <div className="p-6 rounded-2xl glass border border-slate-250 dark:border-slate-800/80 space-y-4">
               <h3 className="font-display font-bold text-xs uppercase tracking-wider text-slate-800 dark:text-white flex items-center gap-2 border-b border-slate-200 dark:border-slate-850 pb-2">
                 <AlignLeft size={14} className="text-brand-purple" />
@@ -263,8 +263,8 @@ export default async function BlogDetailPage({ params }: PageProps) {
                 ))}
               </nav>
             </div>
-          )}
-        </aside>
+          </aside>
+        )}
 
       </div>
     </div>

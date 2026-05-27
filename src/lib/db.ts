@@ -13,7 +13,10 @@ export async function connectToDatabase() {
   }
 
   try {
-    const client = await MongoClient.connect(MONGODB_URI);
+    const client = await MongoClient.connect(MONGODB_URI, {
+      serverSelectionTimeoutMS: 2000,
+      connectTimeoutMS: 2000,
+    });
     const db = client.db(MONGODB_DB);
     cachedClient = client;
     cachedDb = db;
@@ -338,21 +341,26 @@ const defaultBlogs: BlogItem[] = [
 
 // Async MongoDB wrappers
 export async function getSiteData(): Promise<SiteData> {
-  const { db } = await connectToDatabase();
-  const collection = db.collection('content');
-  
-  let data = await collection.findOne({ _id: 'site_configs' as any });
-  
-  if (!data) {
-    // Seed default content
-    const seed = { _id: 'site_configs', ...defaultSiteData };
-    await collection.insertOne(seed as any);
+  try {
+    const { db } = await connectToDatabase();
+    const collection = db.collection('content');
+    
+    let data = await collection.findOne({ _id: 'site_configs' as any });
+    
+    if (!data) {
+      // Seed default content
+      const seed = { _id: 'site_configs', ...defaultSiteData };
+      await collection.insertOne(seed as any);
+      return defaultSiteData;
+    }
+    
+    // Clean MongoDB _id before returning
+    const { _id, ...cleanData } = data;
+    return cleanData as unknown as SiteData;
+  } catch (error) {
+    console.error('getSiteData failed, falling back to default site data:', error);
     return defaultSiteData;
   }
-  
-  // Clean MongoDB _id before returning
-  const { _id, ...cleanData } = data;
-  return cleanData as unknown as SiteData;
 }
 
 export async function updateSiteData(data: SiteData): Promise<boolean> {
@@ -373,11 +381,16 @@ export async function updateSiteData(data: SiteData): Promise<boolean> {
 }
 
 export async function getBlogs(): Promise<BlogItem[]> {
-  const { db } = await connectToDatabase();
-  const collection = db.collection('blogs');
-  
-  const blogs = await collection.find({}).toArray();
-  return blogs.map(({ _id, ...b }) => b) as unknown as BlogItem[];
+  try {
+    const { db } = await connectToDatabase();
+    const collection = db.collection('blogs');
+    
+    const blogs = await collection.find({}).toArray();
+    return blogs.map(({ _id, ...b }) => b) as unknown as BlogItem[];
+  } catch (error) {
+    console.error('getBlogs failed, falling back to default blogs:', error);
+    return defaultBlogs;
+  }
 }
 
 export async function getBlogBySlug(slug: string): Promise<BlogItem | null> {
@@ -496,27 +509,37 @@ const defaultReviews: ReviewItem[] = [
 ];
 
 export async function getReviews(): Promise<ReviewItem[]> {
-  const { db } = await connectToDatabase();
-  const collection = db.collection('reviews');
-  
-  const reviews = await collection.find({}).toArray();
-  if (reviews.length === 0) {
-    await collection.insertMany(defaultReviews as any[]);
+  try {
+    const { db } = await connectToDatabase();
+    const collection = db.collection('reviews');
+    
+    const reviews = await collection.find({}).toArray();
+    if (reviews.length === 0) {
+      await collection.insertMany(defaultReviews as any[]);
+      return defaultReviews;
+    }
+    return reviews.map(({ _id, ...r }) => r) as unknown as ReviewItem[];
+  } catch (error) {
+    console.error('getReviews failed, falling back to defaults:', error);
     return defaultReviews;
   }
-  return reviews.map(({ _id, ...r }) => r) as unknown as ReviewItem[];
 }
 
 export async function getApprovedReviews(): Promise<ReviewItem[]> {
-  const { db } = await connectToDatabase();
-  const collection = db.collection('reviews');
-  
-  const reviews = await collection.find({ status: 'approved' }).toArray();
-  if (reviews.length === 0) {
-    const allReviews = await getReviews();
-    return allReviews.filter(r => r.status === 'approved');
+  try {
+    const { db } = await connectToDatabase();
+    const collection = db.collection('reviews');
+    
+    const reviews = await collection.find({ status: 'approved' }).toArray();
+    if (reviews.length === 0) {
+      const allReviews = await getReviews();
+      return allReviews.filter(r => r.status === 'approved');
+    }
+    return reviews.map(({ _id, ...r }) => r) as unknown as ReviewItem[];
+  } catch (error) {
+    console.error('getApprovedReviews failed, falling back to defaults:', error);
+    return defaultReviews.filter(r => r.status === 'approved');
   }
-  return reviews.map(({ _id, ...r }) => r) as unknown as ReviewItem[];
 }
 
 export async function saveReview(review: ReviewItem): Promise<boolean> {
@@ -594,16 +617,21 @@ const defaultCareers: CareerItem[] = [
 ];
 
 export async function getCareers(): Promise<CareerItem[]> {
-  const { db } = await connectToDatabase();
-  const collection = db.collection('careers');
-  
-  const careers = await collection.find({}).toArray();
-  if (careers.length === 0) {
-    const seed = defaultCareers.map(c => ({ ...c, postedAt: new Date().toISOString() }));
-    await collection.insertMany(seed as any[]);
-    return seed;
+  try {
+    const { db } = await connectToDatabase();
+    const collection = db.collection('careers');
+    
+    const careers = await collection.find({}).toArray();
+    if (careers.length === 0) {
+      const seed = defaultCareers.map(c => ({ ...c, postedAt: new Date().toISOString() }));
+      await collection.insertMany(seed as any[]);
+      return seed;
+    }
+    return careers.map(({ _id, ...c }) => c) as unknown as CareerItem[];
+  } catch (error) {
+    console.error('getCareers failed, falling back to default careers:', error);
+    return defaultCareers.map(c => ({ ...c, postedAt: new Date().toISOString() }));
   }
-  return careers.map(({ _id, ...c }) => c) as unknown as CareerItem[];
 }
 
 export async function saveCareer(career: CareerItem): Promise<boolean> {
