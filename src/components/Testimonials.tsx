@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Star, MessageSquare, PenTool } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ReviewItem } from '@/lib/db';
 
 interface TestimonialsProps {
@@ -45,7 +46,7 @@ export default function Testimonials({ initialReviews = [] }: TestimonialsProps)
         
         {/* Title */}
         <div className="text-center max-w-2xl mx-auto mb-20 space-y-4">
-          <h2 className="text-xs uppercase tracking-[0.2em] font-semibold text-brand-blue">
+          <h2 className="text-xs uppercase tracking-[0.2em] font-semibold text-sky-700 dark:text-brand-blue">
             Testimonials
           </h2>
           <p className="text-3xl md:text-4xl font-display font-extrabold tracking-tight text-slate-900 dark:text-white">
@@ -80,10 +81,11 @@ export default function Testimonials({ initialReviews = [] }: TestimonialsProps)
 
               <div className="flex flex-col items-center gap-3">
                 {activeTestimonial.avatarUrl ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
+                  <Image
                     src={activeTestimonial.avatarUrl}
                     alt={activeTestimonial.name}
+                    width={64}
+                    height={64}
                     className="w-16 h-16 rounded-full object-cover border border-slate-200 dark:border-slate-800 shadow-md"
                   />
                 ) : (
@@ -92,11 +94,11 @@ export default function Testimonials({ initialReviews = [] }: TestimonialsProps)
                   </div>
                 )}
                 <div>
-                  <h4 className="font-display font-bold text-slate-800 dark:text-white text-base">
+                  <h3 className="font-display font-bold text-slate-800 dark:text-white text-base">
                     {activeTestimonial.name}
-                  </h4>
-                  <p className="text-xs text-slate-400 mt-0.5 font-semibold">
-                    {activeTestimonial.role} at <span className="text-brand-blue font-bold">{activeTestimonial.company}</span>
+                  </h3>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5 font-semibold">
+                    {activeTestimonial.role} at <span className="text-sky-700 dark:text-brand-blue font-bold">{activeTestimonial.company}</span>
                   </p>
                 </div>
               </div>
@@ -124,7 +126,7 @@ export default function Testimonials({ initialReviews = [] }: TestimonialsProps)
         <div className="flex justify-center mt-12">
           <Link
             href="/reviews"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-brand-blue hover:bg-brand-blue/95 text-white text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-lg shadow-brand-blue/20 hover:shadow-brand-blue/35 hover:-translate-y-0.5 active:translate-y-0"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-sky-600 dark:bg-brand-blue hover:bg-sky-700 dark:hover:bg-brand-blue/90 text-white text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-lg shadow-brand-blue/20 hover:shadow-brand-blue/35 hover:-translate-y-0.5 active:translate-y-0"
           >
             <PenTool size={14} />
             Share Your Feedback

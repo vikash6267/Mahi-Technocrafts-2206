@@ -128,7 +128,8 @@ export default function Chatbot() {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="w-14 h-14 bg-brand-blue hover:bg-brand-blue/90 text-white rounded-full flex items-center justify-center shadow-lg shadow-brand-blue/30 cursor-pointer transition-colors"
+        className="w-14 h-14 bg-sky-600 dark:bg-brand-blue hover:bg-sky-700 dark:hover:bg-brand-blue/90 text-white rounded-full flex items-center justify-center shadow-lg shadow-brand-blue/30 cursor-pointer transition-colors"
+        aria-label="Toggle Mahi AI Assistant Chatbot"
       >
         <AnimatePresence mode="wait">
           {isOpen ? (
@@ -223,7 +224,7 @@ export default function Chatbot() {
                 onChange={(e) => setInput(e.target.value)}
                 className="flex-1 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-brand-blue text-slate-800 dark:text-slate-200"
               />
-              <button type="submit" className="w-8 h-8 rounded-xl bg-brand-blue text-white flex items-center justify-center flex-shrink-0 cursor-pointer hover:bg-brand-blue/90">
+              <button type="submit" aria-label="Send message" className="w-8 h-8 rounded-xl bg-sky-600 dark:bg-brand-blue text-white flex items-center justify-center flex-shrink-0 cursor-pointer hover:bg-sky-700 dark:hover:bg-brand-blue/90">
                 <Send size={14} />
               </button>
             </form>

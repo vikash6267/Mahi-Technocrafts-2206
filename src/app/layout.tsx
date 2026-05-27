@@ -1,8 +1,22 @@
 import type { Metadata } from 'next';
+import { Inter, Outfit } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import SmoothScroll from '@/components/SmoothScroll';
 import LayoutWrapper from '@/components/LayoutWrapper';
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-sans',
+});
+
+const outfit = Outfit({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-display',
+});
+
 
 export const metadata: Metadata = {
   title: {
@@ -58,7 +72,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} ${outfit.variable}`} suppressHydrationWarning>
       <body className="min-h-screen flex flex-col antialiased">
         <ThemeProvider>
           <SmoothScroll>

@@ -217,7 +217,7 @@ export default function Hero({ data }: HeroProps) {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 border border-slate-200/60 text-xs font-semibold tracking-wider uppercase text-brand-blue shadow-sm"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 border border-slate-200/60 text-xs font-semibold tracking-wider uppercase text-sky-700 dark:text-brand-blue shadow-sm"
           >
             <Sparkles size={12} className="animate-spin text-brand-purple" />
             Empowering Startups & Enterprises
@@ -265,7 +265,7 @@ export default function Hero({ data }: HeroProps) {
           >
             <Link
               href="/contact"
-              className="px-8 py-4 bg-brand-blue hover:bg-brand-blue/95 text-white font-bold text-xs tracking-wider uppercase rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-brand-blue/20 cursor-pointer transition-all hover:-translate-y-0.5 active:translate-y-0 duration-200"
+              className="px-8 py-4 bg-sky-600 dark:bg-brand-blue hover:bg-sky-700 dark:hover:bg-brand-blue/90 text-white font-bold text-xs tracking-wider uppercase rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-brand-blue/20 cursor-pointer transition-all hover:-translate-y-0.5 active:translate-y-0 duration-200"
             >
               Get Started
               <ArrowRight size={14} />

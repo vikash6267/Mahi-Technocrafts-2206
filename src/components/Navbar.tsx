@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Sun, Moon } from 'lucide-react';
@@ -82,11 +83,13 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center group">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src="/logo.png"
             alt="Mahi Technocrafts Logo"
-            className="h-18 object-contain group-hover:scale-105 transition-transform duration-200"
+            width={256}
+            height={126}
+            priority
+            className="h-18 w-auto object-contain group-hover:scale-105 transition-transform duration-200"
           />
         </Link>
 
@@ -121,7 +124,7 @@ export default function Navbar() {
 
           <Link
             href="/contact"
-            className="px-5 py-2.5 bg-brand-blue hover:bg-brand-blue/90 text-white font-semibold text-xs tracking-wider uppercase rounded-xl transition-colors cursor-pointer"
+            className="px-5 py-2.5 bg-sky-600 dark:bg-brand-blue hover:bg-sky-700 dark:hover:bg-brand-blue/90 text-white font-semibold text-xs tracking-wider uppercase rounded-xl transition-colors cursor-pointer"
           >
             Get In Touch
           </Link>
@@ -165,7 +168,7 @@ export default function Navbar() {
               })}
               <Link
                 href="/contact"
-                className="w-full text-center py-3 bg-brand-blue hover:bg-brand-blue/90 text-white font-semibold text-xs tracking-wider uppercase rounded-xl transition-colors mt-2"
+                className="w-full text-center py-3 bg-sky-600 dark:bg-brand-blue hover:bg-sky-700 dark:hover:bg-brand-blue/90 text-white font-semibold text-xs tracking-wider uppercase rounded-xl transition-colors mt-2"
               >
                 Get In Touch
               </Link>

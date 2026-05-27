@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Send, Sparkles } from 'lucide-react';
 
@@ -65,11 +66,12 @@ export default function Footer() {
         {/* Brand Info */}
         <div className="space-y-6">
           <Link href="/" className="flex items-center group">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src="/logo.png"
               alt="Mahi Technocrafts Logo"
-              className="h-18 object-contain hover:scale-105 transition-transform duration-200"
+              width={256}
+              height={126}
+              className="h-18 w-auto object-contain hover:scale-105 transition-transform duration-200"
             />
           </Link>
           <p className="text-sm leading-relaxed">
@@ -80,25 +82,31 @@ export default function Footer() {
               href="https://www.instagram.com/mahi_technocrafts/"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Follow Mahi Technocrafts on Instagram"
               className="w-9 h-9 rounded-xl glass flex items-center justify-center text-slate-800 dark:text-white hover:text-brand-blue dark:hover:text-brand-blue border border-slate-200 dark:border-slate-800 hover:border-brand-blue/30 transition-all duration-300"
             >
               <Instagram size={16} />
+              <span className="sr-only">Instagram Profile</span>
             </Link>
             <Link
               href="https://www.linkedin.com/company/mahi-technocrafts/"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Connect with Mahi Technocrafts on LinkedIn"
               className="w-9 h-9 rounded-xl glass flex items-center justify-center text-slate-800 dark:text-white hover:text-brand-blue dark:hover:text-brand-blue border border-slate-200 dark:border-slate-800 hover:border-brand-blue/30 transition-all duration-300"
             >
               <Linkedin size={16} />
+              <span className="sr-only">LinkedIn Company Profile</span>
             </Link>
             <Link
               href="https://x.com/mahi_technocrafts"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Follow Mahi Technocrafts on Twitter"
               className="w-9 h-9 rounded-xl glass flex items-center justify-center text-slate-800 dark:text-white hover:text-brand-blue dark:hover:text-brand-blue border border-slate-200 dark:border-slate-800 hover:border-brand-blue/30 transition-all duration-300"
             >
               <Twitter size={16} />
+              <span className="sr-only">Twitter Profile</span>
             </Link>
           </div>
         </div>

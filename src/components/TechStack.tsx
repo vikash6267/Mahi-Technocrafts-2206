@@ -72,7 +72,7 @@ export default function TechStack() {
         
         {/* Title */}
         <div className="text-center max-w-2xl mx-auto mb-20 space-y-4">
-          <h2 className="text-xs uppercase tracking-[0.2em] font-semibold text-brand-blue">
+          <h2 className="text-xs uppercase tracking-[0.2em] font-semibold text-sky-700 dark:text-brand-blue">
             Our Stack
           </h2>
           <p className="text-3xl md:text-4xl font-display font-extrabold tracking-tight text-slate-900 dark:text-white">
@@ -127,10 +127,10 @@ export default function TechStack() {
                       <ShieldCheck size={16} />
                     </div>
                     <div>
-                      <h4 className="font-display font-bold text-slate-800 dark:text-white text-sm">
+                      <h3 className="font-display font-bold text-slate-800 dark:text-white text-sm">
                         {tech.name}
-                      </h4>
-                      <p className="text-[10px] text-slate-400 mt-0.5">{tech.level}</p>
+                      </h3>
+                      <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">{tech.level}</p>
                     </div>
                   </div>
 

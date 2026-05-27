@@ -2,6 +2,7 @@
 
 import React, { useRef, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Quote, Sparkles } from 'lucide-react';
 
@@ -57,8 +58,8 @@ export default function Founder({ data }: FounderProps) {
           
           {/* Quote / Message Column */}
           <div className="lg:col-span-7 space-y-6 order-2 lg:order-1">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass border border-slate-200/50 dark:border-slate-800 text-xs font-semibold uppercase text-brand-purple">
-              <Sparkles size={10} />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass border border-slate-200/50 dark:border-slate-800 text-xs font-semibold uppercase text-[#c2410c] dark:text-brand-purple">
+              <Sparkles size={10} className="text-[#c2410c] dark:text-brand-purple" />
               Founder Vision
             </div>
 
@@ -108,10 +109,11 @@ export default function Founder({ data }: FounderProps) {
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full bg-brand-purple/30 blur-[40px] pointer-events-none group-hover:scale-125 transition-transform duration-500" />
                 
                 {data.image ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
+                  <Image
                     src={data.image}
                     alt={data.name}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
                     className="absolute inset-0 w-full h-full object-cover opacity-95 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
                   />
                 ) : (

@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Sparkles, ExternalLink } from 'lucide-react';
+import Image from 'next/image';
 import { ProjectItem } from '@/lib/db';
 
 interface ProjectsProps {
@@ -20,8 +21,8 @@ export default function Projects({ data }: ProjectsProps) {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Section Title */}
         <div className="text-center max-w-2xl mx-auto mb-20 space-y-4">
-          <h2 className="text-xs uppercase tracking-[0.2em] font-semibold text-brand-purple flex items-center justify-center gap-2">
-            <Sparkles size={12} className="animate-pulse" />
+          <h2 className="text-xs uppercase tracking-[0.2em] font-semibold text-[#c2410c] dark:text-brand-purple flex items-center justify-center gap-2">
+            <Sparkles size={12} className="animate-pulse text-[#c2410c] dark:text-brand-purple" />
             Case Studies
           </h2>
           <p className="text-3xl md:text-4xl font-display font-extrabold tracking-tight text-slate-900 dark:text-white">
@@ -44,10 +45,11 @@ export default function Projects({ data }: ProjectsProps) {
               {/* S3 Image Container */}
               <div className="relative aspect-video w-full overflow-hidden bg-slate-900 border-b border-slate-200 dark:border-slate-850">
                 {project.image ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
+                  <Image
                     src={project.image}
                     alt={project.imageAlt || project.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100"
                   />
                 ) : (
@@ -69,9 +71,11 @@ export default function Projects({ data }: ProjectsProps) {
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-slate-400 hover:text-brand-purple transition-colors"
+                        aria-label={`Visit ${project.title} live project website`}
+                        className="text-slate-450 hover:text-brand-purple transition-colors"
                       >
                         <ExternalLink size={16} />
+                        <span className="sr-only">Visit Website</span>
                       </a>
                     )}
                   </div>
