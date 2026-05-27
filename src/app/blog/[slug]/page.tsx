@@ -208,7 +208,11 @@ export default async function BlogDetailPage({ params }: PageProps) {
 
           {/* Render Rich HTML Text Content */}
           <div
-            className="prose prose-slate dark:prose-invert max-w-none pt-2 text-sm sm:text-base leading-relaxed text-slate-700 dark:text-slate-350 space-y-4"
+            className={
+              cleanContent.includes('style=')
+                ? "not-prose max-w-none pt-2 text-sm sm:text-base leading-relaxed"
+                : "prose prose-slate dark:prose-invert max-w-none pt-2 text-sm sm:text-base leading-relaxed text-slate-700 dark:text-slate-350 space-y-4"
+            }
             dangerouslySetInnerHTML={{ __html: cleanContent }}
           />
 
