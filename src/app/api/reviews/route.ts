@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getReviews, getApprovedReviews, saveReview, updateReviewStatus, deleteReviewById, ReviewItem } from '@/lib/db';
 import { cookies } from 'next/headers';
+import { sendReviewNotification } from '@/lib/email';
 
 // Helper to check admin authentication cookie
 async function checkAuth(): Promise<boolean> {
@@ -71,6 +72,15 @@ export async function POST(request: Request) {
     const success = await saveReview(newReview);
 
     if (success) {
+      // Send email notification to admin asynchronously
+      sendReviewNotification({
+        name,
+        role,
+        company,
+        rating: numRating,
+        text
+      }).catch(err => console.error('Failed to send review email:', err));
+
       return NextResponse.json({ 
         success: true, 
         message: isAuth 

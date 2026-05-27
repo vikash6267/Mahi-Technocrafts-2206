@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getContacts, saveContact, updateContactStatus, ContactSubmission } from '@/lib/db';
 import { cookies } from 'next/headers';
+import { sendContactNotification } from '@/lib/email';
 
 // Helper to check admin authentication cookie
 async function checkAuth(): Promise<boolean> {
@@ -52,6 +53,17 @@ export async function POST(request: Request) {
     const success = await saveContact(newSubmission);
 
     if (success) {
+      // Send email notification to admin asynchronously
+      sendContactNotification({
+        name,
+        email,
+        phone: phone || '',
+        company: '',
+        service: subject || 'General Business Inquiry',
+        budget: 'Not Specified',
+        message
+      }).catch(err => console.error('Failed to send contact notification email:', err));
+
       return NextResponse.json({ success: true, message: 'Your message has been received! We will contact you soon.' });
     } else {
       return NextResponse.json({ error: 'Failed to submit message' }, { status: 500 });
