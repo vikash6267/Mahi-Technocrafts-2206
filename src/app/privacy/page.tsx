@@ -3,6 +3,9 @@ import React from 'react';
 export const metadata = {
   title: 'Privacy Policy | Mahi Technocrafts',
   description: 'Privacy Policy details for client data handled by Mahi Technocrafts.',
+  alternates: {
+    canonical: '/privacy'
+  }
 };
 
 export default function PrivacyPage() {

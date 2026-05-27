@@ -5,6 +5,9 @@ import { getSiteData } from '@/lib/db';
 export const metadata = {
   title: 'Contact Us',
   description: 'Submit your project details and get a quick technical consultation with Mahi Technocrafts engineering crew.',
+  alternates: {
+    canonical: '/contact'
+  }
 };
 
 export const revalidate = 0;

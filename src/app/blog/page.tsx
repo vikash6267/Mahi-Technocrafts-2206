@@ -4,6 +4,9 @@ import BlogList from './BlogList';
 export const metadata = {
   title: 'Tech Blog | Mahi Technocrafts',
   description: 'Explore the latest articles, developer guides, design methodologies, and AI integration strategies written by Mahi Technocrafts crew.',
+  alternates: {
+    canonical: '/blog'
+  }
 };
 
 export const revalidate = 0;

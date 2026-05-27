@@ -5,6 +5,9 @@ import { getSiteData } from '@/lib/db';
 export const metadata = {
   title: 'Our Services',
   description: 'Explore Mahi Technocrafts capabilities: web development, mobile applications, custom ERP databases, UI/UX designs, and cloud systems.',
+  alternates: {
+    canonical: '/services'
+  }
 };
 
 export const revalidate = 0;

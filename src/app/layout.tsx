@@ -10,6 +10,9 @@ export const metadata: Metadata = {
     template: '%s | Mahi Technocrafts'
   },
   description: 'Mahi Technocrafts is a premium software agency and the best developer near me in Bhopal, crafting world-class digital solutions including web development, mobile apps, UI/UX designs, and custom AI systems.',
+  alternates: {
+    canonical: '/'
+  },
   keywords: [
     'Mahi Technocrafts',
     'near by developer',

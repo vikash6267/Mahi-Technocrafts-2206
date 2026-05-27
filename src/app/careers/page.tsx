@@ -5,6 +5,9 @@ import { getCareers, CareerItem } from '@/lib/db';
 export const metadata = {
   title: 'Careers | Mahi Technocrafts',
   description: 'Join the engineering crew at Mahi Technocrafts. Explore our open positions and build premium web applications.',
+  alternates: {
+    canonical: '/careers'
+  }
 };
 
 export const revalidate = 0; // Disable dynamic caching so careers updates appear instantly

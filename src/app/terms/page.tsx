@@ -3,6 +3,9 @@ import React from 'react';
 export const metadata = {
   title: 'Terms of Service | Mahi Technocrafts',
   description: 'Terms of Service guidelines for Mahi Technocrafts projects and systems.',
+  alternates: {
+    canonical: '/terms'
+  }
 };
 
 export default function TermsPage() {

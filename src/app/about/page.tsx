@@ -6,6 +6,9 @@ import { getSiteData } from '@/lib/db';
 export const metadata = {
   title: 'About Us',
   description: 'Learn about our company story, values, mission, vision, and founder Vikash Maheshwari.',
+  alternates: {
+    canonical: '/about'
+  }
 };
 
 export const revalidate = 0;
