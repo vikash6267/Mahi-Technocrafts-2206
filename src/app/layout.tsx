@@ -42,21 +42,12 @@ export const metadata: Metadata = {
     title: 'Mahi Technocrafts | Premium Web & AI Solutions',
     description: 'Your Imagination, Our Creation. Premium software development agency specializing in Next.js, React, Mobile Apps, AI, and custom engineering near you.',
     siteName: 'Mahi Technocrafts',
-    images: [
-      {
-        url: '/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Mahi Technocrafts Premium Web & AI solutions'
-      }
-    ]
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Mahi Technocrafts | Premium Web & AI Solutions',
     description: 'Your Imagination, Our Creation. Premium software development agency specializing in Next.js, React, Mobile Apps, AI, and custom engineering near you.',
     creator: '@mahi_technocrafts',
-    images: ['/og-image.jpg']
   },
   metadataBase: new URL('https://mahitechnocrafts.in')
 };

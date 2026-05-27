@@ -310,7 +310,7 @@ export default function Hero({ data }: HeroProps) {
             <div className="relative flex-1 overflow-hidden bg-slate-950">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/media__1779869067980.png"
+                src="/herosection.png"
                 alt="Mahi Technocrafts Developer workspace"
                 className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
               />
