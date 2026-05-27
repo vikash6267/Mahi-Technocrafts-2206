@@ -377,13 +377,6 @@ export async function getBlogs(): Promise<BlogItem[]> {
   const collection = db.collection('blogs');
   
   const blogs = await collection.find({}).toArray();
-  
-  if (blogs.length === 0) {
-    // Seed default blogs
-    await collection.insertMany(defaultBlogs as any[]);
-    return defaultBlogs;
-  }
-  
   return blogs.map(({ _id, ...b }) => b) as unknown as BlogItem[];
 }
 

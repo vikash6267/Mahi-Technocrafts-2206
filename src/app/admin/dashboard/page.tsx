@@ -76,6 +76,7 @@ export default function AdminDashboardPage() {
 
   // Toggle for blogs create editor
   const [showCreateForm, setShowCreateForm] = useState(false);
+  const [isHtmlMode, setIsHtmlMode] = useState(false);
 
   // New items temp states (Services & Projects CRUD)
   const [serviceForm, setServiceForm] = useState<Omit<ServiceItem, 'id'>>({
@@ -1248,13 +1249,35 @@ export default function AdminDashboardPage() {
                       />
                     </div>
 
-                    {/* Dynamic TipTap Rich Text Editor */}
-                    <div className="space-y-1.5">
-                      <label className="text-[9px] uppercase tracking-wider text-slate-500 font-bold">Article Content (Rich Text) *</label>
-                      <TiptapEditor
-                        content={blogForm.content}
-                        onChange={(html) => setBlogForm(prev => ({ ...prev, content: html }))}
-                      />
+                    {/* Dynamic TipTap Rich Text / Raw HTML Editor */}
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between">
+                        <label className="text-[9px] uppercase tracking-wider text-slate-500 font-bold">
+                          Article Content ({isHtmlMode ? 'Raw HTML Code' : 'Rich Text Editor'}) *
+                        </label>
+                        <button
+                          type="button"
+                          onClick={() => setIsHtmlMode(!isHtmlMode)}
+                          className="px-2.5 py-1 text-[10px] font-bold text-brand-blue bg-brand-blue/10 hover:bg-brand-blue/20 rounded-md transition-colors cursor-pointer"
+                        >
+                          {isHtmlMode ? '✍️ Switch to Rich Editor' : '💻 Switch to Raw HTML Code'}
+                        </button>
+                      </div>
+
+                      {isHtmlMode ? (
+                        <textarea
+                          value={blogForm.content}
+                          onChange={(e) => setBlogForm(prev => ({ ...prev, content: e.target.value }))}
+                          className="w-full h-80 px-4 py-3 bg-slate-950 font-mono text-xs text-emerald-400 border border-slate-800 rounded-2xl focus:outline-none focus:border-brand-blue"
+                          placeholder="<p>Paste or write your HTML code here...</p>"
+                          required
+                        />
+                      ) : (
+                        <TiptapEditor
+                          content={blogForm.content}
+                          onChange={(html) => setBlogForm(prev => ({ ...prev, content: html }))}
+                        />
+                      )}
                     </div>
 
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
