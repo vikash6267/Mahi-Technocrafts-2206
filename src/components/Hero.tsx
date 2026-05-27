@@ -19,7 +19,7 @@ export default function Hero({ data }: HeroProps) {
 
   useEffect(() => {
     const targets = [150, 80, 8, 25];
-    const duration = 1800; // Snappy count-up
+    const duration = 1200;
     const intervalTime = 30;
     const steps = duration / intervalTime;
 
@@ -65,9 +65,8 @@ export default function Hero({ data }: HeroProps) {
     }
 
     const particles: ParticleType[] = [];
-    const particleCount = Math.min(Math.round((width * height) / 12000), 90);
-    const connectionDistance = 120;
-    const mouse = { x: -1000, y: -1000, radius: 180 };
+    const particleCount = Math.min(Math.round((width * height) / 25000), 40);
+    const connectionDistance = 80;
 
     class Particle implements ParticleType {
       x: number;
@@ -81,11 +80,11 @@ export default function Hero({ data }: HeroProps) {
       constructor() {
         this.x = Math.random() * width;
         this.y = Math.random() * height;
-        this.vx = (Math.random() - 0.5) * 0.6;
-        this.vy = (Math.random() - 0.5) * 0.6;
-        this.size = Math.random() * 2 + 1;
-        this.color = Math.random() > 0.5 ? '#0ea5e9' : '#f97316'; // Cyan & Orange theme particles
-        this.alpha = Math.random() * 0.4 + 0.2;
+        this.vx = (Math.random() - 0.5) * 0.4;
+        this.vy = (Math.random() - 0.5) * 0.4;
+        this.size = Math.random() * 1.5 + 0.5;
+        this.color = Math.random() > 0.5 ? '#0ea5e9' : '#f97316';
+        this.alpha = Math.random() * 0.3 + 0.15;
       }
 
       update() {
@@ -96,16 +95,6 @@ export default function Hero({ data }: HeroProps) {
         if (this.x > width) this.x = 0;
         if (this.y < 0) this.y = height;
         if (this.y > height) this.y = 0;
-
-        // Mouse attraction/repulsion
-        const dx = this.x - mouse.x;
-        const dy = this.y - mouse.y;
-        const dist = Math.hypot(dx, dy);
-        if (dist < mouse.radius) {
-          const force = (mouse.radius - dist) / mouse.radius;
-          this.x -= (dx / dist) * force * 1.5;
-          this.y -= (dy / dist) * force * 1.5;
-        }
       }
 
       draw() {
@@ -119,50 +108,20 @@ export default function Hero({ data }: HeroProps) {
       }
     }
 
-    // Initialize particles
     for (let i = 0; i < particleCount; i++) {
       particles.push(new Particle());
     }
-
-    const handleMouseMove = (e: MouseEvent) => {
-      mouse.x = e.clientX;
-      mouse.y = e.clientY;
-    };
-
-    const handleMouseLeave = () => {
-      mouse.x = -1000;
-      mouse.y = -1000;
-    };
-
-    const handleClick = (e: MouseEvent) => {
-      const clickX = e.clientX;
-      const clickY = e.clientY;
-      for (let i = 0; i < 6; i++) {
-        const p = new Particle();
-        p.x = clickX;
-        p.y = clickY;
-        p.vx = (Math.random() - 0.5) * 4;
-        p.vy = (Math.random() - 0.5) * 4;
-        p.size = Math.random() * 2.5 + 1.5;
-        particles.push(p);
-        if (particles.length > 130) particles.shift();
-      }
-    };
 
     const handleResize = () => {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseleave', handleMouseLeave);
-    window.addEventListener('click', handleClick);
     window.addEventListener('resize', handleResize);
 
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // Connect particles
       for (let i = 0; i < particles.length; i++) {
         const p1 = particles[i];
         p1.update();
@@ -173,12 +132,12 @@ export default function Hero({ data }: HeroProps) {
           const dist = Math.hypot(p1.x - p2.x, p1.y - p2.y);
 
           if (dist < connectionDistance) {
-            const alpha = (1 - dist / connectionDistance) * 0.12;
+            const alpha = (1 - dist / connectionDistance) * 0.08;
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(14, 165, 233, ${alpha})`; // Blue connecting lines
-            ctx.lineWidth = 0.7;
+            ctx.strokeStyle = `rgba(14, 165, 233, ${alpha})`;
+            ctx.lineWidth = 0.5;
             ctx.stroke();
           }
         }
@@ -191,28 +150,21 @@ export default function Hero({ data }: HeroProps) {
 
     return () => {
       cancelAnimationFrame(animationId);
-      window.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseleave', handleMouseLeave);
-      window.removeEventListener('click', handleClick);
       window.removeEventListener('resize', handleResize);
     };
   }, []);
 
   return (
     <section className="relative min-h-screen flex flex-col justify-center overflow-hidden py-24 bg-[#fafaff] grid-backdrop">
-      {/* Background Interactive Nodes Canvas */}
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none z-0 opacity-60" />
 
-      {/* Floating Glowing Gradients */}
       <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-brand-blue/8 rounded-full blur-[140px] pointer-events-none z-0" />
       <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-brand-purple/8 rounded-full blur-[140px] pointer-events-none z-0" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
         
-        {/* Texts and CTA Column */}
         <div className="lg:col-span-6 space-y-8 text-left">
           
-          {/* Accent Badge */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -223,7 +175,6 @@ export default function Hero({ data }: HeroProps) {
             Empowering Startups & Enterprises
           </motion.div>
 
-          {/* Heading Text Reveal */}
           <div className="space-y-4">
             <motion.h1 
               initial={{ opacity: 0, y: 25 }}
@@ -234,18 +185,11 @@ export default function Hero({ data }: HeroProps) {
               Your{' '}
               <span className="text-gradient drop-shadow-sm relative inline-block">
                 Imagination
-                {/* Floating decorative outline circle */}
-                <motion.span 
-                  animate={{ scale: [1, 1.08, 1], rotate: 360 }}
-                  transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                  className="absolute -right-6 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full border-2 border-brand-purple/80 pointer-events-none hidden sm:inline-block"
-                />
               </span>
               <br />
               Our Creation.
             </motion.h1>
             
-            {/* Description */}
             <motion.p
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
@@ -256,7 +200,6 @@ export default function Hero({ data }: HeroProps) {
             </motion.p>
           </div>
 
-          {/* CTA Group */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -280,7 +223,6 @@ export default function Hero({ data }: HeroProps) {
           </motion.div>
         </div>
 
-        {/* Right Column: Code Editor Mockup frame with Developer photo */}
         <div className="lg:col-span-6 relative flex justify-center items-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -288,7 +230,6 @@ export default function Hero({ data }: HeroProps) {
             transition={{ duration: 0.8, delay: 0.2, type: 'spring', damping: 22 }}
             className="w-full max-w-lg rounded-3xl bg-white border border-slate-200/80 shadow-2xl overflow-hidden flex flex-col h-[340px] relative select-none"
           >
-            {/* Header bar */}
             <div className="px-5 py-3.5 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
               <div className="flex gap-2">
                 <span className="w-3 h-3 rounded-full bg-red-500" />
@@ -296,7 +237,6 @@ export default function Hero({ data }: HeroProps) {
                 <span className="w-3 h-3 rounded-full bg-green-500" />
               </div>
 
-              {/* Fake IDE tabs */}
               <div className="flex gap-4">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-brand-blue">
                   App.tsx
@@ -307,7 +247,6 @@ export default function Hero({ data }: HeroProps) {
               </div>
             </div>
 
-            {/* Mockup Body containing the developer image */}
             <div className="relative flex-1 overflow-hidden bg-slate-950">
               <Image
                 src="/herosection.png"
@@ -320,14 +259,12 @@ export default function Hero({ data }: HeroProps) {
             </div>
           </motion.div>
 
-          {/* Floating Neon Badge */}
           <motion.div
             animate={{ y: [0, -8, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
             className="absolute -bottom-6 -left-6 p-4 rounded-2xl bg-white/95 border border-slate-200 shadow-2xl flex items-center gap-3 select-none z-20"
           >
             <div className="w-8 h-8 rounded-xl bg-green-500/10 text-green-500 flex items-center justify-center flex-shrink-0">
-              {/* Green indicator checkmark */}
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7"></path>
               </svg>
@@ -340,11 +277,9 @@ export default function Hero({ data }: HeroProps) {
         </div>
       </div>
 
-      {/* Stats Section Overlay */}
       <div className="max-w-7xl mx-auto px-6 w-full pt-16 mt-16 relative z-10 border-t border-slate-200/50">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
           {data.stats.map((stat, i) => {
-            // Mapping distinct colors, icons, and shadows for cards
             const config = [
               {
                 icon: <Code2 size={20} className="text-blue-500" />,
@@ -386,12 +321,10 @@ export default function Hero({ data }: HeroProps) {
                 whileHover={{ y: -5, scale: 1.01 }}
                 className={`flex items-center gap-4 p-5 rounded-2xl border ${config.cardBg} transition-all duration-300 shadow-sm ${config.shadow} group`}
               >
-                {/* Icon Container */}
                 <div className={`w-12 h-12 rounded-xl ${config.iconBg} flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110`}>
                   {config.icon}
                 </div>
                 
-                {/* Details */}
                 <div className="space-y-0.5 text-left">
                   <h3 className="text-2xl md:text-3xl font-display font-black text-slate-800 tracking-tight leading-none">
                     {statsValues[i]}{stat.value.includes('+') ? '+' : ''}

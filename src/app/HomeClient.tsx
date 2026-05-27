@@ -1,6 +1,7 @@
 'use client';
 
-import React, { Suspense } from 'react';
+import React, { Suspense, useState } from 'react';
+import LoadingScreen from '@/components/LoadingScreen';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Founder from '@/components/Founder';
@@ -15,6 +16,12 @@ const FAQ = React.lazy(() => import('@/components/FAQ'));
 const ContactForm = React.lazy(() => import('@/components/ContactForm'));
 
 export default function HomeClient({ data, reviews }: { data: SiteData; reviews: ReviewItem[] }) {
+  const [isLoading, setIsLoading] = useState(true);
+
+  if (isLoading) {
+    return <LoadingScreen onComplete={() => setIsLoading(false)} />;
+  }
+
   return (
     <div className="relative animate-fadeIn">
       {/* Background neon elements */}
