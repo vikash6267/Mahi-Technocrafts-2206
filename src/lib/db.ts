@@ -394,14 +394,20 @@ export async function getBlogs(): Promise<BlogItem[]> {
 }
 
 export async function getBlogBySlug(slug: string): Promise<BlogItem | null> {
-  const { db } = await connectToDatabase();
-  const collection = db.collection('blogs');
-  
-  const blog = await collection.findOne({ slug });
-  if (!blog) return null;
-  
-  const { _id, ...cleanBlog } = blog;
-  return cleanBlog as unknown as BlogItem;
+  try {
+    const { db } = await connectToDatabase();
+    const collection = db.collection('blogs');
+    
+    const blog = await collection.findOne({ slug });
+    if (!blog) return null;
+    
+    const { _id, ...cleanBlog } = blog;
+    return cleanBlog as unknown as BlogItem;
+  } catch (error) {
+    console.error(`getBlogBySlug failed for ${slug}, trying local fallback:`, error);
+    const localBlog = defaultBlogs.find(b => b.slug === slug);
+    return localBlog || null;
+  }
 }
 
 export async function saveBlog(blog: BlogItem): Promise<boolean> {
@@ -435,11 +441,16 @@ export async function deleteBlogBySlug(slug: string): Promise<boolean> {
 }
 
 export async function getContacts(): Promise<ContactSubmission[]> {
-  const { db } = await connectToDatabase();
-  const collection = db.collection('contacts');
-  
-  const contacts = await collection.find({}).toArray();
-  return contacts.map(({ _id, ...c }) => c) as unknown as ContactSubmission[];
+  try {
+    const { db } = await connectToDatabase();
+    const collection = db.collection('contacts');
+    
+    const contacts = await collection.find({}).toArray();
+    return contacts.map(({ _id, ...c }) => c) as unknown as ContactSubmission[];
+  } catch (error) {
+    console.error('getContacts failed, returning empty:', error);
+    return [];
+  }
 }
 
 export async function saveContact(contact: ContactSubmission): Promise<boolean> {
