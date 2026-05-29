@@ -1,19 +1,18 @@
 'use client';
 
-import React, { Suspense, useState } from 'react';
+import React, { useState } from 'react';
 import LoadingScreen from '@/components/LoadingScreen';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Founder from '@/components/Founder';
 import Services from '@/components/Services';
+import Projects from '@/components/Projects';
+import TechStack from '@/components/TechStack';
+import Testimonials from '@/components/Testimonials';
+import Timeline from '@/components/Timeline';
+import FAQ from '@/components/FAQ';
+import ContactForm from '@/components/ContactForm';
 import { SiteData, ReviewItem } from '@/lib/db';
-
-const Projects = React.lazy(() => import('@/components/Projects'));
-const TechStack = React.lazy(() => import('@/components/TechStack'));
-const Testimonials = React.lazy(() => import('@/components/Testimonials'));
-const Timeline = React.lazy(() => import('@/components/Timeline'));
-const FAQ = React.lazy(() => import('@/components/FAQ'));
-const ContactForm = React.lazy(() => import('@/components/ContactForm'));
 
 export default function HomeClient({ data, reviews }: { data: SiteData; reviews: ReviewItem[] }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -31,24 +30,12 @@ export default function HomeClient({ data, reviews }: { data: SiteData; reviews:
       <About data={data.about} />
       <Founder data={data.founder} />
       <Services data={data.services} />
-      <Suspense fallback={null}>
-        <Projects data={data.projects} />
-      </Suspense>
-      <Suspense fallback={null}>
-        <TechStack />
-      </Suspense>
-      <Suspense fallback={null}>
-        <Testimonials initialReviews={reviews} />
-      </Suspense>
-      <Suspense fallback={null}>
-        <Timeline />
-      </Suspense>
-      <Suspense fallback={null}>
-        <FAQ data={data.faq} />
-      </Suspense>
-      <Suspense fallback={null}>
-        <ContactForm contactInfo={data.contactInfo} />
-      </Suspense>
+      <Projects data={data.projects} />
+      <TechStack />
+      <Testimonials initialReviews={reviews} />
+      <Timeline />
+      <FAQ data={data.faq} />
+      <ContactForm contactInfo={data.contactInfo} />
     </div>
   );
 }
