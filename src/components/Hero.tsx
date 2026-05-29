@@ -249,7 +249,7 @@ export default function Hero({ data }: HeroProps) {
 
             <div className="relative flex-1 overflow-hidden bg-slate-950">
               <Image
-                src="/herosection.png"
+                src="/images/herosection.webp"
                 alt="Mahi Technocrafts Developer workspace"
                 fill
                 priority

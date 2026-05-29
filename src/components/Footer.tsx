@@ -67,7 +67,7 @@ export default function Footer() {
         <div className="space-y-6">
           <Link href="/" className="flex items-center group">
             <Image
-              src="/logo.png"
+              src="/images/logo.webp"
               alt="Mahi Technocrafts Logo"
               width={256}
               height={126}

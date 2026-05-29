@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Mail, Phone, MapPin, Send, Loader2, CheckCircle2 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
@@ -25,6 +25,15 @@ export default function ContactForm({ contactInfo }: ContactFormProps) {
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitResult, setSubmitResult] = useState<{ success: boolean; message: string } | null>(null);
+  const [showMap, setShowMap] = useState(false);
+
+  useEffect(() => {
+    // Delay maps API fetching until initial paint completes
+    const timer = setTimeout(() => {
+      setShowMap(true);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const validate = () => {
     const newErrors: { [key: string]: string } = {};
@@ -168,15 +177,21 @@ export default function ContactForm({ contactInfo }: ContactFormProps) {
             </div>
 
             {/* Embedded Google Map */}
-            <div className="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-850 h-56 shadow-md">
-              <iframe
-                title="Mahi Technocrafts Office Map"
-                src={contactInfo.googleMapEmbed}
-                className="w-full h-full border-0 grayscale opacity-80 dark:opacity-60"
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
+            <div className="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-850 h-56 shadow-md bg-slate-100 dark:bg-slate-900/60 flex items-center justify-center relative">
+              {showMap ? (
+                <iframe
+                  title="Mahi Technocrafts Office Map"
+                  src={contactInfo.googleMapEmbed}
+                  className="w-full h-full border-0 grayscale opacity-80 dark:opacity-60"
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              ) : (
+                <div className="text-slate-400 dark:text-slate-600 text-xs font-semibold animate-pulse">
+                  Loading Interactive Map...
+                </div>
+              )}
             </div>
           </div>
 

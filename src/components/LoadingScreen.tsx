@@ -62,7 +62,7 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
             >
               <div className="absolute inset-0 rounded-3xl border border-white/60 bg-white/90 flex items-center justify-center p-5 shadow-xl backdrop-blur-md">
                 <Image
-                  src="/logo.png"
+                  src="/images/logo.webp"
                   alt="Mahi Technocrafts Logo"
                   width={72}
                   height={72}
