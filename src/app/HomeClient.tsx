@@ -18,12 +18,12 @@ const ContactForm = React.lazy(() => import('@/components/ContactForm'));
 export default function HomeClient({ data, reviews }: { data: SiteData; reviews: ReviewItem[] }) {
   const [isLoading, setIsLoading] = useState(true);
 
-  if (isLoading) {
-    return <LoadingScreen onComplete={() => setIsLoading(false)} />;
-  }
-
   return (
     <div className="relative animate-fadeIn">
+      {/* Loading Screen Overlay - Renders on top of the layout without causing layout shifts */}
+      {isLoading && (
+        <LoadingScreen onComplete={() => setIsLoading(false)} />
+      )}
       {/* Background neon elements */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-blue/5 dark:bg-brand-blue/10 rounded-full blur-[130px] pointer-events-none" />
       
