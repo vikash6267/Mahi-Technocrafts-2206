@@ -165,10 +165,11 @@ export interface ContactSubmission {
 }
 
 // Default Seed Content for Homepage
+// Default Seed Content for Homepage
 const defaultSiteData: SiteData = {
   hero: {
     tagline: "Your Imagination, Our Creation",
-    description: "At Mahi Technocrafts, we craft world-class, premium digital solutions that empower businesses to scale, innovate, and dominate. Experience futuristic design, custom software engineering, and enterprise-grade performance.",
+    description: "At Mahi Technocrafts, we build beautiful, easy-to-use websites, mobile apps, and custom software that help your business grow. We combine elegant design with smooth performance to make your brand stand out.",
     ctaPrimary: "Get Started",
     ctaSecondary: "Explore Services",
     stats: [
@@ -179,20 +180,20 @@ const defaultSiteData: SiteData = {
     ]
   },
   about: {
-    story: "Founded with a vision to bridge the gap between complex engineering and elegant design, Mahi Technocrafts has evolved into a premier tech agency. We don't just write code; we design experiences that inspire trust and drive growth.",
-    mission: "To empower global enterprises and startups with cutting-edge technology, scalable architectures, and visually stunning interfaces that elevate their brand value.",
-    vision: "To become a global beacon of digital craftsmanship, pioneering human-centric artificial intelligence and next-generation web technologies.",
+    story: "Founded with a simple goal—to make high-quality websites and software easy for everyone, Mahi Technocrafts has grown into a trusted tech partner. We don't just build websites; we design complete online systems that help you win more customers.",
+    mission: "To help businesses of all sizes succeed online by providing them with beautiful, fast, and secure websites and apps that make their customers happy.",
+    vision: "To be the most trusted tech partner for businesses worldwide, creating smart, simple, and friendly digital tools for everyday work.",
     whyChooseUs: [
-      "Futuristic, pixel-perfect UI/UX design matching global SaaS leaders.",
-      "High-performance, secure, and clean scalable architectures.",
-      "Dedicated post-launch maintenance and 24/7 technical support.",
-      "Agile delivery with complete transparency and client-first communication."
+      "Modern, clean, and beautiful designs that match global standards.",
+      "Super-fast, secure, and extremely stable websites and apps.",
+      "Dedicated support and maintenance after launching your project.",
+      "Honest, clear communication and timely delivery at every step."
     ]
   },
   founder: {
     name: "Vikash Maheshwari",
     designation: "Founder & CEO",
-    message: "Technology is the canvas, and code is the paint. At Mahi Technocrafts, we believe in crafting digital ecosystems that aren't just functional, but cinematic. We treat every line of code, every pixel, and every animation with absolute dedication to perfection. We are here to bring your boldest ideas to life.",
+    message: "At Mahi Technocrafts, we believe in building websites and apps that are not just functional, but beautiful and easy to use. We treat every project with absolute dedication to perfection, helping to bring your boldest business ideas to life.",
     image: "/images/founder.jpg",
     socials: {
       instagram: "https://www.instagram.com/mahi_technocrafts/",
@@ -205,74 +206,74 @@ const defaultSiteData: SiteData = {
       id: "web-dev",
       icon: "Code2",
       title: "Web Development",
-      description: "Custom Next.js & React applications optimized for search speed, high conversions, and pixel-perfect aesthetics."
+      description: "Fast, secure, and search-friendly websites built to look stunning on both mobile and desktop screens."
     },
     {
       id: "mobile-dev",
       icon: "Smartphone",
       title: "Mobile App Development",
-      description: "High-fidelity cross-platform Flutter & React Native applications engineered for performance and fluid UI interactions."
+      description: "Smooth and beautiful mobile apps for both iPhone and Android, designed to give your users a great experience."
     },
     {
       id: "uiux-design",
       icon: "Palette",
-      title: "UI/UX Design",
-      description: "Premium user journeys, wireframes, and high-fidelity clickable mockups following Apple & Stripe-grade guidelines."
+      title: "Beautiful App & Website Design",
+      description: "Beautiful and easy-to-use designs that make it simple and natural for customers to browse your website or app."
     },
     {
       id: "ai-solutions",
       icon: "BrainCircuit",
-      title: "AI Solutions",
-      description: "Bespoke LLM integrations, retrieval-augmented generation pipelines, and smart automation systems for modern workforces."
+      title: "Smart Chatbots & Automation",
+      description: "Smart automatic chatbots and assistants that reply to customer messages instantly and save your team's time."
     },
     {
       id: "erp-crm",
       icon: "Database",
-      title: "ERP & CRM Systems",
-      description: "Enterprise resource planning and customer relationship databases built for scaling team operations smoothly."
+      title: "Custom Business Software",
+      description: "Custom dashboards and easy software to manage your customers, sales, and daily business tasks in one place."
     },
     {
       id: "cloud-services",
       icon: "Cloud",
-      title: "Cloud & DevOps Solutions",
-      description: "AWS/GCP serverless setups, auto-scaling architectures, and continuous deployment pipelines maintaining 99.9% uptime."
+      title: "Secure Cloud Hosting",
+      description: "Safe and reliable web hosting setups that keep your website online, fast, and secure 24/7."
     }
   ],
   faq: [
     {
       q: "What services does Mahi Technocrafts offer?",
-      a: "We offer premium Web Development, Mobile App Development, UI/UX Design, Custom AI Integrations, Cloud DevOps setup, and Enterprise ERP/CRM solutions."
+      a: "We offer professional website development, custom mobile apps, easy-to-use business software, and secure hosting setups."
     },
     {
       q: "How long does a standard web project take to develop?",
-      a: "A standard landing page or portfolio takes 2-4 weeks, while a full enterprise web application ranges from 8-12 weeks depending on features, integrations, and testing."
+      a: "A simple business website takes 2-4 weeks, while larger custom software projects take 8-12 weeks depending on your specific needs."
     },
     {
       q: "Are your websites optimized for Google Search SEO?",
-      a: "Absolutely. SEO is built into our core foundation. We use Next.js server-side rendering, HTML5 semantics, structured JSON-LD schema, optimized metadata, automatic open graph cards, and rapid load speed architectures."
+      a: "Yes, absolutely. We make sure your website is very fast, clean, and built according to search engine best practices so your business is easy to find on Google."
     },
     {
       q: "Do you provide post-launch maintenance?",
-      a: "Yes! We provide flexible support agreements that cover security patches, content edits, cloud environment monitoring, and performance audits."
+      a: "Yes! We provide friendly support plans to help you keep your website updated, safe, and running smoothly at all times."
     }
   ],
   projects: [
     {
       id: "project-1",
-      title: "FinTech Ledger System",
-      description: "Secure, real-time transaction ledger for enterprise platforms with modern visualization graphs and custom CSV export.",
+      title: "Business Management Dashboard",
+      description: "An easy-to-use online system that helps business owners track sales, manage inventory, and view clean monthly reports.",
       image: "/images/project-fintech.jpg",
-      imageAlt: "FinTech secure ledger tracking interface",
-      tags: ["Next.js", "MongoDB", "AWS S3", "Tailwind"],
+      imageAlt: "Business dashboard interface",
+      tags: ["Web Dashboard", "Easy Controls", "Sales Reports"],
       link: "#"
     },
     {
       id: "project-2",
-      title: "AI Support Assistant",
-      description: "Chat widget integrated with custom LLMs, vector search bases, and smooth message streaming interactions.",
+      title: "Smart Chat Assistant",
+      description: "A friendly automated chat assistant for real estate brokers to reply to customer questions about properties instantly.",
       image: "/images/project-ai.jpg",
-      imageAlt: "AI chatbot interface showing chat conversation bubble",
-      tags: ["React Native", "Python", "FastAPI", "OpenAI"],
+      imageAlt: "Chat assistant interface",
+      tags: ["Instant Replies", "Automatic Answers", "Customer Support"],
       link: "#"
     }
   ],
@@ -487,9 +488,9 @@ const defaultReviews: ReviewItem[] = [
   {
     id: '1',
     name: 'Amit Sharma',
-    role: 'Director of Engineering',
+    role: 'Operations Director',
     company: 'Logix Supply Co.',
-    text: 'Mahi Technocrafts developed our custom CRM solution. The performance is incredibly fast, and their team maintains high engineering standards. Highly recommended!',
+    text: 'Mahi Technocrafts developed our custom sales and customer software. The system is incredibly fast, easy to use, and their team is extremely professional. Highly recommended!',
     rating: 5,
     email: 'amit@logix.com',
     status: 'approved',
@@ -498,9 +499,9 @@ const defaultReviews: ReviewItem[] = [
   {
     id: '2',
     name: 'Rohan Mehta',
-    role: 'Founder',
+    role: 'Business Founder',
     company: 'Holo Startups',
-    text: 'The UI/UX design matching global leaders like Stripe and Apple really wowed our investors. Mahi Tech team did an excellent job delivering our Next.js dashboard.',
+    text: 'The beautiful, modern design of our new website really wowed our customers. The Mahi Tech team did an excellent job building our easy-to-use business dashboard.',
     rating: 5,
     email: 'rohan@holostartups.com',
     status: 'approved',
@@ -509,9 +510,9 @@ const defaultReviews: ReviewItem[] = [
   {
     id: '3',
     name: 'Sneha Patel',
-    role: 'Marketing Head',
+    role: 'Marketing Manager',
     company: 'Kira Global Inc',
-    text: 'Our Google Search SEO ranking soared to the top page within two months of migrating our blog site to Next.js with Mahi Technocrafts. Great communication and support.',
+    text: 'Our business website started getting so many new customers from Google search within two months of upgrading our site with Mahi Technocrafts. Great communication and support.',
     rating: 5,
     email: 'sneha@kiraglobal.com',
     status: 'approved',
@@ -603,27 +604,27 @@ export async function deleteReviewById(id: string): Promise<boolean> {
 const defaultCareers: CareerItem[] = [
   {
     id: 'job-1',
-    title: 'Senior React / Next.js Engineer',
+    title: 'Senior Website & App Developer',
     type: 'Full-Time',
     location: 'Bhopal (On-site)',
     experience: '3+ Years',
-    description: 'We are looking for an expert Next.js and React engineer with high design standards, proficient in Framer Motion animations, TypeScript, and server layouts.'
+    description: 'We are looking for an expert developer with great design taste to build beautiful, fast, and easy-to-use websites and custom business applications.'
   },
   {
     id: 'job-2',
-    title: 'Mobile App Developer (Flutter)',
+    title: 'Mobile App Developer',
     type: 'Full-Time',
     location: 'Bhopal (On-site)',
     experience: '2+ Years',
-    description: 'Seeking a high-fidelity Flutter developer to build fluid and secure iOS/Android corporate applications.'
+    description: 'Seeking a talented mobile app developer to build smooth, beautiful, and secure apps for both iPhone and Android devices.'
   },
   {
     id: 'job-3',
-    title: 'UI/UX Visual Designer',
+    title: 'Website & App Designer',
     type: 'Full-Time',
     location: 'Remote / Hybrid',
     experience: '2+ Years',
-    description: 'Craft premium user experience interfaces matching global standards like Apple and Stripe. High proficiency in Figma and wireframe mapping is required.'
+    description: 'Design beautiful and user-friendly visual layouts for modern websites and business dashboards. Strong design skills and experience in creating clean interfaces are required.'
   }
 ];
 

@@ -1,7 +1,7 @@
 {
   "hero": {
     "tagline": "Your Imagination, Our Creation",
-    "description": "At Mahi Technocrafts, we craft world-class, premium digital solutions that empower businesses to scale, innovate, and dominate. Experience futuristic design, custom software engineering, and enterprise-grade performance.",
+    "description": "At Mahi Technocrafts, we build beautiful, easy-to-use websites, mobile apps, and custom software that help your business grow. We combine elegant design with smooth performance to make your brand stand out.",
     "ctaPrimary": "Get Started",
     "ctaSecondary": "Explore Services",
     "stats": [
@@ -12,20 +12,20 @@
     ]
   },
   "about": {
-    "story": "Founded with a vision to bridge the gap between complex engineering and elegant design, Mahi Technocrafts has evolved into a premier tech agency. We don't just write code; we design experiences that inspire trust and drive growth.",
-    "mission": "To empower global enterprises and startups with cutting-edge technology, scalable architectures, and visually stunning interfaces that elevate their brand value.",
-    "vision": "To become a global beacon of digital craftsmanship, pioneering human-centric artificial intelligence and next-generation web technologies.",
+    "story": "Founded with a simple goal—to make high-quality websites and software easy for everyone, Mahi Technocrafts has grown into a trusted tech partner. We don't just build websites; we design complete online systems that help you win more customers.",
+    "mission": "To help businesses of all sizes succeed online by providing them with beautiful, fast, and secure websites and apps that make their customers happy.",
+    "vision": "To be the most trusted tech partner for businesses worldwide, creating smart, simple, and friendly digital tools for everyday work.",
     "whyChooseUs": [
-      "Futuristic, pixel-perfect UI/UX design matching global SaaS leaders.",
-      "High-performance, secure, and clean scalable architectures.",
-      "Dedicated post-launch maintenance and 24/7 technical support.",
-      "Agile delivery with complete transparency and client-first communication."
+      "Modern, clean, and beautiful designs that match global standards.",
+      "Super-fast, secure, and extremely stable websites and apps.",
+      "Dedicated support and maintenance after launching your project.",
+      "Honest, clear communication and timely delivery at every step."
     ]
   },
   "founder": {
     "name": "Vikash Maheshwari",
-    "designation": "Founder & CEO",
-    "message": "Technology is the canvas, and code is the paint. At Mahi Technocrafts, we believe in crafting digital ecosystems that aren't just functional, but cinematic. We treat every line of code, every pixel, and every animation with absolute dedication to perfection. We are here to bring your boldest ideas to life.",
+    "designation": "",
+    "message": "At Mahi Technocrafts, we believe in building websites and apps that are not just functional, but beautiful and easy to use. We treat every project with absolute dedication to perfection, helping to bring your boldest business ideas to life.",
     "image": "/images/founder.jpg",
     "socials": {
       "instagram": "https://www.instagram.com/mahi_technocrafts/",
@@ -38,84 +38,84 @@
       "id": "web-dev",
       "icon": "Code2",
       "title": "Web Development",
-      "description": "Custom Next.js & React applications optimized for search speed, high conversions, and pixel-perfect aesthetics."
+      "description": "Fast, secure, and search-friendly websites built to look stunning on both mobile and desktop screens."
     },
     {
       "id": "mobile-dev",
       "icon": "Smartphone",
       "title": "Mobile App Development",
-      "description": "High-fidelity cross-platform Flutter & React Native applications engineered for performance and fluid UI interactions."
+      "description": "Smooth and beautiful mobile apps for both iPhone and Android, designed to give your users a great experience."
     },
     {
       "id": "uiux-design",
       "icon": "Palette",
-      "title": "UI/UX Design",
-      "description": "Premium user journeys, wireframes, and high-fidelity clickable mockups following Apple & Stripe-grade guidelines."
+      "title": "Beautiful App & Website Design",
+      "description": "Beautiful and easy-to-use designs that make it simple and natural for customers to browse your website or app."
     },
     {
       "id": "ai-solutions",
       "icon": "BrainCircuit",
-      "title": "AI Solutions",
-      "description": "Bespoke LLM integrations, retrieval-augmented generation pipelines, and smart automation systems for modern workforces."
+      "title": "Smart Chatbots & Automation",
+      "description": "Smart automatic chatbots and assistants that reply to customer messages instantly and save your team's time."
     },
     {
       "id": "erp-crm",
       "icon": "Database",
-      "title": "ERP & CRM Systems",
-      "description": "Enterprise resource planning and customer relationship databases built for scaling team operations smoothly."
+      "title": "Custom Business Software",
+      "description": "Custom dashboards and easy software to manage your customers, sales, and daily business tasks in one place."
     },
     {
       "id": "cloud-services",
       "icon": "Cloud",
-      "title": "Cloud & DevOps Solutions",
-      "description": "AWS/GCP serverless setups, auto-scaling architectures, and continuous deployment pipelines maintaining 99.9% uptime."
+      "title": "Secure Cloud Hosting",
+      "description": "Safe and reliable web hosting setups that keep your website online, fast, and secure 24/7."
     }
   ],
   "portfolio": [
     {
       "id": "project-1",
-      "title": "Nova SaaS Dashboard",
+      "title": "Business Management Dashboard",
       "category": "Web Development",
-      "description": "A high-performance SaaS admin control center with micro-frontend architecture and interactive Canvas graphs.",
+      "description": "An easy-to-use online system that helps business owners track sales, manage inventory, and view clean monthly reports.",
       "image": "/images/nova-saas.jpg",
-      "tech": ["Next.js", "TypeScript", "Tailwind CSS", "Recharts", "Framer Motion"],
+      "tech": ["Web Dashboard", "Easy Controls", "Sales Reports"],
       "liveUrl": "#"
     },
     {
       "id": "project-2",
-      "title": "Elysian E-Commerce",
+      "title": "Online Fashion Store",
       "category": "E-Commerce Solutions",
-      "description": "Next-gen storefront with instant search filters, local caching state, and unified custom payment checkouts.",
+      "description": "A beautiful online shopping store with easy search filters, instant checkout, and a modern customer loyalty program.",
       "image": "/images/elysian-ecommerce.jpg",
-      "tech": ["Next.js", "Tailwind CSS", "Stripe API", "Redux Toolkit", "GSAP"],
+      "tech": ["Shopping Cart", "Online Payments", "Customer Rewards"],
       "liveUrl": "#"
     },
     {
       "id": "project-3",
-      "title": "Aether AI Assistant",
+      "title": "Smart Chat Assistant",
       "category": "AI Solutions",
-      "description": "An interactive chatbot suite for real estate brokers utilizing natural language search and custom vector embeddings.",
+      "description": "A friendly automated chat assistant for real estate brokers to reply to customer questions about properties instantly.",
       "image": "/images/aether-ai.jpg",
-      "tech": ["Python", "FastAPI", "Next.js", "OpenAI API", "Pinecone"],
+      "tech": ["Instant Replies", "Automatic Answers", "Customer Support"],
       "liveUrl": "#"
     }
   ],
   "faq": [
     {
       "q": "What services does Mahi Technocrafts offer?",
-      "a": "We offer premium Web Development, Mobile App Development, UI/UX Design, Custom AI Integrations, Cloud DevOps setup, and Enterprise ERP/CRM solutions."
+      "a": "We offer professional website development, custom mobile apps, easy-to-use business software, and secure hosting setups."
     },
     {
       "q": "How long does a standard web project take to develop?",
-      "a": "A standard landing page or portfolio takes 2-4 weeks, while a full enterprise web application ranges from 8-12 weeks depending on features, integrations, and testing."
+      "a": "A simple business website takes 2-4 weeks, while larger custom software projects take 8-12 weeks depending on your specific needs."
     },
     {
       "q": "Are your websites optimized for Google Search SEO?",
-      "a": "Absolutely. SEO is built into our core foundation. We use Next.js server-side rendering, semantic HTML, structured JSON-LD schema, optimized metadata, automatic open graph cards, and rapid load speed architectures."
+      "a": "Yes, absolutely. We make sure your website is very fast, clean, and built according to search engine best practices so your business is easy to find on Google."
     },
     {
       "q": "Do you provide post-launch maintenance?",
-      "a": "Yes! We provide flexible support agreements that cover security patches, content edits, cloud environment monitoring, and performance audits."
+      "a": "Yes! We provide friendly support plans to help you keep your website updated, safe, and running smoothly at all times."
     }
   ],
   "contactInfo": {

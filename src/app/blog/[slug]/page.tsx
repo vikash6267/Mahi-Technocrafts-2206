@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, Calendar, Clock, User, HelpCircle, AlignLeft } from 'lucide-react';
 import { getBlogBySlug } from '@/lib/db';
@@ -27,6 +28,11 @@ export async function generateMetadata({ params }: PageProps) {
     };
   }
 
+  const rawImg = blog.ogImage || blog.coverImage || '/og-image.jpg';
+  const optimizedShareImg = rawImg.startsWith('http')
+    ? `https://mahitechnocrafts.in/_next/image?url=${encodeURIComponent(rawImg)}&w=1200&q=70`
+    : `https://mahitechnocrafts.in/_next/image?url=${encodeURIComponent(`https://mahitechnocrafts.in${rawImg}`)}&w=1200&q=70`;
+
   return {
     title: blog.metaTitle || blog.title,
     description: blog.metaDescription || blog.excerpt,
@@ -43,7 +49,7 @@ export async function generateMetadata({ params }: PageProps) {
       tags: blog.tags,
       images: [
         {
-          url: blog.ogImage || blog.coverImage || '/og-image.jpg',
+          url: optimizedShareImg,
           alt: blog.imageAlt || blog.title
         }
       ]
@@ -52,7 +58,7 @@ export async function generateMetadata({ params }: PageProps) {
       card: 'summary_large_image',
       title: blog.ogTitle || blog.metaTitle || blog.title,
       description: blog.ogDescription || blog.metaDescription || blog.excerpt,
-      images: [blog.ogImage || blog.coverImage || '/og-image.jpg']
+      images: [optimizedShareImg]
     }
   };
 }
@@ -196,12 +202,15 @@ export default async function BlogDetailPage({ params }: PageProps) {
 
           {/* Cover Image */}
           {blog.coverImage && (
-            <div className="relative w-full max-h-[480px] rounded-3xl overflow-hidden border border-slate-200/50 dark:border-slate-800/80 shadow-lg bg-slate-100/50 dark:bg-slate-900/50 flex items-center justify-center">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+            <div className="relative w-full h-[280px] sm:h-[400px] md:h-[480px] rounded-3xl overflow-hidden border border-slate-200/50 dark:border-slate-800/80 shadow-lg bg-slate-100/50 dark:bg-slate-900/50">
+              <Image
                 src={blog.coverImage}
                 alt={blog.imageAlt || blog.title}
-                className="max-w-full max-h-[480px] w-auto h-auto object-contain"
+                fill
+                priority
+                sizes="(max-width: 1200px) 100vw, 1200px"
+                quality={70}
+                className="object-cover"
               />
             </div>
           )}
@@ -236,7 +245,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
 
           {/* Share Article Footer */}
           <div className="pt-8 border-t border-slate-200/50 dark:border-slate-850 flex items-center justify-between text-xs text-slate-400">
-            <span>Written by Mahi Tech Editorial Team</span>
+            <span>Written by Mahi Technocrafts Editorial Team</span>
             <ShareButton />
           </div>
         </article>

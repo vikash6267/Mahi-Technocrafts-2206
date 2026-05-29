@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 import { cookies } from 'next/headers';
+import sharp from 'sharp';
 
 async function checkAuth(): Promise<boolean> {
   const cookieStore = await cookies();
@@ -31,11 +32,28 @@ export async function POST(request: Request) {
     }
 
     const bytes = await file.arrayBuffer();
-    const buffer = Buffer.from(bytes);
+    let buffer = Buffer.from(bytes);
+    let contentType = file.type;
+    let fileName = file.name;
+
+    // Auto-compress images to WebP using sharp library
+    if (file.type.startsWith('image/')) {
+      try {
+        const optimizedBuffer = await sharp(buffer)
+          .webp({ quality: 75 })
+          .toBuffer();
+        buffer = Buffer.from(optimizedBuffer);
+        contentType = 'image/webp';
+        // Swap file extension to webp
+        fileName = file.name.replace(/\.[^/.]+$/, "") + '.webp';
+      } catch (err) {
+        console.error('Sharp image optimization failed, uploading original', err);
+      }
+    }
 
     // Generate unique file path under mahi-technocrafts/ prefix
     const timestamp = Date.now();
-    const sanitizedName = file.name.trim().toLowerCase().replace(/[^a-z0-9.]+/g, '-');
+    const sanitizedName = fileName.trim().toLowerCase().replace(/[^a-z0-9.]+/g, '-');
     const key = `mahi-technocrafts/${timestamp}-${sanitizedName}`;
     const bucketName = process.env.AWS_S3_BUCKET_NAME || 'idcard-pro-images';
 
@@ -43,7 +61,7 @@ export async function POST(request: Request) {
       Bucket: bucketName,
       Key: key,
       Body: buffer,
-      ContentType: file.type,
+      ContentType: contentType,
     });
 
     await s3Client.send(command);
@@ -53,7 +71,7 @@ export async function POST(request: Request) {
     return NextResponse.json({
       success: true,
       url: fileUrl,
-      name: file.name
+      name: fileName
     });
   } catch (error: any) {
     console.error('S3 Upload Failure:', error);

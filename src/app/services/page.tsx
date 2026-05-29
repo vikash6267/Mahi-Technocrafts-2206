@@ -4,7 +4,7 @@ import { getSiteData } from '@/lib/db';
 
 export const metadata = {
   title: 'Our Services',
-  description: 'Explore Mahi Technocrafts capabilities: web development, mobile applications, custom ERP databases, UI/UX designs, and cloud systems.',
+  description: 'Explore Mahi Technocrafts services: web development, mobile applications, custom business software, designs, and secure web hosting.',
   alternates: {
     canonical: '/services'
   }
@@ -22,7 +22,7 @@ export default async function ServicesPage() {
           Our Expert <span className="text-gradient">Services</span>
         </h1>
         <p className="text-xs sm:text-sm text-slate-500 uppercase tracking-widest font-semibold">
-          High Performance Engineering
+          High Performance Websites & Software
         </p>
       </div>
 

@@ -22,7 +22,7 @@ export default function About({ data }: AboutProps) {
             Who We Are
           </h2>
           <p className="text-3xl md:text-4xl font-display font-extrabold tracking-tight text-slate-900 dark:text-white">
-            Engineering Premium Digital Ecosystems
+            Building Beautiful Websites & Custom Apps
           </p>
           <div className="w-16 h-[2px] bg-brand-blue mx-auto mt-4" />
         </div>
@@ -39,7 +39,7 @@ export default function About({ data }: AboutProps) {
             </div>
 
             <div className="space-y-4">
-              <h3 className="text-xl font-display font-bold text-slate-800 dark:text-white">Why Choose Mahi Tech?</h3>
+              <h3 className="text-xl font-display font-bold text-slate-800 dark:text-white">Why Choose Mahi Technocrafts?</h3>
               <div className="grid grid-cols-1 gap-3">
                 {data.whyChooseUs.map((item, idx) => (
                   <motion.div

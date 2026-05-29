@@ -123,11 +123,13 @@ export default function Footer() {
             <li>
               <Link href="/about" className="hover:text-brand-blue transition-colors">About Us</Link>
             </li>
+            {/* Commented out for future activation
             <li>
               <Link href="/#projects" className="hover:text-brand-blue transition-colors">Case Studies</Link>
             </li>
+            */}
             <li>
-              <Link href="/blog" className="hover:text-brand-blue transition-colors">Tech Blog</Link>
+              <Link href="/blog" className="hover:text-brand-blue transition-colors">Our Blog</Link>
             </li>
             <li>
               <Link href="/careers" className="hover:text-brand-blue transition-colors">Careers</Link>
@@ -148,13 +150,13 @@ export default function Footer() {
               <Link href="/services" className="hover:text-brand-blue transition-colors">Mobile App Development</Link>
             </li>
             <li>
-              <Link href="/services" className="hover:text-brand-blue transition-colors">UI/UX Crafting</Link>
+              <Link href="/services" className="hover:text-brand-blue transition-colors">App & Website Design</Link>
             </li>
             <li>
               <Link href="/services" className="hover:text-brand-blue transition-colors">AI & Automations</Link>
             </li>
             <li>
-              <Link href="/services" className="hover:text-brand-blue transition-colors">Cloud Consulting</Link>
+              <Link href="/services" className="hover:text-brand-blue transition-colors">Secure Web Hosting</Link>
             </li>
           </ul>
         </div>
@@ -165,7 +167,7 @@ export default function Footer() {
             Subscribe
           </h3>
           <p className="text-sm">
-            Stay updated with our latest technology insights, frameworks, and project updates.
+            Stay updated with our latest business tips, articles, and company news.
           </p>
           <form onSubmit={handleSubscribe} className="space-y-2">
             <div className="flex gap-2">

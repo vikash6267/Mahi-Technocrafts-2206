@@ -62,9 +62,9 @@ export default function Chatbot() {
       const query = input.toLowerCase();
 
       if (query.includes('service') || query.includes('work') || query.includes('develop') || query.includes('design')) {
-        replyText = "We offer premium Web Development (React & Next.js), Mobile Apps (Flutter & React Native), UI/UX design, AI integrations, ERP databases, and cloud hosting solutions. Check our Services page for details!";
+        replyText = "We offer professional web development, mobile apps, graphic designs, custom business software, and secure cloud hosting solutions. Check our Services page for details!";
       } else if (query.includes('founder') || query.includes('ceo') || query.includes('vikash') || query.includes('maheshwari')) {
-        replyText = "Mahi Technocrafts was founded by Vikash Maheshwari. He is dedicated to crafting premium, high-performance web ecosystems. Feel free to connect with him through our Founder section!";
+        replyText = "Mahi Technocrafts was founded by Vikash Maheshwari. He is dedicated to building beautiful, fast, and easy-to-use websites and custom apps. Feel free to connect with him through our Founder section!";
       } else if (query.includes('contact') || query.includes('email') || query.includes('phone') || query.includes('call') || query.includes('address')) {
         replyText = "You can email us at support@mahitechnocrafts.in, call +91 6267144122, or visit our office at Hamidia Rd, Bhopal. You can also fill out the form in the Contact section to submit an inquiry directly!";
       } else if (query.includes('price') || query.includes('cost') || query.includes('budget') || query.includes('quote')) {
@@ -101,11 +101,11 @@ export default function Chatbot() {
     setTimeout(() => {
       let replyText = "";
       if (topic === 'services') {
-        replyText = "Our services include custom Web Development (Next.js/React), Mobile App Development, UI/UX designing, AI/LLM solutions, CRM systems, and DevOps/Cloud services.";
+        replyText = "Our services include custom website development, mobile apps, graphic designs, custom business software, and secure cloud hosting setups.";
       } else if (topic === 'contact') {
         replyText = "Email us at support@mahitechnocrafts.in or call 6267144122. You can also submit the Contact Form at the bottom of the home page!";
       } else if (topic === 'founder') {
-        replyText = "Our Founder & CEO is Vikash Maheshwari, who leads a team of 25+ developers and designers to build premium corporate platforms.";
+        replyText = "Our Founder & CEO is Vikash Maheshwari, who leads a team of 25+ developers and designers to build beautiful websites and custom business apps.";
       }
 
       setMessages(prev => [

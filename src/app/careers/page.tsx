@@ -4,7 +4,7 @@ import { getCareers, CareerItem } from '@/lib/db';
 
 export const metadata = {
   title: 'Careers | Mahi Technocrafts',
-  description: 'Join the engineering crew at Mahi Technocrafts. Explore our open positions and build premium web applications.',
+  description: 'Join the team at Mahi Technocrafts. Explore our open positions and build beautiful websites and apps.',
   alternates: {
     canonical: '/careers'
   }
@@ -32,7 +32,7 @@ export default async function CareersPage() {
           Build the Future <span className="text-gradient">With Us</span>
         </h1>
         <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed max-w-xl mx-auto">
-          We treat development as visual craftsmanship. Join our collaborative crew in Bhopal to build premium digital ecosystems.
+          We believe in creating beautiful websites and custom apps. Join our friendly team in Bhopal to design and build simple, fast, and high-quality digital tools.
         </p>
       </div>
 

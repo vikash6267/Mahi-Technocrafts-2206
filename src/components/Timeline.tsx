@@ -11,13 +11,13 @@ interface TimelineStep {
 
 export default function Timeline() {
   const steps: TimelineStep[] = [
-    { num: '01', title: 'Requirement Analysis', desc: 'Detailed consultations to map scope, user stories, and target architecture specifications.' },
-    { num: '02', title: 'Agile Planning', desc: 'Sprint schedules, wireframe workflows, database mapping, and API contract designs.' },
-    { num: '03', title: 'UI/UX Design', desc: 'Premium Figma design prototypes following sleek glassmorphism and modern guidelines.' },
-    { num: '04', title: 'Development', desc: 'Clean, modular Next.js and React coding with fully scalable database integrations.' },
-    { num: '05', title: 'Testing & QA', desc: 'Comprehensive endpoint testing, layout audits, responsiveness, and speed checks.' },
-    { num: '06', title: 'Deployment', desc: 'Auto-scaling production hosting, CDN caches, domain configs, and dynamic sitemaps launch.' },
-    { num: '07', title: '24/7 Support', desc: 'Security updates, backup logs, environment monitoring, and performance audits.' }
+    { num: '01', title: 'First Discussion', desc: 'We meet with you to understand your business goals, ideas, and what you want to build.' },
+    { num: '02', title: 'Smart Planning', desc: 'We create a clear roadmap, plan the screens, and design the basic structure of your project.' },
+    { num: '03', title: 'Beautiful Design', desc: 'We craft gorgeous, custom visual layouts for your website or app so it looks clean and premium.' },
+    { num: '04', title: 'Building & Coding', desc: 'Our team builds your website or software using reliable, fast, and modern tools.' },
+    { num: '05', title: 'Thorough Testing', desc: 'We double-check every button, form, and page to ensure it is super fast and works perfectly on all screens.' },
+    { num: '06', title: 'Launch & Delivery', desc: 'We set up your custom domain and host your new website securely online, ready for your customers.' },
+    { num: '07', title: 'Friendly Support', desc: 'We stay by your side to help with updates, keep everything safe, and make sure your site runs smoothly.' }
   ];
 
   return (

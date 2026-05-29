@@ -30,7 +30,9 @@ export default function HomeClient({ data, reviews }: { data: SiteData; reviews:
       <About data={data.about} />
       <Founder data={data.founder} />
       <Services data={data.services} />
+      {/* Commented out Projects for future activation
       <Projects data={data.projects} />
+      */}
       <TechStack />
       <Testimonials initialReviews={reviews} />
       <Timeline />

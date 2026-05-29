@@ -45,6 +45,11 @@ export default function Hero({ data }: HeroProps) {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
+    // Zero-overhead mobile Safari bypass
+    if (window.innerWidth < 768) {
+      return;
+    }
+
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 

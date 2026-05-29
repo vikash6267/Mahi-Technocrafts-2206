@@ -4,6 +4,15 @@ import React, { useEffect, useState } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 export default function CustomCursor() {
+  const [isTouchDevice, setIsTouchDevice] = useState(true);
+
+  useEffect(() => {
+    const isMobile = window.matchMedia('(pointer: coarse)').matches || 
+                     'ontouchstart' in window || 
+                     navigator.maxTouchPoints > 0;
+    setIsTouchDevice(isMobile);
+  }, []);
+
   const [hovered, setHovered] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -15,6 +24,8 @@ export default function CustomCursor() {
   const cursorYSpring = useSpring(cursorY, springConfig);
 
   useEffect(() => {
+    if (isTouchDevice) return;
+
     const moveCursor = (e: MouseEvent) => {
       cursorX.set(e.clientX);
       cursorY.set(e.clientY);
@@ -54,9 +65,9 @@ export default function CustomCursor() {
       document.removeEventListener('mouseenter', handleMouseEnter);
       observer.disconnect();
     };
-  }, [cursorX, cursorY, isVisible]);
+  }, [cursorX, cursorY, isVisible, isTouchDevice]);
 
-  if (typeof window === 'undefined' || !isVisible) return null;
+  if (typeof window === 'undefined' || isTouchDevice || !isVisible) return null;
 
   return (
     <>

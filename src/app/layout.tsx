@@ -20,10 +20,10 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Mahi Technocrafts | Premium Web & AI Solutions',
+    default: 'Mahi Technocrafts | Beautiful Websites & Custom Apps',
     template: '%s | Mahi Technocrafts'
   },
-  description: 'Mahi Technocrafts is a premium software agency and the best developer near me in Bhopal, crafting world-class digital solutions including web development, mobile apps, UI/UX designs, and custom AI systems.',
+  description: 'Mahi Technocrafts is a premium tech partner and the best website developer near me in Bhopal, crafting beautiful digital solutions including websites, mobile apps, designs, and smart business automation systems.',
   alternates: {
     canonical: '/'
   },
@@ -53,14 +53,14 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_IN',
     url: 'https://mahitechnocrafts.in',
-    title: 'Mahi Technocrafts | Premium Web & AI Solutions',
-    description: 'Your Imagination, Our Creation. Premium software development agency specializing in Next.js, React, Mobile Apps, AI, and custom engineering near you.',
+    title: 'Mahi Technocrafts | Beautiful Websites & Custom Apps',
+    description: 'Your Imagination, Our Creation. Premium website and app development company specializing in fast websites, mobile apps, and custom business software near you.',
     siteName: 'Mahi Technocrafts',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Mahi Technocrafts | Premium Web & AI Solutions',
-    description: 'Your Imagination, Our Creation. Premium software development agency specializing in Next.js, React, Mobile Apps, AI, and custom engineering near you.',
+    title: 'Mahi Technocrafts | Beautiful Websites & Custom Apps',
+    description: 'Your Imagination, Our Creation. Premium website and app development company specializing in fast websites, mobile apps, and custom business software near you.',
     creator: '@mahi_technocrafts',
   },
   metadataBase: new URL('https://mahitechnocrafts.in')

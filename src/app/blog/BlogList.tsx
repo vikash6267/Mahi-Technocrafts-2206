@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Calendar, Clock, ArrowRight } from 'lucide-react';
 import { BlogItem } from '@/lib/db';
@@ -77,12 +78,14 @@ export default function BlogList({ initialBlogs }: { initialBlogs: BlogItem[] })
               <div className="space-y-4 w-full">
                 {/* Cover Image */}
                 {blog.coverImage && (
-                  <div className="relative w-full h-44 rounded-xl overflow-hidden mb-2 border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 flex items-center justify-center">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
+                  <div className="relative w-full h-44 rounded-xl overflow-hidden mb-2 border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-900">
+                    <Image
                       src={blog.coverImage}
                       alt={blog.imageAlt || blog.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      quality={60}
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
                 )}
