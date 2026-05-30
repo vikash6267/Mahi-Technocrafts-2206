@@ -4,6 +4,7 @@ import './globals.css';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import SmoothScroll from '@/components/SmoothScroll';
 import LayoutWrapper from '@/components/LayoutWrapper';
+import Script from 'next/script';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -74,6 +75,20 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${outfit.variable}`} suppressHydrationWarning>
       <body className="min-h-screen flex flex-col antialiased">
+        {/* Google Analytics (gtag.js) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-T4S7M098JF"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-T4S7M098JF');
+          `}
+        </Script>
+
         <ThemeProvider>
           <SmoothScroll>
             <LayoutWrapper>{children}</LayoutWrapper>
