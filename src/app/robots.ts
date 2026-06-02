@@ -22,7 +22,27 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/'
       },
       {
+        userAgent: 'ChatGPT-User',
+        allow: '/'
+      },
+      {
         userAgent: 'PerplexityBot',
+        allow: '/'
+      },
+      {
+        userAgent: 'ClaudeBot',
+        allow: '/'
+      },
+      {
+        userAgent: 'Claude-Web',
+        allow: '/'
+      },
+      {
+        userAgent: 'Amazonbot',
+        allow: '/'
+      },
+      {
+        userAgent: 'Bingbot',
         allow: '/'
       }
     ],

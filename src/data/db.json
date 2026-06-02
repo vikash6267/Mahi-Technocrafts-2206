@@ -35,40 +35,40 @@
   },
   "services": [
     {
-      "id": "web-dev",
+      "id": "website-development",
       "icon": "Code2",
-      "title": "Web Development",
-      "description": "Fast, secure, and search-friendly websites built to look stunning on both mobile and desktop screens."
+      "title": "Website Development",
+      "description": "Premium, high-speed, and search-optimized custom website development using Next.js, React, and robust architectures in Bhopal."
     },
     {
-      "id": "mobile-dev",
+      "id": "mobile-app-development",
       "icon": "Smartphone",
       "title": "Mobile App Development",
-      "description": "Smooth and beautiful mobile apps for both iPhone and Android, designed to give your users a great experience."
+      "description": "Feature-rich, native-performing iOS and Android mobile app development engineered for high speed, security, and seamless user experiences."
     },
     {
-      "id": "uiux-design",
-      "icon": "Palette",
-      "title": "Beautiful App & Website Design",
-      "description": "Beautiful and easy-to-use designs that make it simple and natural for customers to browse your website or app."
+      "id": "seo-services",
+      "icon": "TrendingUp",
+      "title": "SEO & Generative Engine Optimization",
+      "description": "High-impact Local SEO, search engine ranking strategies, Generative Engine Optimization (GEO), and schema integrations to rank #1 in Bhopal."
     },
     {
       "id": "ai-solutions",
-      "icon": "BrainCircuit",
-      "title": "Smart Chatbots & Automation",
-      "description": "Smart automatic chatbots and assistants that reply to customer messages instantly and save your team's time."
+      "icon": "Cpu",
+      "title": "Smart AI Solutions & Chatbots",
+      "description": "Modern AI integrations, custom automation pipelines, and intelligent AI chatbots designed to streamline customer support and save overhead costs."
     },
     {
-      "id": "erp-crm",
-      "icon": "Database",
-      "title": "Custom Business Software",
-      "description": "Custom dashboards and easy software to manage your customers, sales, and daily business tasks in one place."
+      "id": "cyber-security",
+      "icon": "ShieldAlert",
+      "title": "Cyber Security Services",
+      "description": "Robust cybersecurity assessments, server hardening, secure code auditing, and encryption models to safeguard your customer data 24/7."
     },
     {
-      "id": "cloud-services",
-      "icon": "Cloud",
-      "title": "Secure Cloud Hosting",
-      "description": "Safe and reliable web hosting setups that keep your website online, fast, and secure 24/7."
+      "id": "ecommerce-development",
+      "icon": "ShoppingBag",
+      "title": "E-Commerce Development",
+      "description": "Fast, secure, and fully customized online storefronts with integrated payments, easy inventory controls, and modern shopping features."
     }
   ],
   "portfolio": [

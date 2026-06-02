@@ -70,7 +70,7 @@ export default function Services({ data }: ServicesProps) {
 
               {/* Learn More link */}
               <div className="flex items-center gap-1.5 text-xs font-semibold text-brand-blue opacity-85 group-hover:opacity-100 transition-opacity pt-4 relative z-10">
-                <Link href="/services" className="flex items-center gap-1">
+                <Link href={`/services/${service.id}`} className="flex items-center gap-1">
                   Learn More
                   <ArrowRight size={12} className="transform group-hover:translate-x-1 transition-transform" />
                 </Link>

@@ -26,11 +26,27 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/terms'
   ];
 
+  const servicePaths = [
+    '/services/website-development',
+    '/services/mobile-app-development',
+    '/services/seo-services',
+    '/services/ai-solutions',
+    '/services/cyber-security',
+    '/services/ecommerce-development'
+  ];
+
   const staticRoutes = staticPaths.map((path) => ({
     url: `${baseUrl}${path}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
     priority: path === '' ? 1.0 : 0.8
+  }));
+
+  const serviceRoutes = servicePaths.map((path) => ({
+    url: `${baseUrl}${path}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: 0.9
   }));
 
   const dynamicBlogRoutes = blogs.map((blog) => ({
@@ -40,5 +56,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6
   }));
 
-  return [...staticRoutes, ...dynamicBlogRoutes];
+  return [...staticRoutes, ...serviceRoutes, ...dynamicBlogRoutes];
 }
