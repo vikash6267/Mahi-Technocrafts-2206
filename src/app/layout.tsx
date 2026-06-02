@@ -64,6 +64,17 @@ export const metadata: Metadata = {
     description: 'Your Imagination, Our Creation. Premium website and app development company specializing in fast websites, mobile apps, and custom business software near you.',
     creator: '@mahi_technocrafts',
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   metadataBase: new URL('https://mahitechnocrafts.in')
 };
 
