@@ -27,6 +27,153 @@ const serviceDetailsMap: Record<string, {
   features: string[];
   faqs: { q: string; a: string }[];
 }> = {
+  /* ── DB slugs ──────────────────────────────────────── */
+  'web-dev': {
+    title: 'Web Development',
+    metaTitle: 'Website Development Company in Bhopal | Mahi TechnoCrafts',
+    metaDescription: 'Top website development company in Bhopal. High-speed custom web design, React, Next.js, and custom e-commerce web solutions in Bhopal.',
+    headline: 'Website Development Company in Bhopal',
+    icon: 'Code2',
+    longDescription: 'Mahi TechnoCrafts is the premier website development agency in Bhopal, engineering high-speed, secure, and SEO-optimized custom web solutions near you. Our MERN and Next.js developers craft stunning online systems designed to scale your business and generate maximum local customer conversions.',
+    features: [
+      'Superfast Server-Side Rendered (SSR) Next.js Websites',
+      'Fully Responsive Mobile-First Coding',
+      'Pre-Integrated Local Business & WebSite Schemas',
+      'Interactive Custom Dashboards & Admin Panels',
+      'Search-Engine Friendly Clean Semantics'
+    ],
+    faqs: [
+      {
+        q: 'Why is Mahi TechnoCrafts the best web development company in Bhopal?',
+        a: 'We engineer superfast, secure Next.js websites that load instantly, score 90+ in Core Web Vitals, and are pre-integrated with Local SEO schema to rank #1 in Bhopal.'
+      },
+      {
+        q: 'How much does web development cost in Bhopal?',
+        a: 'Our custom high-performance business websites start with budget-friendly rates, taking about 2–4 weeks to design, develop, and launch.'
+      },
+      {
+        q: 'Will my website rank on Google Search in Bhopal?',
+        a: 'Yes. We include robots.txt, dynamic sitemaps, custom metadata, and structured JSON-LD schemas out of the box to guarantee your business appears in local searches.'
+      }
+    ]
+  },
+  'mobile-dev': {
+    title: 'Mobile App Development',
+    metaTitle: 'Mobile App Development Company in Bhopal | Mahi TechnoCrafts',
+    metaDescription: 'Best mobile app development company in Bhopal. High-performance React Native, Flutter, secure iOS and Android custom apps.',
+    headline: 'Mobile App Development Company in Bhopal',
+    icon: 'Smartphone',
+    longDescription: 'Mahi TechnoCrafts is the top-tier mobile app development agency in Bhopal, Madhya Pradesh. We build feature-rich, high-performance, and secure Android and iOS applications with seamless APIs, custom dashboard integrations, and stunning user interfaces.',
+    features: [
+      'High-Performance React Native & Flutter Apps',
+      'Seamless API Integrations & Real-Time Sync',
+      'Advanced Cloud Database Backends',
+      'Publishing Support on App Store & Google Play',
+      'Premium UI/UX Transitions and Micro-Animations'
+    ],
+    faqs: [
+      {
+        q: 'Which is the top mobile app development agency in Bhopal?',
+        a: 'Mahi TechnoCrafts delivers native-performing cross-platform apps using Flutter and React Native, fully integrated with secure databases and custom APIs.'
+      },
+      {
+        q: 'Do you publish mobile apps on Play Store and App Store?',
+        a: 'Yes, we handle the complete publishing pipeline, ensuring compliance with Google Play and Apple App Store guidelines.'
+      },
+      {
+        q: 'How long does mobile app development take?',
+        a: 'Depending on features, a custom mobile app takes about 6 to 10 weeks to fully design, code, test, and release.'
+      }
+    ]
+  },
+  'uiux-design': {
+    title: 'UI/UX Design',
+    metaTitle: 'UI/UX Design Agency in Bhopal | Mahi TechnoCrafts',
+    metaDescription: 'Best UI/UX design agency in Bhopal. Beautiful, conversion-focused app and website designs crafted for seamless user experiences.',
+    headline: 'UI/UX Design Agency in Bhopal',
+    icon: 'Palette',
+    longDescription: 'Mahi TechnoCrafts crafts stunning, user-centric UI/UX designs for websites and mobile applications in Bhopal. Our design philosophy blends aesthetics with functionality — creating interfaces that look beautiful, feel natural, and convert visitors into loyal customers.',
+    features: [
+      'Custom Figma Wireframes & High-Fidelity Prototypes',
+      'Mobile-First Responsive Design Systems',
+      'Micro-Animation & Interaction Design',
+      'Accessibility-Compliant WCAG Layouts',
+      'Brand Identity & Design Language Guides'
+    ],
+    faqs: [
+      {
+        q: 'Why does great UI/UX design matter for my business?',
+        a: 'Studies show that users form an opinion about a website in under 50ms. A clean, intuitive design builds trust instantly and significantly reduces bounce rates.'
+      },
+      {
+        q: 'Do you provide Figma design files after the project?',
+        a: 'Yes, we hand over all design source files, component libraries, and style guides so your team can maintain and extend the design independently.'
+      },
+      {
+        q: 'Can you redesign my existing website or app?',
+        a: 'Absolutely. We audit your current interface, identify UX pain points, and deliver a modernised design that improves engagement and conversions.'
+      }
+    ]
+  },
+  'erp-crm': {
+    title: 'Custom Business Software',
+    metaTitle: 'Custom ERP & CRM Development in Bhopal | Mahi TechnoCrafts',
+    metaDescription: 'Best custom ERP & CRM software development company in Bhopal. Manage customers, sales, inventory, and operations in one smart dashboard.',
+    headline: 'Custom ERP & CRM Software in Bhopal',
+    icon: 'Database',
+    longDescription: 'Mahi TechnoCrafts builds powerful, easy-to-use custom ERP and CRM business software for companies in Bhopal and across India. From sales pipeline management to inventory tracking and automated invoicing, our systems centralise every business operation into one elegant dashboard.',
+    features: [
+      'Custom CRM for Leads, Clients & Follow-Ups',
+      'Inventory & Stock Management Modules',
+      'Automated Invoice & Billing Generation',
+      'Role-Based Access Control & User Permissions',
+      'Real-Time Business Analytics & Reports'
+    ],
+    faqs: [
+      {
+        q: 'How is custom ERP software better than off-the-shelf solutions?',
+        a: 'Off-the-shelf tools charge heavy monthly subscriptions and force you to adapt your workflow to their system. Custom software is built precisely around how your business operates.'
+      },
+      {
+        q: 'Can the software be accessed on mobile devices?',
+        a: 'Yes, all our business software is built with a responsive web dashboard accessible on any device — desktop, tablet, or smartphone.'
+      },
+      {
+        q: 'How long does custom business software take to build?',
+        a: 'A standard CRM or ERP module takes 6 to 12 weeks depending on the number of features, integrations, and approval cycles.'
+      }
+    ]
+  },
+  'cloud-services': {
+    title: 'Secure Cloud Hosting',
+    metaTitle: 'Cloud Hosting & DevOps Services in Bhopal | Mahi TechnoCrafts',
+    metaDescription: 'Best secure cloud hosting and DevOps services in Bhopal. 99.9% uptime, SSL, daily backups, and scalable infrastructure for your business.',
+    headline: 'Secure Cloud Hosting & DevOps in Bhopal',
+    icon: 'Cloud',
+    longDescription: 'Mahi TechnoCrafts provides enterprise-grade cloud hosting and DevOps services for businesses in Bhopal and across India. We set up scalable, secure, and high-availability infrastructure on AWS, Vercel, and DigitalOcean — ensuring your website or app stays online, fast, and protected 24/7.',
+    features: [
+      '99.9% Uptime SLA with Auto-Scaling Infrastructure',
+      'SSL Certificates & HTTPS Enforcement',
+      'Automated Daily Backups & Disaster Recovery',
+      'CI/CD Pipelines for Zero-Downtime Deployments',
+      'DDoS Protection & Web Application Firewall'
+    ],
+    faqs: [
+      {
+        q: 'Which cloud providers do you work with?',
+        a: 'We work with AWS, DigitalOcean, Vercel, and Cloudflare — choosing the best fit based on your budget, traffic requirements, and geographic audience.'
+      },
+      {
+        q: 'What happens if my server goes down?',
+        a: 'Our monitoring systems alert us within minutes of any downtime. With automated backups and redundant setups, we restore service typically in under 30 minutes.'
+      },
+      {
+        q: 'Do you handle server migrations?',
+        a: 'Yes, we perform full zero-downtime migrations from shared hosting or other providers to modern cloud infrastructure without disrupting your live traffic.'
+      }
+    ]
+  },
+  /* ── Legacy / alternate slugs ──────────────────────── */
   'website-development': {
     title: 'Website Development',
     metaTitle: 'Website Development Company in Bhopal | Mahi TechnoCrafts',
@@ -431,7 +578,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
           <div className="bg-white p-8 sm:p-10 rounded-3xl border border-slate-200/60 shadow-xl mb-16">
             <h2 className="text-xl font-display font-extrabold tracking-tight text-slate-900 mb-8 flex items-center gap-2">
               <HelpCircle className="text-sky-600" size={20} />
-              Frequently Asked Questions (Bhopal SEO FAQ)
+              Frequently Asked Questions 
             </h2>
 
             <div className="space-y-6">
@@ -524,11 +671,18 @@ export default async function ServiceDetailPage({ params }: PageProps) {
 // Generate static params for prerendering at build time
 export async function generateStaticParams() {
   return [
+    // DB slugs (used by Services component)
+    { slug: 'web-dev' },
+    { slug: 'mobile-dev' },
+    { slug: 'uiux-design' },
+    { slug: 'ai-solutions' },
+    { slug: 'erp-crm' },
+    { slug: 'cloud-services' },
+    // Legacy / alternate slugs
     { slug: 'website-development' },
     { slug: 'mobile-app-development' },
     { slug: 'seo-services' },
-    { slug: 'ai-solutions' },
     { slug: 'cyber-security' },
-    { slug: 'ecommerce-development' }
+    { slug: 'ecommerce-development' },
   ];
 }

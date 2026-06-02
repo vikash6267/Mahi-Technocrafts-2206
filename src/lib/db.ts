@@ -197,8 +197,8 @@ const defaultSiteData: SiteData = {
     image: "/images/founder.jpg",
     socials: {
       instagram: "https://www.instagram.com/mahi_technocrafts/",
-      linkedin: "#",
-      twitter: "#"
+      linkedin: "https://www.linkedin.com/company/mahi-technocrafts/",
+      twitter: "https://x.com/mahi_technocrafts"
     }
   },
   services: [

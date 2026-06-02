@@ -144,19 +144,22 @@ export default function Footer() {
           </h3>
           <ul className="space-y-3 text-sm">
             <li>
-              <Link href="/services" className="hover:text-brand-blue transition-colors">Web Development</Link>
+              <Link href="/services/web-dev" className="hover:text-brand-blue transition-colors">Web Development</Link>
             </li>
             <li>
-              <Link href="/services" className="hover:text-brand-blue transition-colors">Mobile App Development</Link>
+              <Link href="/services/mobile-dev" className="hover:text-brand-blue transition-colors">Mobile App Development</Link>
             </li>
             <li>
-              <Link href="/services" className="hover:text-brand-blue transition-colors">App & Website Design</Link>
+              <Link href="/services/uiux-design" className="hover:text-brand-blue transition-colors">App & Website Design</Link>
             </li>
             <li>
-              <Link href="/services" className="hover:text-brand-blue transition-colors">AI & Automations</Link>
+              <Link href="/services/ai-solutions" className="hover:text-brand-blue transition-colors">AI & Automations</Link>
             </li>
             <li>
-              <Link href="/services" className="hover:text-brand-blue transition-colors">Secure Web Hosting</Link>
+              <Link href="/services/erp-crm" className="hover:text-brand-blue transition-colors">Business Software</Link>
+            </li>
+            <li>
+              <Link href="/services/cloud-services" className="hover:text-brand-blue transition-colors">Secure Cloud Hosting</Link>
             </li>
           </ul>
         </div>

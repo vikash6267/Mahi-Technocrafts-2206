@@ -133,31 +133,41 @@ export default function Founder({ data }: FounderProps) {
                     </p>
                   </div>
 
-                  {/* Social links */}
+                  {/* Social links — only render if real URL is set */}
                   <div className="flex gap-3 pt-2 border-t border-white/10">
-                    <Link
-                      href={data.socials.instagram}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-slate-400 hover:text-white transition-colors"
-                      aria-label="Founder Instagram"
-                    >
-                      <Instagram size={14} />
-                    </Link>
-                    <Link
-                      href={data.socials.linkedin}
-                      className="text-slate-400 hover:text-white transition-colors"
-                      aria-label="Founder Linkedin"
-                    >
-                      <Linkedin size={14} />
-                    </Link>
-                    <Link
-                      href={data.socials.twitter}
-                      className="text-slate-400 hover:text-white transition-colors"
-                      aria-label="Founder Twitter"
-                    >
-                      <Twitter size={14} />
-                    </Link>
+                    {data.socials.instagram && data.socials.instagram !== '#' && (
+                      <Link
+                        href={data.socials.instagram}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-slate-400 hover:text-white transition-colors"
+                        aria-label="Founder Instagram"
+                      >
+                        <Instagram size={14} />
+                      </Link>
+                    )}
+                    {data.socials.linkedin && data.socials.linkedin !== '#' && (
+                      <Link
+                        href={data.socials.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-slate-400 hover:text-white transition-colors"
+                        aria-label="Founder Linkedin"
+                      >
+                        <Linkedin size={14} />
+                      </Link>
+                    )}
+                    {data.socials.twitter && data.socials.twitter !== '#' && (
+                      <Link
+                        href={data.socials.twitter}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-slate-400 hover:text-white transition-colors"
+                        aria-label="Founder Twitter"
+                      >
+                        <Twitter size={14} />
+                      </Link>
+                    )}
                   </div>
                 </div>
               </div>
