@@ -21,14 +21,18 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Mahi Technocrafts | Beautiful Websites & Custom Apps',
-    template: '%s | Mahi Technocrafts'
+    default: 'Best Website Development Company in Bhopal | Mahi TechnoCrafts',
+    template: '%s | Mahi TechnoCrafts'
   },
-  description: 'Mahi Technocrafts is a premium tech partner and the best website developer near me in Bhopal, crafting beautiful digital solutions including websites, mobile apps, designs, and smart business automation systems.',
+  description: 'Mahi TechnoCrafts is the top website development company in Bhopal. Experts in MERN stack, custom e-commerce web design, software, and local SEO solutions.',
   alternates: {
     canonical: '/'
   },
   keywords: [
+    'website developer in bhopal',
+    'best web development company bhopal',
+    'web design hamidia road bhopal',
+    'mern stack developers bhopal',
     'Mahi Technocrafts',
     'near by developer',
     'developer near me',
@@ -54,14 +58,14 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_IN',
     url: 'https://mahitechnocrafts.in',
-    title: 'Mahi Technocrafts | Beautiful Websites & Custom Apps',
-    description: 'Your Imagination, Our Creation. Premium website and app development company specializing in fast websites, mobile apps, and custom business software near you.',
-    siteName: 'Mahi Technocrafts',
+    title: 'Best Website Developer in Bhopal | Mahi TechnoCrafts',
+    description: 'Get premium custom web applications and e-commerce stores in Bhopal from Mahi TechnoCrafts.',
+    siteName: 'Mahi TechnoCrafts',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Mahi Technocrafts | Beautiful Websites & Custom Apps',
-    description: 'Your Imagination, Our Creation. Premium website and app development company specializing in fast websites, mobile apps, and custom business software near you.',
+    title: 'Best Website Developer in Bhopal | Mahi TechnoCrafts',
+    description: 'Get premium custom web applications and e-commerce stores in Bhopal from Mahi TechnoCrafts.',
     creator: '@mahi_technocrafts',
   },
   robots: {

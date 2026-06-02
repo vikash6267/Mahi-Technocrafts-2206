@@ -180,8 +180,10 @@ export default function Hero({ data }: HeroProps) {
             Empowering Startups & Enterprises
           </motion.div>
 
+          <h1 className="sr-only">Best Website Development Company in Bhopal | Mahi TechnoCrafts</h1>
+
           <div className="space-y-4">
-            <motion.h1 
+            <motion.h2 
               initial={{ opacity: 0, y: 25 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
@@ -193,7 +195,7 @@ export default function Hero({ data }: HeroProps) {
               </span>
               <br />
               Our Creation.
-            </motion.h1>
+            </motion.h2>
             
             <motion.p
               initial={{ opacity: 0, y: 15 }}

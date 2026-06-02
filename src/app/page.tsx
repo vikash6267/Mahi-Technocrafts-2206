@@ -23,25 +23,27 @@ export default async function Page() {
   const localBusinessSchema = {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
-    name: 'Mahi Technocrafts',
-    description: 'Mahi Technocrafts is a premium tech company and the best software developer near me in Bhopal, crafting world-class digital solutions including web development, mobile apps, UI/UX designs, and custom AI systems.',
-    url: 'https://mahitechnocrafts.in',
+    name: 'Mahi TechnoCrafts',
+    '@id': 'https://mahitechnocrafts.in',
+    description: 'Mahi TechnoCrafts is the top website development company in Bhopal, crafting world-class digital solutions including web development, mobile apps, UI/UX designs, and custom software.',
+    url: 'https://mahitechnocrafts.in/',
     logo: 'https://mahitechnocrafts.in/logo.png',
     image: 'https://mahitechnocrafts.in/logo.png',
     telephone: `+91${data.contactInfo.phone}`,
     email: data.contactInfo.email,
+    priceRange: '$$',
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Hamidia Rd, Badabagh, Shahjahanabad',
       addressLocality: 'Bhopal',
-      addressRegion: 'Madhya Pradesh',
+      addressRegion: 'MP',
       postalCode: '462001',
       addressCountry: 'IN'
     },
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: 23.250550,
-      longitude: 77.394857
+      latitude: 23.2694,
+      longitude: 77.4019
     },
     openingHoursSpecification: {
       '@type': 'OpeningHoursSpecification',
@@ -51,16 +53,16 @@ export default async function Page() {
         'Wednesday',
         'Thursday',
         'Friday',
-        'Saturday'
+        'Saturday',
+        'Sunday'
       ],
-      opens: '09:00',
-      closes: '19:00'
+      opens: '00:00',
+      closes: '23:59'
     },
     sameAs: [
       'https://www.instagram.com/mahi_technocrafts/',
       'https://www.linkedin.com/company/mahi-technocrafts/'
-    ],
-    priceRange: '$$'
+    ]
   };
 
   const faqSchema = data.faq && data.faq.length > 0 ? {
