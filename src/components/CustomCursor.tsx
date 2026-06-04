@@ -1,10 +1,14 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import { motion, useMotionValue, useSpring } from 'framer-motion';
+import React, { useEffect, useState, useRef } from 'react';
 
 export default function CustomCursor() {
   const [isTouchDevice, setIsTouchDevice] = useState(true);
+  const [hovered, setHovered] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  
+  const outerCursorRef = useRef<HTMLDivElement>(null);
+  const innerCursorRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const isMobile = window.matchMedia('(pointer: coarse)').matches || 
@@ -13,23 +17,21 @@ export default function CustomCursor() {
     setIsTouchDevice(isMobile);
   }, []);
 
-  const [hovered, setHovered] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
-
-  const cursorX = useMotionValue(-100);
-  const cursorY = useMotionValue(-100);
-
-  const springConfig = { damping: 25, stiffness: 250, mass: 0.5 };
-  const cursorXSpring = useSpring(cursorX, springConfig);
-  const cursorYSpring = useSpring(cursorY, springConfig);
-
   useEffect(() => {
     if (isTouchDevice) return;
 
     const moveCursor = (e: MouseEvent) => {
-      cursorX.set(e.clientX);
-      cursorY.set(e.clientY);
       if (!isVisible) setIsVisible(true);
+      
+      const x = e.clientX;
+      const y = e.clientY;
+
+      if (outerCursorRef.current) {
+        outerCursorRef.current.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+      }
+      if (innerCursorRef.current) {
+        innerCursorRef.current.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+      }
     };
 
     const handleMouseLeave = () => {
@@ -65,30 +67,27 @@ export default function CustomCursor() {
       document.removeEventListener('mouseenter', handleMouseEnter);
       observer.disconnect();
     };
-  }, [cursorX, cursorY, isVisible, isTouchDevice]);
+  }, [isVisible, isTouchDevice]);
 
   if (typeof window === 'undefined' || isTouchDevice || !isVisible) return null;
 
   return (
     <>
       {/* Outer ring cursor */}
-      <motion.div
-        className="fixed top-0 left-0 w-8 h-8 -ml-4 -mt-4 border border-brand-blue rounded-full pointer-events-none z-50 mix-blend-difference hidden md:block"
+      <div
+        ref={outerCursorRef}
+        className="fixed top-0 left-0 w-8 h-8 -ml-4 -mt-4 border border-brand-blue rounded-full pointer-events-none z-50 mix-blend-difference hidden md:block transition-transform duration-75 ease-out"
         style={{
-          x: cursorXSpring,
-          y: cursorYSpring,
-          scale: hovered ? 1.5 : 1,
           backgroundColor: hovered ? 'rgba(0, 114, 245, 0.2)' : 'rgba(0, 0, 0, 0)',
+          transform: 'translate3d(-100px, -100px, 0)',
         }}
-        transition={{ type: 'spring', damping: 30, stiffness: 200 }}
       />
       {/* Inner dot cursor */}
-      <motion.div
+      <div
+        ref={innerCursorRef}
         className="fixed top-0 left-0 w-2 h-2 -ml-1 -mt-1 bg-brand-blue rounded-full pointer-events-none z-50 hidden md:block"
         style={{
-          x: cursorX,
-          y: cursorY,
-          scale: hovered ? 0.5 : 1,
+          transform: 'translate3d(-100px, -100px, 0)',
         }}
       />
     </>

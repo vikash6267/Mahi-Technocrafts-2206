@@ -84,7 +84,6 @@ body {
   inset: -1px;
   border-radius: inherit;
   background: conic-gradient(from var(--gradient-angle), #0ea5e9, #f97316, #eab308, #0ea5e9);
-  animation: rotate-gradient 4s linear infinite;
   z-index: -1;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -96,6 +95,7 @@ body {
 }
 .beam-border:hover::before {
   opacity: 1;
+  animation: rotate-gradient 4s linear infinite;
 }
 
 .text-gradient {
@@ -150,4 +150,31 @@ html.lenis {
 }
 .dark .glow-bubble {
   opacity: 0.35;
+}
+
+/* Premium page-mount fade-in animation */
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: pageFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Premium infinite floating animation */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
 }

@@ -1,39 +1,12 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 
 export default function LoadingScreen({ onComplete }: { onComplete: () => void }) {
-  const [count, setCount] = useState(0);
   const [show, setShow] = useState(true);
   const [isZooming, setIsZooming] = useState(false);
-
-  useEffect(() => {
-    const duration = 600;
-    const intervalTime = 12;
-    const steps = duration / intervalTime;
-    let step = 0;
-
-    const timer = setInterval(() => {
-      step++;
-      const progress = Math.min(Math.round((step / steps) * 100), 100);
-      setCount(progress);
-
-      if (step >= steps) {
-        clearInterval(timer);
-        setTimeout(() => {
-          setIsZooming(true);
-          setTimeout(() => {
-            setShow(false);
-            onComplete();
-          }, 300);
-        }, 100);
-      }
-    }, intervalTime);
-
-    return () => clearInterval(timer);
-  }, [onComplete]);
 
   return (
     <AnimatePresence>
@@ -86,7 +59,16 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
               <div className="w-48 h-[2px] bg-slate-200/80 rounded-full overflow-hidden">
                 <motion.div
                   className="h-full bg-gradient-to-r from-brand-blue to-brand-purple"
-                  style={{ width: `${count}%` }}
+                  initial={{ width: '0%' }}
+                  animate={{ width: '100%' }}
+                  transition={{ duration: 0.6, ease: 'easeInOut' }}
+                  onAnimationComplete={() => {
+                    setIsZooming(true);
+                    setTimeout(() => {
+                      setShow(false);
+                      onComplete();
+                    }, 300);
+                  }}
                 />
               </div>
             </motion.div>

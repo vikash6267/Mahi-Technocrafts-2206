@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
 import { Sparkles, ExternalLink } from 'lucide-react';
 import Image from 'next/image';
 import { ProjectItem } from '@/lib/db';
@@ -34,16 +33,12 @@ export default function Projects({ data }: ProjectsProps) {
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {data.map((project, index) => (
-            <motion.div
+            <div
               key={project.id || index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
               className="group rounded-3xl overflow-hidden glass border border-slate-200 dark:border-slate-800/80 hover:border-brand-purple/20 transition-all duration-300 flex flex-col relative interactive-hover cursor-pointer"
             >
               {/* S3 Image Container */}
-              <div className="relative aspect-video w-full overflow-hidden bg-slate-900 border-b border-slate-200 dark:border-slate-850">
+              <div className="relative aspect-video w-full overflow-hidden bg-slate-950 border-b border-slate-200 dark:border-slate-850">
                 {project.image ? (
                   <Image
                     src={project.image}
@@ -53,7 +48,7 @@ export default function Projects({ data }: ProjectsProps) {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100"
                   />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center text-slate-650 font-display font-bold">
+                  <div className="w-full h-full flex items-center justify-center text-slate-655 font-display font-bold">
                     No Project Image
                   </div>
                 )}
@@ -95,7 +90,7 @@ export default function Projects({ data }: ProjectsProps) {
                   ))}
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

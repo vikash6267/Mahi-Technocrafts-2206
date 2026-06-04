@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
 import { ShieldCheck, Target, Eye, Users } from 'lucide-react';
 import { SiteData } from '@/lib/db';
 
@@ -11,13 +10,13 @@ interface AboutProps {
 
 export default function About({ data }: AboutProps) {
   return (
-    <section className="relative py-28 overflow-hidden bg-white dark:bg-[#030014]/40" id="about">
+    <section className="relative py-14 md:py-28 overflow-hidden bg-white dark:bg-[#030014]/40" id="about">
       {/* Background Radial Glow */}
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-96 h-96 bg-brand-blue/5 dark:bg-brand-blue/10 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Header Title */}
-        <div className="text-center max-w-2xl mx-auto mb-20 space-y-4">
+        <div className="text-center max-w-2xl mx-auto mb-10 md:mb-20 space-y-4">
           <h2 className="text-xs uppercase tracking-[0.2em] font-semibold text-sky-700 dark:text-brand-blue">
             Who We Are
           </h2>
@@ -42,12 +41,8 @@ export default function About({ data }: AboutProps) {
               <h3 className="text-xl font-display font-bold text-slate-800 dark:text-white">Why Choose Mahi Technocrafts?</h3>
               <div className="grid grid-cols-1 gap-3">
                 {data.whyChooseUs.map((item, idx) => (
-                  <motion.div
+                  <div
                     key={idx}
-                    initial={{ opacity: 0, x: -15 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, margin: '-50px' }}
-                    transition={{ duration: 0.5, delay: idx * 0.1 }}
                     className="flex gap-3 items-start"
                   >
                     <div className="w-5 h-5 rounded-md bg-brand-blue/10 text-brand-blue flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -56,7 +51,7 @@ export default function About({ data }: AboutProps) {
                     <span className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
                       {item}
                     </span>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             </div>
@@ -65,8 +60,7 @@ export default function About({ data }: AboutProps) {
           {/* Right Column - Vision, Mission & Achievements */}
           <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
             {/* Mission Card */}
-            <motion.div
-              whileHover={{ y: -6, rotateX: 2, rotateY: -2 }}
+            <div
               className="p-6 rounded-2xl glass border border-slate-200/50 dark:border-slate-800 hover:border-brand-blue/30 transition-all duration-300 flex flex-col gap-4 interactive-hover beam-border"
             >
               <div className="w-10 h-10 rounded-xl bg-brand-purple/10 text-brand-purple flex items-center justify-center">
@@ -76,11 +70,10 @@ export default function About({ data }: AboutProps) {
               <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
                 {data.mission}
               </p>
-            </motion.div>
+            </div>
 
             {/* Vision Card */}
-            <motion.div
-              whileHover={{ y: -6, rotateX: -2, rotateY: 2 }}
+            <div
               className="p-6 rounded-2xl glass border border-slate-200/50 dark:border-slate-800 hover:border-brand-purple/30 transition-all duration-300 flex flex-col gap-4 interactive-hover beam-border"
             >
               <div className="w-10 h-10 rounded-xl bg-brand-blue/10 text-brand-blue flex items-center justify-center">
@@ -90,11 +83,10 @@ export default function About({ data }: AboutProps) {
               <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
                 {data.vision}
               </p>
-            </motion.div>
+            </div>
 
             {/* Quality Commitment Card */}
-            <motion.div
-              whileHover={{ y: -6, rotateX: 2, rotateY: 2 }}
+            <div
               className="p-6 rounded-2xl glass border border-slate-200/50 dark:border-slate-800 hover:border-brand-blue/30 transition-all duration-300 flex flex-col gap-4 sm:col-span-2 interactive-hover beam-border"
             >
               <div className="flex gap-4 items-center">
@@ -106,7 +98,7 @@ export default function About({ data }: AboutProps) {
                   <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">We design and code with transparency and rapid feedback loop iterations.</p>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>

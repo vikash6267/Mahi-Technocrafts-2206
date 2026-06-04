@@ -105,14 +105,14 @@ export default function ContactForm({ contactInfo }: ContactFormProps) {
   };
 
   return (
-    <section className="relative py-28 overflow-hidden bg-white dark:bg-[#030014]/40" id="contact">
+    <section className="relative py-14 md:py-28 overflow-hidden bg-white dark:bg-[#030014]/40" id="contact">
       {/* Background neon glows */}
       <div className="absolute top-1/3 left-1/3 w-[500px] h-[500px] bg-brand-blue/5 dark:bg-brand-blue/10 rounded-full blur-[130px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
         {/* Title */}
-        <div className="text-center max-w-2xl mx-auto mb-20 space-y-4">
+        <div className="text-center max-w-2xl mx-auto mb-10 md:mb-20 space-y-4">
           <h2 className="text-xs uppercase tracking-[0.2em] font-semibold text-sky-700 dark:text-brand-blue">
             Contact Us
           </h2>

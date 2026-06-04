@@ -7,6 +7,13 @@ const MONGODB_DB = "New-Mahitechoncrafts";
 let cachedClient: MongoClient | null = null;
 let cachedDb: Db | null = null;
 
+// In-memory cache to completely bypass MongoDB Atlas connection latencies
+let cachedSiteData: SiteData | null = null;
+let cachedApprovedReviews: ReviewItem[] | null = null;
+let cachedAllReviews: ReviewItem[] | null = null;
+let cachedBlogs: BlogItem[] | null = null;
+let cachedCareers: CareerItem[] | null = null;
+
 export async function connectToDatabase() {
   if (cachedClient && cachedDb) {
     return { client: cachedClient, db: cachedDb };
@@ -342,6 +349,9 @@ const defaultBlogs: BlogItem[] = [
 
 // Async MongoDB wrappers
 export async function getSiteData(): Promise<SiteData> {
+  if (cachedSiteData) {
+    return cachedSiteData;
+  }
   try {
     const { db } = await connectToDatabase();
     const collection = db.collection('content');
@@ -352,12 +362,14 @@ export async function getSiteData(): Promise<SiteData> {
       // Seed default content
       const seed = { _id: 'site_configs', ...defaultSiteData };
       await collection.insertOne(seed as any);
+      cachedSiteData = defaultSiteData;
       return defaultSiteData;
     }
     
     // Clean MongoDB _id before returning
     const { _id, ...cleanData } = data;
-    return cleanData as unknown as SiteData;
+    cachedSiteData = cleanData as unknown as SiteData;
+    return cachedSiteData;
   } catch (error) {
     console.error('getSiteData failed, falling back to default site data:', error);
     return defaultSiteData;
@@ -374,6 +386,7 @@ export async function updateSiteData(data: SiteData): Promise<boolean> {
       { $set: data },
       { upsert: true }
     );
+    cachedSiteData = data; // Update cache
     return true;
   } catch (error) {
     console.error('Error writing content to MongoDB', error);
@@ -382,12 +395,16 @@ export async function updateSiteData(data: SiteData): Promise<boolean> {
 }
 
 export async function getBlogs(): Promise<BlogItem[]> {
+  if (cachedBlogs) {
+    return cachedBlogs;
+  }
   try {
     const { db } = await connectToDatabase();
     const collection = db.collection('blogs');
     
     const blogs = await collection.find({}).toArray();
-    return blogs.map(({ _id, ...b }) => b) as unknown as BlogItem[];
+    cachedBlogs = blogs.map(({ _id, ...b }) => b) as unknown as BlogItem[];
+    return cachedBlogs;
   } catch (error) {
     console.error('getBlogs failed, falling back to default blogs:', error);
     return defaultBlogs;
@@ -396,6 +413,10 @@ export async function getBlogs(): Promise<BlogItem[]> {
 
 export async function getBlogBySlug(slug: string): Promise<BlogItem | null> {
   try {
+    if (cachedBlogs) {
+      const match = cachedBlogs.find(b => b.slug === slug);
+      if (match) return match;
+    }
     const { db } = await connectToDatabase();
     const collection = db.collection('blogs');
     
@@ -421,6 +442,7 @@ export async function saveBlog(blog: BlogItem): Promise<boolean> {
       { $set: blog },
       { upsert: true }
     );
+    cachedBlogs = null; // Invalidate cache
     return true;
   } catch (error) {
     console.error('Error saving blog to MongoDB', error);
@@ -434,6 +456,7 @@ export async function deleteBlogBySlug(slug: string): Promise<boolean> {
     const collection = db.collection('blogs');
     
     const result = await collection.deleteOne({ slug });
+    cachedBlogs = null; // Invalidate cache
     return result.deletedCount > 0;
   } catch (error) {
     console.error('Error deleting blog from MongoDB', error);
@@ -521,6 +544,9 @@ const defaultReviews: ReviewItem[] = [
 ];
 
 export async function getReviews(): Promise<ReviewItem[]> {
+  if (cachedAllReviews) {
+    return cachedAllReviews;
+  }
   try {
     const { db } = await connectToDatabase();
     const collection = db.collection('reviews');
@@ -528,9 +554,11 @@ export async function getReviews(): Promise<ReviewItem[]> {
     const reviews = await collection.find({}).toArray();
     if (reviews.length === 0) {
       await collection.insertMany(defaultReviews as any[]);
+      cachedAllReviews = defaultReviews;
       return defaultReviews;
     }
-    return reviews.map(({ _id, ...r }) => r) as unknown as ReviewItem[];
+    cachedAllReviews = reviews.map(({ _id, ...r }) => r) as unknown as ReviewItem[];
+    return cachedAllReviews;
   } catch (error) {
     console.error('getReviews failed, falling back to defaults:', error);
     return defaultReviews;
@@ -538,6 +566,9 @@ export async function getReviews(): Promise<ReviewItem[]> {
 }
 
 export async function getApprovedReviews(): Promise<ReviewItem[]> {
+  if (cachedApprovedReviews) {
+    return cachedApprovedReviews;
+  }
   try {
     const { db } = await connectToDatabase();
     const collection = db.collection('reviews');
@@ -545,9 +576,11 @@ export async function getApprovedReviews(): Promise<ReviewItem[]> {
     const reviews = await collection.find({ status: 'approved' }).toArray();
     if (reviews.length === 0) {
       const allReviews = await getReviews();
-      return allReviews.filter(r => r.status === 'approved');
+      cachedApprovedReviews = allReviews.filter(r => r.status === 'approved');
+      return cachedApprovedReviews;
     }
-    return reviews.map(({ _id, ...r }) => r) as unknown as ReviewItem[];
+    cachedApprovedReviews = reviews.map(({ _id, ...r }) => r) as unknown as ReviewItem[];
+    return cachedApprovedReviews;
   } catch (error) {
     console.error('getApprovedReviews failed, falling back to defaults:', error);
     return defaultReviews.filter(r => r.status === 'approved');
@@ -564,6 +597,8 @@ export async function saveReview(review: ReviewItem): Promise<boolean> {
       { $set: review },
       { upsert: true }
     );
+    cachedAllReviews = null; // Invalidate cache
+    cachedApprovedReviews = null; // Invalidate cache
     return true;
   } catch (error) {
     console.error('Error saving review to MongoDB', error);
@@ -580,6 +615,8 @@ export async function updateReviewStatus(id: string, status: 'pending' | 'approv
       { id },
       { $set: { status } }
     );
+    cachedAllReviews = null; // Invalidate cache
+    cachedApprovedReviews = null; // Invalidate cache
     return result.modifiedCount > 0;
   } catch (error) {
     console.error('Error updating review status', error);
@@ -593,6 +630,8 @@ export async function deleteReviewById(id: string): Promise<boolean> {
     const collection = db.collection('reviews');
     
     const result = await collection.deleteOne({ id });
+    cachedAllReviews = null; // Invalidate cache
+    cachedApprovedReviews = null; // Invalidate cache
     return result.deletedCount > 0;
   } catch (error) {
     console.error('Error deleting review from MongoDB', error);
@@ -629,6 +668,9 @@ const defaultCareers: CareerItem[] = [
 ];
 
 export async function getCareers(): Promise<CareerItem[]> {
+  if (cachedCareers) {
+    return cachedCareers;
+  }
   try {
     const { db } = await connectToDatabase();
     const collection = db.collection('careers');
@@ -637,9 +679,11 @@ export async function getCareers(): Promise<CareerItem[]> {
     if (careers.length === 0) {
       const seed = defaultCareers.map(c => ({ ...c, postedAt: new Date().toISOString() }));
       await collection.insertMany(seed as any[]);
+      cachedCareers = seed;
       return seed;
     }
-    return careers.map(({ _id, ...c }) => c) as unknown as CareerItem[];
+    cachedCareers = careers.map(({ _id, ...c }) => c) as unknown as CareerItem[];
+    return cachedCareers;
   } catch (error) {
     console.error('getCareers failed, falling back to default careers:', error);
     return defaultCareers.map(c => ({ ...c, postedAt: new Date().toISOString() }));
@@ -656,6 +700,7 @@ export async function saveCareer(career: CareerItem): Promise<boolean> {
       { $set: career },
       { upsert: true }
     );
+    cachedCareers = null; // Invalidate cache
     return true;
   } catch (error) {
     console.error('Error saving career to MongoDB', error);
@@ -669,6 +714,7 @@ export async function deleteCareerById(id: string): Promise<boolean> {
     const collection = db.collection('careers');
     
     const result = await collection.deleteOne({ id });
+    cachedCareers = null; // Invalidate cache
     return result.deletedCount > 0;
   } catch (error) {
     console.error('Error deleting career from MongoDB', error);

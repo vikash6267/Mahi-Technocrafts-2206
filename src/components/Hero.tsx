@@ -2,7 +2,6 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles, Code2, Users, Award } from 'lucide-react';
 import { SiteData } from '@/lib/db';
 import Image from 'next/image';
@@ -160,33 +159,27 @@ export default function Hero({ data }: HeroProps) {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden py-24 bg-[#fafaff] grid-backdrop">
+    <section className="relative min-h-screen flex flex-col justify-start md:justify-center overflow-hidden py-12 md:py-24 bg-[#fafaff] grid-backdrop">
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none z-0 opacity-60" />
 
       <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-brand-blue/8 rounded-full blur-[140px] pointer-events-none z-0" />
       <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-brand-purple/8 rounded-full blur-[140px] pointer-events-none z-0" />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+      <div className="max-w-7xl mx-auto px-6 relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
         
         <div className="lg:col-span-6 space-y-8 text-left">
           
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          <div
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 border border-slate-200/60 text-xs font-semibold tracking-wider uppercase text-sky-700 dark:text-brand-blue shadow-sm"
           >
             <Sparkles size={12} className="animate-spin text-brand-purple" />
             Empowering Startups & Enterprises
-          </motion.div>
+          </div>
 
           <h1 className="sr-only">Best Website Development Company in Bhopal | Mahi TechnoCrafts</h1>
 
           <div className="space-y-4">
-            <motion.h2 
-              initial={{ opacity: 0, y: 25 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            <h2 
               className="text-4xl sm:text-5xl md:text-6xl font-display font-black tracking-tight leading-[1.08] text-slate-900 relative"
             >
               Your{' '}
@@ -195,22 +188,16 @@ export default function Hero({ data }: HeroProps) {
               </span>
               <br />
               Our Creation.
-            </motion.h2>
+            </h2>
             
-            <motion.p
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.15, ease: 'easeOut' }}
+            <p
               className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-xl"
             >
               {data.description}
-            </motion.p>
+            </p>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.25, ease: 'easeOut' }}
+          <div
             className="flex flex-col sm:flex-row gap-4 pt-2"
           >
             <Link
@@ -227,15 +214,12 @@ export default function Hero({ data }: HeroProps) {
             >
               Explore Services
             </Link>
-          </motion.div>
+          </div>
         </div>
 
         <div className="lg:col-span-6 relative flex justify-center items-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2, type: 'spring', damping: 22 }}
-            className="w-full max-w-lg rounded-3xl bg-white border border-slate-200/80 shadow-2xl overflow-hidden flex flex-col h-[340px] relative select-none"
+          <div
+            className="w-full max-w-lg rounded-3xl bg-white border border-slate-200/80 shadow-2xl overflow-hidden flex flex-col h-[220px] md:h-[340px] relative select-none"
           >
             <div className="px-5 py-3.5 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
               <div className="flex gap-2">
@@ -264,12 +248,10 @@ export default function Hero({ data }: HeroProps) {
                 className="object-cover transition-transform duration-700 hover:scale-105"
               />
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            animate={{ y: [0, -8, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute -bottom-6 -left-6 p-4 rounded-2xl bg-white/95 border border-slate-200 shadow-2xl flex items-center gap-3 select-none z-20"
+          <div
+            className="absolute -bottom-6 -left-6 p-4 rounded-2xl bg-white/95 border border-slate-200 shadow-2xl flex items-center gap-3 select-none z-20 animate-float"
           >
             <div className="w-8 h-8 rounded-xl bg-green-500/10 text-green-500 flex items-center justify-center flex-shrink-0">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -280,12 +262,12 @@ export default function Hero({ data }: HeroProps) {
               <span className="text-[9px] uppercase tracking-wider text-slate-400 block font-semibold">Uptime Status</span>
               <span className="text-xs font-bold text-slate-800">99.9% Operational</span>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 w-full pt-16 mt-16 relative z-10 border-t border-slate-200/50">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+      <div className="max-w-7xl mx-auto px-6 w-full pt-8 mt-8 md:pt-16 md:mt-16 relative z-10 border-t border-slate-200/50">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
           {data.stats.map((stat, i) => {
             const config = [
               {
@@ -320,15 +302,11 @@ export default function Hero({ data }: HeroProps) {
             };
 
             return (
-              <motion.div
+              <div
                 key={stat.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 + i * 0.1 }}
-                whileHover={{ y: -5, scale: 1.01 }}
-                className={`flex items-center gap-4 p-5 rounded-2xl border ${config.cardBg} transition-all duration-300 shadow-sm ${config.shadow} group`}
+                className={`flex items-center gap-2.5 md:gap-4 p-3.5 md:p-5 rounded-2xl border ${config.cardBg} transition-all duration-300 shadow-sm ${config.shadow} group`}
               >
-                <div className={`w-12 h-12 rounded-xl ${config.iconBg} flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110`}>
+                <div className={`w-10 h-10 md:w-12 md:h-12 rounded-xl ${config.iconBg} flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110`}>
                   {config.icon}
                 </div>
                 
@@ -340,7 +318,7 @@ export default function Hero({ data }: HeroProps) {
                     {stat.label}
                   </p>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>

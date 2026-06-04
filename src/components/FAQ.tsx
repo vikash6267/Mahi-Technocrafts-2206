@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { SiteData } from '@/lib/db';
 
@@ -17,14 +16,14 @@ export default function FAQ({ data }: FAQProps) {
   };
 
   return (
-    <section className="relative py-28 overflow-hidden bg-slate-50 dark:bg-[#02000a]/50" id="faq">
+    <section className="relative py-14 md:py-28 overflow-hidden bg-slate-50 dark:bg-[#02000a]/50" id="faq">
       {/* Background gradients */}
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-brand-blue/5 dark:bg-brand-blue/10 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="max-w-4xl mx-auto px-6 relative z-10">
         
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-20 space-y-4">
+        <div className="text-center max-w-2xl mx-auto mb-10 md:mb-20 space-y-4">
           <h2 className="text-xs uppercase tracking-[0.2em] font-semibold text-sky-700 dark:text-brand-blue">
             FAQ
           </h2>
@@ -59,22 +58,12 @@ export default function FAQ({ data }: FAQProps) {
                   />
                 </button>
 
-                {/* Answer body using motion.div */}
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      initial={{ height: 0 }}
-                      animate={{ height: 'auto' }}
-                      exit={{ height: 0 }}
-                      transition={{ duration: 0.3, ease: 'easeInOut' }}
-                      className="overflow-hidden"
-                    >
-                      <div className="p-6 pt-0 border-t border-slate-100 dark:border-slate-850 text-xs md:text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
-                        {faq.a}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                {/* Answer body */}
+                {isOpen && (
+                  <div className="p-6 pt-0 border-t border-slate-100 dark:border-slate-850 text-xs md:text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+                    {faq.a}
+                  </div>
+                )}
               </div>
             );
           })}

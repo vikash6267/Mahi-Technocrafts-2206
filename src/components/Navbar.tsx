@@ -4,18 +4,14 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Sun, Moon } from 'lucide-react';
-import { useTheme } from './ThemeProvider';
+import { Menu, X } from 'lucide-react';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isVisible, setIsVisible] = useState(true);
   const [scrolled, setScrolled] = useState(false);
   const lastScrollY = React.useRef(0);
   
   const pathname = usePathname();
-  const { theme, toggleTheme } = useTheme();
 
   if (pathname?.startsWith('/admin')) {
     return null;
@@ -26,13 +22,11 @@ export default function Navbar() {
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
     { name: 'Services', path: '/services' },
-    // { name: 'Projects', path: '/#projects' },
-    // { name: 'Blog', path: '/blog' },
     { name: 'Contact', path: '/contact' },
     { name: 'Careers', path: '/careers' },
   ];
 
-  // Control navbar visibility on scroll (performance optimized with useRef & thresholds)
+  // Control navbar background color on scroll
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -42,19 +36,6 @@ export default function Navbar() {
         setScrolled(true);
       } else {
         setScrolled(false);
-      }
-
-      // Check scroll difference to prevent micro-toggle jittering
-      const diff = currentScrollY - lastScrollY.current;
-
-      if (currentScrollY <= 50) {
-        setIsVisible(true);
-      } else if (diff > 15 && currentScrollY > 100) {
-        // Scrolled down significantly
-        setIsVisible(false);
-      } else if (diff < -15) {
-        // Scrolled up significantly
-        setIsVisible(true);
       }
 
       lastScrollY.current = currentScrollY;
@@ -70,10 +51,7 @@ export default function Navbar() {
   }, [pathname]);
 
   return (
-    <motion.nav
-      initial={{ y: 0 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.3 }}
+    <nav
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         scrolled
           ? 'bg-[#fafaff]/90 dark:bg-[#02000d]/90 backdrop-blur-md border-b border-slate-200/50 dark:border-slate-900/50 py-3 shadow-lg shadow-black/5 dark:shadow-black/20'
@@ -109,8 +87,7 @@ export default function Navbar() {
               >
                 {link.name}
                 {isActive && (
-                  <motion.span
-                    layoutId="activeNavIndicator"
+                  <span
                     className="absolute -bottom-1 left-0 right-0 h-[2px] bg-brand-blue"
                   />
                 )}
@@ -119,9 +96,8 @@ export default function Navbar() {
           })}
         </div>
 
-        {/* Actions (Theme toggle + CTA) */}
+        {/* Actions (CTA) */}
         <div className="hidden lg:flex items-center gap-4">
-
           <Link
             href="/contact"
             className="px-5 py-2.5 bg-sky-600 dark:bg-brand-blue hover:bg-sky-700 dark:hover:bg-brand-blue/90 text-white font-semibold text-xs tracking-wider uppercase rounded-xl transition-colors cursor-pointer"
@@ -143,39 +119,34 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Drawer Overlay */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden w-full bg-[#fafaff]/95 dark:bg-[#02000d]/95 backdrop-blur-md border-t border-slate-200 dark:border-slate-800/80 shadow-lg overflow-hidden"
-          >
-            <div className="flex flex-col p-6 gap-4">
-              {navLinks.map((link) => {
-                const isActive = pathname === link.path;
-                return (
-                  <Link
-                    key={link.path}
-                    href={link.path}
-                    className={`text-sm font-semibold uppercase tracking-wider py-1 ${
-                      isActive ? 'text-brand-blue' : 'text-slate-600 dark:text-slate-300'
-                    }`}
-                  >
-                    {link.name}
-                  </Link>
-                );
-              })}
-              <Link
-                href="/contact"
-                className="w-full text-center py-3 bg-sky-600 dark:bg-brand-blue hover:bg-sky-700 dark:hover:bg-brand-blue/90 text-white font-semibold text-xs tracking-wider uppercase rounded-xl transition-colors mt-2"
-              >
-                Get In Touch
-              </Link>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.nav>
+      {isOpen && (
+        <div
+          className="lg:hidden w-full bg-[#fafaff]/95 dark:bg-[#02000d]/95 backdrop-blur-md border-t border-slate-200 dark:border-slate-800/80 shadow-lg overflow-hidden"
+        >
+          <div className="flex flex-col p-6 gap-4">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.path;
+              return (
+                <Link
+                  key={link.path}
+                  href={link.path}
+                  className={`text-sm font-semibold uppercase tracking-wider py-1 ${
+                    isActive ? 'text-brand-blue' : 'text-slate-600 dark:text-slate-300'
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
+            <Link
+              href="/contact"
+              className="w-full text-center py-3 bg-sky-600 dark:bg-brand-blue hover:bg-sky-700 dark:hover:bg-brand-blue/90 text-white font-semibold text-xs tracking-wider uppercase rounded-xl transition-colors mt-2"
+            >
+              Get In Touch
+            </Link>
+          </div>
+        </div>
+      )}
+    </nav>
   );
 }

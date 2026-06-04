@@ -3,7 +3,6 @@
 import React, { useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
 import { Quote, Sparkles } from 'lucide-react';
 
 const Instagram = ({ size = 14 }: { size?: number }) => (
@@ -49,7 +48,7 @@ export default function Founder({ data }: FounderProps) {
   };
 
   return (
-    <section className="relative py-28 overflow-hidden bg-slate-50 dark:bg-[#02000a]/50" id="founder">
+    <section className="relative py-14 md:py-28 overflow-hidden bg-slate-50 dark:bg-[#02000a]/50" id="founder">
       {/* Background Animated Gradient Mesh */}
       <div className="absolute top-1/4 right-0 w-[450px] h-[450px] bg-brand-purple/5 dark:bg-brand-purple/10 rounded-full blur-[120px] pointer-events-none" />
 

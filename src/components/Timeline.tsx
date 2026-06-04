@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
 
 interface TimelineStep {
   num: string;
@@ -21,14 +20,14 @@ export default function Timeline() {
   ];
 
   return (
-    <section className="relative py-28 overflow-hidden bg-white dark:bg-[#030014]/40" id="timeline">
+    <section className="relative py-14 md:py-28 overflow-hidden bg-white dark:bg-[#030014]/40" id="timeline">
       {/* Background neon glows */}
       <div className="absolute top-1/2 right-1/4 w-[450px] h-[450px] bg-brand-purple/5 dark:bg-brand-purple/10 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-20 space-y-4">
+        <div className="text-center max-w-2xl mx-auto mb-10 md:mb-20 space-y-4">
           <h2 className="text-xs uppercase tracking-[0.2em] font-semibold text-sky-700 dark:text-brand-blue">
             Our Process
           </h2>
@@ -42,11 +41,7 @@ export default function Timeline() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
           
           {steps.map((step, idx) => (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
+            <div
               key={step.num}
               className="p-6 rounded-2xl glass border border-slate-200/50 dark:border-slate-800/80 hover:border-brand-purple/20 transition-all duration-300 relative group flex flex-col gap-4 interactive-hover cursor-pointer"
             >
@@ -63,7 +58,7 @@ export default function Timeline() {
                   {step.desc}
                 </p>
               </div>
-            </motion.div>
+            </div>
           ))}
 
         </div>
