@@ -1,11 +1,12 @@
 import { MetadataRoute } from 'next';
 import { getBlogs, BlogItem } from '@/lib/db';
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 86400;
+
+const baseUrl = 'https://mahitechnocrafts.in';
+const defaultLastModified = '2026-06-10';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://mahitechnocrafts.in';
-  
   // Fetch dynamic blogs
   let blogs: BlogItem[] = [];
   try {
@@ -27,31 +28,31 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
 
   const servicePaths = [
-    '/services/website-development',
-    '/services/mobile-app-development',
-    '/services/seo-services',
+    '/services/web-dev',
+    '/services/mobile-dev',
+    '/services/uiux-design',
     '/services/ai-solutions',
-    '/services/cyber-security',
-    '/services/ecommerce-development'
+    '/services/erp-crm',
+    '/services/cloud-services'
   ];
 
   const staticRoutes = staticPaths.map((path) => ({
     url: `${baseUrl}${path}`,
-    lastModified: new Date(),
+    lastModified: defaultLastModified,
     changeFrequency: 'weekly' as const,
     priority: path === '' ? 1.0 : 0.8
   }));
 
   const serviceRoutes = servicePaths.map((path) => ({
     url: `${baseUrl}${path}`,
-    lastModified: new Date(),
+    lastModified: defaultLastModified,
     changeFrequency: 'weekly' as const,
     priority: 0.9
   }));
 
   const dynamicBlogRoutes = blogs.map((blog) => ({
     url: `${baseUrl}/blog/${blog.slug}`,
-    lastModified: new Date(blog.publishedAt || new Date()),
+    lastModified: blog.publishedAt || defaultLastModified,
     changeFrequency: 'monthly' as const,
     priority: 0.6
   }));
