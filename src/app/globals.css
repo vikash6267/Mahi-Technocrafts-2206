@@ -74,6 +74,38 @@ body {
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
 }
 
+/* Keep CMS-authored article HTML inside the mobile viewport. */
+.blog-rich-content {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.blog-rich-content :where(a, p, li, blockquote, h1, h2, h3, h4, h5, h6) {
+  max-width: 100%;
+}
+
+.blog-rich-content :where(img, video, canvas) {
+  max-width: 100%;
+  height: auto !important;
+}
+
+.blog-rich-content :where(iframe, embed, object) {
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.blog-rich-content :where(pre, table) {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.blog-rich-content :where([style*="width"]) {
+  max-width: 100% !important;
+}
+
 /* Spinning neon borders */
 .beam-border {
   position: relative;

@@ -32,18 +32,19 @@ export async function generateMetadata({ params }: PageProps) {
   const optimizedShareImg = rawImg.startsWith('http')
     ? `https://mahitechnocrafts.in/_next/image?url=${encodeURIComponent(rawImg)}&w=1200&q=70`
     : `https://mahitechnocrafts.in/_next/image?url=${encodeURIComponent(`https://mahitechnocrafts.in${rawImg}`)}&w=1200&q=70`;
+  const pageUrl = `https://mahitechnocrafts.in/blog/${blog.slug}`;
 
   return {
     title: blog.metaTitle || blog.title,
     description: blog.metaDescription || blog.excerpt,
     alternates: {
-      canonical: blog.canonicalUrl || `https://mahitechnocrafts.in/blog/${blog.slug}`
+      canonical: pageUrl
     },
     openGraph: {
       title: blog.ogTitle || blog.metaTitle || blog.title,
       description: blog.ogDescription || blog.metaDescription || blog.excerpt,
       type: 'article',
-      url: `https://mahitechnocrafts.in/blog/${blog.slug}`,
+      url: pageUrl,
       publishedTime: blog.publishedAt,
       authors: [blog.author],
       tags: blog.tags,
@@ -94,7 +95,36 @@ export default async function BlogDetailPage({ params }: PageProps) {
   });
 
   // Schema.org Structured JSON-LD Data
-  const schemas: any[] = [];
+  const schemas: Array<Record<string, unknown>> = [];
+  const schemaImage = blog.coverImage || '/og-image.jpg';
+  const fullImageUrl = schemaImage.startsWith('http') ? schemaImage : `https://mahitechnocrafts.in${schemaImage}`;
+  const pageUrl = `https://mahitechnocrafts.in/blog/${blog.slug}`;
+
+  // BreadcrumbList Schema
+  schemas.push({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://mahitechnocrafts.in'
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Blog',
+        item: 'https://mahitechnocrafts.in/blog'
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: blog.title,
+        item: pageUrl
+      }
+    ]
+  });
 
   if (blog.enableBlogSchema) {
     schemas.push({
@@ -102,19 +132,34 @@ export default async function BlogDetailPage({ params }: PageProps) {
       '@type': 'BlogPosting',
       headline: blog.title,
       description: blog.excerpt,
-      image: blog.coverImage.startsWith('http') ? blog.coverImage : `https://mahitechnocrafts.in${blog.coverImage}`,
+      image: fullImageUrl,
       datePublished: blog.publishedAt,
+      dateModified: blog.publishedAt,
       author: {
         '@type': 'Person',
-        name: blog.author
+        name: blog.author,
+        url: 'https://mahitechnocrafts.in/about'
       },
       publisher: {
         '@type': 'Organization',
-        name: 'Mahi Technocrafts',
+        name: 'Mahi TechnoCrafts',
         logo: {
           '@type': 'ImageObject',
           url: 'https://mahitechnocrafts.in/logo.png'
         }
+      },
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': pageUrl
+      },
+      keywords: blog.tags?.join(', '),
+      articleSection: blog.category,
+      inLanguage: 'en-IN',
+      isAccessibleForFree: 'True',
+      isPartOf: {
+        '@type': 'Blog',
+        '@id': 'https://mahitechnocrafts.in/blog',
+        name: 'Mahi TechnoCrafts Blog'
       }
     });
   }
@@ -164,7 +209,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
         
         {/* Main Article Content */}
-        <article className={headings.length > 0 ? "lg:col-span-9 space-y-8" : "lg:col-span-12 space-y-8"}>
+        <article className={headings.length > 0 ? "lg:col-span-9 space-y-8 min-w-0" : "lg:col-span-12 space-y-8 min-w-0"}>
           {/* Header */}
           <div className="space-y-4 pb-6 border-b border-slate-200/50 dark:border-slate-850">
             <div className="flex flex-wrap items-center gap-4 text-xs text-slate-400 font-semibold uppercase tracking-wider">
@@ -219,8 +264,8 @@ export default async function BlogDetailPage({ params }: PageProps) {
           <div
             className={
               cleanContent.includes('style=')
-                ? "not-prose max-w-none pt-2 text-sm sm:text-base leading-relaxed"
-                : "prose prose-slate dark:prose-invert max-w-none pt-2 text-sm sm:text-base leading-relaxed text-slate-700 dark:text-slate-350 space-y-4"
+                ? "blog-rich-content not-prose max-w-none pt-2 text-sm sm:text-base leading-relaxed"
+                : "blog-rich-content prose prose-slate dark:prose-invert max-w-none pt-2 text-sm sm:text-base leading-relaxed text-slate-700 dark:text-slate-350 space-y-4"
             }
             dangerouslySetInnerHTML={{ __html: cleanContent }}
           />
@@ -244,7 +289,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
           )}
 
           {/* Share Article Footer */}
-          <div className="pt-8 border-t border-slate-200/50 dark:border-slate-850 flex items-center justify-between text-xs text-slate-400">
+          <div className="pt-8 border-t border-slate-200/50 dark:border-slate-850 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between text-xs text-slate-400">
             <span>Written by Mahi Technocrafts Editorial Team</span>
             <ShareButton />
           </div>
