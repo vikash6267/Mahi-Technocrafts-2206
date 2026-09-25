@@ -98,30 +98,8 @@ export default function AdminDashboardPage() {
   });
   const [projectTagsInput, setProjectTagsInput] = useState('');
 
-  // Blog creation forms state
-  const [blogForm, setBlogForm] = useState<{
-    slug: string;
-    title: string;
-    excerpt: string;
-    content: string;
-    author: string;
-    coverImage: string;
-    imageAlt: string;
-    category: string;
-    tags: string;
-    metaTitle: string;
-    metaDescription: string;
-    focusKeyword: string;
-    canonicalUrl: string;
-    ogTitle: string;
-    ogDescription: string;
-    ogImage: string;
-    enableBlogSchema: boolean;
-    enableFaqSchema: boolean;
-    faqs: BlogFAQ[];
-    status: 'draft' | 'published';
-    suggestedImagePrompt: string;
-  }>({
+  // Blog creation initial state
+  const initialBlogFormState = {
     slug: '',
     title: '',
     excerpt: '',
@@ -140,10 +118,13 @@ export default function AdminDashboardPage() {
     ogImage: '',
     enableBlogSchema: true,
     enableFaqSchema: false,
-    faqs: [],
-    status: 'published',
+    faqs: [] as BlogFAQ[],
+    status: 'published' as 'draft' | 'published',
     suggestedImagePrompt: ''
-  });
+  };
+
+  // Blog creation forms state
+  const [blogForm, setBlogForm] = useState<typeof initialBlogFormState>(initialBlogFormState);
 
   // Check auth session and fetch all records
   useEffect(() => {
@@ -494,27 +475,7 @@ export default function AdminDashboardPage() {
         if (listRes.ok) setBlogsList(await listRes.json());
 
         // Reset and hide form
-        setBlogForm({
-          slug: '',
-          title: '',
-          excerpt: '',
-          content: '<h3>Introduce your topic</h3><p>Start typing your rich article text here...</p>',
-          author: 'Vikash Maheshwari',
-          coverImage: '/images/blog-default.jpg',
-          imageAlt: '',
-          category: 'Web Development',
-          tags: 'Next.js, Tailwind, React',
-          metaTitle: '',
-          metaDescription: '',
-          focusKeyword: '',
-          canonicalUrl: '',
-          ogTitle: '',
-          ogDescription: '',
-          ogImage: '',
-          enableBlogSchema: true,
-          enableFaqSchema: false,
-          faqs: []
-        });
+        setBlogForm(initialBlogFormState);
         setShowCreateForm(false);
         setTimeout(() => setSaveStatus(''), 3000);
       } else {
@@ -1292,27 +1253,7 @@ export default function AdminDashboardPage() {
                     onClick={() => {
                       setShowCreateForm(false);
                       setEditingBlogSlug(null);
-                      setBlogForm({
-                        slug: '',
-                        title: '',
-                        excerpt: '',
-                        content: '<h3>Introduce your topic</h3><p>Start typing your rich article text here...</p>',
-                        author: 'Vikash Maheshwari',
-                        coverImage: '/images/blog-default.jpg',
-                        imageAlt: '',
-                        category: 'Web Development',
-                        tags: 'Next.js, Tailwind, React',
-                        metaTitle: '',
-                        metaDescription: '',
-                        focusKeyword: '',
-                        canonicalUrl: '',
-                        ogTitle: '',
-                        ogDescription: '',
-                        ogImage: '',
-                        enableBlogSchema: true,
-                        enableFaqSchema: false,
-                        faqs: []
-                      });
+                      setBlogForm(initialBlogFormState);
                     }}
                     className="px-4 py-2.5 bg-white border border-slate-200 hover:bg-slate-50 text-slate-650 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 cursor-pointer shadow-sm transition-colors"
                   >

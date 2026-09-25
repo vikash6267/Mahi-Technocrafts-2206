@@ -3,11 +3,6 @@
 import { useEffect } from 'react';
 import Script from 'next/script';
 
-declare global {
-  interface Window {
-    fbq: any;
-  }
-}
 
 export default function MetaPixel({ pixelId }: { pixelId: string }) {
   useEffect(() => {
