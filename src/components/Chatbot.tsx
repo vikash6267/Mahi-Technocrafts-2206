@@ -121,20 +121,20 @@ export default function Chatbot() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-40">
+    <div className="fixed bottom-6 left-6 z-40">
       {/* Floating Chat Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-14 h-14 bg-sky-600 dark:bg-brand-blue hover:bg-sky-700 dark:hover:bg-brand-blue/90 text-white rounded-full flex items-center justify-center shadow-lg shadow-brand-blue/30 cursor-pointer transition-transform duration-200 active:scale-95"
+        className="w-13 h-13 sm:w-14 sm:h-14 bg-sky-600 dark:bg-brand-blue hover:bg-sky-700 dark:hover:bg-brand-blue/90 text-white rounded-full flex items-center justify-center shadow-lg shadow-brand-blue/30 cursor-pointer transition-transform duration-200 active:scale-95"
         aria-label="Toggle Mahi AI Assistant Chatbot"
       >
-        {isOpen ? <X size={24} /> : <MessageSquare size={24} />}
+        {isOpen ? <X size={22} /> : <MessageSquare size={22} />}
       </button>
 
       {/* Chat Window */}
       {isOpen && (
         <div
-          className="absolute bottom-16 right-0 w-80 md:w-96 h-[480px] rounded-2xl glass shadow-2xl flex flex-col overflow-hidden z-50 text-slate-800 dark:text-slate-100"
+          className="absolute bottom-16 left-0 w-80 sm:w-96 h-[460px] rounded-2xl glass shadow-2xl flex flex-col overflow-hidden z-50 text-slate-800 dark:text-slate-100 border border-slate-200 dark:border-slate-800"
         >
           {/* Header */}
           <div className="p-4 bg-brand-blue text-white flex items-center gap-3">

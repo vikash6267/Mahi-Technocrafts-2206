@@ -79,6 +79,7 @@ export default function Testimonials({ initialReviews = [] }: TestimonialsProps)
                   alt={activeTestimonial.name}
                   width={64}
                   height={64}
+                  unoptimized={true}
                   className="w-16 h-16 rounded-full object-cover border border-slate-200 dark:border-slate-800 shadow-md"
                 />
               ) : (

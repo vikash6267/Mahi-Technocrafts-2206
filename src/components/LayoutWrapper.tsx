@@ -6,6 +6,7 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import Chatbot from './Chatbot';
 import CustomCursor from './CustomCursor';
+import FloatingWhatsApp from './FloatingWhatsApp';
 
 export default function LayoutWrapper({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -25,8 +26,9 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
       <main className="flex-1 pt-20">{children}</main>
       <Footer />
       
-      {/* Interactive Assistant */}
+      {/* Interactive Assistant & Instant Contact */}
       <Chatbot />
+      <FloatingWhatsApp />
     </>
   );
 }

@@ -36,16 +36,28 @@ export async function POST(request: Request) {
     let contentType = file.type;
     let fileName = file.name;
 
-    // Auto-compress images to WebP using sharp library
+    // Auto-compress and optimize images (Max 1920px width, crisp WebP ~150-400KB, well under 1-2MB)
     if (file.type.startsWith('image/')) {
       try {
         const optimizedBuffer = await sharp(buffer)
-          .webp({ quality: 75 })
+          .rotate() // Auto-orient based on EXIF
+          .resize({
+            width: 1920,
+            height: 1080,
+            fit: 'inside',
+            withoutEnlargement: true
+          })
+          .webp({
+            quality: 80,
+            effort: 5
+          })
           .toBuffer();
+
         buffer = Buffer.from(optimizedBuffer);
         contentType = 'image/webp';
-        // Swap file extension to webp
+        // Swap file extension to .webp
         fileName = file.name.replace(/\.[^/.]+$/, "") + '.webp';
+        console.log(`[S3 Upload] Image compressed with Sharp: final size ${(buffer.length / 1024).toFixed(1)} KB`);
       } catch (err) {
         console.error('Sharp image optimization failed, uploading original', err);
       }
@@ -56,22 +68,25 @@ export async function POST(request: Request) {
     const sanitizedName = fileName.trim().toLowerCase().replace(/[^a-z0-9.]+/g, '-');
     const key = `mahi-technocrafts/${timestamp}-${sanitizedName}`;
     const bucketName = process.env.AWS_S3_BUCKET_NAME || 'idcard-pro-images';
+    const region = process.env.AWS_REGION || 'ap-south-1';
 
     const command = new PutObjectCommand({
       Bucket: bucketName,
       Key: key,
       Body: buffer,
       ContentType: contentType,
+      CacheControl: 'public, max-age=31536000, immutable'
     });
 
     await s3Client.send(command);
 
-    const fileUrl = `https://${bucketName}.s3.${process.env.AWS_REGION || 'ap-south-1'}.amazonaws.com/${key}`;
+    const fileUrl = `https://${bucketName}.s3.${region}.amazonaws.com/${key}`;
 
     return NextResponse.json({
       success: true,
       url: fileUrl,
-      name: fileName
+      name: fileName,
+      sizeKb: (buffer.length / 1024).toFixed(1)
     });
   } catch (error: any) {
     console.error('S3 Upload Failure:', error);

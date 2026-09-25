@@ -1,7 +1,20 @@
 import React from 'react';
 import Link from 'next/link';
 import * as Icons from 'lucide-react';
-import { ArrowLeft, Sparkles, ChevronRight, CheckCircle2, MessageSquare, PhoneCall, BookOpen, HelpCircle } from 'lucide-react';
+import { 
+  ArrowLeft, 
+  Sparkles, 
+  ChevronRight, 
+  CheckCircle2, 
+  MessageSquare, 
+  PhoneCall, 
+  BookOpen, 
+  HelpCircle,
+  ArrowRight,
+  ShieldCheck,
+  Zap,
+  Star
+} from 'lucide-react';
 import { getSiteData, getBlogs, BlogItem } from '@/lib/db';
 import { notFound } from 'next/navigation';
 
@@ -13,43 +26,49 @@ interface PageProps {
 const ServiceIcon = ({ name, className }: { name: string; className?: string }) => {
   // @ts-ignore
   const Icon = Icons[name];
-  if (!Icon) return <Icons.HelpCircle className={className} />;
+  if (!Icon) return <Icons.Code2 className={className} />;
   return <Icon className={className} />;
 };
 
-const serviceDetailsMap: Record<string, {
+interface ServiceDetailEntry {
   title: string;
   metaTitle: string;
   metaDescription: string;
   headline: string;
   icon: string;
+  priceHook: string;
+  deliveryTime: string;
   longDescription: string;
   features: string[];
   faqs: { q: string; a: string }[];
-}> = {
-  /* ── DB slugs ──────────────────────────────────────── */
+}
+
+const serviceDetailsMap: Record<string, ServiceDetailEntry> = {
+  /* ── Core Services from Navbar Dropdown ──────────────── */
   'web-dev': {
     title: 'Web Development',
     metaTitle: 'Website Development Company in Bhopal | Mahi TechnoCrafts',
-    metaDescription: 'Top website development company in Bhopal. High-speed custom web design, React, Next.js, and custom e-commerce web solutions in Bhopal.',
-    headline: 'Website Development Company in Bhopal',
-    icon: 'Code2',
-    longDescription: 'Mahi TechnoCrafts is the premier website development agency in Bhopal, engineering high-speed, secure, and SEO-optimized custom web solutions near you. Our MERN and Next.js developers craft stunning online systems designed to scale your business and generate maximum local customer conversions.',
+    metaDescription: 'Top website development company in Bhopal. High-speed custom web design, mobile-friendly stores, and business websites starting from ₹2,999*.',
+    headline: 'Top Website Development Company in Bhopal',
+    icon: 'Globe',
+    priceHook: 'Starting from ₹2,999*',
+    deliveryTime: '7-14 Days',
+    longDescription: 'Mahi TechnoCrafts is the premier website development agency in Bhopal, engineering high-speed, secure, and Google-ranked custom websites. Our expert design team crafts stunning websites designed to scale your business and generate maximum customer phone calls and inquiries.',
     features: [
-      'Superfast Server-Side Rendered (SSR) Next.js Websites',
-      'Fully Responsive Mobile-First Coding',
-      'Pre-Integrated Local Business & WebSite Schemas',
-      'Interactive Custom Dashboards & Admin Panels',
-      'Search-Engine Friendly Clean Semantics'
+      'Superfast Loading Mobile & Desktop Business Websites',
+      '100% Mobile Responsive & Modern User-Friendly Design',
+      'Pre-Integrated Local Business Schemas for Top Google Rankings',
+      'Simple Mobile Admin Panel to Update Prices & Photos in 30s',
+      'Instant WhatsApp Chat & Lead Capture Forms Integration'
     ],
     faqs: [
       {
         q: 'Why is Mahi TechnoCrafts the best web development company in Bhopal?',
-        a: 'We engineer superfast, secure Next.js websites that load instantly, score 90+ in Core Web Vitals, and are pre-integrated with Local SEO schema to rank #1 in Bhopal.'
+        a: 'We build superfast, secure websites that load in under 1 second on mobile phones, look stunning, and are pre-integrated with Local SEO to rank #1 in Bhopal.'
       },
       {
         q: 'How much does web development cost in Bhopal?',
-        a: 'Our custom high-performance business websites start with budget-friendly rates, taking about 2–4 weeks to design, develop, and launch.'
+        a: 'Our custom high-performance business websites start with budget-friendly rates from ₹2,999*, taking about 7–14 days to design, develop, test, and launch.'
       },
       {
         q: 'Will my website rank on Google Search in Bhopal?',
@@ -57,41 +76,207 @@ const serviceDetailsMap: Record<string, {
       }
     ]
   },
+
   'mobile-dev': {
     title: 'Mobile App Development',
     metaTitle: 'Mobile App Development Company in Bhopal | Mahi TechnoCrafts',
-    metaDescription: 'Best mobile app development company in Bhopal. High-performance React Native, Flutter, secure iOS and Android custom apps.',
+    metaDescription: 'Best mobile app development company in Bhopal. High-performance, secure iOS and Android custom mobile apps starting from ₹9,999*.',
     headline: 'Mobile App Development Company in Bhopal',
     icon: 'Smartphone',
-    longDescription: 'Mahi TechnoCrafts is the top-tier mobile app development agency in Bhopal, Madhya Pradesh. We build feature-rich, high-performance, and secure Android and iOS applications with seamless APIs, custom dashboard integrations, and stunning user interfaces.',
+    priceHook: 'Starting from ₹9,999*',
+    deliveryTime: '2-4 Weeks',
+    longDescription: 'Mahi TechnoCrafts is the top-tier mobile app development agency in Bhopal, Madhya Pradesh. We build feature-rich, high-performance, and secure Android and iPhone applications with instant push notifications, 1-click UPI payments, and stunning interfaces.',
     features: [
-      'High-Performance React Native & Flutter Apps',
-      'Seamless API Integrations & Real-Time Sync',
-      'Advanced Cloud Database Backends',
-      'Publishing Support on App Store & Google Play',
-      'Premium UI/UX Transitions and Micro-Animations'
+      'High-Performance Android & iPhone (iOS) Mobile Apps',
+      'Instant Push Notifications & Live Customer Alerts',
+      '1-Click Google Pay & PhonePe UPI Payment Gateways',
+      'Full Publishing Support on Google Play Store & Apple App Store',
+      'Easy Mobile Admin Panel to Manage App Content'
     ],
     faqs: [
       {
         q: 'Which is the top mobile app development agency in Bhopal?',
-        a: 'Mahi TechnoCrafts delivers native-performing cross-platform apps using Flutter and React Native, fully integrated with secure databases and custom APIs.'
+        a: 'Mahi TechnoCrafts delivers fast, smooth mobile apps for Android and iPhone, fully integrated with secure databases, UPI payments, and WhatsApp.'
       },
       {
         q: 'Do you publish mobile apps on Play Store and App Store?',
-        a: 'Yes, we handle the complete publishing pipeline, ensuring compliance with Google Play and Apple App Store guidelines.'
+        a: 'Yes, we handle the complete publishing pipeline, ensuring your app goes live smoothly on Google Play and Apple App Store.'
       },
       {
         q: 'How long does mobile app development take?',
-        a: 'Depending on features, a custom mobile app takes about 6 to 10 weeks to fully design, code, test, and release.'
+        a: 'Depending on features, a custom mobile app takes about 2 to 4 weeks to fully design, code, test, and release.'
       }
     ]
   },
-  'uiux-design': {
-    title: 'UI/UX Design',
-    metaTitle: 'UI/UX Design Agency in Bhopal | Mahi TechnoCrafts',
-    metaDescription: 'Best UI/UX design agency in Bhopal. Beautiful, conversion-focused app and website designs crafted for seamless user experiences.',
-    headline: 'UI/UX Design Agency in Bhopal',
+
+  'digital-marketing': {
+    title: 'Digital Marketing & Growth',
+    metaTitle: 'Digital Marketing Agency in Bhopal | Mahi TechnoCrafts',
+    metaDescription: 'Top digital marketing agency in Bhopal. Google Ads, Meta PPC, targeted lead funnels, and high-converting marketing strategies starting from ₹4,999*.',
+    headline: 'Data-Driven Digital Marketing & Lead Generation in Bhopal',
+    icon: 'TrendingUp',
+    priceHook: 'Starting from ₹4,999*',
+    deliveryTime: 'Continuous Growth',
+    longDescription: 'Accelerate your customer acquisition with Mahi TechnoCrafts. We design full-funnel digital marketing campaigns across Google Search, Instagram, Facebook, and LinkedIn to generate high-intent inbound calls and leads for your business in Bhopal and across India.',
+    features: [
+      'High-ROI Google Search & Local Maps PPC Campaigns',
+      'Targeted Facebook & Instagram Conversion Ads',
+      'Sales Funnel Landing Page Design & CRO Optimization',
+      'Lead Automation with Direct WhatsApp & CRM Routing',
+      'Transparent Weekly Reporting & ROI Attribution'
+    ],
+    faqs: [
+      {
+        q: 'How quickly can digital marketing generate leads for my business?',
+        a: 'With targeted Google and Meta Ads, our clients typically begin receiving verified inquiries within 48 to 72 hours of campaign launch.'
+      },
+      {
+        q: 'What makes Mahi TechnoCrafts different from other digital marketing agencies in Bhopal?',
+        a: 'We combine high-speed website engineering with deep analytics, ensuring the traffic we generate lands on lightning-fast pages designed specifically to convert.'
+      },
+      {
+        q: 'Do you provide marketing for local businesses in Bhopal?',
+        a: 'Yes, we specialize in hyper-local targeting across Bhopal, Indore, and Madhya Pradesh to drive local footfall and inquiries.'
+      }
+    ]
+  },
+
+  'seo-services': {
+    title: 'SEO & Generative Engine Optimization',
+    metaTitle: 'SEO Services in Bhopal | Local SEO & GEO | Mahi TechnoCrafts',
+    metaDescription: 'Best SEO services company in Bhopal. Boost your Google Search, Google Maps, and AI Engine rankings with expert Local SEO and GEO solutions starting from ₹2,999*.',
+    headline: 'SEO & Generative Engine Optimization in Bhopal',
+    icon: 'Search',
+    priceHook: 'Starting from ₹2,999*',
+    deliveryTime: 'Monthly Retainer',
+    longDescription: 'Elevate your organic reach with the best SEO services company in Bhopal. Mahi TechnoCrafts provides cutting-edge Local SEO, Google Business Profile (GBP) ranking optimization, NAP consistency, and modern Generative Engine Optimization (GEO) to ensure your business ranks #1 in standard search and AI systems.',
+    features: [
+      'High-Impact Local SEO & Google Maps Ranking Optimization',
+      'Generative Engine Optimization (GEO) for ChatGPT, Gemini & Perplexity',
+      'Dynamic Schema Markups (LocalBusiness, FAQ, Breadcrumb)',
+      'High-Quality Content Strategy & Keyphrase Analysis',
+      'Crawl Budget Management & Indexing Fixes'
+    ],
+    faqs: [
+      {
+        q: 'How does Mahi TechnoCrafts improve local SEO in Bhopal?',
+        a: 'We optimize site speed, structure clean HTML5 semantic tags, implement robust local JSON-LD schemas globally, and sync your website content with Bhopal-based local keywords.'
+      },
+      {
+        q: 'What is Generative Engine Optimization (GEO)?',
+        a: 'GEO is the practice of optimizing your site\'s structure, E-E-A-T signals, and FAQ schemas so that conversational AI engines like ChatGPT, Gemini, and Perplexity recommend your business.'
+      },
+      {
+        q: 'How long does it take to see results in search rankings?',
+        a: 'While technical fixes index within days, top competitive organic rankings typically show strong compounding growth over 2 to 4 months.'
+      }
+    ]
+  },
+
+  'branding-identity': {
+    title: 'Branding & Visual Identity',
+    metaTitle: 'Branding & Logo Design Agency in Bhopal | Mahi TechnoCrafts',
+    metaDescription: 'Best branding agency in Bhopal. Premium logo design, brand guideline books, visual identity, and UI/UX design starting from ₹2,999*.',
+    headline: 'Premium Branding & Visual Identity in Bhopal',
     icon: 'Palette',
+    priceHook: 'Starting from ₹2,999*',
+    deliveryTime: '1-2 Weeks',
+    longDescription: 'Establish an unforgettable brand with Mahi TechnoCrafts. We craft distinctive logo identities, typography guidelines, corporate stationery, and modern visual design languages that build instant credibility and trust with your customers.',
+    features: [
+      'Custom Vector Logo Concepts with Unlimited Revisions',
+      'Comprehensive Brand Style Guide (Colors, Typography, Usage)',
+      'Business Cards, Letterheads & Social Media Branding Kits',
+      'Packaging & Product Mockup Visuals',
+      'Full Vector & High-Res Source File Handover (AI, SVG, PNG)'
+    ],
+    faqs: [
+      {
+        q: 'What deliverables are included in a branding package?',
+        a: 'You receive original vector logo files, color codes (RGB/HEX/CMYK), typography fonts, social media display kits, and a PDF brand guideline document.'
+      },
+      {
+        q: 'Can you redesign our existing company logo without losing our identity?',
+        a: 'Yes, we specialize in modern brand refreshes that clean up and modernize your look while preserving your core recognized elements.'
+      },
+      {
+        q: 'How long does a branding project take?',
+        a: 'A complete branding package takes 5 to 10 days from initial moodboard concepts to final asset delivery.'
+      }
+    ]
+  },
+
+  'social-media-marketing': {
+    title: 'Social Media Marketing (SMM)',
+    metaTitle: 'Social Media Marketing Agency in Bhopal | Mahi TechnoCrafts',
+    metaDescription: 'Best social media marketing agency in Bhopal. Instagram Reels, creative post designs, community management, and paid growth starting from ₹3,999*.',
+    headline: 'High-Engagement Social Media Marketing in Bhopal',
+    icon: 'Megaphone',
+    priceHook: 'Starting from ₹3,999*',
+    deliveryTime: 'Monthly Growth',
+    longDescription: 'Turn your social media channels into lead generation engines. Mahi TechnoCrafts crafts viral Instagram Reels, aesthetic carousel posts, and targeted engagement campaigns that grow your followers and drive real business inquiries in Bhopal and nationwide.',
+    features: [
+      'High-Impact Instagram Reels & Short-Form Video Production',
+      'Aesthetic Brand Post Designs & Carousel Infographics',
+      'Daily Community Engagement & DM Lead Qualification',
+      'Influencer Collaboration & Local PR Outreaches',
+      'Monthly Content Calendar & Performance Reports'
+    ],
+    faqs: [
+      {
+        q: 'Which social media platforms do you manage?',
+        a: 'We manage Instagram, Facebook, LinkedIn, YouTube Shorts, and X (Twitter) tailored to your industry.'
+      },
+      {
+        q: 'Do you create original video reels and graphics?',
+        a: 'Yes, our creative team handles everything from scriptwriting and motion graphics to captions, hashtags, and scheduling.'
+      },
+      {
+        q: 'How does social media marketing help B2B and local companies in Bhopal?',
+        a: 'Active, high-quality social channels build massive credibility, warm up prospective clients before they buy, and generate direct inquiries in DMs.'
+      }
+    ]
+  },
+
+  'ecommerce-management': {
+    title: 'E-Commerce Management & Growth',
+    metaTitle: 'E-Commerce Store Setup & Management in Bhopal | Mahi TechnoCrafts',
+    metaDescription: 'Best e-commerce setup and management agency in Bhopal. Online stores, WhatsApp catalog shops, Amazon/Flipkart onboarding, and ad funnels starting from ₹4,999*.',
+    headline: 'End-to-End E-Commerce Store Setup & Scaling in Bhopal',
+    icon: 'ShoppingCart',
+    priceHook: 'Starting from ₹4,999*',
+    deliveryTime: '7-14 Days',
+    longDescription: 'Launch and scale your online store with Mahi TechnoCrafts. We provide full-service online shopping store design, 1-click UPI payments, WhatsApp catalog syncing, automated shipping courier integration, and sales growth funnels.',
+    features: [
+      'High-Speed Online Shopping Store with 1-Click Mobile Checkout',
+      'Google Pay, PhonePe & Paytm UPI Payment Gateway Setup',
+      'Automated Courier Shipping Sync (Shiprocket / Delhivery)',
+      'Amazon, Flipkart & Meesho Marketplace Seller Onboarding',
+      'Direct WhatsApp Order Notification for Store Owner'
+    ],
+    faqs: [
+      {
+        q: 'Can you help set up automated shipping and COD verification?',
+        a: 'Yes, we integrate Shiprocket, Delhivery, and custom COD OTP verification to reduce fake orders and returns.'
+      },
+      {
+        q: 'Do you provide marketing to get our first 100 orders?',
+        a: 'Yes, our e-commerce packages include Meta Ads setup, Google Shopping ads, and email/WhatsApp abandoned-cart recovery.'
+      },
+      {
+        q: 'How much does it cost to launch an e-commerce store?',
+        a: 'Our high-performance custom online store packages start from ₹2,999* with affordable maintenance plans.'
+      }
+    ]
+  },
+
+  'uiux-design': {
+    title: 'UI/UX Design & Prototyping',
+    metaTitle: 'UI/UX Design Agency in Bhopal | Mahi TechnoCrafts',
+    metaDescription: 'Best UI/UX design agency in Bhopal. Beautiful, conversion-focused app and website Figma prototypes starting from ₹2,999*.',
+    headline: 'Conversion-Centric UI/UX Design Agency in Bhopal',
+    icon: 'Palette',
+    priceHook: 'Starting from ₹2,999*',
+    deliveryTime: '1-3 Weeks',
     longDescription: 'Mahi TechnoCrafts crafts stunning, user-centric UI/UX designs for websites and mobile applications in Bhopal. Our design philosophy blends aesthetics with functionality — creating interfaces that look beautiful, feel natural, and convert visitors into loyal customers.',
     features: [
       'Custom Figma Wireframes & High-Fidelity Prototypes',
@@ -115,12 +300,15 @@ const serviceDetailsMap: Record<string, {
       }
     ]
   },
+
   'erp-crm': {
-    title: 'Custom Business Software',
+    title: 'Custom Business Software & ERP',
     metaTitle: 'Custom ERP & CRM Development in Bhopal | Mahi TechnoCrafts',
     metaDescription: 'Best custom ERP & CRM software development company in Bhopal. Manage customers, sales, inventory, and operations in one smart dashboard.',
-    headline: 'Custom ERP & CRM Software in Bhopal',
+    headline: 'Custom ERP & CRM Software Development in Bhopal',
     icon: 'Database',
+    priceHook: 'Starting from ₹9,999*',
+    deliveryTime: '3-6 Weeks',
     longDescription: 'Mahi TechnoCrafts builds powerful, easy-to-use custom ERP and CRM business software for companies in Bhopal and across India. From sales pipeline management to inventory tracking and automated invoicing, our systems centralise every business operation into one elegant dashboard.',
     features: [
       'Custom CRM for Leads, Clients & Follow-Ups',
@@ -140,16 +328,19 @@ const serviceDetailsMap: Record<string, {
       },
       {
         q: 'How long does custom business software take to build?',
-        a: 'A standard CRM or ERP module takes 6 to 12 weeks depending on the number of features, integrations, and approval cycles.'
+        a: 'A standard CRM or ERP module takes 3 to 6 weeks depending on the number of features and integrations.'
       }
     ]
   },
+
   'cloud-services': {
-    title: 'Secure Cloud Hosting',
+    title: 'Secure Cloud Hosting & DevOps',
     metaTitle: 'Cloud Hosting & DevOps Services in Bhopal | Mahi TechnoCrafts',
     metaDescription: 'Best secure cloud hosting and DevOps services in Bhopal. 99.9% uptime, SSL, daily backups, and scalable infrastructure for your business.',
     headline: 'Secure Cloud Hosting & DevOps in Bhopal',
     icon: 'Cloud',
+    priceHook: 'Starting from ₹2,999*',
+    deliveryTime: 'Instant Setup',
     longDescription: 'Mahi TechnoCrafts provides enterprise-grade cloud hosting and DevOps services for businesses in Bhopal and across India. We set up scalable, secure, and high-availability infrastructure on AWS, Vercel, and DigitalOcean — ensuring your website or app stays online, fast, and protected 24/7.',
     features: [
       '99.9% Uptime SLA with Auto-Scaling Infrastructure',
@@ -169,104 +360,19 @@ const serviceDetailsMap: Record<string, {
       },
       {
         q: 'Do you handle server migrations?',
-        a: 'Yes, we perform full zero-downtime migrations from shared hosting or other providers to modern cloud infrastructure without disrupting your live traffic.'
+        a: 'Yes, we perform full zero-downtime migrations from shared hosting to modern cloud infrastructure without disrupting your live traffic.'
       }
     ]
   },
-  /* ── Legacy / alternate slugs ──────────────────────── */
-  'website-development': {
-    title: 'Website Development',
-    metaTitle: 'Website Development Company in Bhopal | Mahi TechnoCrafts',
-    metaDescription: 'Top website development company in Bhopal. High-speed custom web design, React, Next.js, and custom e-commerce web solutions in Bhopal.',
-    headline: 'Website Development Company in Bhopal',
-    icon: 'Code2',
-    longDescription: 'Mahi TechnoCrafts is the premier website development agency in Bhopal, engineering high-speed, secure, and SEO-optimized custom web solutions near you. Our MERN and Next.js developers craft stunning online systems designed to scale your business and generate maximum local customer conversions.',
-    features: [
-      'Superfast Server-Side Rendered (SSR) Next.js Websites',
-      'Fully Responsive Mobile-First Coding',
-      'Pre-Integrated Local Business & WebSite Schemas',
-      'Interactive Custom Dashboards & Admin Panels',
-      'Search-Engine Friendly Clean Semantics'
-    ],
-    faqs: [
-      {
-        q: 'Why is Mahi TechnoCrafts the best web development company in Bhopal?',
-        a: 'We don\'t just build basic layouts. We engineer superfast, secure Next.js websites that load instantly, score 90+ in Core Web Vitals, and are pre-integrated with Local SEO schema to rank #1 in Bhopal.'
-      },
-      {
-        q: 'How much does web development cost in Bhopal?',
-        a: 'Our custom high-performance business websites start with budget-friendly rates, taking about 2-4 weeks to design, develop, and launch in Bhopal.'
-      },
-      {
-        q: 'Will my website rank on Google Search in Bhopal?',
-        a: 'Yes, absolutely. We include robots.txt, dynamic sitemaps, custom metadata, and structured JSON-LD schemas out of the box to guarantee your business appears in local searches.'
-      }
-    ]
-  },
-  'mobile-app-development': {
-    title: 'Mobile App Development',
-    metaTitle: 'Mobile App Development Company in Bhopal | Mahi TechnoCrafts',
-    metaDescription: 'Best mobile app development company in Bhopal. High-performance React Native, Flutter, secure iOS and Android custom apps in Bhopal.',
-    headline: 'Mobile App Development Company in Bhopal',
-    icon: 'Smartphone',
-    longDescription: 'Mahi TechnoCrafts is the top-tier mobile app development agency in Bhopal, Madhya Pradesh. We build feature-rich, high-performance, and secure Android and iOS applications with seamless APIs, custom dashboard integrations, and stunning user interfaces.',
-    features: [
-      'High-Performance React Native & Flutter Apps',
-      'Seamless API Integrations & Real-Time Sync',
-      'Advanced Cloud Database Backends',
-      'Publishing Support on App Store & Google Play',
-      'Premium UI/UX Transitions and Micro-Animations'
-    ],
-    faqs: [
-      {
-        q: 'Which is the top mobile app development agency in Bhopal?',
-        a: 'Mahi TechnoCrafts stands out by delivering native-performing cross-platform apps using Flutter and React Native, fully integrated with secure databases and custom APIs.'
-      },
-      {
-        q: 'Do you publish the mobile apps on Play Store and App Store?',
-        a: 'Yes, we handle the complete publishing pipeline, ensuring compliance with Google Play Store and Apple App Store review guidelines.'
-      },
-      {
-        q: 'How long does mobile app development take?',
-        a: 'Depending on features, a custom mobile app takes about 6 to 10 weeks to fully design, code, test, and release.'
-      }
-    ]
-  },
-  'seo-services': {
-    title: 'SEO & Generative Engine Optimization',
-    metaTitle: 'SEO Services in Bhopal | Local SEO & GEO | Mahi TechnoCrafts',
-    metaDescription: 'Best SEO services company in Bhopal. Boost your Google Search, Google Maps, and AI Engine rankings with expert Local SEO and GEO solutions.',
-    headline: 'SEO & Generative Engine Optimization in Bhopal',
-    icon: 'TrendingUp',
-    longDescription: 'Elevate your organic reach with the best SEO services company in Bhopal. Mahi TechnoCrafts provides cutting-edge Local SEO, Google Business Profile (GBP) ranking optimization, NAP consistency, and modern Generative Engine Optimization (GEO) to ensure your business ranks #1 in standard search and AI systems.',
-    features: [
-      'High-Impact Local SEO & Google Maps Ranking',
-      'Generative Engine Optimization (GEO) for ChatGPT & Gemini',
-      'Dynamic Schema Markups (LocalBusiness, FAQ, Breadcrumb)',
-      'High-Quality Content Strategy & Keyphrase Analysis',
-      'Crawl Budget Management & Indexing Fixes'
-    ],
-    faqs: [
-      {
-        q: 'How does Mahi TechnoCrafts improve local SEO in Bhopal?',
-        a: 'We optimize your site speed, structure clean HTML5 semantic tags, implement robust local JSON-LD schemas globally, and sync your website content perfectly with Bhopal-based local keywords.'
-      },
-      {
-        q: 'What is Generative Engine Optimization (GEO)?',
-        a: 'GEO is the practice of optimizing your site\'s structure, E-E-A-T signals, and FAQ schemas so that conversational AI engines like ChatGPT, Gemini, and Perplexity read and recommend your business in their answers.'
-      },
-      {
-        q: 'How long does it take to see results in search rankings?',
-        a: 'While technical changes and sitemaps are crawled in hours, organic authority building and top rankings in Bhopal local queries typically take 3 to 6 months of steady optimization.'
-      }
-    ]
-  },
+
   'ai-solutions': {
     title: 'Smart AI Solutions & Chatbots',
     metaTitle: 'AI Development Company in Bhopal | Mahi TechnoCrafts',
     metaDescription: 'Best AI solutions and chatbot development company in Bhopal. Automate customer support, sales pipelines, and daily operations with smart AI bots.',
     headline: 'AI Development & Smart Chatbots in Bhopal',
     icon: 'Cpu',
+    priceHook: 'Starting from ₹3,999*',
+    deliveryTime: '1-3 Weeks',
     longDescription: 'Mahi TechnoCrafts is the top AI development company in Bhopal. We engineer custom AI agents, automated workflow pipelines, smart conversational chatbots, and intelligent analytics dashboards to save overhead costs and boost user engagement.',
     features: [
       'Conversational AI Chatbots with Instant Replies',
@@ -290,12 +396,15 @@ const serviceDetailsMap: Record<string, {
       }
     ]
   },
+
   'cyber-security': {
     title: 'Cyber Security Services',
     metaTitle: 'Cyber Security Services in Bhopal | Mahi TechnoCrafts',
     metaDescription: 'Best cybersecurity services company in Bhopal. Safe server hardening, secure code audits, vulnerability assessments, and data protection 24/7.',
     headline: 'Cyber Security Services in Bhopal',
     icon: 'ShieldAlert',
+    priceHook: 'Starting from ₹4,999*',
+    deliveryTime: '1-2 Weeks',
     longDescription: 'Protect your digital assets with the premier cyber security agency in Bhopal. Mahi TechnoCrafts provides robust server hardening, secure code auditing, data encryption models, and vulnerability assessments to safeguard your customer data from modern cyber threats.',
     features: [
       'Comprehensive Vulnerability Assessments & Audits',
@@ -318,39 +427,14 @@ const serviceDetailsMap: Record<string, {
         a: 'We close unused ports, set up robust firewalls, restrict SSH access, encrypt data at rest and in transit, and schedule automated regular backups.'
       }
     ]
-  },
-  'ecommerce-development': {
-    title: 'E-Commerce Development',
-    metaTitle: 'E-Commerce Web Design & Development in Bhopal | Mahi TechnoCrafts',
-    metaDescription: 'Best e-commerce web development company in Bhopal. Custom online shopping stores with fast payments, simple dashboards, and inventory management.',
-    headline: 'E-Commerce Store Development in Bhopal',
-    icon: 'ShoppingBag',
-    longDescription: 'Mahi TechnoCrafts is the leading e-commerce web design and development company in Bhopal. We design fast, secure, and conversion-optimized online shopping stores with seamless payment gateway integrations, simple inventory management systems, and high-impact e-commerce SEO.',
-    features: [
-      'High-Speed Custom Shopping Stores',
-      'Razorpay, Paytm, and Stripe Payment Gateways',
-      'Easy Admin Panel for Inventory & Orders',
-      'Discount Coupons & Loyalty Program Setups',
-      'High-Impact E-Commerce Product Schema & SEO'
-    ],
-    faqs: [
-      {
-        q: 'What payment gateways do you support for e-commerce stores?',
-        a: 'We support all major payment gateways including Razorpay, Paytm, Cashfree, PayPal, Stripe, and custom UPI scanning setups.'
-      },
-      {
-        q: 'Is the e-commerce store easy to manage for non-technical users?',
-        a: 'Yes, absolutely! We build extremely simple custom admin dashboards where you can add products, update prices, track sales, and view invoices in one click.'
-      },
-      {
-        q: 'Will my e-commerce store work fast on mobile devices?',
-        a: 'Yes, all our shopping layouts are built with mobile-first responsiveness and high-performance server rendering to guarantee near-instant shopping cart loading speeds.'
-      }
-    ]
   }
 };
 
-// Generate metadata dynamically
+// Aliases for alternate route slugs
+serviceDetailsMap['website-development'] = serviceDetailsMap['web-dev'];
+serviceDetailsMap['mobile-app-development'] = serviceDetailsMap['mobile-dev'];
+serviceDetailsMap['ecommerce-development'] = serviceDetailsMap['ecommerce-management'];
+
 export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
   const details = serviceDetailsMap[slug];
@@ -480,59 +564,65 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         />
       ))}
 
-      <div className="min-h-screen bg-[#fafaff] py-16 dark:bg-[#030014]/10">
-        <div className="max-w-6xl mx-auto px-6">
+      <div className="min-h-screen bg-[#fafaff] dark:bg-[#02000d] py-12 md:py-20">
+        <div className="max-w-6xl mx-auto px-5 sm:px-6">
+          
           {/* Breadcrumb Navigation Bar */}
-          <nav className="flex items-center gap-1.5 text-xs text-slate-500 font-semibold tracking-wide mb-10 overflow-x-auto whitespace-nowrap bg-white py-3 px-5 rounded-xl border border-slate-200/50 shadow-sm select-none">
-            <Link href="/" className="hover:text-sky-700 transition-colors">Home</Link>
+          <nav className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 font-semibold tracking-wide mb-8 overflow-x-auto whitespace-nowrap bg-white dark:bg-slate-900 py-3 px-5 rounded-2xl border border-slate-200/60 dark:border-slate-800 shadow-sm select-none">
+            <Link href="/" className="hover:text-sky-600 transition-colors">Home</Link>
             <ChevronRight size={12} className="text-slate-400" />
-            <Link href="/services" className="hover:text-sky-700 transition-colors">Services</Link>
+            <Link href="/services" className="hover:text-sky-600 transition-colors">Services</Link>
             <ChevronRight size={12} className="text-slate-400" />
-            <span className="text-slate-800 font-bold">{details.title}</span>
+            <span className="text-slate-800 dark:text-white font-bold">{details.title}</span>
           </nav>
 
           {/* Back to all services */}
           <Link
             href="/services"
-            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-sky-700 hover:text-sky-800 transition-colors mb-6"
+            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 hover:text-sky-800 transition-colors mb-8"
           >
             <ArrowLeft size={14} />
             Back to All Services
           </Link>
 
           {/* Hero details card */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-16">
-            <div className="lg:col-span-8 space-y-8 bg-white p-8 sm:p-10 rounded-3xl border border-slate-200/60 shadow-xl relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-sky-500 to-purple-500" />
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start mb-16">
+            <div className="lg:col-span-8 space-y-7 bg-white dark:bg-slate-900 p-8 sm:p-12 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-2xl relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-sky-500 via-blue-600 to-purple-600" />
               
               <div className="space-y-4">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-50 text-[10px] font-bold uppercase tracking-widest text-sky-700">
-                  <Sparkles size={10} className="animate-spin text-purple-500" />
-                  SEO & AI Optimized
-                </span>
+                <div className="flex items-center gap-3 flex-wrap">
+                  <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-sky-50 dark:bg-sky-950/60 text-xs font-bold uppercase tracking-widest text-sky-700 dark:text-sky-300 border border-sky-200 dark:border-sky-800">
+                    <Sparkles size={11} className="animate-spin text-purple-500" />
+                    SEO & AI Optimized
+                  </span>
+                  <span className="text-xs font-bold text-emerald-600 bg-emerald-50 dark:bg-emerald-950/60 px-3 py-1 rounded-full border border-emerald-200 dark:border-emerald-800">
+                    {details.priceHook}
+                  </span>
+                </div>
                 
-                <h1 className="text-3xl sm:text-4xl font-display font-black tracking-tight text-slate-900 leading-tight">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-black tracking-tight text-slate-900 dark:text-white leading-[1.12]">
                   {details.headline}
                 </h1>
               </div>
 
-              <div className="w-12 h-12 rounded-2xl bg-sky-50 text-sky-600 flex items-center justify-center">
-                <ServiceIcon name={details.icon} className="w-6 h-6" />
+              <div className="w-14 h-14 rounded-2xl bg-sky-50 dark:bg-slate-800 text-sky-600 dark:text-sky-400 flex items-center justify-center border border-sky-100 dark:border-slate-700">
+                <ServiceIcon name={details.icon} className="w-7 h-7" />
               </div>
 
-              <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-medium">
+              <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed font-normal">
                 {details.longDescription}
               </p>
 
               {/* Strategic feature list */}
-              <div className="space-y-4 pt-4 border-t border-slate-100">
-                <h3 className="text-sm font-bold uppercase tracking-widest text-slate-800">
+              <div className="space-y-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+                <h3 className="text-xs font-bold uppercase tracking-widest text-slate-800 dark:text-white">
                   Why Choose Mahi TechnoCrafts?
                 </h3>
                 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                   {details.features.map((feature, i) => (
-                    <div key={i} className="flex items-start gap-3 text-xs text-slate-600 leading-normal">
+                    <div key={i} className="flex items-start gap-2.5 text-xs text-slate-600 dark:text-slate-300 leading-normal">
                       <CheckCircle2 size={16} className="text-emerald-500 flex-shrink-0 mt-0.5" />
                       <span>{feature}</span>
                     </div>
@@ -542,52 +632,57 @@ export default async function ServiceDetailPage({ params }: PageProps) {
             </div>
 
             {/* Sidebar CTA Box */}
-            <div className="lg:col-span-4 bg-gradient-to-tr from-slate-900 to-slate-950 p-8 rounded-3xl text-white shadow-2xl space-y-6 flex flex-col justify-between relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-sky-500/10 to-purple-500/10 pointer-events-none" />
-              
-              <div className="space-y-4 relative z-10">
-                <h3 className="font-display font-bold text-lg tracking-wide">
+            <div className="lg:col-span-4 bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 p-8 rounded-3xl text-white shadow-2xl space-y-6 flex flex-col justify-between border border-slate-800 relative overflow-hidden">
+              <div className="space-y-4">
+                <span className="text-[10px] uppercase tracking-widest font-bold text-sky-400 bg-sky-950/80 px-2.5 py-1 rounded-full border border-sky-800">
+                  Instant Project Consultation
+                </span>
+                <h3 className="font-display font-bold text-xl tracking-wide">
                   Start Your Project in Bhopal Today
                 </h3>
                 <p className="text-xs text-slate-300 leading-relaxed">
-                  Let\'s build something beautiful and SEO-friendly. Speak directly with our lead developer near Hamidia Road and rank #1 in search engines.
+                  Let&apos;s engineer something fast, beautiful, and revenue-generating. Speak directly with our lead developer near Hamidia Road and rank #1 in search engines.
                 </p>
               </div>
 
-              <div className="space-y-4 pt-4 border-t border-slate-800 relative z-10">
+              <div className="space-y-3.5 pt-4 border-t border-slate-800 text-xs">
                 <div className="flex items-center gap-3">
-                  <PhoneCall size={16} className="text-sky-400" />
-                  <span className="text-xs font-semibold text-slate-300">+91 6267144122</span>
+                  <PhoneCall size={15} className="text-sky-400" />
+                  <span className="font-semibold text-slate-300">+91 6267144122</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <MessageSquare size={16} className="text-sky-400" />
-                  <span className="text-xs font-semibold text-slate-300">support@mahitechnocrafts.in</span>
+                  <MessageSquare size={15} className="text-sky-400" />
+                  <span className="font-semibold text-slate-300">support@mahitechnocrafts.in</span>
+                </div>
+                <div className="flex items-center gap-3 text-slate-300">
+                  <ShieldCheck size={15} className="text-emerald-400" />
+                  <span>Transparent Pricing & Free Prototype</span>
                 </div>
               </div>
 
               <Link
                 href="/contact"
-                className="w-full py-3.5 bg-sky-500 hover:bg-sky-600 font-bold text-xs uppercase tracking-wider text-center text-white rounded-xl shadow-lg shadow-sky-500/15 cursor-pointer transition-all duration-200 mt-2 block relative z-10"
+                className="w-full py-4 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 font-bold text-xs uppercase tracking-wider text-center text-white rounded-xl shadow-xl shadow-sky-500/20 transition-all block mt-2"
               >
-                Get a Free Quote
+                Get a Free Custom Quote
               </Link>
             </div>
           </div>
 
           {/* Localized FAQ Section */}
-          <div className="bg-white p-8 sm:p-10 rounded-3xl border border-slate-200/60 shadow-xl mb-16">
-            <h2 className="text-xl font-display font-extrabold tracking-tight text-slate-900 mb-8 flex items-center gap-2">
-              <HelpCircle className="text-sky-600" size={20} />
+          <div className="bg-white dark:bg-slate-900 p-8 sm:p-10 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-xl mb-16">
+            <h2 className="text-2xl font-display font-black tracking-tight text-slate-900 dark:text-white mb-8 flex items-center gap-2">
+              <HelpCircle className="text-sky-600" size={22} />
               Frequently Asked Questions 
             </h2>
 
-            <div className="space-y-6">
+            <div className="space-y-4">
               {details.faqs.map((faq, i) => (
-                <div key={i} className="p-5 rounded-2xl bg-[#fafaff] border border-slate-100 text-left space-y-2">
-                  <h3 className="text-sm font-bold text-slate-800 tracking-wide">
+                <div key={i} className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-700/60 text-left space-y-2">
+                  <h3 className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white tracking-wide">
                     Q: {faq.q}
                   </h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
                     A: {faq.a}
                   </p>
                 </div>
@@ -597,27 +692,27 @@ export default async function ServiceDetailPage({ params }: PageProps) {
 
           {/* Related services internal linking */}
           <div className="space-y-8 mb-16">
-            <h2 className="text-xl font-display font-extrabold tracking-tight text-slate-900 text-left">
+            <h2 className="text-2xl font-display font-black tracking-tight text-slate-900 dark:text-white text-left">
               Explore Our Other Services
             </h2>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
               {relatedServices.map(service => (
                 <Link
                   key={service.id}
                   href={`/services/${service.id}`}
-                  className="p-5 rounded-2xl bg-white border border-slate-200/60 hover:border-sky-500/30 hover:shadow-xl transition-all duration-300 group flex flex-col justify-between h-[150px]"
+                  className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 hover:border-sky-500/40 hover:shadow-xl transition-all duration-300 group flex flex-col justify-between h-[150px]"
                 >
                   <div className="space-y-2">
-                    <div className="w-8 h-8 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center flex-shrink-0 group-hover:bg-sky-500 group-hover:text-white transition-colors duration-300">
+                    <div className="w-9 h-9 rounded-xl bg-sky-50 dark:bg-slate-800 text-sky-600 dark:text-sky-400 flex items-center justify-center flex-shrink-0 group-hover:bg-sky-500 group-hover:text-white transition-colors duration-300">
                       <ServiceIcon name={service.icon} className="w-4 h-4" />
                     </div>
-                    <h3 className="font-bold text-slate-800 text-xs tracking-wide line-clamp-2">
+                    <h3 className="font-bold text-slate-900 dark:text-white text-xs tracking-wide line-clamp-2">
                       {service.title}
                     </h3>
                   </div>
                   
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-sky-700 inline-flex items-center gap-1 group-hover:text-sky-800">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-sky-600 dark:text-sky-400 inline-flex items-center gap-1 group-hover:text-sky-700">
                     Read More
                     <ChevronRight size={10} className="transform group-hover:translate-x-0.5 transition-transform" />
                   </span>
@@ -629,31 +724,31 @@ export default async function ServiceDetailPage({ params }: PageProps) {
           {/* Related blogs internal linking */}
           {relatedBlogs.length > 0 && (
             <div className="space-y-8">
-              <h2 className="text-xl font-display font-extrabold tracking-tight text-slate-900 text-left flex items-center gap-2">
-                <BookOpen size={20} className="text-sky-600" />
+              <h2 className="text-2xl font-display font-black tracking-tight text-slate-900 dark:text-white text-left flex items-center gap-2">
+                <BookOpen size={22} className="text-sky-600" />
                 Latest Insights from Our Blog
               </h2>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {relatedBlogs.map(blog => (
                   <Link
                     key={blog.slug}
                     href={`/blog/${blog.slug}`}
-                    className="p-6 rounded-2xl bg-white border border-slate-200/60 hover:border-purple-500/30 hover:shadow-xl transition-all duration-300 group flex flex-col justify-between h-[180px]"
+                    className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 hover:border-purple-500/40 hover:shadow-xl transition-all duration-300 group flex flex-col justify-between h-[180px]"
                   >
                     <div className="space-y-2">
-                      <span className="text-[9px] font-bold uppercase tracking-widest text-purple-600 bg-purple-50 px-2 py-0.5 rounded-full">
+                      <span className="text-[9px] font-bold uppercase tracking-widest text-purple-600 bg-purple-50 dark:bg-purple-950/60 px-2.5 py-0.5 rounded-full border border-purple-200 dark:border-purple-800">
                         {blog.tags[0] || 'Tech'}
                       </span>
-                      <h3 className="font-bold text-slate-800 text-xs sm:text-sm tracking-wide line-clamp-2 group-hover:text-purple-600 transition-colors">
+                      <h3 className="font-bold text-slate-900 dark:text-white text-xs sm:text-sm tracking-wide line-clamp-2 group-hover:text-purple-600 transition-colors">
                         {blog.title}
                       </h3>
-                      <p className="text-xs text-slate-500 line-clamp-2 leading-relaxed">
+                      <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-2 leading-relaxed">
                         {blog.excerpt}
                       </p>
                     </div>
 
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-purple-600 inline-flex items-center gap-1 mt-2">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400 inline-flex items-center gap-1 mt-2">
                       Read Article
                       <ChevronRight size={10} className="transform group-hover:translate-x-0.5 transition-transform" />
                     </span>
@@ -671,18 +766,20 @@ export default async function ServiceDetailPage({ params }: PageProps) {
 // Generate static params for prerendering at build time
 export async function generateStaticParams() {
   return [
-    // DB slugs (used by Services component)
     { slug: 'web-dev' },
     { slug: 'mobile-dev' },
+    { slug: 'digital-marketing' },
+    { slug: 'seo-services' },
+    { slug: 'branding-identity' },
+    { slug: 'social-media-marketing' },
+    { slug: 'ecommerce-management' },
     { slug: 'uiux-design' },
     { slug: 'ai-solutions' },
     { slug: 'erp-crm' },
     { slug: 'cloud-services' },
-    // Legacy / alternate slugs
+    { slug: 'cyber-security' },
     { slug: 'website-development' },
     { slug: 'mobile-app-development' },
-    { slug: 'seo-services' },
-    { slug: 'cyber-security' },
     { slug: 'ecommerce-development' },
   ];
 }

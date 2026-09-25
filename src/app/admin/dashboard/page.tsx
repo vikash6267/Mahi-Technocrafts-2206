@@ -79,6 +79,7 @@ export default function AdminDashboardPage() {
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [isHtmlMode, setIsHtmlMode] = useState(false);
   const [editingBlogSlug, setEditingBlogSlug] = useState<string | null>(null);
+  const [isGeneratingAiBlog, setIsGeneratingAiBlog] = useState(false);
 
   // New items temp states (Services & Projects CRUD)
   const [serviceForm, setServiceForm] = useState<Omit<ServiceItem, 'id'>>({
@@ -118,6 +119,8 @@ export default function AdminDashboardPage() {
     enableBlogSchema: boolean;
     enableFaqSchema: boolean;
     faqs: BlogFAQ[];
+    status: 'draft' | 'published';
+    suggestedImagePrompt: string;
   }>({
     slug: '',
     title: '',
@@ -137,7 +140,9 @@ export default function AdminDashboardPage() {
     ogImage: '',
     enableBlogSchema: true,
     enableFaqSchema: false,
-    faqs: []
+    faqs: [],
+    status: 'published',
+    suggestedImagePrompt: ''
   });
 
   // Check auth session and fetch all records
@@ -409,7 +414,9 @@ export default function AdminDashboardPage() {
       ogImage: blog.ogImage || '',
       enableBlogSchema: blog.enableBlogSchema !== undefined ? blog.enableBlogSchema : true,
       enableFaqSchema: blog.enableFaqSchema !== undefined ? blog.enableFaqSchema : false,
-      faqs: blog.faqs || []
+      faqs: blog.faqs || [],
+      status: blog.status || 'published',
+      suggestedImagePrompt: blog.suggestedImagePrompt || ''
     });
     
     // Automatically set HTML mode if the content contains HTML styles
@@ -417,6 +424,32 @@ export default function AdminDashboardPage() {
     
     setEditingBlogSlug(blog.slug);
     setShowCreateForm(true);
+  };
+
+  // Generate autonomous blog post via Gemini AI
+  const handleGenerateAiBlog = async () => {
+    setIsGeneratingAiBlog(true);
+    setSaveStatus('Connecting to Google Gemini AI to research, write & publish SEO blog...');
+    try {
+      const res = await fetch('/api/cron/blog?secret=mahi_auto_blog_cron_secret_2026', {
+        method: 'POST'
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        setSaveStatus(`Success! Published: "${data.blog.title}"`);
+        // Refresh blogs list
+        const bRes = await fetch('/api/blog');
+        const bData = await bRes.json();
+        if (Array.isArray(bData)) setBlogsList(bData);
+      } else {
+        setSaveStatus(`Gemini Generation Error: ${data.error || 'Failed to generate'}`);
+      }
+    } catch (e: any) {
+      setSaveStatus(`Network Error: ${e.message}`);
+    } finally {
+      setIsGeneratingAiBlog(false);
+      setTimeout(() => setSaveStatus(''), 7000);
+    }
   };
 
   // Add or update a blog post
@@ -1227,12 +1260,33 @@ export default function AdminDashboardPage() {
                 
                 {/* Toggle Editor Plus Button */}
                 {!showCreateForm ? (
-                  <button
-                    onClick={() => setShowCreateForm(true)}
-                    className="px-4 py-2.5 bg-brand-blue hover:bg-brand-blue/90 text-white rounded-xl font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 cursor-pointer shadow-sm shadow-brand-blue/20 transition-colors"
-                  >
-                    <Plus size={14} /> Create New Blog
-                  </button>
+                  <div className="flex flex-wrap gap-2.5">
+                    <button
+                      type="button"
+                      disabled={isGeneratingAiBlog}
+                      onClick={handleGenerateAiBlog}
+                      className="px-4 py-2.5 bg-gradient-to-r from-purple-600 via-indigo-600 to-sky-600 hover:from-purple-500 hover:to-indigo-500 text-white rounded-xl font-bold text-xs uppercase tracking-wider flex items-center gap-2 cursor-pointer shadow-md shadow-purple-600/20 transition-all disabled:opacity-50"
+                    >
+                      {isGeneratingAiBlog ? (
+                        <>
+                          <Loader2 size={14} className="animate-spin text-amber-300" />
+                          <span>Gemini AI Writing Blog...</span>
+                        </>
+                      ) : (
+                        <>
+                          <Sparkles size={14} className="text-amber-300 animate-pulse" />
+                          <span>Generate Blog with Gemini AI</span>
+                        </>
+                      )}
+                    </button>
+
+                    <button
+                      onClick={() => setShowCreateForm(true)}
+                      className="px-4 py-2.5 bg-brand-blue hover:bg-brand-blue/90 text-white rounded-xl font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 cursor-pointer shadow-sm shadow-brand-blue/20 transition-colors"
+                    >
+                      <Plus size={14} /> Create New Blog
+                    </button>
+                  </div>
                 ) : (
                   <button
                     onClick={() => {
@@ -1383,6 +1437,44 @@ export default function AdminDashboardPage() {
                       </div>
 
                       <div className="space-y-1.5">
+                        <label className="text-[9px] uppercase tracking-wider text-slate-500 font-bold">Post Status *</label>
+                        <select
+                          value={blogForm.status || 'published'}
+                          onChange={(e) => setBlogForm({ ...blogForm, status: e.target.value as 'draft' | 'published' })}
+                          className="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-xs text-slate-850 font-bold focus:outline-none focus:border-brand-blue"
+                        >
+                          <option value="published">🟢 Published (Live)</option>
+                          <option value="draft">🟡 Draft (Hidden / Pending Image)</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    {/* Suggested Image Prompt Banner if available */}
+                    {blogForm.suggestedImagePrompt && (
+                      <div className="p-4 bg-purple-50 border border-purple-200 rounded-2xl space-y-2">
+                        <div className="flex items-center justify-between">
+                          <span className="text-[10px] font-bold text-purple-700 uppercase tracking-wider flex items-center gap-1.5">
+                            🎨 Recommended AI Image Prompt (Generate & Upload via S3 above)
+                          </span>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              navigator.clipboard.writeText(blogForm.suggestedImagePrompt);
+                              alert('Image prompt copied to clipboard!');
+                            }}
+                            className="px-2.5 py-1 bg-purple-600 hover:bg-purple-700 text-white rounded-lg text-[10px] font-bold cursor-pointer transition-colors"
+                          >
+                            Copy Prompt
+                          </button>
+                        </div>
+                        <p className="text-xs text-purple-900 font-mono select-all bg-white p-3 rounded-xl border border-purple-100 leading-relaxed">
+                          {blogForm.suggestedImagePrompt}
+                        </p>
+                      </div>
+                    )}
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div className="space-y-1.5">
                         <label className="text-[9px] uppercase tracking-wider text-slate-500 font-bold">Category *</label>
                         <input
                           type="text"
@@ -1393,9 +1485,7 @@ export default function AdminDashboardPage() {
                           required
                         />
                       </div>
-                    </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="space-y-1.5">
                         <label className="text-[9px] uppercase tracking-wider text-slate-500 font-bold">Featured Image Alt Text (SEO Alt) *</label>
                         <input
@@ -1407,17 +1497,17 @@ export default function AdminDashboardPage() {
                           required
                         />
                       </div>
+                    </div>
 
-                      <div className="space-y-1.5">
-                        <label className="text-[9px] uppercase tracking-wider text-slate-500 font-bold">Tags (Comma Separated)</label>
-                        <input
-                          type="text"
-                          value={blogForm.tags}
-                          onChange={(e) => setBlogForm({ ...blogForm, tags: e.target.value })}
-                          className="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-xs text-slate-850 focus:outline-none focus:border-brand-blue"
-                          placeholder="Next.js, Tailwind, React"
-                        />
-                      </div>
+                    <div className="space-y-1.5">
+                      <label className="text-[9px] uppercase tracking-wider text-slate-500 font-bold">Tags (Comma Separated)</label>
+                      <input
+                        type="text"
+                        value={blogForm.tags}
+                        onChange={(e) => setBlogForm({ ...blogForm, tags: e.target.value })}
+                        className="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-xs text-slate-850 focus:outline-none focus:border-brand-blue"
+                        placeholder="Next.js, Tailwind, React"
+                      />
                     </div>
                   </div>
 
@@ -1668,7 +1758,18 @@ export default function AdminDashboardPage() {
                           className="p-5 rounded-2xl border border-slate-200 bg-white shadow-sm flex justify-between items-center gap-6 hover:shadow-md transition-shadow"
                         >
                           <div className="space-y-1">
-                            <h4 className="font-display font-bold text-slate-850 text-sm">{blog.title}</h4>
+                            <div className="flex items-center gap-2">
+                              <h4 className="font-display font-bold text-slate-850 text-sm">{blog.title}</h4>
+                              {blog.status === 'draft' ? (
+                                <span className="px-2 py-0.5 text-[9px] font-bold uppercase rounded-full bg-amber-100 text-amber-700 border border-amber-200">
+                                  Draft (Pending Image)
+                                </span>
+                              ) : (
+                                <span className="px-2 py-0.5 text-[9px] font-bold uppercase rounded-full bg-emerald-100 text-emerald-700 border border-emerald-200">
+                                  Live
+                                </span>
+                              )}
+                            </div>
                             <span className="text-[10px] text-slate-500 block">
                               /{blog.slug} &bull; {blog.publishedAt} &bull; {blog.readTime} &bull; <span className="text-brand-blue font-semibold">{blog.category}</span>
                             </span>

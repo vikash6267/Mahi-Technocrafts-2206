@@ -9,12 +9,19 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
 
   useEffect(() => {
     if (pathname?.startsWith('/admin')) return;
-    // Only initialize on desktop/tablet to avoid weird mobile elastic behavior
-    if (window.innerWidth < 768) return;
+    
+    // Completely bypass Lenis on mobile, tablet, touch screens, and iOS devices to use native 120Hz momentum scrolling
+    const isTouchOrMobile = typeof window !== 'undefined' && (
+      window.innerWidth < 1024 ||
+      'ontouchstart' in window ||
+      navigator.maxTouchPoints > 0 ||
+      /iPad|iPhone|iPod|Android/.test(navigator.userAgent)
+    );
+    if (isTouchOrMobile) return;
 
     const lenis = new Lenis({
       duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // standard ease-out exponential
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
       wheelMultiplier: 1.1,
     });
@@ -31,7 +38,7 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
       lenis.destroy();
       cancelAnimationFrame(rafId);
     };
-  }, []);
+  }, [pathname]);
 
   return <>{children}</>;
 }

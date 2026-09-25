@@ -10,14 +10,24 @@ const nextConfig: NextConfig = {
   ],
 
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
         hostname: "idcard-pro-images.s3.ap-south-1.amazonaws.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "image.pollinations.ai",
+        pathname: "/**",
+      },
     ],
-    formats: ["image/avif", "image/webp"],
   },
 
   poweredByHeader: false,

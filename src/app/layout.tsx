@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/components/ThemeProvider';
 import SmoothScroll from '@/components/SmoothScroll';
 import LayoutWrapper from '@/components/LayoutWrapper';
 import Script from 'next/script';
+import MetaPixel from './meta-pixel';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -281,6 +282,9 @@ export default function RootLayout({
             gtag('config', 'G-T4S7M098JF');
           `}
         </Script>
+
+        {/* Meta Pixel for Ads Tracking */}
+        <MetaPixel pixelId="4037427749886747" />
 
         <ThemeProvider>
           <SmoothScroll>

@@ -78,14 +78,14 @@ export default function BlogList({ initialBlogs }: { initialBlogs: BlogItem[] })
               <div className="space-y-4 w-full">
                 {/* Cover Image */}
                 {blog.coverImage && (
-                  <div className="relative w-full h-44 rounded-xl overflow-hidden mb-2 border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-900">
+                  <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden mb-2 border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-900">
                     <Image
                       src={blog.coverImage}
                       alt={blog.imageAlt || blog.title}
                       fill
                       sizes="(max-width: 768px) 100vw, 33vw"
-                      quality={60}
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      quality={80}
+                      className="object-cover object-center group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
                 )}

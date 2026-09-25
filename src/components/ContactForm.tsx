@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Mail, Phone, MapPin, Send, Loader2, CheckCircle2 } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { trackLeadSubmission, trackPhoneCall } from '@/lib/analytics';
 
 interface ContactFormProps {
   contactInfo: {
@@ -85,6 +86,7 @@ export default function ContactForm({ contactInfo }: ContactFormProps) {
 
       if (res.ok && data.success) {
         setSubmitResult({ success: true, message: data.message });
+        trackLeadSubmission('contact_page_form', { subject: formData.subject });
         setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
 
         // Trigger confetti
@@ -156,7 +158,11 @@ export default function ContactForm({ contactInfo }: ContactFormProps) {
                 </div>
                 <div>
                   <h4 className="font-display font-bold text-slate-800 dark:text-white text-xs">Call Us</h4>
-                  <a href={`tel:${contactInfo.phone}`} className="text-xs text-slate-500 dark:text-slate-400 hover:text-brand-blue mt-0.5 block transition-colors">
+                  <a
+                    href={`tel:${contactInfo.phone}`}
+                    onClick={() => trackPhoneCall('contact_section')}
+                    className="text-xs text-slate-500 dark:text-slate-400 hover:text-brand-blue mt-0.5 block transition-colors"
+                  >
                     +91 {contactInfo.phone}
                   </a>
                 </div>

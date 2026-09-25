@@ -64,7 +64,8 @@ export async function generateMetadata({ params }: PageProps) {
   };
 }
 
-export const revalidate = 10;
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export default async function BlogDetailPage({ params }: PageProps) {
   const { slug } = await params;
@@ -247,15 +248,15 @@ export default async function BlogDetailPage({ params }: PageProps) {
 
           {/* Cover Image */}
           {blog.coverImage && (
-            <div className="relative w-full h-[280px] sm:h-[400px] md:h-[480px] rounded-3xl overflow-hidden border border-slate-200/50 dark:border-slate-800/80 shadow-lg bg-slate-100/50 dark:bg-slate-900/50">
+            <div className="relative w-full aspect-[16/9] max-h-[520px] rounded-3xl overflow-hidden border border-slate-200/50 dark:border-slate-800/80 shadow-lg bg-slate-100/50 dark:bg-slate-900/50">
               <Image
                 src={blog.coverImage}
                 alt={blog.imageAlt || blog.title}
                 fill
                 priority
                 sizes="(max-width: 1200px) 100vw, 1200px"
-                quality={70}
-                className="object-cover"
+                quality={85}
+                className="object-cover object-center"
               />
             </div>
           )}

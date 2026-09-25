@@ -123,11 +123,12 @@ export default function Footer() {
             <li>
               <Link href="/about" className="hover:text-brand-blue transition-colors">About Us</Link>
             </li>
-            {/* Commented out for future activation
+            <li>
+              <Link href="/solutions" className="hover:text-brand-blue transition-colors">Industry Solutions</Link>
+            </li>
             <li>
               <Link href="/#projects" className="hover:text-brand-blue transition-colors">Case Studies</Link>
             </li>
-            */}
             <li>
               <Link href="/blog" className="hover:text-brand-blue transition-colors">Our Blog</Link>
             </li>

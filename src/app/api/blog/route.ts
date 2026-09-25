@@ -75,7 +75,9 @@ export async function POST(request: Request) {
       ogImage: payload.ogImage || payload.coverImage || '/images/blog-default.jpg',
       enableBlogSchema: payload.enableBlogSchema !== undefined ? payload.enableBlogSchema : true,
       enableFaqSchema: payload.enableFaqSchema !== undefined ? payload.enableFaqSchema : false,
-      faqs: payload.faqs || []
+      faqs: payload.faqs || [],
+      status: payload.status || 'published',
+      suggestedImagePrompt: payload.suggestedImagePrompt || ''
     };
 
     const success = await saveBlog(newBlog);

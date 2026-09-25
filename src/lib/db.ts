@@ -158,6 +158,8 @@ export interface BlogItem {
   enableBlogSchema: boolean; // JSON-LD Blog Schema toggler
   enableFaqSchema: boolean; // JSON-LD FAQ Schema toggler
   faqs?: BlogFAQ[]; // Dynamic FAQ elements
+  status?: 'draft' | 'published'; // Draft or live published
+  suggestedImagePrompt?: string; // Suggested Midjourney/Flux image prompt
 }
 
 export interface ContactSubmission {
@@ -191,10 +193,11 @@ const defaultSiteData: SiteData = {
     mission: "To help businesses of all sizes succeed online by providing them with beautiful, fast, and secure websites and apps that make their customers happy.",
     vision: "To be the most trusted tech partner for businesses worldwide, creating smart, simple, and friendly digital tools for everyday work.",
     whyChooseUs: [
-      "Modern, clean, and beautiful designs that match global standards.",
-      "Super-fast, secure, and extremely stable websites and apps.",
-      "Dedicated support and maintenance after launching your project.",
-      "Honest, clear communication and timely delivery at every step."
+      "6 Months 100% Free Maintenance & Bug Fixes included with development cost.",
+      "24/7 Dedicated WhatsApp & Phone Technical Support with rapid turnaround.",
+      "Built-in AI Solutions & Automations (Smart Chatbots & WhatsApp CRM).",
+      "Super-fast, 100% mobile-responsive websites & custom mobile apps.",
+      "100% Full Source Code & Database Ownership with zero lock-in contracts."
     ]
   },
   founder: {

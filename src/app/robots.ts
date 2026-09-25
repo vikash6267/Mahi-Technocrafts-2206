@@ -1,20 +1,19 @@
 import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://mahitechnocrafts.in';
-  
   return {
     rules: [
-      // General crawlers - allow everything except admin
+      // Standard web crawlers
       {
         userAgent: '*',
         allow: '/',
         disallow: [
           '/admin/',
-          '/api/admin/',
-          '/api/upload/'
+          '/api/',
+          '/private/',
+          '*.json',
+          '/temp/'
         ],
-        crawlDelay: 1
       },
       // Google AI (Gemini, Bard, SGE)
       {
@@ -43,82 +42,9 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: 'ClaudeBot',
         allow: '/',
         disallow: ['/admin/']
-      },
-      {
-        userAgent: 'Claude-Web',
-        allow: '/',
-        disallow: ['/admin/']
-      },
-      {
-        userAgent: 'anthropic-ai',
-        allow: '/',
-        disallow: ['/admin/']
-      },
-      // Perplexity AI
-      {
-        userAgent: 'PerplexityBot',
-        allow: '/',
-        disallow: ['/admin/']
-      },
-      // Amazon Alexa
-      {
-        userAgent: 'Amazonbot',
-        allow: '/',
-        disallow: ['/admin/']
-      },
-      // Microsoft (Bing, Copilot)
-      {
-        userAgent: 'Bingbot',
-        allow: '/',
-        disallow: ['/admin/']
-      },
-      {
-        userAgent: 'bingbot',
-        allow: '/',
-        disallow: ['/admin/']
-      },
-      // Meta AI
-      {
-        userAgent: 'FacebookBot',
-        allow: '/',
-        disallow: ['/admin/']
-      },
-      {
-        userAgent: 'meta-externalagent',
-        allow: '/',
-        disallow: ['/admin/']
-      },
-      // Cohere AI
-      {
-        userAgent: 'cohere-ai',
-        allow: '/',
-        disallow: ['/admin/']
-      },
-      // YouBot (You.com)
-      {
-        userAgent: 'YouBot',
-        allow: '/',
-        disallow: ['/admin/']
-      },
-      // Diffbot
-      {
-        userAgent: 'Diffbot',
-        allow: '/',
-        disallow: ['/admin/']
-      },
-      // Apple Intelligence
-      {
-        userAgent: 'Applebot',
-        allow: '/',
-        disallow: ['/admin/']
-      },
-      {
-        userAgent: 'Applebot-Extended',
-        allow: '/',
-        disallow: ['/admin/']
       }
     ],
-    sitemap: `${baseUrl}/sitemap.xml`,
-    host: baseUrl
+    sitemap: 'https://mahitechnocrafts.in/sitemap.xml',
+    host: 'https://mahitechnocrafts.in'
   };
 }

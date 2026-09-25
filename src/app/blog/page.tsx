@@ -9,10 +9,12 @@ export const metadata = {
   }
 };
 
-export const revalidate = 10;
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export default async function BlogPage() {
   const blogs = await getBlogs();
+  const publishedBlogs = blogs.filter(b => b.status !== 'draft');
   
   return (
     <div className="min-h-screen py-16 max-w-7xl mx-auto px-6">
@@ -25,7 +27,7 @@ export default async function BlogPage() {
         </p>
       </div>
 
-      <BlogList initialBlogs={blogs} />
+      <BlogList initialBlogs={publishedBlogs} />
     </div>
   );
 }

@@ -53,16 +53,21 @@ export async function POST(request: Request) {
     const success = await saveContact(newSubmission);
 
     if (success) {
-      // Send email notification to admin asynchronously
-      sendContactNotification({
-        name,
-        email,
-        phone: phone || '',
-        company: '',
-        service: subject || 'General Business Inquiry',
-        budget: 'Not Specified',
-        message
-      }).catch(err => console.error('Failed to send contact notification email:', err));
+      // Send email notification to admin with await for reliability
+      try {
+        await sendContactNotification({
+          name,
+          email,
+          phone: phone || '',
+          company: '',
+          service: subject || 'General Business Inquiry',
+          budget: 'Not Specified',
+          message
+        });
+        console.log(`[Contact API] Email notification sent to admin for inquiry from ${name}`);
+      } catch (err) {
+        console.error('[Contact API] Failed to send contact notification email:', err);
+      }
 
       return NextResponse.json({ success: true, message: 'Your message has been received! We will contact you soon.' });
     } else {
