@@ -1,5 +1,6 @@
 import { getBlogs, saveBlog, BlogItem } from '@/lib/db';
 import { sendNewBlogNotification } from '@/lib/email';
+import { publishToGoogleIndexing } from '@/lib/google-indexing';
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY || '';
 
@@ -177,39 +178,90 @@ const AUTONOMOUS_TOPIC_BANK: GeminiBlogOutput[] = [
   }
 ];
 
+// Bhopal & Regional Commercial Hubs for Hyper-Local Dominance
+export const BHOPAL_HUBS = [
+  'MP Nagar Zone-1 & Zone-2',
+  'Arera Colony & 10 No. Market',
+  'Indrapuri & BHEL Industrial Area',
+  'TT Nagar & New Market',
+  'Gulmohar & Shahpura',
+  'Bawadiya Kalan & Danish Nagar',
+  'Kolar Road',
+  'Hoshangabad Road & Misrod',
+  'Hamidia Road & Old Bhopal',
+  'Bhopal & Central India'
+];
+
+export const TARGET_INDUSTRIES = [
+  'Healthcare Clinics, Hospitals & Specialist Doctors (OPD management, WhatsApp slot booking)',
+  'Retail Stores, Kirana Supermarkets & D2C Brands (0% commission online shop, UPI checkout)',
+  'Real Estate Builders, Townships & Property Brokers (Lead capture CRM, 3D property walkthroughs)',
+  'Manufacturing Units, Factories & Warehouses (Raw material inventory, automated GST billing)',
+  'Schools, Coaching Institutes & EdTech Academies (Student attendance, fee collection portals)',
+  'Lawyers, CA Tax Firms & Corporate Consultancies (Digital case diaries, encrypted client vaults)',
+  'Restaurants, Cafes & Cloud Kitchens (QR digital menu, 0% commission direct online ordering)'
+];
+
+export const TARGET_SOLUTIONS = [
+  'High-Speed Custom Business Websites & Client Portals',
+  'Smart AI Customer Chatbots & WhatsApp CRM Automations',
+  'Custom Mobile Applications (Android & iOS)',
+  'Automated GST Billing, POS & Inventory Systems',
+  'Local Search Dominance & Google Maps #1 Ranking'
+];
+
 /**
- * Autonomous Gemini Blog Generation Engine (Content Only, Fallback Image, Draft Mode & Email Notification)
+ * Autonomous Gemini Blog Generation Engine with Dynamic Hyper-Local Blueprint and Instant Google Indexing
  */
-export async function generateAutonomousBlog(): Promise<{ success: boolean; blog?: BlogItem; error?: string }> {
+export async function generateAutonomousBlog(options?: {
+  status?: 'draft' | 'published';
+}): Promise<{ success: boolean; blog?: BlogItem; error?: string }> {
   try {
     const existingBlogs = await getBlogs();
     const existingTitles = existingBlogs.map(b => b.title).join('\n- ');
     const existingSlugs = existingBlogs.map(b => b.slug);
 
+    // Pick a randomized combination to target a unique high-value local/industry permutation
+    const selectedHub = BHOPAL_HUBS[Math.floor(Math.random() * BHOPAL_HUBS.length)];
+    const selectedIndustry = TARGET_INDUSTRIES[Math.floor(Math.random() * TARGET_INDUSTRIES.length)];
+    const selectedSolution = TARGET_SOLUTIONS[Math.floor(Math.random() * TARGET_SOLUTIONS.length)];
+
     const systemPrompt = `
 ROLE:
-You are an autonomous Senior SEO Strategist and Content Specialist writing for Mahi TechnoCrafts (Central India's leading website & custom software development company, Hamidia Road, Bhopal, founder Vikash Maheshwari, Phone: +91 6267144122, Website: mahitechnocrafts.in). Your objective is to create an authoritative, engaging, SEO-optimized, and AEO-ready (Answer Engine Optimization) blog post written strictly in 100% FLUENT ENGLISH.
+You are the Chief Technology Officer and a master B2B copywriter for "Mahi TechnoCrafts" (Central India's premier custom software and website development agency located at Hamidia Road, Bhopal, founded by Full-Stack Architect Vikash Maheshwari, Phone/WhatsApp: +91 6267144122, Website: mahitechnocrafts.in).
 
-BUSINESS CONTEXT:
-- Services: Custom Website Development, E-Commerce, Mobile Apps (iOS & Android), WhatsApp AI Automations, Industry Software (Healthcare Clinics, Real Estate Builders, Restaurants, EdTech Coaching, Manufacturing ERP, Legal, Fitness & Salons)
-- Target Audience: Business owners, entrepreneurs, doctors, builders, traders in Bhopal, Madhya Pradesh, and across India
-- Pricing: Starting from ₹2,999 ($39) with 6 Months 100% Free Technical Maintenance included
-- Proof Points: 150+ successful projects delivered, 4.9/5 client satisfaction rating, 24/7 dedicated support
-- Tone: Professional, authoritative, actionable, and 100% English (easy for business owners to understand)
+OBJECTIVE:
+Write an authoritative, engaging, 100% FLUENT ENGLISH business blog post specifically tailored for ${selectedIndustry} in or around ${selectedHub}, seeking ${selectedSolution}.
 
-ALREADY PUBLISHED BLOGS (DO NOT REPEAT THESE EXACT TOPICS):
+BUSINESS VALUE & POSITIONING:
+- Focus on real business outcomes: Saving staff time, getting 3x more customer inquiries and phone calls, eliminating manual spreadsheets, and automating 24/7 client booking.
+- Educate the business owner: Compare slow, bloated generic templates (like old WordPress sites or unreliable freelancers) with modern, custom-coded high-speed web and mobile architectures.
+- The Mahi TechnoCrafts Advantage:
+  * Complete projects start from just ₹2,999 ($39) with transparent pricing.
+  * 6 Months of 100% Free Technical Maintenance & Bug Fixes included.
+  * 100% Full Source Code and Database Ownership (Zero lock-in).
+  * 1-Click WhatsApp integration and UPI payment support (Google Pay, PhonePe).
+  * Direct founder support from Vikash Maheshwari (+91 6267144122).
+- Internal Linking: Naturally integrate 2-3 links to our main service routes within content_html:
+  * <a href="/services/web-dev">custom website development</a>
+  * <a href="/services/ai-solutions">smart AI & WhatsApp automation</a>
+  * <a href="/services/mobile-dev">mobile app development</a>
+  * <a href="/estimator">30-second cost estimator</a>
+  * <a href="/contact">free 24-hour prototype consultation</a>
+
+ALREADY PUBLISHED BLOGS (DO NOT REPEAT THESE TOPICS):
 - ${existingTitles}
 
 CONTENT INSTRUCTIONS:
 1. Language: Write STRICTLY in 100% clear, fluent ENGLISH. Do NOT use Hindi or Hinglish words.
-2. Title: 55-60 characters, main commercial keyword near the start, highly clickable.
-3. Meta Description: 150-160 characters with clear value proposition and CTA.
+2. Title: 50-60 characters, high-converting, combining industry need and location.
+3. Meta Description: 140-160 characters with clear value proposition and call to action.
 4. Structure: Semantic HTML using <h2> and <h3> tags, bullet lists <ul><li>.
 5. Answer-First (AEO Optimization): Answer the core question directly in the very first sentence of each section so AI search engines (ChatGPT, Perplexity, Gemini, Google AI Overview) can quote it.
 6. Length: 800-1200 words of rich, practical, actionable content.
 7. FAQs: Include 3-4 highly relevant Q&A pairs.
 8. Call to Action: End with a clear CTA directing readers to contact Mahi TechnoCrafts on WhatsApp (+91 6267144122) for a free prototype.
-9. Suggested Image Prompt: Write a detailed, realistic, high-definition prompt (8k photorealistic style) tailored specifically to this article so the founder can generate and upload their custom banner.
+9. Suggested Image Prompt: Write a detailed, realistic, high-definition prompt (8k photorealistic style) tailored specifically to this article.
 
 OUTPUT FORMAT (STRICT JSON ONLY, NO MARKDOWN CODEBLOCKS, NO PREAMBLE):
 {
@@ -336,7 +388,9 @@ OUTPUT FORMAT (STRICT JSON ONLY, NO MARKDOWN CODEBLOCKS, NO PREAMBLE):
 
     const today = new Date().toISOString().split('T')[0];
 
-    // Format draft blog item
+    const blogStatus: 'draft' | 'published' = options?.status || 'published';
+
+    // Format blog item
     const newBlogItem: BlogItem = {
       slug: slug,
       title: parsed.title,
@@ -358,7 +412,7 @@ OUTPUT FORMAT (STRICT JSON ONLY, NO MARKDOWN CODEBLOCKS, NO PREAMBLE):
       ogImage: coverImage,
       enableBlogSchema: true,
       enableFaqSchema: true,
-      status: 'draft',
+      status: blogStatus,
       suggestedImagePrompt: suggestedPrompt,
       faqs: (parsed.faq || []).map(f => ({
         q: f.question,
@@ -369,6 +423,13 @@ OUTPUT FORMAT (STRICT JSON ONLY, NO MARKDOWN CODEBLOCKS, NO PREAMBLE):
     const saved = await saveBlog(newBlogItem);
 
     if (saved) {
+      // Trigger Instant Google Indexing API Hook if published
+      if (blogStatus === 'published') {
+        publishToGoogleIndexing(`https://mahitechnocrafts.in/blog/${slug}`).catch(err => {
+          console.error('[Google Indexing API Trigger Error in Autonomous Blog]:', err);
+        });
+      }
+
       // Send Email Notification to Vikash with the suggested image prompt
       try {
         await sendNewBlogNotification({
@@ -378,7 +439,7 @@ OUTPUT FORMAT (STRICT JSON ONLY, NO MARKDOWN CODEBLOCKS, NO PREAMBLE):
           excerpt: newBlogItem.excerpt,
           focusKeyword: newBlogItem.focusKeyword,
           suggestedImagePrompt: suggestedPrompt,
-          status: 'draft'
+          status: blogStatus
         });
         console.log(`[Gemini Blog Engine] Notification email with image prompt dispatched to admin!`);
       } catch (mailErr) {

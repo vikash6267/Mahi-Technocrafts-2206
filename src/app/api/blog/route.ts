@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getBlogs, getBlogBySlug, saveBlog, deleteBlogBySlug, BlogItem } from '@/lib/db';
+import { publishToGoogleIndexing } from '@/lib/google-indexing';
 import { cookies } from 'next/headers';
 
 // Helper to check admin authentication cookie
@@ -82,6 +83,11 @@ export async function POST(request: Request) {
 
     const success = await saveBlog(newBlog);
     if (success) {
+      if (newBlog.status === 'published') {
+        publishToGoogleIndexing(`https://mahitechnocrafts.in/blog/${newBlog.slug}`).catch(err => {
+          console.error('[Google Indexing API Trigger Error]:', err);
+        });
+      }
       return NextResponse.json({ success: true, message: 'Blog post saved successfully' });
     } else {
       return NextResponse.json({ error: 'Failed to save blog post' }, { status: 500 });
@@ -108,6 +114,9 @@ export async function DELETE(request: Request) {
 
     const success = await deleteBlogBySlug(slug);
     if (success) {
+      publishToGoogleIndexing(`https://mahitechnocrafts.in/blog/${slug}`, 'URL_DELETED').catch(err => {
+        console.error('[Google Indexing API Delete Error]:', err);
+      });
       return NextResponse.json({ success: true, message: 'Blog post deleted successfully' });
     } else {
       return NextResponse.json({ error: 'Blog not found or failed to delete' }, { status: 404 });
