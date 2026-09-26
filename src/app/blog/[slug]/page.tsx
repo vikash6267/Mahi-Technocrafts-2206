@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, Calendar, Clock, User, HelpCircle, AlignLeft } from 'lucide-react';
+import { ArrowLeft, Calendar, Clock, User, HelpCircle, AlignLeft, Sparkles } from 'lucide-react';
 import { getBlogBySlug } from '@/lib/db';
 import ShareButton from '@/components/ShareButton';
 
@@ -258,6 +258,19 @@ export default async function BlogDetailPage({ params }: PageProps) {
                 quality={85}
                 className="object-cover object-center"
               />
+            </div>
+          )}
+
+          {/* Key Executive Summary (Direct Answer Box) */}
+          {blog.excerpt && (
+            <div className="p-6 rounded-2xl bg-gradient-to-r from-sky-50/90 to-indigo-50/90 dark:from-slate-900/90 dark:to-slate-800/90 border-l-4 border-sky-600 dark:border-sky-500 shadow-sm space-y-2">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-sky-800 dark:text-sky-300">
+                <Sparkles size={14} className="text-sky-600 dark:text-sky-400" />
+                <span>Executive Summary</span>
+              </div>
+              <p className="text-sm sm:text-base text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
+                {blog.excerpt}
+              </p>
             </div>
           )}
 

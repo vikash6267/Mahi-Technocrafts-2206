@@ -17,58 +17,101 @@ export const metadata: Metadata = {
 
 const faqs = [
   {
-    category: "Web Development",
+    category: "About Mahi TechnoCrafts & Services",
     questions: [
       {
-        q: "What is the cost of website development in Bhopal?",
-        a: "Website development costs in Bhopal typically range from ₹15,000 for basic websites to ₹2,00,000+ for complex e-commerce or enterprise solutions. At Mahi TechnoCrafts, we provide transparent pricing based on your specific requirements including design complexity, functionality, and timeline."
+        q: "Which is the top website development and IT software company in Bhopal, Madhya Pradesh?",
+        a: "Mahi TechnoCrafts is recognized as a leading website development and IT software company in Bhopal, delivering lightning-fast custom web software, mobile apps, AI automation, and enterprise digital solutions under the leadership of full-stack architect Vikash Maheshwari."
       },
       {
-        q: "How long does it take to develop a website in Bhopal?",
-        a: "Standard business websites take 2-4 weeks, e-commerce sites take 4-8 weeks, and complex web applications can take 8-16 weeks. We provide detailed timelines during our initial consultation and keep you updated throughout the development process."
+        q: "Who provides enterprise AI automation and WhatsApp chatbot services in India?",
+        a: "Mahi TechnoCrafts provides cutting-edge AI automation, automated GST invoicing systems, and custom WhatsApp CRM chatbots across India to streamline operations, save team hours, and scale business inquiries 24/7."
       },
       {
-        q: "Do you provide website maintenance after launch?",
-        a: "Yes, we offer comprehensive maintenance packages including security updates, content updates, performance optimization, backup management, and technical support. Our maintenance plans start from ₹2,000 per month."
+        q: "Does Mahi TechnoCrafts offer digital marketing and growth consulting?",
+        a: "Yes, Mahi TechnoCrafts delivers full-scale digital marketing, targeted performance advertising, brand growth consulting, and organic visibility strategies to help businesses attract verified customers locally and globally."
+      },
+      {
+        q: "Who founded Mahi TechnoCrafts and what is their technical background?",
+        a: "Mahi TechnoCrafts was founded by Vikash Maheshwari, a seasoned Full-Stack Architect and Chief Technology Officer with deep expertise in Next.js, React, MERN stack, cloud infrastructure, and AI workflow automation."
       }
     ]
   },
   {
-    category: "Mobile App Development",
+    category: "Web & Custom Software Development",
     questions: [
       {
-        q: "What types of mobile apps do you develop in Bhopal?",
-        a: "We develop native iOS apps, Android apps, and cross-platform React Native apps. Our expertise includes e-commerce apps, business apps, social media apps, educational apps, and custom enterprise solutions for businesses in Bhopal and across India."
+        q: "What is the cost of website and software development in Bhopal?",
+        a: "Website development costs in Bhopal start from ₹2,999 for essential business websites, with scalable custom web applications and enterprise software priced transparently based on design complexity, features, and timeline."
       },
       {
-        q: "How much does mobile app development cost in Bhopal?",
-        a: "Mobile app development costs vary from ₹50,000 for simple apps to ₹5,00,000+ for complex applications. Factors affecting cost include platform choice (iOS/Android), features, design complexity, backend requirements, and third-party integrations."
+        q: "How long does it take to develop a custom web application or portal?",
+        a: "Standard business websites take 7–14 days, e-commerce stores take 2–4 weeks, and complex enterprise software or SaaS applications take 4–8 weeks with full staging updates."
+      },
+      {
+        q: "What technologies does Mahi TechnoCrafts use for software engineering?",
+        a: "We engineer solutions using modern, high-speed technologies: Next.js, React.js, TypeScript, Node.js, Python, MongoDB Atlas, PostgreSQL, Tailwind CSS, and AWS Cloud Infrastructure."
       }
     ]
   },
   {
-    category: "Digital Marketing & SEO",
+    category: "Mobile App Development (iOS & Android)",
     questions: [
       {
-        q: "Do you provide SEO services for businesses in Bhopal?",
-        a: "Yes, we offer comprehensive SEO services including local SEO for Bhopal businesses, technical SEO, content optimization, Google My Business optimization, and Answer Engine Optimization (AEO) to improve your visibility in AI search results."
+        q: "What types of mobile apps does Mahi TechnoCrafts develop?",
+        a: "We develop native iOS apps, Android apps, and cross-platform React Native / Flutter apps. Our expertise includes e-commerce apps, healthcare portals, real estate apps, on-demand services, and enterprise mobile dashboards."
       },
       {
-        q: "How can I improve my website's Google ranking in Bhopal?",
-        a: "To improve Google rankings for Bhopal businesses: optimize for local keywords, create location-specific content, maintain consistent NAP (Name, Address, Phone) information, get local backlinks, optimize Google My Business, and ensure fast website speed and mobile responsiveness."
+        q: "Do you assist with publishing mobile apps to Google Play Store and Apple App Store?",
+        a: "Yes, we manage the complete publishing pipeline, handling app signing, privacy policies, screenshot assets, and store compliance verification for both Google Play and Apple App Store."
       }
     ]
   },
   {
-    category: "Technical Questions",
+    category: "AI Solutions, Chatbots & Business Automation",
     questions: [
       {
-        q: "What technologies do you use for web development?",
-        a: "We specialize in modern technologies: Next.js, React.js, TypeScript, Node.js, MongoDB, PostgreSQL, AWS, and Tailwind CSS. We choose technologies based on project requirements, scalability needs, and long-term maintenance considerations."
+        q: "How do smart AI chatbots and WhatsApp CRM automation help businesses grow?",
+        a: "AI chatbots and WhatsApp CRM bots handle 80%+ of incoming inquiries instantly 24/7, qualify leads automatically, send catalog links, and route hot buyers directly to your sales team on WhatsApp."
       },
       {
-        q: "Do you develop AI-powered websites and applications?",
-        a: "Yes, we integrate AI features like chatbots, recommendation engines, voice search, image recognition, and custom machine learning models into websites and mobile apps. We work with OpenAI, Google AI, and custom AI solutions."
+        q: "Can you connect custom OpenAI or Gemini APIs to our existing ERP or billing software?",
+        a: "Yes, we engineer custom API connectors and intelligent knowledge systems to integrate OpenAI (GPT-4o) and Google Gemini directly with your current databases, ERPs, and customer portals securely."
+      }
+    ]
+  },
+  {
+    category: "Digital Marketing & Business Growth",
+    questions: [
+      {
+        q: "How does Mahi TechnoCrafts help businesses increase online visibility and customer reach?",
+        a: "We implement multi-channel growth systems: Google Business Profile local presence, high-converting Google Search and Meta Ads, structured rich data, and high-speed mobile performance."
+      },
+      {
+        q: "How quickly can performance marketing (Google & Meta Ads) generate customer inquiries?",
+        a: "With our targeted Google Search PPC and Meta conversion ad funnels, clients typically begin receiving verified, high-intent customer inquiries within 48 to 72 hours of campaign activation."
+      }
+    ]
+  },
+  {
+    category: "Custom ERP, CRM & E-Commerce Solutions",
+    questions: [
+      {
+        q: "Why should businesses choose custom ERP/CRM software over monthly SaaS subscriptions?",
+        a: "Custom software eliminates recurring monthly license fees, adapts 100% to your unique company workflow, keeps your sensitive data private, and gives you total lifetime source code ownership."
+      },
+      {
+        q: "What e-commerce features are included in an online shopping website build?",
+        a: "Our e-commerce stores include 1-click mobile checkout, Google Pay / PhonePe UPI integration, automated courier shipping sync (Shiprocket), COD OTP verification, and direct WhatsApp order alerts."
+      }
+    ]
+  },
+  {
+    category: "Hosting, Support & Guarantees",
+    questions: [
+      {
+        q: "Do you provide free maintenance and source code ownership after project launch?",
+        a: "Yes! Every custom build includes 6 Months of 100% Free Maintenance & Bug Fixes, 24/7 WhatsApp emergency support, and complete 100% source code and database ownership with zero lock-in."
       }
     ]
   }

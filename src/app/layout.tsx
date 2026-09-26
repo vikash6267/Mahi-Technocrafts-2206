@@ -116,27 +116,49 @@ export default function RootLayout({
 }>) {
   const localBusinessSchema = {
     '@context': 'https://schema.org',
-    '@type': 'ProfessionalService',
+    '@type': ['Organization', 'ProfessionalService'],
     '@id': 'https://mahitechnocrafts.in/#organization',
     name: 'Mahi TechnoCrafts',
-    alternateName: 'Mahi Technocrafts',
-    description: 'Mahi TechnoCrafts is the top website development company in Bhopal, founded by Vikash Maheshwari. We craft world-class digital solutions including Next.js web development, React mobile apps, UI/UX designs, AI solutions, e-commerce platforms, and custom software for businesses in Bhopal and across India.',
-    url: 'https://mahitechnocrafts.in/',
+    alternateName: ['MTC', 'Mahi TechnoCrafts Bhopal', 'Mahi TechnoCrafts India', 'Mahi Technocrafts'],
+    description: 'Mahi TechnoCrafts is the top-rated IT service company, custom software development agency, and AI automation partner in Bhopal, Madhya Pradesh, serving clients across India and worldwide. We specialize in web apps, mobile apps, AI chatbots, custom ERP/CRM, and global digital marketing.',
+    url: 'https://mahitechnocrafts.in',
     logo: 'https://mahitechnocrafts.in/logo.png',
     image: 'https://mahitechnocrafts.in/logo.png',
     telephone: '+916267144122',
     email: 'support@mahitechnocrafts.in',
-    priceRange: '$$',
+    priceRange: '₹₹₹',
     founder: {
       '@type': 'Person',
       name: 'Vikash Maheshwari',
-      jobTitle: 'Founder & CEO'
+      jobTitle: 'Founder & Chief Technology Officer',
+      url: 'https://mahitechnocrafts.in/about',
+      sameAs: [
+        'https://github.com/vikash6267',
+        'https://www.linkedin.com/company/mahi-technocrafts/'
+      ]
     },
+    knowsAbout: [
+      'Custom Software Development Bhopal',
+      'Enterprise AI Solutions & Chatbots India',
+      'Full-Stack Web Application Engineering',
+      'Next.js & React App Development',
+      'Mobile App Development (iOS & Android)',
+      'Digital Marketing & Growth Hacking',
+      'Search Engine Optimization (SEO & AEO)',
+      'Generative Engine Optimization (GEO)',
+      'WhatsApp CRM & Workflow Automation',
+      'Custom ERP & Business POS Software',
+      'E-commerce Store Development & Management',
+      'Cloud Infrastructure & Secure Hosting AWS',
+      'Cyber Security Audits & Server Hardening',
+      'UI/UX Branding & Product Design',
+      'Smart ID Card Printing & RFID Solutions'
+    ],
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Hamidia Rd, Badabagh, Shahjahanabad',
       addressLocality: 'Bhopal',
-      addressRegion: 'MP',
+      addressRegion: 'Madhya Pradesh',
       postalCode: '462001',
       addressCountry: 'IN'
     },
@@ -146,17 +168,14 @@ export default function RootLayout({
       longitude: 77.4019
     },
     areaServed: [
+      { '@type': 'City', name: 'Bhopal' },
+      { '@type': 'City', name: 'Indore' },
+      { '@type': 'State', name: 'Madhya Pradesh' },
+      { '@type': 'Country', name: 'India' },
       {
-        '@type': 'City',
-        name: 'Bhopal'
-      },
-      {
-        '@type': 'State',
-        name: 'Madhya Pradesh'
-      },
-      {
-        '@type': 'Country',
-        name: 'India'
+        '@type': 'Place',
+        name: 'Worldwide',
+        sameAs: 'https://en.wikipedia.org/wiki/Earth'
       }
     ],
     openingHoursSpecification: {
@@ -174,8 +193,10 @@ export default function RootLayout({
       closes: '23:59'
     },
     sameAs: [
+      'https://github.com/vikash6267',
+      'https://www.linkedin.com/company/mahi-technocrafts/',
       'https://www.instagram.com/mahi_technocrafts/',
-      'https://www.linkedin.com/company/mahi-technocrafts/'
+      'https://x.com/mahi_technocrafts'
     ],
     aggregateRating: {
       '@type': 'AggregateRating',
@@ -185,14 +206,15 @@ export default function RootLayout({
     },
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
-      name: 'Digital Services',
+      name: 'Comprehensive IT & Digital Growth Services',
       itemListElement: [
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'Web Development',
-            description: 'Custom website development using Next.js, React, and MERN stack'
+            name: 'Web Development & Full-Stack Engineering',
+            description: 'Custom web application and portal engineering using Next.js, React, Node.js, and modern high-speed architectures.',
+            url: 'https://mahitechnocrafts.in/services/web-dev'
           }
         },
         {
@@ -200,31 +222,89 @@ export default function RootLayout({
           itemOffered: {
             '@type': 'Service',
             name: 'Mobile App Development',
-            description: 'iOS and Android mobile application development'
+            description: 'Native iOS and Android mobile app development with 1-click UPI payments and App Store / Play Store publishing.',
+            url: 'https://mahitechnocrafts.in/services/mobile-dev'
           }
         },
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'E-commerce Development',
-            description: 'Custom online store and e-commerce platform development'
+            name: 'Enterprise AI Solutions & Smart Chatbots',
+            description: 'Custom AI conversational bots, OpenAI/Gemini integrations, and WhatsApp CRM automation to scale business inquiries 24/7.',
+            url: 'https://mahitechnocrafts.in/services/ai-solutions'
           }
         },
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'UI/UX Design',
-            description: 'User interface and user experience design services'
+            name: 'Digital Marketing & Growth Hacking',
+            description: 'Full-funnel Google Ads, Meta PPC, conversion-optimized landing pages, and lead generation campaigns.',
+            url: 'https://mahitechnocrafts.in/services/digital-marketing'
           }
         },
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'AI Solutions',
-            description: 'Artificial intelligence and machine learning integration'
+            name: 'SEO & Generative Engine Optimization (AEO/GEO)',
+            description: 'Local SEO Bhopal, Google Maps #1 rank optimization, and Answer Engine Optimization for ChatGPT, Perplexity, and Gemini.',
+            url: 'https://mahitechnocrafts.in/services/seo-services'
+          }
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Custom ERP & Business POS Software',
+            description: 'Tailored enterprise resource planning, CRM, inventory, and automated billing software.',
+            url: 'https://mahitechnocrafts.in/services/erp-crm'
+          }
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'E-Commerce Store Setup & Management',
+            description: 'High-speed online shopping stores, automated shipping sync, COD verification, and WhatsApp catalog integration.',
+            url: 'https://mahitechnocrafts.in/services/ecommerce-management'
+          }
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'UI/UX Design & Prototyping',
+            description: 'Conversion-centric Figma prototypes, design systems, and responsive user interfaces.',
+            url: 'https://mahitechnocrafts.in/services/uiux-design'
+          }
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Secure Cloud Hosting & DevOps',
+            description: 'Enterprise AWS cloud setups, 99.9% uptime SLA, automated backups, and zero-downtime deployments.',
+            url: 'https://mahitechnocrafts.in/services/cloud-services'
+          }
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Cyber Security & Server Hardening',
+            description: 'Vulnerability assessments, SSL enforcement, malware protection, and secure encrypted database architecture.',
+            url: 'https://mahitechnocrafts.in/services/cyber-security'
+          }
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Social Media Marketing (SMM) & Branding',
+            description: 'Viral Instagram Reels, brand identity style guides, vector logos, and community engagement.',
+            url: 'https://mahitechnocrafts.in/services/social-media-marketing'
           }
         }
       ]

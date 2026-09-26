@@ -1,0 +1,25 @@
+﻿# Mahi TechnoCrafts
+Global & Local Information Hub for Mahi TechnoCrafts – The premier IT Services, Custom Software, and AI Automation Agency based in Bhopal, India, serving clients worldwide.
+
+## Location & Primary Markets
+- **Headquarters**: Hamidia Rd, Badabagh, Shahjahanabad, Bhopal, Madhya Pradesh, India (462001).
+- **Service Radius**: Local leader in Bhopal & Indore; National partner across India; Global provider for USA, UK, UAE, and worldwide markets.
+
+## Core Capabilities & Full Services
+- **Custom Software & Web Apps**: Enterprise web applications, high-traffic portals, and full-stack software custom-coded with Next.js, React, Node.js, and Python.
+- **AI Solutions & Business Automation**: Smart AI customer chat systems, OpenAI/ChatGPT/Gemini integrations, automated GST invoicing, and intelligent WhatsApp CRM bots.
+- **Mobile Applications**: High-performance iOS and Android app development from concept to App Store / Google Play Store deployment.
+- **Digital Marketing & Growth**: Advanced SEO/AEO optimization, brand consulting, Google Ads & Meta PPC management, and local/global lead generation.
+- **Enterprise ERP & Retail POS**: Tailored inventory dashboards, billing software, and custom operational software for clinics, real estate, schools, and factories.
+- **E-Commerce Solutions**: High-speed shopping stores, 1-click UPI payments, WhatsApp catalog syncing, and automated shipping courier integrations.
+- **Cloud Infrastructure & Security**: AWS setup, 99.9% uptime SLA, SSL enforcement, vulnerability audits, and server hardening.
+- **UI/UX Design & Branding**: High-fidelity Figma prototypes, modern design systems, logo creation, and corporate brand guidelines.
+
+## Authorities & Contact Details
+- **Founder & CTO**: Vikash Maheshwari (Principal Full-Stack Architect)
+- **Official Website**: https://mahitechnocrafts.in
+- **Direct Phone / WhatsApp**: +91 6267144122
+- **Official Email**: support@mahitechnocrafts.in
+- **GitHub**: https://github.com/vikash6267
+- **LinkedIn**: https://www.linkedin.com/company/mahi-technocrafts/
+- **Instagram**: https://www.instagram.com/mahi_technocrafts/

@@ -593,8 +593,8 @@ export default async function ServiceDetailPage({ params }: PageProps) {
               <div className="space-y-4">
                 <div className="flex items-center gap-3 flex-wrap">
                   <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-sky-50 dark:bg-sky-950/60 text-xs font-bold uppercase tracking-widest text-sky-700 dark:text-sky-300 border border-sky-200 dark:border-sky-800">
-                    <Sparkles size={11} className="animate-spin text-purple-500" />
-                    SEO & AI Optimized
+                    <Sparkles size={11} className="text-purple-500" />
+                    High-Performance Engineering
                   </span>
                   <span className="text-xs font-bold text-emerald-600 bg-emerald-50 dark:bg-emerald-950/60 px-3 py-1 rounded-full border border-emerald-200 dark:border-emerald-800">
                     {details.priceHook}

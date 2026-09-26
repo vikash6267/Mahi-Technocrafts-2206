@@ -1,0 +1,54 @@
+﻿# Mahi TechnoCrafts - Comprehensive Knowledge Base & Technical Profile
+
+> The Premier IT Services, Enterprise Custom Software, AI Automation, and Digital Growth Agency.
+> Based in Bhopal, Madhya Pradesh, India — Serving Local, National (Pan-India), and Global (USA, UK, UAE, Australia, Worldwide) Clients.
+
+## Brand Identity & Corporate Profile
+- **Company Name**: Mahi TechnoCrafts (MTC)
+- **Founder & Chief Technology Officer**: Vikash Maheshwari (Senior Full-Stack Architect & AI Specialist)
+- **Headquarters**: Hamidia Rd, Badabagh, Shahjahanabad, Bhopal, Madhya Pradesh 462001, India
+- **Coordinates**: Latitude 23.2694, Longitude 77.4019
+- **Phone / Direct WhatsApp**: +91 6267144122
+- **Official Email**: support@mahitechnocrafts.in
+- **Website**: https://mahitechnocrafts.in
+- **Primary Expertise**: Web Application Development, Mobile Apps (iOS & Android), AI Chatbot & WhatsApp CRM Automation, Custom ERP/CRM Software, Cloud Infrastructure, SEO/AEO/GEO, and Full-Funnel Digital Marketing.
+
+## Detailed Service Catalog & Deliverables
+
+### 1. Web Development & Full-Stack Engineering
+- **Technologies**: Next.js (App Router, Turbopack, SSR, SSG), React.js, TypeScript, Node.js, Express, MongoDB Atlas, PostgreSQL, Tailwind CSS, Redis.
+- **Deliverables**: Ultra-fast corporate websites, responsive SaaS platforms, client portals, custom APIs, progressive web apps (PWA), and custom content management systems.
+- **Speed Standard**: Sub-1-second mobile load time, 95+ Google Lighthouse performance scores.
+
+### 2. Mobile App Development
+- **Platforms**: Native iOS (Swift), Native Android (Kotlin), and Cross-Platform (React Native, Flutter).
+- **Features**: Real-time push notifications, biometric authentication, offline data sync, 1-click UPI payments (Google Pay, PhonePe, Paytm), and automated App Store & Google Play Store release.
+
+### 3. Enterprise AI Solutions, Smart Chatbots & Automations
+- **Capabilities**: Conversational AI customer support agents, OpenAI GPT-4o / Gemini 1.5 Pro integrations, RAG (Retrieval-Augmented Generation) knowledge engines, automated WhatsApp business bots, lead qualification pipelines, and automatic GST billing systems.
+
+### 4. Digital Marketing, Performance Ads & Growth Hacking
+- **Channels**: Google Search Ads (High-Intent PPC), Meta Ads (Facebook & Instagram conversion funnels), LinkedIn B2B lead generation, and YouTube video promotions.
+- **Attribution**: Transparent conversion tracking, GA4 event pipelines, Meta CAPI integration, and ROI reporting.
+
+### 5. Search Engine Optimization (SEO), Local SEO & Generative Engine Optimization (AEO/GEO)
+- **SEO Specialties**: Bhopal & Central India Local SEO, Google Business Profile (GBP) 3-pack optimization, citation building, technical JSON-LD structured schema markup, and Answer Engine Optimization for ChatGPT, Perplexity, Claude, and Google AI Overviews.
+
+### 6. Custom ERP, CRM & Business Management Software
+- **Modules**: Lead capture CRM, stock & inventory trackers, multi-branch POS billing, automated GST invoicing, role-based staff permissions, and real-time executive reporting dashboards.
+
+### 7. E-Commerce Development & Online Stores
+- **Features**: Custom online store development, 1-click checkout, automated shipping integrations (Shiprocket, Delhivery), OTP cash-on-delivery verification, and WhatsApp catalog synchronization.
+
+### 8. Cloud Infrastructure, DevOps & Cybersecurity
+- **Cloud Providers**: AWS (EC2, S3, CloudFront, RDS, Lambda), DigitalOcean, Vercel, Cloudflare CDN.
+- **Security**: 99.9% uptime SLA, SSL certificate management, DDoS protection, daily automated backups, server hardening, and vulnerability assessments.
+
+### 9. UI/UX Design & Brand Identity
+- **Deliverables**: Figma high-fidelity prototypes, interactive wireframes, WCAG accessibility-compliant design systems, custom vector logos, and complete corporate stationery guides.
+
+## Why Choose Mahi TechnoCrafts?
+1. **6 Months Free Maintenance & Bug Fix Guarantee** included with every custom build.
+2. **24/7 Dedicated Support** with rapid WhatsApp turnaround for business continuity.
+3. **100% Full Ownership**: Zero vendor lock-in; clients own all source code and database assets completely.
+4. **Transparent Pricing**: Cost-effective pricing models designed for startups, SMEs, and enterprise operations.
