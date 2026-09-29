@@ -30,7 +30,7 @@ export async function GET(request: Request) {
       );
     }
 
-    const result = await generateAutonomousBlog();
+    const result = await generateAutonomousBlog({ status: 'published' });
 
     if (result.success && result.blog) {
       return NextResponse.json({

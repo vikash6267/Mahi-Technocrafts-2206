@@ -1,8 +1,13 @@
 import { MetadataRoute } from 'next';
 import { getBlogs } from '@/lib/db';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const blogs = await getBlogs();
+  const allBlogs = await getBlogs();
+  // Only include live published blogs in the sitemap
+  const blogs = allBlogs.filter((blog) => blog.status !== 'draft');
   
   const baseUrl = 'https://mahitechnocrafts.in';
   
