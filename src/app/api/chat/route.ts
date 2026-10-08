@@ -44,7 +44,7 @@ async function getGeminiReply(messages: ChatMessage[], clientName?: string): Pro
   while (formattedContents.at(-1)?.role === 'model') formattedContents.pop();
 
   if (!formattedContents.length) {
-    return getFallbackReply('', clientName);
+    return getFallbackReply('', clientName) || getUnknownReply('', clientName);
   }
 
   const modelsToTry = [
