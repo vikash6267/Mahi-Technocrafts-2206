@@ -432,7 +432,7 @@ export default function Navbar() {
                     Purpose-Built Industry Architectures
                   </span>
                   <span className="text-[11px] font-bold text-emerald-600 dark:text-emerald-400">
-                    Packages from ₹2,999*
+                    Starting from ₹2,999*
                   </span>
                 </div>
 
@@ -581,7 +581,7 @@ export default function Navbar() {
                   ))}
                   <div className="pt-2">
                     <Link href="/services" className="text-xs font-bold text-sky-600 block">
-                      Explore All Services (from ₹2,999*) →
+                      Explore All Services (Starting from ₹2,999*) →
                     </Link>
                   </div>
                 </div>

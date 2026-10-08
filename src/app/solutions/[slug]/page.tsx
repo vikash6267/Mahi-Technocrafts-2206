@@ -145,7 +145,7 @@ const solutionDetailsMap: Record<string, SolutionDetail> = {
     headline: '24/7 AI WhatsApp Assistants & Workflow Automation',
     emoji: '🤖',
     heroBadge: '24/7 Instant Auto-Replies & Lead Scoring',
-    priceHook: 'Starting from ₹3,999*',
+    priceHook: 'Starting from ₹2,999*',
     deliveryTime: '1-2 Weeks',
     summary: 'Automate your customer inquiries, qualify leads instantly, and eliminate manual paperwork with custom AI chatbots, WhatsApp business bots, and smart workflow automations engineered by Mahi TechnoCrafts.',
     painPoints: [
@@ -180,7 +180,7 @@ const solutionDetailsMap: Record<string, SolutionDetail> = {
     faqs: [
       { q: 'Will the AI bot work with our official WhatsApp number?', a: 'Yes! We integrate official Meta WhatsApp Business Cloud APIs so you keep your existing company phone number with green tick verification support.' },
       { q: 'Can human staff take over when a client needs personal attention?', a: 'Absolutely. Whenever a customer asks for a manager or human rep, the AI bot smoothly alerts your sales team for instant live takeover.' },
-      { q: 'How much does WhatsApp AI chatbot development cost in Bhopal?', a: 'Our custom AI chatbot and automation packages start from an affordable ₹3,999* with complete setup, integration, and 6 months free maintenance.' }
+      { q: 'How much does WhatsApp AI chatbot development cost in Bhopal?', a: 'Our custom AI chatbot and automation packages start from an affordable ₹2,999* with complete setup, integration, and 6 months free maintenance.' }
     ]
   },
 

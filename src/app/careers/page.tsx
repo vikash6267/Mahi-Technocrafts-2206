@@ -3,10 +3,24 @@ import { Briefcase, MapPin, Clock, Sparkles } from 'lucide-react';
 import { getCareers, CareerItem } from '@/lib/db';
 
 export const metadata = {
-  title: 'Careers | Mahi Technocrafts',
-  description: 'Join the team at Mahi Technocrafts. Explore our open positions and build beautiful websites and apps.',
+  title: 'Careers in Bhopal | Tech & Web Developer Jobs | Mahi TechnoCrafts',
+  description: 'Join Bhopal\'s fastest-growing web development & software team. Explore developer, UI/UX designer, and AI engineer openings at Mahi TechnoCrafts Bhopal.',
   alternates: {
     canonical: '/careers'
+  },
+  keywords: [
+    'careers in bhopal',
+    'web developer jobs bhopal',
+    'react developer vacancy bhopal',
+    'IT jobs in bhopal',
+    'software company hiring bhopal'
+  ],
+  openGraph: {
+    title: 'Careers in Bhopal | Tech & Web Developer Jobs | Mahi TechnoCrafts',
+    description: 'Join our Bhopal engineering team building high-performance websites and software.',
+    url: 'https://mahitechnocrafts.in/careers',
+    siteName: 'Mahi TechnoCrafts',
+    images: [{ url: 'https://mahitechnocrafts.in/logo.png', width: 1200, height: 630, alt: 'Careers at Mahi TechnoCrafts Bhopal' }]
   }
 };
 

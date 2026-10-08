@@ -58,7 +58,7 @@ const industryDemos: Record<IndustryKey, {
     features: ['Instant PhonePe & GPay QR checkout', 'Order details go directly to WhatsApp', 'Manage stock easily from mobile phone'],
     liveNotif: { title: 'New Order Received', time: 'Just now', amount: '₹2,490', icon: '🛒' },
     growthMetric: '+320% Monthly Sales',
-    startingPrice: '₹2,999*',
+    startingPrice: 'Starting from ₹2,999*',
     slug: 'ecommerce'
   },
   healthcare: {
@@ -74,7 +74,7 @@ const industryDemos: Record<IndustryKey, {
     features: ['Patients pick time slots on phone', 'Automated WhatsApp reminder alerts', 'Digital prescriptions & test reports archive'],
     liveNotif: { title: 'Appointment Confirmed', time: '2m ago', amount: 'Dr. Sharma', icon: '🩺' },
     growthMetric: '75% Less Queue Time',
-    startingPrice: '₹2,999*',
+    startingPrice: 'Starting from ₹2,999*',
     slug: 'healthcare'
   },
   ai: {
@@ -90,7 +90,7 @@ const industryDemos: Record<IndustryKey, {
     features: ['Instant 2-second AI replies to WhatsApp inquiries', 'Auto-qualify customer leads & send PDF quotes', 'Generate GST bills & payment follow-ups automatically'],
     liveNotif: { title: 'AI Qualified 14 Leads', time: 'Just now', amount: '₹84,000 Pipeline', icon: '🤖' },
     growthMetric: '85% Inquiries Automated',
-    startingPrice: '₹3,999*',
+    startingPrice: 'Starting from ₹2,999*',
     slug: 'ai-solutions'
   },
   realestate: {
@@ -106,7 +106,7 @@ const industryDemos: Record<IndustryKey, {
     features: ['High-res photo galleries & floor plans', '1-Click call & WhatsApp connect button', 'Built-in EMI & Loan Calculator for buyers'],
     liveNotif: { title: 'Site Visit Requested', time: '1m ago', amount: '3 BHK Flat', icon: '📍' },
     growthMetric: '4.5x More Buyer Calls',
-    startingPrice: '₹2,999*',
+    startingPrice: 'Starting from ₹2,999*',
     slug: 'real-estate'
   },
   restaurants: {
@@ -122,7 +122,7 @@ const industryDemos: Record<IndustryKey, {
     features: ['Guests scan table QR code to order', 'Zero commission to 3rd party delivery apps', 'Kitchen ticket printing POS support'],
     liveNotif: { title: 'Table 4 QR Order', time: 'Just now', amount: '₹1,180', icon: '🍕' },
     growthMetric: 'Save 30% Commissions',
-    startingPrice: '₹2,999*',
+    startingPrice: 'Starting from ₹2,999*',
     slug: 'restaurants'
   },
   education: {
@@ -138,7 +138,7 @@ const industryDemos: Record<IndustryKey, {
     features: ['Collect admission fees via UPI with SMS receipt', 'Share video classes & test notes securely', 'Automated parent SMS & WhatsApp alerts'],
     liveNotif: { title: 'Fee Paid via UPI', time: '5m ago', amount: '₹4,500', icon: '📚' },
     growthMetric: '2x Student Admissions',
-    startingPrice: '₹2,999*',
+    startingPrice: 'Starting from ₹2,999*',
     slug: 'education'
   }
 };
@@ -290,21 +290,22 @@ export default function Hero({ data }: HeroProps) {
           
           {/* LEFT: High-Impact Business Headline & Conversion Actions */}
           <div className="lg:col-span-6 space-y-6 text-left">
-            
-            <h1 className="sr-only">Best Website & Software Development Company in Bhopal | Mahi TechnoCrafts</h1>
-
             {/* Giant Modern Headline */}
             <div className="space-y-3">
-              <h2 className="text-3xl sm:text-5xl lg:text-[3.2rem] font-display font-black tracking-tight leading-[1.12] text-slate-950 dark:text-white">
+              <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-extrabold uppercase tracking-widest text-sky-600 dark:text-sky-400">
+                <Sparkles size={14} className="text-sky-500" />
+                <span>Top-Rated Bhopal Website & Software Agency</span>
+              </div>
+              <h1 className="text-3xl sm:text-5xl lg:text-[3.2rem] font-display font-black tracking-tight leading-[1.12] text-slate-950 dark:text-white">
                 We Build High-Impact{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 via-indigo-600 to-purple-600 inline-block">
                   Websites & Apps
                 </span>{' '}
                 That Grow Your Business.
-              </h2>
+              </h1>
               
               <p className="text-slate-700 dark:text-slate-300 text-sm sm:text-base md:text-lg leading-relaxed font-normal">
-                Turn your phone screen visitors into daily paying customers. Lightning-fast, mobile-friendly websites, online stores, and software custom-built for your exact business.
+                Bhopal&apos;s premier web development agency. Turn local visitors into paying clients with ultra-fast websites, custom mobile apps, and automated WhatsApp CRM solutions built for modern businesses.
               </p>
             </div>
 
@@ -333,7 +334,7 @@ export default function Hero({ data }: HeroProps) {
 
               <div className="p-3 rounded-2xl bg-white dark:bg-slate-900/90 border border-amber-400/40 dark:border-amber-700/50 shadow-sm text-center flex flex-col justify-center items-center min-h-[64px]">
                 <div className="text-xs sm:text-sm font-black text-amber-600 dark:text-amber-400 flex items-center justify-center gap-1">
-                  <span>₹2,999* Onwards</span>
+                  <span>Starting from ₹2,999*</span>
                 </div>
                 <div className="text-[10px] text-slate-500 dark:text-slate-400 font-medium">7–14 Day Delivery</div>
               </div>

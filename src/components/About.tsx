@@ -17,11 +17,11 @@ export default function About({ data }: AboutProps) {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Header Title */}
         <div className="text-center max-w-2xl mx-auto mb-10 md:mb-20 space-y-4">
-          <h2 className="text-xs uppercase tracking-[0.2em] font-semibold text-sky-700 dark:text-brand-blue">
-            Who We Are
+          <h2 className="text-xs uppercase tracking-[0.2em] font-bold text-sky-700 dark:text-sky-400">
+            About Mahi TechnoCrafts Bhopal
           </h2>
           <p className="text-3xl md:text-4xl font-display font-extrabold tracking-tight text-slate-900 dark:text-white">
-            Building Beautiful Websites & Custom Apps
+            Bhopal&apos;s Trusted Web & Software Development Agency
           </p>
           <div className="w-16 h-[2px] bg-brand-blue mx-auto mt-4" />
         </div>

@@ -35,7 +35,7 @@ const businessServices = [
     desc: 'Ultra-fast business websites that look stunning on mobile phones, load in <1 second, and generate daily customer phone inquiries.',
     icon: <Globe className="w-5 h-5 text-sky-500" />,
     badge: 'Most Popular',
-    price: 'From ₹2,999*',
+    price: 'Starting from ₹2,999*',
     features: ['100% Mobile Responsive', 'Fast 7–14 Day Delivery', 'Free SSL & Hosting']
   },
   {
@@ -45,7 +45,7 @@ const businessServices = [
     desc: 'High-performance mobile apps for Android & iPhone with instant push notifications, UPI payment gateway, and smooth user flow.',
     icon: <Smartphone className="w-5 h-5 text-purple-500" />,
     badge: 'PlayStore & AppStore',
-    price: 'From ₹9,999*',
+    price: 'Starting from ₹2,999*',
     features: ['Live Push Alerts', 'Android + iOS App', 'Offline Support']
   },
   {
@@ -55,7 +55,7 @@ const businessServices = [
     desc: 'Sell your products online 24/7 with 1-click Google Pay & PhonePe payments, automated WhatsApp order alerts, and 0% platform commission.',
     icon: <ShoppingCart className="w-5 h-5 text-emerald-500" />,
     badge: 'Zero Commission',
-    price: 'From ₹4,999*',
+    price: 'Starting from ₹2,999*',
     features: ['1-Click UPI Payments', 'WhatsApp Order Sync', 'Easy Mobile Admin']
   },
   {
@@ -65,7 +65,7 @@ const businessServices = [
     desc: 'Smart automated assistants that reply to customer inquiries on WhatsApp within 2 seconds, send PDF catalogs, and book appointments.',
     icon: <Bot className="w-5 h-5 text-amber-500" />,
     badge: '24/7 Auto Replies',
-    price: 'From ₹3,999*',
+    price: 'Starting from ₹2,999*',
     features: ['Instant Auto Replies', 'Catalog Sharing', 'Saves 20+ Hours Weekly']
   },
   {
@@ -75,7 +75,7 @@ const businessServices = [
     desc: 'Simple mobile & computer dashboards to print GST invoices, track warehouse stock, manage worker attendance, and view profit reports.',
     icon: <Database className="w-5 h-5 text-indigo-500" />,
     badge: 'Plant & Shop ERP',
-    price: 'From ₹9,999*',
+    price: 'Starting from ₹2,999*',
     features: ['1-Click GST Invoices', 'Low-Stock Alerts', 'Multi-Branch Sync']
   },
   {
@@ -85,7 +85,7 @@ const businessServices = [
     desc: 'Get your business ranked on the first page of Google Search and Google Maps when local customers search for your services in Bhopal & India.',
     icon: <Search className="w-5 h-5 text-blue-500" />,
     badge: '#1 Rank on Google',
-    price: 'From ₹2,999*',
+    price: 'Starting from ₹2,999*',
     features: ['Google Maps Ranking', 'Local Keyword Schema', '5-Star Review Growth']
   },
   {
@@ -95,7 +95,7 @@ const businessServices = [
     desc: 'High-converting Google Search, Facebook, and Instagram ad campaigns that deliver verified buyer phone calls and WhatsApp leads directly to you.',
     icon: <TrendingUp className="w-5 h-5 text-orange-500" />,
     badge: 'Direct Phone Leads',
-    price: 'From ₹4,999*',
+    price: 'Starting from ₹2,999*',
     features: ['Targeted Local Audiences', 'WhatsApp Lead Routing', 'Daily Lead Analytics']
   },
   {
@@ -105,7 +105,7 @@ const businessServices = [
     desc: 'Complete digital OPD token queue system, 24/7 patient appointment booking, digital prescriptions, and lab test report portals for doctors.',
     icon: <Stethoscope className="w-5 h-5 text-teal-500" />,
     badge: 'Doctor Friendly',
-    price: 'From ₹4,999*',
+    price: 'Starting from ₹2,999*',
     features: ['Zero Reception Waiting', 'WhatsApp Reminders', 'Digital Rx History']
   },
   {
@@ -115,7 +115,7 @@ const businessServices = [
     desc: 'Showcase flats, plots, and commercial projects with 3D walkthroughs, price EMI calculators, and instant buyer inquiry routing to brokers.',
     icon: <Building2 className="w-5 h-5 text-amber-600" />,
     badge: 'Builder Ready',
-    price: 'From ₹4,999*',
+    price: 'Starting from ₹2,999*',
     features: ['3D Photo Walkthroughs', 'Direct Buyer Calls', 'Broker Lead Tracking']
   },
   {
@@ -125,7 +125,7 @@ const businessServices = [
     desc: 'Contactless QR codes on every dining table. Guests browse dishes, customize orders, and pay with zero delivery commission fees.',
     icon: <Utensils className="w-5 h-5 text-rose-500" />,
     badge: '0% Commission',
-    price: 'From ₹3,999*',
+    price: 'Starting from ₹2,999*',
     features: ['Table QR Menus', 'Kitchen Thermal KOT', 'Birthday SMS Offers']
   },
   {
@@ -135,7 +135,7 @@ const businessServices = [
     desc: 'Collect tuition fees online via UPI with automated SMS receipts, conduct online mock test series, and share video lectures securely.',
     icon: <GraduationCap className="w-5 h-5 text-purple-600" />,
     badge: 'Institute App',
-    price: 'From ₹4,999*',
+    price: 'Starting from ₹2,999*',
     features: ['Online UPI Fee Portal', 'Secure Video Classes', 'WhatsApp Notice Board']
   },
   {
@@ -145,7 +145,7 @@ const businessServices = [
     desc: 'High-end vector logo designs, visiting cards, company letterheads, brochures, and social media branding kits that command trust.',
     icon: <Palette className="w-5 h-5 text-pink-500" />,
     badge: 'Complete Brand Kit',
-    price: 'From ₹2,999*',
+    price: 'Starting from ₹2,999*',
     features: ['Vector Master Files', 'Social Media Templates', 'Visiting Cards Design']
   }
 ];
@@ -163,15 +163,15 @@ export default function Services({ data }: ServicesProps) {
         <div className="text-center max-w-3xl mx-auto mb-14 space-y-3.5">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-50 dark:bg-sky-950/60 border border-sky-200 dark:border-sky-800 text-xs font-bold uppercase tracking-wider text-sky-700 dark:text-sky-300 shadow-sm">
             <Sparkles size={13} className="text-purple-500 animate-pulse" />
-            <span>Complete End-to-End IT & Digital Capabilities</span>
+            <span>Web & Software Development Services in Bhopal</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-black tracking-tight text-slate-900 dark:text-white">
-            Everything Your Business Needs to <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 via-indigo-600 to-purple-600">Scale & Dominate</span>
+            Digital Solutions Built by <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 via-indigo-600 to-purple-600">Bhopal&apos;s Top Tech Agency</span>
           </h2>
           
           <p className="text-slate-600 dark:text-slate-400 text-xs sm:text-sm md:text-base leading-relaxed font-normal max-w-2xl mx-auto">
-            From basic business websites to high-traffic mobile apps and automated WhatsApp CRM software — we build everything with 100% custom code and zero hidden fees.
+            From custom business websites to high-traffic mobile apps and automated WhatsApp CRM software — Bhopal&apos;s Mahi TechnoCrafts builds everything with 100% clean code and 6 months free maintenance.
           </p>
 
           <div className="w-20 h-1 bg-gradient-to-r from-sky-500 to-purple-500 mx-auto mt-4 rounded-full" />

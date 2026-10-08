@@ -49,7 +49,7 @@ const solutionsData: SolutionItem[] = [
     departmentScope: 'Billing, Inventory, WhatsApp Orders, 10-Min Local Delivery',
     features: ['1-Click UPI (GPay/PhonePe) Payments', 'Automatic WhatsApp Order Alerts', 'Product Upload from Mobile in 30s', '0% Platform Commission'],
     metric: '+320% Online Sales',
-    priceHook: 'From ₹2,999*',
+    priceHook: 'Starting from ₹2,999*',
     badge: 'Top Choice'
   },
   {
@@ -63,7 +63,7 @@ const solutionsData: SolutionItem[] = [
     departmentScope: 'OPD Queue Tokens, Patient History, Doctor Slots, Lab PDF Reports',
     features: ['24/7 WhatsApp Appointment Booking', 'Zero Crowding at Reception Tokens', 'Digital Prescription (Rx) Records', 'Online Lab Test Report Downloads'],
     metric: '75% Less Queue Time',
-    priceHook: 'From ₹2,999*',
+    priceHook: 'Starting from ₹2,999*',
     badge: 'Doctor Friendly'
   },
   {
@@ -77,7 +77,7 @@ const solutionsData: SolutionItem[] = [
     departmentScope: 'WhatsApp AI Reps, Lead Scoring, Auto GST Billing, PDF Catalogs',
     features: ['Instant 24/7 AI WhatsApp Replies', 'Zero Missed Customer Leads', 'Auto-Generate GST Invoices & PDFs', 'Saves 25+ Hours Every Week'],
     metric: '85% Inquiries Automated',
-    priceHook: 'From ₹3,999*',
+    priceHook: 'Starting from ₹2,999*',
     badge: 'Trending AI'
   },
   {
@@ -91,7 +91,7 @@ const solutionsData: SolutionItem[] = [
     departmentScope: '3D Floorplans, Broker Leads, EMI Calculator, Site Visit Diary',
     features: ['Direct Buyer Phone Calls & WhatsApp', 'Interactive Map & Location Search', 'Built-in Loan EMI Estimator', 'Broker Commission & Inquiries Sync'],
     metric: '4.5x More Inquiries',
-    priceHook: 'From ₹2,999*',
+    priceHook: 'Starting from ₹2,999*',
     badge: 'High Conversion'
   },
   {
@@ -105,7 +105,7 @@ const solutionsData: SolutionItem[] = [
     departmentScope: 'Daily Mandi Rates, Farmer CRM, Cold Storage Lot Inward, Hindi Voice',
     features: ['Daily Mandi Rate WhatsApp Alerts', 'Direct Farmer-to-Buyer Portal', 'Cold Storage Bag Inward & Lot Logs', 'Simple Hindi/Regional Language UI'],
     metric: 'Direct Trade',
-    priceHook: 'From ₹2,999*',
+    priceHook: 'Starting from ₹2,999*',
     badge: 'Hindi Support'
   },
   {
@@ -119,7 +119,7 @@ const solutionsData: SolutionItem[] = [
     departmentScope: 'Table QR Ordering, Kitchen Thermal KOT, Billing POS, Table Booking',
     features: ['0% Commission Direct Food Orders', 'Scan-to-Order QR Table Menus', 'Kitchen Token Thermal Printing POS', 'Customer Birthday WhatsApp Offers'],
     metric: 'Save 30% Commission',
-    priceHook: 'From ₹2,999*',
+    priceHook: 'Starting from ₹2,999*',
     badge: 'Quick Setup'
   },
   {
@@ -133,7 +133,7 @@ const solutionsData: SolutionItem[] = [
     departmentScope: 'UPI Fee Collection, Video Lectures, Mock Tests, Parent Notice Board',
     features: ['Online UPI Student Fee Collection', 'Protected Video Lectures & Study Notes', 'Online Mock Test Series with Timer', 'Parent WhatsApp Notice Board'],
     metric: 'Double Enrolments',
-    priceHook: 'From ₹2,999*',
+    priceHook: 'Starting from ₹2,999*',
     badge: 'Institute Ready'
   },
   {
@@ -147,7 +147,7 @@ const solutionsData: SolutionItem[] = [
     departmentScope: 'Raw Materials, Floor Production, Worker Shifts, Dispatch Tracking',
     features: ['Live Factory Floor Output Logs', 'Low-Stock Material Alert Warnings', 'Worker Shift & Task Tracker', 'Vendor Purchase Invoices & Chalan'],
     metric: '+35% Output',
-    priceHook: 'From ₹2,999*',
+    priceHook: 'Starting from ₹2,999*',
     badge: 'Plant ERP'
   },
   {
@@ -161,7 +161,7 @@ const solutionsData: SolutionItem[] = [
     departmentScope: 'GST Invoicing, Loan EMI Math, Client Document Vault, Daily Cashbook',
     features: ['Automatic EMI & Interest Math', '1-Click GST Invoice Printing', '100% Safe Encrypted Client Vault', 'Customer KYC File Storage'],
     metric: '100% Safe Data',
-    priceHook: 'From ₹2,999*',
+    priceHook: 'Starting from ₹2,999*',
     badge: '100% Secure'
   },
   {
@@ -175,7 +175,7 @@ const solutionsData: SolutionItem[] = [
     departmentScope: 'Room Availability, Advance UPI, Guest ID Verification, Tour Packages',
     features: ['0% Commission Room Booking', 'Live Room Calendar Availability', 'Guest ID Proof Upload on Mobile', 'Automated Check-in WhatsApp Alerts'],
     metric: '+40% Direct Bookings',
-    priceHook: 'From ₹3,999*',
+    priceHook: 'Starting from ₹2,999*',
     badge: 'Save OTA Fees'
   },
   {
@@ -189,7 +189,7 @@ const solutionsData: SolutionItem[] = [
     departmentScope: 'Appointment Slots, Member Renewals, QR Attendance, Workout Plans',
     features: ['Online Beauty / Haircut Slot Booking', 'Gym Monthly Membership Auto-Reminders', 'QR Code Member Attendance Log', 'Custom Diet & Workout Routine PDF'],
     metric: 'Zero Waiting Lines',
-    priceHook: 'From ₹2,999*',
+    priceHook: 'Starting from ₹2,999*',
     badge: 'Easy Slot Booking'
   },
   {
@@ -203,7 +203,7 @@ const solutionsData: SolutionItem[] = [
     departmentScope: 'Digital Job Cards, Service Due Alerts, Spare Parts Stock, EV Slots',
     features: ['Digital Repair Job Card with Photos', 'Automated Service Due WhatsApp Alerts', 'Spare Parts Inventory & GST Bill', 'Live Vehicle Repair Status Tracker'],
     metric: '3x Repeat Clients',
-    priceHook: 'From ₹2,999*',
+    priceHook: 'Starting from ₹2,999*',
     badge: 'Garage Ready'
   },
   {
@@ -217,7 +217,7 @@ const solutionsData: SolutionItem[] = [
     departmentScope: 'Case Hearing Diary, Document Vault, Fee Invoicing, Donation Gateways',
     features: ['Next Hearing Date WhatsApp Alert', '100% Encrypted Case Document Vault', 'Online Client Consultation Booking', 'Instant 80G Tax Exemption Receipts'],
     metric: '100% Privacy',
-    priceHook: 'From ₹2,999*',
+    priceHook: 'Starting from ₹2,999*',
     badge: 'Client Diary'
   }
 ];

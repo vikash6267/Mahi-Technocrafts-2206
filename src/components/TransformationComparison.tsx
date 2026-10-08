@@ -168,7 +168,7 @@ export default function TransformationComparison() {
             {/* Bottom CTA Row */}
             <div className="pt-4 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
               <div>
-                <span className="text-[11px] text-slate-400 block">Custom Packages</span>
+                <span className="text-[11px] text-slate-400 block">Transparent Pricing</span>
                 <span className="text-base font-black text-white">Starting from ₹2,999*</span>
               </div>
 
@@ -180,7 +180,7 @@ export default function TransformationComparison() {
                   Get Started Today
                 </Link>
                 <a
-                  href="https://wa.me/916267144122?text=Hi%20Mahi%20TechnoCrafts,%20I%20want%20to%20know%20more%20about%20your%20packages."
+                  href="https://wa.me/916267144122?text=Hi%20Mahi%20TechnoCrafts,%20I%20want%20to%20get%20a%20website/app%20for%20my%20business."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-4 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl transition-all flex items-center justify-center shadow-md"

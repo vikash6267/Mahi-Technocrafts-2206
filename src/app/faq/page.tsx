@@ -1,18 +1,25 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Frequently Asked Questions | Web Development Bhopal',
-  description: 'Get answers to common questions about web development, mobile app development, costs, timelines, and digital marketing services in Bhopal by Mahi TechnoCrafts.',
+  title: 'Frequently Asked Questions | Web Development Agency in Bhopal',
+  description: 'Common questions and transparent answers about website development, mobile apps, WhatsApp automation, pricing (from ₹2,999*), and timelines by Mahi TechnoCrafts Bhopal.',
   alternates: {
     canonical: '/faq'
   },
   keywords: [
     'web development FAQ bhopal',
-    'website cost bhopal',
-    'mobile app development questions',
-    'digital marketing FAQ',
-    'bhopal web developer questions'
-  ]
+    'website development cost bhopal',
+    'mobile app development company bhopal',
+    'best web developers in bhopal questions',
+    'software agency bhopal support'
+  ],
+  openGraph: {
+    title: 'Frequently Asked Questions | Web Development Agency in Bhopal',
+    description: 'Get clear answers on project timelines, pricing, technologies, and post-launch maintenance.',
+    url: 'https://mahitechnocrafts.in/faq',
+    siteName: 'Mahi TechnoCrafts',
+    images: [{ url: 'https://mahitechnocrafts.in/logo.png', width: 1200, height: 630, alt: 'Mahi TechnoCrafts FAQ' }]
+  }
 };
 
 const faqs = [
@@ -144,12 +151,15 @@ export default function FAQPage() {
       
       <div className="min-h-screen py-16 max-w-6xl mx-auto px-6">
         <div className="max-w-3xl mb-16 space-y-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-50 dark:bg-sky-950/60 border border-sky-200 dark:border-sky-800 text-xs font-bold uppercase tracking-wider text-sky-700 dark:text-sky-300">
+            Bhopal IT & Web Services Help Center
+          </div>
           <h1 className="text-3xl md:text-5xl font-display font-black tracking-tight text-slate-900 dark:text-white">
             Frequently Asked <span className="text-gradient">Questions</span>
           </h1>
-          <p className="text-sm md:text-base text-slate-500 dark:text-slate-400 leading-relaxed max-w-2xl">
-            Get answers to common questions about web development, mobile app development, costs, 
-            timelines, and digital marketing services in Bhopal.
+          <p className="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl">
+            Get clear answers to common questions about website design, mobile apps, development costs, 
+            timelines, and software services in Bhopal by Mahi TechnoCrafts.
           </p>
         </div>
 

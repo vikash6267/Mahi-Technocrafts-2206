@@ -3,18 +3,29 @@ import Link from 'next/link';
 import { CheckCircle, ArrowRight, Star, Phone, Mail } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Best Website Development Company in Bhopal | Get Quote in 24hrs',
-  description: 'Leading website development company in Bhopal. Custom websites from ₹15,000. Next.js, React, E-commerce development. 150+ projects completed. Free consultation.',
+  title: 'Best Website Development Company in Bhopal | Mahi TechnoCrafts',
+  description: 'Leading website development company in Bhopal. High-performance custom websites, mobile apps, and e-commerce stores from ₹2,999. 150+ completed projects. Free consultation.',
   alternates: {
     canonical: '/landing/web-development-bhopal'
   },
+  keywords: [
+    'website development company in bhopal',
+    'best web developers bhopal',
+    'web design agency bhopal',
+    'software company bhopal',
+    'custom website bhopal',
+    'ecommerce website bhopal',
+    'Mahi TechnoCrafts Bhopal'
+  ],
   robots: {
-    index: false, // Landing pages typically shouldn't be indexed
+    index: true,
     follow: true,
   },
   openGraph: {
-    title: 'Best Website Development Company Bhopal | Quick Quote',
-    description: 'Custom websites starting ₹15,000. 150+ completed projects. Expert Next.js & React development. Get free quote in 24 hours.',
+    title: 'Best Website Development Company in Bhopal | Mahi TechnoCrafts',
+    description: 'Custom websites starting ₹2,999. 150+ completed projects. Expert web & mobile app development in Bhopal.',
+    url: 'https://mahitechnocrafts.in/landing/web-development-bhopal',
+    siteName: 'Mahi TechnoCrafts',
     images: ['/images/web-dev-landing.webp']
   }
 };
@@ -22,51 +33,49 @@ export const metadata: Metadata = {
 export default function WebDevelopmentLandingPage() {
   const benefits = [
     'Modern, mobile-responsive designs',
-    'Fast loading speeds (3 seconds or less)',
+    'Fast loading speeds (sub-1 second)',
     'SEO-optimized for Google rankings',
-    '30-day free maintenance included',
+    '6 Months free maintenance included',
     'Secure hosting and SSL certificate',
-    'Content management system included'
+    'Full source code & database ownership'
   ];
 
   const packages = [
     {
-      name: 'Starter Website',
-      price: '₹15,000',
+      name: 'Essential Business Website',
+      price: 'Starting from ₹2,999*',
       features: [
-        'Up to 5 pages',
-        'Mobile responsive design',
-        'Basic SEO optimization',
-        'Contact form integration',
-        'Google Analytics setup',
-        '1 month free support'
+        'Tailored modern web design',
+        '100% Mobile & tablet responsive',
+        'Google Search & Local SEO setup',
+        'Direct WhatsApp chat integration',
+        'Fast delivery & clean code',
+        '6 Months Free Maintenance'
       ]
     },
     {
-      name: 'Business Website',
-      price: '₹35,000',
+      name: 'Professional Web Application',
+      price: 'Starting from ₹2,999*',
       popular: true,
       features: [
-        'Up to 15 pages',
-        'Custom design & branding',
-        'Advanced SEO optimization',
-        'Blog/News section',
-        'Social media integration',
-        'WhatsApp chat integration',
-        '3 months free support'
+        'Custom interactive web application',
+        'SEO & Local Business schemas',
+        'Lead capture & inquiry CRM sync',
+        'Sub-second ultra-fast page speeds',
+        'Full source code & database ownership',
+        '6 Months Free Maintenance'
       ]
     },
     {
-      name: 'E-commerce Store',
-      price: '₹75,000',
+      name: 'E-commerce & Custom Portal',
+      price: 'Starting from ₹2,999*',
       features: [
-        'Unlimited products',
-        'Payment gateway integration',
-        'Order management system',
-        'Customer accounts',
-        'Inventory management',
-        'Mobile app integration',
-        '6 months free support'
+        'Online product catalog & checkout',
+        'Instant UPI payments (GPay, PhonePe)',
+        'Automated WhatsApp order alerts',
+        'Zero commission on transactions',
+        'Custom mobile admin controls',
+        '6 Months Free Maintenance'
       ]
     }
   ];
@@ -88,7 +97,7 @@ export default function WebDevelopmentLandingPage() {
     },
     offers: {
       '@type': 'Offer',
-      priceRange: '₹15,000 - ₹75,000',
+      price: '2999',
       priceCurrency: 'INR',
       availability: 'https://schema.org/InStock'
     }
@@ -113,8 +122,8 @@ export default function WebDevelopmentLandingPage() {
             </h1>
             
             <p className="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto">
-              Custom, professional websites starting from just ₹15,000. 
-              150+ successful projects. Get your free quote in 24 hours.
+              Custom, professional websites starting from ₹2,999*. 
+              150+ successful projects. Get your free quote & prototype in 24 hours.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -165,10 +174,10 @@ export default function WebDevelopmentLandingPage() {
         <section className="py-16 px-6">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-4">
-              Transparent, Affordable Pricing
+              Transparent Pricing Starting from ₹2,999*
             </h2>
             <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-              No hidden costs. No surprises. Choose the package that fits your business needs.
+              No hidden fees, recurring lock-in contracts, or surprise charges. Transparent scope tailored to your exact business needs.
             </p>
             
             <div className="grid md:grid-cols-3 gap-8">

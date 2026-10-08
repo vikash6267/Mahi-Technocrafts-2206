@@ -3,10 +3,25 @@ import Link from 'next/link';
 import { ArrowRight, CheckCircle, Zap, Shield, Users, TrendingUp, Sparkles } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Industry Software Solutions | Mahi TechnoCrafts',
-  description: 'Specialized software solutions for Healthcare, E-commerce, Real Estate, Manufacturing, Restaurants, Education, Finance, and Agriculture. Custom development starting from ₹2,999*.',
+  title: 'Custom Industry Software Solutions in Bhopal | Mahi TechnoCrafts',
+  description: 'Specialized software & web solutions for Healthcare, E-commerce, Real Estate, Coaching, Restaurants, and Manufacturing by Bhopal\'s top tech agency.',
   alternates: {
     canonical: '/solutions'
+  },
+  keywords: [
+    'industry software solutions bhopal',
+    'hospital clinic software bhopal',
+    'real estate CRM bhopal',
+    'ecommerce store developers bhopal',
+    'school coaching app bhopal',
+    'custom business software bhopal'
+  ],
+  openGraph: {
+    title: 'Custom Industry Software Solutions in Bhopal | Mahi TechnoCrafts',
+    description: 'Purpose-built software systems starting ₹2,999. Engineered for local and enterprise businesses.',
+    url: 'https://mahitechnocrafts.in/solutions',
+    siteName: 'Mahi TechnoCrafts',
+    images: [{ url: 'https://mahitechnocrafts.in/logo.png', width: 1200, height: 630, alt: 'Industry Solutions Bhopal' }]
   }
 };
 
@@ -130,15 +145,15 @@ export default function SolutionsPage() {
         <div className="text-center mb-16 space-y-6">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 shadow-sm">
             <Sparkles size={12} className="text-brand-purple animate-pulse" />
-            Purpose-Built Business Architectures
+            Bhopal&apos;s Leading Software Engineering Partner
           </div>
 
           <h1 className="text-4xl md:text-6xl font-display font-black tracking-tight text-slate-900 dark:text-white">
-            Industry-Specific <span className="text-gradient">Solutions</span>
+            Industry-Specific <span className="text-gradient">Solutions in Bhopal</span>
           </h1>
 
           <p className="text-sm sm:text-base md:text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed">
-            Tailored software solutions engineered for your business model. From healthcare to e-commerce, we build high-converting applications that solve operational pain points.
+            Tailored software solutions engineered for Bhopal and Indian business models. From healthcare clinics to retail stores, we build high-converting applications that solve operational bottlenecks.
           </p>
           
           <div className="flex flex-wrap justify-center gap-6 text-xs sm:text-sm font-semibold pt-2">

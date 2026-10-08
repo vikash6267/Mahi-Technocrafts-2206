@@ -29,11 +29,11 @@ export default function LeadEstimator() {
   const [submitted, setSubmitted] = useState(false);
 
   const projectOptions = [
-    { id: 'website', name: 'Business Website', icon: <Globe size={18} />, base: 'Starts ₹2,999*' },
-    { id: 'app', name: 'Mobile App (iOS/Android)', icon: <Smartphone size={18} />, base: 'Starts ₹9,999*' },
-    { id: 'ecommerce', name: 'Online Shopping Store', icon: <ShoppingCart size={18} />, base: 'Starts ₹4,999*' },
-    { id: 'erp', name: 'Billing & Management Software', icon: <Database size={18} />, base: 'Starts ₹9,999*' },
-    { id: 'ai', name: 'WhatsApp & Auto Chatbot', icon: <Bot size={18} />, base: 'Starts ₹3,999*' },
+    { id: 'website', name: 'Business Website', icon: <Globe size={18} />, base: 'Starting from ₹2,999*' },
+    { id: 'app', name: 'Mobile App (iOS/Android)', icon: <Smartphone size={18} />, base: 'Starting from ₹2,999*' },
+    { id: 'ecommerce', name: 'Online Shopping Store', icon: <ShoppingCart size={18} />, base: 'Starting from ₹2,999*' },
+    { id: 'erp', name: 'Billing & Management Software', icon: <Database size={18} />, base: 'Starting from ₹2,999*' },
+    { id: 'ai', name: 'WhatsApp & Auto Chatbot', icon: <Bot size={18} />, base: 'Starting from ₹2,999*' },
   ];
 
   const industryOptions = [
@@ -192,10 +192,10 @@ Please provide me with a custom discounted proposal & free prototype plan.`;
                 </div>
                 <div>
                   <h4 className="text-xs font-bold text-slate-900 dark:text-white">
-                    Includes 100% Free SEO & AEO Setup + Mobile Responsive Guarantee
+                    Includes Free Search Engine Optimization & Mobile Responsive Guarantee
                   </h4>
                   <p className="text-[11px] text-slate-500 dark:text-slate-400">
-                    Sitemap, Schema Markup, Speed Optimization & 30 Days Free Maintenance included.
+                    Sitemap, Schema Markup, Speed Optimization & 6 Months Free Maintenance included.
                   </p>
                 </div>
               </div>

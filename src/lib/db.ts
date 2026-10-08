@@ -12,7 +12,9 @@ let cachedSiteData: SiteData | null = null;
 let cachedApprovedReviews: ReviewItem[] | null = null;
 let cachedAllReviews: ReviewItem[] | null = null;
 let cachedBlogs: BlogItem[] | null = null;
+let cachedBlogsTime = 0;
 let cachedCareers: CareerItem[] | null = null;
+const CACHE_TTL_MS = 30 * 1000; // 30 seconds TTL
 
 export async function connectToDatabase() {
   if (cachedClient && cachedDb) {
@@ -21,8 +23,8 @@ export async function connectToDatabase() {
 
   try {
     const client = await MongoClient.connect(MONGODB_URI, {
-      serverSelectionTimeoutMS: 2000,
-      connectTimeoutMS: 2000,
+      serverSelectionTimeoutMS: 15000,
+      connectTimeoutMS: 15000,
     });
     const db = client.db(MONGODB_DB);
     cachedClient = client;
@@ -171,6 +173,23 @@ export interface ContactSubmission {
   message: string;
   submittedAt: string;
   status: 'unread' | 'read' | 'archived';
+}
+
+export interface ChatMessage {
+  id: string;
+  sender: 'bot' | 'user' | 'system';
+  text: string;
+  timestamp: string;
+}
+
+export interface ChatSession {
+  sessionId: string;
+  clientName?: string;
+  clientPhone?: string;
+  messages: ChatMessage[];
+  createdAt: string;
+  updatedAt: string;
+  userAgent?: string;
 }
 
 // Default Seed Content for Homepage
@@ -398,19 +417,21 @@ export async function updateSiteData(data: SiteData): Promise<boolean> {
 }
 
 export async function getBlogs(): Promise<BlogItem[]> {
-  if (cachedBlogs) {
+  const now = Date.now();
+  if (cachedBlogs && (now - cachedBlogsTime < CACHE_TTL_MS)) {
     return cachedBlogs;
   }
   try {
     const { db } = await connectToDatabase();
     const collection = db.collection('blogs');
     
-    const blogs = await collection.find({}).toArray();
+    const blogs = await collection.find({}).sort({ publishedAt: -1 }).toArray();
     cachedBlogs = blogs.map(({ _id, ...b }) => b) as unknown as BlogItem[];
+    cachedBlogsTime = now;
     return cachedBlogs;
   } catch (error) {
-    console.error('getBlogs failed, falling back to default blogs:', error);
-    return defaultBlogs;
+    console.error('getBlogs failed, falling back to cached or default blogs:', error);
+    return cachedBlogs || defaultBlogs;
   }
 }
 
@@ -722,5 +743,65 @@ export async function deleteCareerById(id: string): Promise<boolean> {
   } catch (error) {
     console.error('Error deleting career from MongoDB', error);
     return false;
+  }
+}
+
+// ==================== CHATBOT SESSION HELPERS ====================
+
+export async function getChatSession(sessionId: string): Promise<ChatSession | null> {
+  try {
+    const { db } = await connectToDatabase();
+    const collection = db.collection('chat_sessions');
+    const session = await collection.findOne({ sessionId });
+    if (!session) return null;
+    const { _id, ...rest } = session;
+    return rest as unknown as ChatSession;
+  } catch (error) {
+    console.error('getChatSession failed:', error);
+    return null;
+  }
+}
+
+export async function saveChatSession(session: Partial<ChatSession> & { sessionId: string }): Promise<boolean> {
+  try {
+    const { db } = await connectToDatabase();
+    const collection = db.collection('chat_sessions');
+    const now = new Date().toISOString();
+    
+    const updateDoc: any = {
+      ...session,
+      updatedAt: now,
+    };
+    
+    // Don't overwrite _id if it slipped in
+    delete updateDoc._id;
+
+    await collection.updateOne(
+      { sessionId: session.sessionId },
+      { 
+        $set: updateDoc,
+        $setOnInsert: { 
+          createdAt: session.createdAt || now,
+          messages: session.messages || []
+        } 
+      },
+      { upsert: true }
+    );
+    return true;
+  } catch (error) {
+    console.error('Error saving chat session to MongoDB:', error);
+    return false;
+  }
+}
+
+export async function getAllChatSessions(limit = 100): Promise<ChatSession[]> {
+  try {
+    const { db } = await connectToDatabase();
+    const collection = db.collection('chat_sessions');
+    const sessions = await collection.find({}).sort({ updatedAt: -1 }).limit(limit).toArray();
+    return sessions.map(({ _id, ...s }) => s) as unknown as ChatSession[];
+  } catch (error) {
+    console.error('getAllChatSessions failed:', error);
+    return [];
   }
 }
