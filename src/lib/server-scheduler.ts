@@ -31,9 +31,9 @@ async function checkAndGenerateBlog() {
 
     if (hoursSinceLastBlog >= MIN_HOURS_BETWEEN_BLOGS) {
       console.log(`[Autonomous Blog Engine] Threshold reached (>= ${MIN_HOURS_BETWEEN_BLOGS}h). Triggering autonomous blog generation...`);
-      const result = await generateAutonomousBlog({ status: 'published' });
+      const result = await generateAutonomousBlog({ status: 'draft' });
       if (result.success && result.blog) {
-        console.log(`[Autonomous Blog Engine] Successfully generated & published: "${result.blog.title}"`);
+        console.log(`[Autonomous Blog Engine] Saved a draft for editorial review: "${result.blog.title}"`);
       } else {
         console.error('[Autonomous Blog Engine] Generation failed:', result.error);
       }
@@ -73,4 +73,3 @@ export function initAutonomousBlogScheduler() {
     checkAndGenerateBlog();
   }, CHECK_INTERVAL_MS);
 }
-

@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Sparkles, ArrowRight, TrendingUp, CheckCircle2 } from 'lucide-react';
+import { Sparkles, ArrowRight, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
 import { ProjectItem } from '@/lib/db';
 
@@ -17,9 +17,9 @@ const featuredCaseStudies = [
     clientType: 'Fashion & Retail Store (Bhopal)',
     image: 'https://images.unsplash.com/photo-1578916171728-46686eac8d58?auto=format&fit=crop&w=1000&q=80',
     imageAlt: 'Modern retail store and online shopping system',
-    description: 'We created an ultra-fast online shopping website where customers can buy clothes and accessories in 1-click using Google Pay, PhonePe, and Paytm. All orders and shipping details sync automatically to WhatsApp.',
-    tags: ['1-Click UPI Payment', 'WhatsApp Orders', 'Superfast on Mobile', 'Automated Invoices'],
-    metric: '+310% Online Orders',
+    description: 'An online store concept with mobile shopping, UPI checkout, WhatsApp order updates, and invoice workflows.',
+    tags: ['Mobile storefront', 'UPI checkout', 'WhatsApp updates', 'Order management'],
+    metric: 'Online store concept',
     link: '/solutions/ecommerce'
   },
   {
@@ -29,9 +29,9 @@ const featuredCaseStudies = [
     clientType: 'Multi-Doctor Polyclinic (Bhopal)',
     image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1000&q=80',
     imageAlt: 'Modern hospital and clinic reception and doctor consultation system',
-    description: 'We built a 24/7 doctor appointment booking portal that eliminated crowded reception lines. Patients get automatic WhatsApp reminder messages and can view their digital prescriptions and lab test reports online.',
-    tags: ['Zero Waiting Lines', 'WhatsApp Appointment Alerts', 'Digital Prescriptions', '100% Secure'],
-    metric: '75% Less Reception Crowding',
+    description: 'A clinic portal concept for appointment requests, patient reminders, digital prescriptions, and lab report access.',
+    tags: ['Appointment requests', 'Patient reminders', 'Digital prescriptions', 'Lab report access'],
+    metric: 'Clinic portal concept',
     link: '/solutions/healthcare'
   },
   {
@@ -41,9 +41,9 @@ const featuredCaseStudies = [
     clientType: 'Luxury Builder & Agency (MP)',
     image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1000&q=80',
     imageAlt: 'Modern real estate residential towers and luxury apartment listings website',
-    description: 'We designed a modern property listing portal with 3D photos, price calculators, and map locations. Buyers can tap one button to connect with sales agents via phone call or WhatsApp.',
-    tags: ['Direct Buyer Inquiries', '3D Photo Walkthroughs', 'Loan EMI Calculator', 'Google #1 Ranked'],
-    metric: '4.5x More Property Calls',
+    description: 'A property showcase concept with listing details, location maps, an EMI calculator, and direct inquiry links.',
+    tags: ['Property listings', 'Location maps', 'EMI calculator', 'Inquiry links'],
+    metric: 'Property portal concept',
     link: '/solutions/real-estate'
   },
   {
@@ -53,9 +53,9 @@ const featuredCaseStudies = [
     clientType: 'Customer Service Business',
     image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1000&q=80',
     imageAlt: 'Automated digital reporting and customer invoicing desk',
-    description: 'We set up an intelligent 24/7 automated assistant that instantly replies to customer questions, sends product catalogs, and books sales calls without requiring staff to stay awake at night.',
-    tags: ['24/7 Instant Auto Replies', 'Zero Missed Inquiries', 'Saves 20+ Hours Weekly', 'Easy WhatsApp Setup'],
-    metric: '85% Inquiries Automated',
+    description: 'A customer support automation concept for common questions, product catalog sharing, and booking requests.',
+    tags: ['Automated replies', 'Catalog sharing', 'Booking requests', 'WhatsApp workflow'],
+    metric: 'Automation concept',
     link: '/services/ai-solutions'
   }
 ];
@@ -73,7 +73,7 @@ export default function Projects({ data }: ProjectsProps) {
         <div className="text-center max-w-2xl mx-auto mb-14 space-y-3.5">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs font-bold uppercase tracking-wider text-purple-700 dark:text-purple-400 shadow-sm">
             <Sparkles size={13} className="text-purple-500 animate-pulse" />
-            <span>Proven Real-World Case Studies</span>
+            <span>Selected Project Concepts</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-black tracking-tight text-slate-900 dark:text-white">
@@ -81,13 +81,13 @@ export default function Projects({ data }: ProjectsProps) {
           </h2>
 
           <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-xl mx-auto leading-relaxed">
-            Real websites and apps we built that doubled customer sales, eliminated manual work, and brought daily phone inquiries in Bhopal & India.
+            Examples of digital experiences and workflows we can tailor to retail, healthcare, property, and customer support teams.
           </p>
 
           <div className="w-16 h-1 bg-gradient-to-r from-purple-500 to-sky-500 mx-auto mt-4 rounded-full" />
         </div>
 
-        {/* Projects Grid with Real Authentic Indian Imagery */}
+        {/* Project examples */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {featuredCaseStudies.map((project, index) => (
             <div
@@ -107,9 +107,9 @@ export default function Projects({ data }: ProjectsProps) {
                 {/* Subtle bottom gradient only behind metric badge */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
 
-                {/* Metric Badge Overlay */}
+                {/* Project type badge */}
                 <div className="absolute bottom-3 left-3 px-3 py-1.5 rounded-xl bg-slate-950/90 border border-emerald-500/40 text-emerald-400 text-xs font-bold flex items-center gap-1.5 backdrop-blur-md shadow-lg">
-                  <TrendingUp size={14} />
+                  <TrendingUp size={14} aria-hidden="true" />
                   <span>{project.metric}</span>
                 </div>
               </div>
@@ -122,9 +122,6 @@ export default function Projects({ data }: ProjectsProps) {
                       {project.category}
                     </span>
 
-                    <span className="text-[11px] text-slate-400 font-medium">
-                      {project.clientType}
-                    </span>
                   </div>
 
                   <h3 className="font-display font-extrabold text-slate-900 dark:text-white text-lg group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
@@ -150,8 +147,8 @@ export default function Projects({ data }: ProjectsProps) {
                   </div>
 
                   <div className="flex items-center justify-between pt-1">
-                    <span className="text-[11px] text-emerald-600 dark:text-emerald-400 font-bold flex items-center gap-1">
-                      <CheckCircle2 size={13} /> Tested & Delivered
+                    <span className="text-[11px] text-slate-500 dark:text-slate-400 font-medium flex items-center gap-1">
+                      Example scope
                     </span>
 
                     <Link

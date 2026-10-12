@@ -22,42 +22,13 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Best Website Development Company in Bhopal | Mahi TechnoCrafts',
+    default: 'Web Design & Software Development in Bhopal | Mahi TechnoCrafts',
     template: '%s | Mahi TechnoCrafts'
   },
-  description: 'Mahi TechnoCrafts is the top website development company in Bhopal, founded by Vikash Maheshwari. Experts in MERN stack, Next.js, React, custom e-commerce, mobile apps, AI solutions, UI/UX design, and local SEO for businesses in Bhopal and across India.',
+  description: 'Mahi TechnoCrafts designs and develops websites, web applications, mobile apps, and business software for companies in Bhopal and across India.',
   alternates: {
     canonical: '/'
   },
-  keywords: [
-    'website developer in bhopal',
-    'best web development company bhopal',
-    'web design hamidia road bhopal',
-    'mern stack developers bhopal',
-    'Mahi Technocrafts',
-    'Vikash Maheshwari',
-    'near by developer',
-    'developer near me',
-    'web developer near me',
-    'software developer near me',
-    'app developer near me',
-    'Next.js developers near me',
-    'best software company nearby',
-    'Web Development Bhopal',
-    'Next.js Development Agency',
-    'React App Developers',
-    'Mobile App Development',
-    'UI/UX Design Company',
-    'AI Solutions',
-    'Bhopal Tech Company',
-    'software development company Bhopal',
-    'IT services Bhopal',
-    'e-commerce development bhopal',
-    'custom software bhopal',
-    'digital marketing bhopal',
-    'SEO company bhopal',
-    'app development bhopal'
-  ],
   authors: [{ name: 'Vikash Maheshwari', url: 'https://mahitechnocrafts.in/about' }],
   creator: 'Vikash Maheshwari',
   publisher: 'Mahi TechnoCrafts',
@@ -70,22 +41,22 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_IN',
     url: 'https://mahitechnocrafts.in',
-    title: 'Best Website Developer in Bhopal | Mahi TechnoCrafts',
-    description: 'Get premium custom web applications, mobile apps, and e-commerce stores in Bhopal from Mahi TechnoCrafts. Expert Next.js, React, and MERN stack development.',
+    title: 'Web Design & Software Development in Bhopal | Mahi TechnoCrafts',
+    description: 'Websites, mobile apps, and custom software designed and developed by Mahi TechnoCrafts in Bhopal, India.',
     siteName: 'Mahi TechnoCrafts',
     images: [
       {
         url: 'https://mahitechnocrafts.in/logo.png',
         width: 1200,
         height: 630,
-        alt: 'Mahi TechnoCrafts - Best Web Development Company Bhopal'
+        alt: 'Mahi TechnoCrafts web and software development'
       }
     ]
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Best Website Developer in Bhopal | Mahi TechnoCrafts',
-    description: 'Get premium custom web applications and e-commerce stores in Bhopal from Mahi TechnoCrafts.',
+    title: 'Web Design & Software Development in Bhopal | Mahi TechnoCrafts',
+    description: 'Websites, apps, and business software from Mahi TechnoCrafts, Bhopal.',
     creator: '@mahi_technocrafts',
     images: ['https://mahitechnocrafts.in/logo.png']
   },
@@ -102,9 +73,6 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  verification: {
-    google: 'google-site-verification-code',
-  },
   category: 'technology',
   metadataBase: new URL('https://mahitechnocrafts.in')
 };
@@ -120,13 +88,12 @@ export default function RootLayout({
     '@id': 'https://mahitechnocrafts.in/#organization',
     name: 'Mahi TechnoCrafts',
     alternateName: ['MTC', 'Mahi TechnoCrafts Bhopal', 'Mahi TechnoCrafts India', 'Mahi Technocrafts'],
-    description: 'Mahi TechnoCrafts is the top-rated IT service company, custom software development agency, and AI automation partner in Bhopal, Madhya Pradesh, serving clients across India and worldwide. We specialize in web apps, mobile apps, AI chatbots, custom ERP/CRM, and global digital marketing.',
+    description: 'Web design, software development, mobile apps, and digital services based in Bhopal, Madhya Pradesh, India.',
     url: 'https://mahitechnocrafts.in',
     logo: 'https://mahitechnocrafts.in/logo.png',
     image: 'https://mahitechnocrafts.in/logo.png',
     telephone: '+916267144122',
     email: 'support@mahitechnocrafts.in',
-    priceRange: '₹₹₹',
     founder: {
       '@type': 'Person',
       name: 'Vikash Maheshwari',
@@ -162,48 +129,18 @@ export default function RootLayout({
       postalCode: '462001',
       addressCountry: 'IN'
     },
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: 23.2694,
-      longitude: 77.4019
-    },
     areaServed: [
       { '@type': 'City', name: 'Bhopal' },
       { '@type': 'City', name: 'Indore' },
       { '@type': 'State', name: 'Madhya Pradesh' },
-      { '@type': 'Country', name: 'India' },
-      {
-        '@type': 'Place',
-        name: 'Worldwide',
-        sameAs: 'https://en.wikipedia.org/wiki/Earth'
-      }
+      { '@type': 'Country', name: 'India' }
     ],
-    openingHoursSpecification: {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: [
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday',
-        'Sunday'
-      ],
-      opens: '00:00',
-      closes: '23:59'
-    },
     sameAs: [
       'https://github.com/vikash6267',
       'https://www.linkedin.com/company/mahi-technocrafts/',
       'https://www.instagram.com/mahi_technocrafts/',
       'https://x.com/mahi_technocrafts'
     ],
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '50',
-      bestRating: '5'
-    },
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Comprehensive IT & Digital Growth Services',
@@ -213,7 +150,7 @@ export default function RootLayout({
           itemOffered: {
             '@type': 'Service',
             name: 'Web Development & Full-Stack Engineering',
-            description: 'Custom web application and portal engineering using Next.js, React, Node.js, and modern high-speed architectures.',
+            description: 'Business websites, web portals, and custom application workflows with responsive layouts and technical SEO foundations.',
             url: 'https://mahitechnocrafts.in/services/web-dev'
           }
         },
@@ -222,7 +159,7 @@ export default function RootLayout({
           itemOffered: {
             '@type': 'Service',
             name: 'Mobile App Development',
-            description: 'Native iOS and Android mobile app development with 1-click UPI payments and App Store / Play Store publishing.',
+            description: 'Android and iOS app planning, development, integrations, release preparation, and handover scoped to project requirements.',
             url: 'https://mahitechnocrafts.in/services/mobile-dev'
           }
         },
@@ -231,7 +168,7 @@ export default function RootLayout({
           itemOffered: {
             '@type': 'Service',
             name: 'Enterprise AI Solutions & Smart Chatbots',
-            description: 'Custom AI conversational bots, OpenAI/Gemini integrations, and WhatsApp CRM automation to scale business inquiries 24/7.',
+            description: 'Chat and workflow automation to handle common questions, route enquiries, and support team processes.',
             url: 'https://mahitechnocrafts.in/services/ai-solutions'
           }
         },
@@ -240,7 +177,7 @@ export default function RootLayout({
           itemOffered: {
             '@type': 'Service',
             name: 'Digital Marketing & Growth Hacking',
-            description: 'Full-funnel Google Ads, Meta PPC, conversion-optimized landing pages, and lead generation campaigns.',
+            description: 'Campaign planning, landing pages, paid search and social advertising, and conversion measurement.',
             url: 'https://mahitechnocrafts.in/services/digital-marketing'
           }
         },
@@ -249,7 +186,7 @@ export default function RootLayout({
           itemOffered: {
             '@type': 'Service',
             name: 'SEO & Generative Engine Optimization (AEO/GEO)',
-            description: 'Local SEO Bhopal, Google Maps #1 rank optimization, and Answer Engine Optimization for ChatGPT, Perplexity, and Gemini.',
+            description: 'Local search optimization and technical SEO support for businesses in Bhopal and India.',
             url: 'https://mahitechnocrafts.in/services/seo-services'
           }
         },
@@ -267,7 +204,7 @@ export default function RootLayout({
           itemOffered: {
             '@type': 'Service',
             name: 'E-Commerce Store Setup & Management',
-            description: 'High-speed online shopping stores, automated shipping sync, COD verification, and WhatsApp catalog integration.',
+            description: 'Product catalogues, checkout, payment-provider integrations, and order-management workflows.',
             url: 'https://mahitechnocrafts.in/services/ecommerce-management'
           }
         },
@@ -285,7 +222,7 @@ export default function RootLayout({
           itemOffered: {
             '@type': 'Service',
             name: 'Secure Cloud Hosting & DevOps',
-            description: 'Enterprise AWS cloud setups, 99.9% uptime SLA, automated backups, and zero-downtime deployments.',
+            description: 'Hosting and security requirements are reviewed and agreed as part of each project scope.',
             url: 'https://mahitechnocrafts.in/services/cloud-services'
           }
         },
@@ -294,7 +231,7 @@ export default function RootLayout({
           itemOffered: {
             '@type': 'Service',
             name: 'Cyber Security & Server Hardening',
-            description: 'Vulnerability assessments, SSL enforcement, malware protection, and secure encrypted database architecture.',
+            description: 'Security review and protection requirements are scoped to the systems and risks discussed for each project.',
             url: 'https://mahitechnocrafts.in/services/cyber-security'
           }
         },
@@ -303,7 +240,7 @@ export default function RootLayout({
           itemOffered: {
             '@type': 'Service',
             name: 'Social Media Marketing (SMM) & Branding',
-            description: 'Viral Instagram Reels, brand identity style guides, vector logos, and community engagement.',
+            description: 'Social campaign planning, content direction, brand identity, and audience engagement scoped to your goals.',
             url: 'https://mahitechnocrafts.in/services/social-media-marketing'
           }
         }
@@ -317,17 +254,9 @@ export default function RootLayout({
     '@id': 'https://mahitechnocrafts.in/#website',
     name: 'Mahi TechnoCrafts',
     url: 'https://mahitechnocrafts.in/',
-    description: 'Best website development company in Bhopal offering Next.js, React, mobile app development, and digital solutions',
+    description: 'Web design, software development, mobile apps, and digital services from Bhopal, India.',
     publisher: {
       '@id': 'https://mahitechnocrafts.in/#organization'
-    },
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: {
-        '@type': 'EntryPoint',
-        urlTemplate: 'https://mahitechnocrafts.in/blog?q={search_term_string}'
-      },
-      'query-input': 'required name=search_term_string'
     },
     inLanguage: 'en-IN'
   };

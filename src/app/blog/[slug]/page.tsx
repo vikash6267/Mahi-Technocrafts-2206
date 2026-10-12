@@ -21,10 +21,11 @@ export async function generateMetadata({ params }: PageProps) {
     console.error('Error fetching blog for metadata', error);
   }
 
-  if (!blog) {
+  if (!blog || blog.status === 'draft') {
     return {
       title: 'Post Not Found | Mahi Technocrafts',
-      description: 'The requested blog post could not be found.'
+      description: 'The requested blog post could not be found.',
+      robots: { index: false, follow: false }
     };
   }
 
@@ -77,7 +78,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
     console.error('Error loading blog post page', error);
   }
 
-  if (!blog) {
+  if (!blog || blog.status === 'draft') {
     notFound();
   }
 
@@ -162,21 +163,6 @@ export default async function BlogDetailPage({ params }: PageProps) {
         '@id': 'https://mahitechnocrafts.in/blog',
         name: 'Mahi TechnoCrafts Blog'
       }
-    });
-  }
-
-  if (blog.enableFaqSchema && blog.faqs && blog.faqs.length > 0) {
-    schemas.push({
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: blog.faqs.map((faq) => ({
-        '@type': 'Question',
-        name: faq.q,
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: faq.a
-        }
-      }))
     });
   }
 

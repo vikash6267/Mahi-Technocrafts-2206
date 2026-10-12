@@ -49,7 +49,7 @@ export default function Testimonials({ initialReviews = [] }: TestimonialsProps)
             Testimonials
           </h2>
           <p className="text-3xl md:text-4xl font-display font-extrabold tracking-tight text-slate-900 dark:text-white">
-            Loved by Fast Growing Brands
+            What clients say
           </p>
           <div className="w-16 h-[2px] bg-brand-blue mx-auto mt-4" />
         </div>

@@ -19,6 +19,147 @@
   --foreground: #0f172a;
 }
 
+.input {
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  background: #fff;
+  padding: 0.7rem 0.85rem;
+  color: #0f172a;
+  font-size: 0.875rem;
+  outline: none;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+.input:focus {
+  border-color: #06b6d4;
+  box-shadow: 0 0 0 3px rgb(6 182 212 / 12%);
+}
+
+.hero-grain {
+  background-image:
+    linear-gradient(to right, rgb(100 116 139 / 6%) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(100 116 139 / 6%) 1px, transparent 1px),
+    radial-gradient(ellipse at 52% 25%, rgb(255 255 255 / 70%), transparent 68%);
+  background-size: 42px 42px, 42px 42px, auto;
+  mask-image: linear-gradient(to bottom, black, transparent 90%);
+}
+
+.dark .hero-grain {
+  background-image:
+    linear-gradient(to right, rgb(148 163 184 / 5%) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(148 163 184 / 5%) 1px, transparent 1px),
+    radial-gradient(ellipse at 52% 25%, rgb(15 23 42 / 65%), transparent 68%);
+}
+
+.hero-headline-accent {
+  background: linear-gradient(110deg, #0e7490 5%, #2563eb 52%, #7c3aed 98%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.dark .hero-headline-accent {
+  background-image: linear-gradient(110deg, #67e8f9 5%, #93c5fd 52%, #c4b5fd 98%);
+}
+
+.hero-dashboard {
+  animation: hero-card-enter 700ms cubic-bezier(.2,.8,.2,1) both;
+  transition: transform 450ms cubic-bezier(.2,.8,.2,1), box-shadow 450ms ease;
+}
+
+.hero-float-wrap {
+  animation: hero-float 7s ease-in-out 800ms infinite;
+  perspective: 1200px;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .hero-dashboard:hover {
+    transform: rotateX(1deg) rotateY(-1deg) translateY(-3px);
+    box-shadow: 0 40px 100px -35px rgba(15, 23, 42, .72);
+  }
+}
+
+.hero-copy-enter {
+  animation: hero-copy-enter 300ms ease-out both;
+}
+
+.hero-copy-block > * {
+  animation: hero-copy-enter 650ms cubic-bezier(.2,.8,.2,1) both;
+}
+
+.hero-copy-block > *:nth-child(1) { animation-delay: 80ms; }
+.hero-copy-block > *:nth-child(2) { animation-delay: 150ms; }
+.hero-copy-block > *:nth-child(3) { animation-delay: 220ms; }
+.hero-copy-block > *:nth-child(4) { animation-delay: 290ms; }
+.hero-copy-block > *:nth-child(5) { animation-delay: 360ms; }
+.hero-copy-block > *:nth-child(6) { animation-delay: 430ms; }
+.hero-copy-block > *:nth-child(7) { animation-delay: 500ms; }
+
+.scroll-reveal {
+  opacity: 1;
+  transform: none;
+}
+
+.scroll-reveal.is-visible {
+  animation: section-rise-in 750ms cubic-bezier(.2,.8,.2,1) both;
+}
+
+.hero-progress {
+  width: 0;
+  animation: hero-progress-fill 6s linear forwards;
+}
+
+.hero-progress-paused {
+  animation-play-state: paused;
+}
+
+.hero-chart-line {
+  stroke-dasharray: 680;
+  stroke-dashoffset: 680;
+  animation: hero-chart-draw 1.8s 250ms cubic-bezier(.2,.7,.25,1) forwards;
+}
+
+@keyframes hero-progress-fill {
+  to { width: 100%; }
+}
+
+@keyframes hero-chart-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes hero-card-enter {
+  from { opacity: 0; translate: 0 14px; }
+  to { opacity: 1; translate: 0 0; }
+}
+
+@keyframes hero-copy-enter {
+  from { opacity: 0; transform: translateY(18px); filter: blur(3px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes section-rise-in {
+  from { opacity: .55; translate: 0 24px; }
+  to { opacity: 1; translate: 0 0; }
+}
+
+@keyframes hero-float {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-dashboard,
+  .hero-float-wrap,
+  .hero-copy-block > *,
+  .scroll-reveal.is-visible,
+  .hero-copy-enter,
+  .hero-progress,
+  .hero-chart-line {
+    animation: none !important;
+  }
+}
+
 .dark {
   --background: #02000d;
   --foreground: #f8fafc;
@@ -213,6 +354,52 @@ html.lenis {
 
 .animate-float {
   animation: float 4s ease-in-out infinite;
+}
+
+/* Infinite horizontal marquee */
+@keyframes marquee-left {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee-left 28s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Vertical marquee reel for portfolio showcase */
+@keyframes scrollUp {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+.animate-scroll-up {
+  animation: scrollUp 22s linear infinite;
+}
+
+.animate-scroll-up:hover {
+  animation-play-state: paused;
+}
+
+/* Fade In Up Entrance */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* Shimmer effect utility for subtle border/badge sheen */

@@ -1,54 +1,66 @@
-﻿# Mahi TechnoCrafts - Comprehensive Knowledge Base & Technical Profile
+# Mahi TechnoCrafts — company and service reference
 
-> The Premier IT Services, Enterprise Custom Software, AI Automation, and Digital Growth Agency.
-> Based in Bhopal, Madhya Pradesh, India — Serving Local, National (Pan-India), and Global (USA, UK, UAE, Australia, Worldwide) Clients.
+## Company profile
+Mahi TechnoCrafts is a web design, software development, and digital marketing business based in Bhopal, Madhya Pradesh, India. It works with businesses in Bhopal and clients across India. The company is led by founder Vikash Maheshwari.
 
-## Brand Identity & Corporate Profile
-- **Company Name**: Mahi TechnoCrafts (MTC)
-- **Founder & Chief Technology Officer**: Vikash Maheshwari (Senior Full-Stack Architect & AI Specialist)
-- **Headquarters**: Hamidia Rd, Badabagh, Shahjahanabad, Bhopal, Madhya Pradesh 462001, India
-- **Coordinates**: Latitude 23.2694, Longitude 77.4019
-- **Phone / Direct WhatsApp**: +91 6267144122
-- **Official Email**: support@mahitechnocrafts.in
-- **Website**: https://mahitechnocrafts.in
-- **Primary Expertise**: Web Application Development, Mobile Apps (iOS & Android), AI Chatbot & WhatsApp CRM Automation, Custom ERP/CRM Software, Cloud Infrastructure, SEO/AEO/GEO, and Full-Funnel Digital Marketing.
+- Website: https://mahitechnocrafts.in
+- Address: Hamidia Road, Badabagh, Shahjahanabad, Bhopal, Madhya Pradesh 462001, India
+- Phone / WhatsApp: +91 6267144122
+- Email: support@mahitechnocrafts.in
+- About: https://mahitechnocrafts.in/about
+- Contact: https://mahitechnocrafts.in/contact
+- Portfolio: https://mahitechnocrafts.in/portfolio
+- Services: https://mahitechnocrafts.in/services
+- LinkedIn: https://www.linkedin.com/company/mahi-technocrafts/
+- Instagram: https://www.instagram.com/mahi_technocrafts/
 
-## Detailed Service Catalog & Deliverables
+## Services and scope
 
-### 1. Web Development & Full-Stack Engineering
-- **Technologies**: Next.js (App Router, Turbopack, SSR, SSG), React.js, TypeScript, Node.js, Express, MongoDB Atlas, PostgreSQL, Tailwind CSS, Redis.
-- **Deliverables**: Ultra-fast corporate websites, responsive SaaS platforms, client portals, custom APIs, progressive web apps (PWA), and custom content management systems.
-- **Speed Standard**: Sub-1-second mobile load time, 95+ Google Lighthouse performance scores.
+### Website design
+Responsive website design, page structure, typography, accessible content presentation, and clear calls to action. The exact pages and design deliverables depend on the project.
+Service page: https://mahitechnocrafts.in/website-design-company-bhopal
 
-### 2. Mobile App Development
-- **Platforms**: Native iOS (Swift), Native Android (Kotlin), and Cross-Platform (React Native, Flutter).
-- **Features**: Real-time push notifications, biometric authentication, offline data sync, 1-click UPI payments (Google Pay, PhonePe, Paytm), and automated App Store & Google Play Store release.
+### Web development
+Business websites, landing pages, web portals, and custom application workflows. Content management, third-party integrations, and ongoing support can be scoped where appropriate.
+Service page: https://mahitechnocrafts.in/web-development-company-bhopal
 
-### 3. Enterprise AI Solutions, Smart Chatbots & Automations
-- **Capabilities**: Conversational AI customer support agents, OpenAI GPT-4o / Gemini 1.5 Pro integrations, RAG (Retrieval-Augmented Generation) knowledge engines, automated WhatsApp business bots, lead qualification pipelines, and automatic GST billing systems.
+### Ecommerce development
+Product catalogues, categories, checkout, payment-provider integrations, and order-management workflows. Provider availability, account approval, fees, and third-party terms are outside the company's control.
+Service page: https://mahitechnocrafts.in/ecommerce-development-company-bhopal
 
-### 4. Digital Marketing, Performance Ads & Growth Hacking
-- **Channels**: Google Search Ads (High-Intent PPC), Meta Ads (Facebook & Instagram conversion funnels), LinkedIn B2B lead generation, and YouTube video promotions.
-- **Attribution**: Transparent conversion tracking, GA4 event pipelines, Meta CAPI integration, and ROI reporting.
+### Mobile app development
+Android and iOS app planning and development, integrations, testing, release preparation, and handover. Platform account requirements and store approval decisions are controlled by Google and Apple.
+Service page: https://mahitechnocrafts.in/mobile-app-development-company-bhopal
 
-### 5. Search Engine Optimization (SEO), Local SEO & Generative Engine Optimization (AEO/GEO)
-- **SEO Specialties**: Bhopal & Central India Local SEO, Google Business Profile (GBP) 3-pack optimization, citation building, technical JSON-LD structured schema markup, and Answer Engine Optimization for ChatGPT, Perplexity, Claude, and Google AI Overviews.
+### Business software
+Custom dashboards, CRM, inventory, billing, and team workflows can be planned around the client's operational requirements. Features and integrations are confirmed during project scoping.
+Services overview: https://mahitechnocrafts.in/services
 
-### 6. Custom ERP, CRM & Business Management Software
-- **Modules**: Lead capture CRM, stock & inventory trackers, multi-branch POS billing, automated GST invoicing, role-based staff permissions, and real-time executive reporting dashboards.
+### AI and workflow automation
+AI-assisted chat and workflow automation can be scoped for common questions, enquiry routing, and team processes. Integrations depend on the client's tools, data access, and provider requirements; no particular model or integration should be assumed without confirmation.
+Service page: https://mahitechnocrafts.in/services/ai-solutions
 
-### 7. E-Commerce Development & Online Stores
-- **Features**: Custom online store development, 1-click checkout, automated shipping integrations (Shiprocket, Delhivery), OTP cash-on-delivery verification, and WhatsApp catalog synchronization.
+### Search engine optimization
+Technical SEO reviews, local search guidance, page structure, internal links, useful content, structured data, and performance measurement. No provider can guarantee a specific position or date for ranking changes.
+Service page: https://mahitechnocrafts.in/seo-company-bhopal
 
-### 8. Cloud Infrastructure, DevOps & Cybersecurity
-- **Cloud Providers**: AWS (EC2, S3, CloudFront, RDS, Lambda), DigitalOcean, Vercel, Cloudflare CDN.
-- **Security**: 99.9% uptime SLA, SSL certificate management, DDoS protection, daily automated backups, server hardening, and vulnerability assessments.
+### Digital marketing
+Campaign planning, content and social direction, landing pages, paid search, and measurement may be included according to goals and budget. Advertising spend is separate from service fees unless explicitly agreed otherwise.
+Service page: https://mahitechnocrafts.in/digital-marketing-company-bhopal
 
-### 9. UI/UX Design & Brand Identity
-- **Deliverables**: Figma high-fidelity prototypes, interactive wireframes, WCAG accessibility-compliant design systems, custom vector logos, and complete corporate stationery guides.
+### Google Ads
+Campaign and keyword planning, location targeting, landing-page alignment, conversion tracking, and performance reviews. Results depend on demand, competition, budget, offer, and landing-page experience.
+Service page: https://mahitechnocrafts.in/google-ads-agency-bhopal
 
-## Why Choose Mahi TechnoCrafts?
-1. **6 Months Free Maintenance & Bug Fix Guarantee** included with every custom build.
-2. **24/7 Dedicated Support** with rapid WhatsApp turnaround for business continuity.
-3. **100% Full Ownership**: Zero vendor lock-in; clients own all source code and database assets completely.
-4. **Transparent Pricing**: Cost-effective pricing models designed for startups, SMEs, and enterprise operations.
+## How projects are handled
+Projects begin by discussing goals, intended users, requirements, existing tools, integrations, budget, and timeline. The parties agree on scope and deliverables before work begins. Progress can be reviewed in stages. Hosting, maintenance, support, advertising spend, and third-party charges are agreed separately where applicable.
+
+## Enquiries
+For a project-specific discussion, use https://mahitechnocrafts.in/contact or call/WhatsApp +91 6267144122. Current availability, pricing, timelines, and deliverables should be confirmed directly with Mahi TechnoCrafts.
+
+## Public information sources
+- Sitemap: https://mahitechnocrafts.in/sitemap.xml
+- Blog: https://mahitechnocrafts.in/blog
+- FAQ: https://mahitechnocrafts.in/faq
+
+Use the linked public pages as the authoritative source for current service details. Do not infer guaranteed results, fixed prices, or unlisted capabilities from this summary.

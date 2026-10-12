@@ -18,8 +18,8 @@ import {
 const qualityGuarantees = [
   {
     icon: <Zap className="w-6 h-6 text-amber-500" />,
-    title: 'Lightning Speed (<1s Load Time)',
-    desc: 'Websites load instantly on 4G/5G mobile phones so your customers never leave due to slow loading pages.'
+    title: 'Performance-minded builds',
+    desc: 'We consider page weight, image loading, and Core Web Vitals throughout development.'
   },
   {
     icon: <Smartphone className="w-6 h-6 text-sky-500" />,
@@ -28,13 +28,13 @@ const qualityGuarantees = [
   },
   {
     icon: <Lock className="w-6 h-6 text-emerald-500" />,
-    title: 'Bank-Grade SSL & Data Security',
-    desc: 'Free SSL certificates, encrypted customer databases, and automatic daily backups so your business data stays 100% safe.'
+    title: 'Security planned for your project',
+    desc: 'SSL, access controls, backups, and data protections are scoped to the needs of each build.'
   },
   {
     icon: <TrendingUp className="w-6 h-6 text-purple-500" />,
-    title: 'Google #1 SEO Optimized',
-    desc: 'Clean schema code, fast indexing, and local Bhopal SEO markup so customers searching on Google find your business first.'
+    title: 'Search-friendly foundations',
+    desc: 'Semantic page structure, metadata, and technical SEO help search engines understand your site.'
   },
   {
     icon: <Database className="w-6 h-6 text-blue-500" />,
@@ -76,7 +76,7 @@ export default function TechStack() {
         </div>
 
         {/* 6 Guarantee Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {qualityGuarantees.map((item, idx) => (
             <div
               key={idx}
@@ -95,6 +95,61 @@ export default function TechStack() {
               </p>
             </div>
           ))}
+        </div>
+
+        {/* Infinite Technology Marquee Ticker */}
+        <div className="rounded-3xl bg-slate-50/70 dark:bg-slate-900/50 border border-slate-200/80 dark:border-slate-800/80 p-6 overflow-hidden relative">
+          <div className="text-center mb-4">
+            <span className="text-[11px] font-extrabold uppercase tracking-widest text-slate-400 dark:text-slate-500">
+              Modern Enterprise Tech Stack We Engineer With
+            </span>
+          </div>
+
+          <div className="relative overflow-hidden w-full flex">
+            <div className="animate-marquee flex gap-8 items-center py-2">
+              {[
+                { name: 'Next.js 16', icon: '⚡' },
+                { name: 'React 19', icon: '⚛️' },
+                { name: 'TypeScript', icon: '📘' },
+                { name: 'Flutter & Dart', icon: '📱' },
+                { name: 'Tailwind CSS 4', icon: '🎨' },
+                { name: 'Node.js', icon: '🟢' },
+                { name: 'MongoDB Atlas', icon: '🍃' },
+                { name: 'PostgreSQL', icon: '🐘' },
+                { name: 'AWS Cloud', icon: '☁️' },
+                { name: 'Vercel Edge', icon: '▲' },
+                { name: 'WhatsApp Cloud API', icon: '💬' },
+                { name: 'Figma UI/UX', icon: '✨' },
+                { name: 'Google Gemini AI', icon: '🤖' },
+                { name: 'Razorpay UPI', icon: '💳' },
+                // Duplicate for seamless infinite loop
+                { name: 'Next.js 16', icon: '⚡' },
+                { name: 'React 19', icon: '⚛️' },
+                { name: 'TypeScript', icon: '📘' },
+                { name: 'Flutter & Dart', icon: '📱' },
+                { name: 'Tailwind CSS 4', icon: '🎨' },
+                { name: 'Node.js', icon: '🟢' },
+                { name: 'MongoDB Atlas', icon: '🍃' },
+                { name: 'PostgreSQL', icon: '🐘' },
+                { name: 'AWS Cloud', icon: '☁️' },
+                { name: 'Vercel Edge', icon: '▲' },
+                { name: 'WhatsApp Cloud API', icon: '💬' },
+                { name: 'Figma UI/UX', icon: '✨' },
+                { name: 'Google Gemini AI', icon: '🤖' },
+                { name: 'Razorpay UPI', icon: '💳' },
+              ].map((tech, i) => (
+                <div
+                  key={i}
+                  className="px-4 py-2 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/80 shadow-sm flex items-center gap-2 whitespace-nowrap"
+                >
+                  <span className="text-base">{tech.icon}</span>
+                  <span className="text-xs font-bold text-slate-800 dark:text-slate-200">
+                    {tech.name}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
       </div>

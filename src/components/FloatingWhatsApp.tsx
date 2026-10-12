@@ -1,23 +1,14 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { MessageCircle, Phone, X, Sparkles, Send } from 'lucide-react';
+import React, { useState } from 'react';
+import { MessageCircle, Phone, X, Send } from 'lucide-react';
 import { trackWhatsAppClick, trackPhoneCall } from '@/lib/analytics';
 
 export default function FloatingWhatsApp() {
   const [isOpen, setIsOpen] = useState(false);
-  const [showNotification, setShowNotification] = useState(false);
   const [customMsg, setCustomMsg] = useState('');
 
   const phoneNumber = '916267144122';
-
-  useEffect(() => {
-    // Show a small teaser popup after 6 seconds
-    const timer = setTimeout(() => {
-      setShowNotification(true);
-    }, 6000);
-    return () => clearTimeout(timer);
-  }, []);
 
   const handleSendWhatsApp = (e?: React.FormEvent) => {
     if (e) e.preventDefault();
@@ -31,30 +22,6 @@ export default function FloatingWhatsApp() {
 
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3 select-none">
-      {/* Floating Teaser Prompt */}
-      {showNotification && !isOpen && (
-        <div className="bg-white dark:bg-slate-900 border border-emerald-500/30 rounded-2xl p-3.5 shadow-2xl max-w-xs flex items-center gap-3 animate-fadeIn relative">
-          <button
-            onClick={() => setShowNotification(false)}
-            className="absolute -top-2 -right-2 w-5 h-5 bg-slate-200 dark:bg-slate-750 rounded-full flex items-center justify-center text-slate-500 hover:text-slate-900 text-xs shadow"
-            aria-label="Close notification"
-          >
-            <X size={12} />
-          </button>
-          <div className="w-9 h-9 rounded-xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center flex-shrink-0">
-            <Sparkles size={18} className="animate-spin text-emerald-500" />
-          </div>
-          <div className="text-xs space-y-0.5">
-            <p className="font-bold text-slate-900 dark:text-white flex items-center gap-1">
-              Need Instant Quote? <span className="text-emerald-500">Online</span>
-            </p>
-            <p className="text-slate-500 dark:text-slate-400 text-[11px]">
-              Websites from ₹2,999*. Chat on WhatsApp!
-            </p>
-          </div>
-        </div>
-      )}
-
       {/* Interactive WhatsApp Quick Chat Box Modal */}
       {isOpen && (
         <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-5 shadow-2xl w-80 sm:w-88 flex flex-col gap-4 animate-fadeIn relative overflow-hidden">
@@ -88,10 +55,10 @@ export default function FloatingWhatsApp() {
             </p>
             <div className="flex flex-col gap-1.5">
               {[
-                '🚀 Get Website Quote (From ₹2,999*)',
-                '📱 Mobile App Development Estimate',
-                '🏥 Industry Solution Consultation',
-                '📈 SEO & Digital Marketing Audit'
+                '🚀 Plan a website project',
+                '📱 Discuss a mobile app',
+                '🏥 Explore an industry solution',
+                '📈 Discuss SEO and digital marketing'
               ].map((item, idx) => (
                 <button
                   key={idx}
@@ -143,13 +110,11 @@ export default function FloatingWhatsApp() {
       <button
         onClick={() => {
           setIsOpen(!isOpen);
-          setShowNotification(false);
         }}
         className="w-14 h-14 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white shadow-xl shadow-emerald-500/30 flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 group relative"
         aria-label="Chat on WhatsApp"
       >
-        <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full border-2 border-white dark:border-slate-900 animate-ping" />
-        <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full border-2 border-white dark:border-slate-900" />
+        <span aria-hidden="true" className="absolute inset-0 rounded-full bg-emerald-400/35 motion-reduce:animate-none animate-ping" />
         <MessageCircle size={28} className="group-hover:rotate-12 transition-transform duration-200" />
       </button>
     </div>

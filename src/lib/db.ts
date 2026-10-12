@@ -1,7 +1,7 @@
 import { MongoClient, Db } from 'mongodb';
 
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb+srv://mahitechnocrats:qNfbRMgnCthyu59@cluster1.xqa5iyj.mongodb.net/New-Mahitechoncrafts";
-const MONGODB_DB = "New-Mahitechoncrafts";
+const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_DB = process.env.MONGODB_DB;
 
 // Caching connections across hot-reloads
 let cachedClient: MongoClient | null = null;
@@ -22,6 +22,9 @@ export async function connectToDatabase() {
   }
 
   try {
+    if (!MONGODB_URI || !MONGODB_DB) {
+      throw new Error('MONGODB_URI and MONGODB_DB must be configured.');
+    }
     const client = await MongoClient.connect(MONGODB_URI, {
       serverSelectionTimeoutMS: 15000,
       connectTimeoutMS: 15000,
@@ -200,23 +203,17 @@ const defaultSiteData: SiteData = {
     description: "At Mahi Technocrafts, we build beautiful, easy-to-use websites, mobile apps, and custom software that help your business grow. We combine elegant design with smooth performance to make your brand stand out.",
     ctaPrimary: "Get Started",
     ctaSecondary: "Explore Services",
-    stats: [
-      { id: "1", value: "150+", label: "Projects Completed" },
-      { id: "2", value: "80+", label: "Clients Served" },
-      { id: "3", value: "8+", label: "Years Experience" },
-      { id: "4", value: "25+", label: "Team Members" }
-    ]
+    stats: []
   },
   about: {
     story: "Founded with a simple goal—to make high-quality websites and software easy for everyone, Mahi Technocrafts has grown into a trusted tech partner. We don't just build websites; we design complete online systems that help you win more customers.",
     mission: "To help businesses of all sizes succeed online by providing them with beautiful, fast, and secure websites and apps that make their customers happy.",
     vision: "To be the most trusted tech partner for businesses worldwide, creating smart, simple, and friendly digital tools for everyday work.",
     whyChooseUs: [
-      "6 Months 100% Free Maintenance & Bug Fixes included with development cost.",
-      "24/7 Dedicated WhatsApp & Phone Technical Support with rapid turnaround.",
-      "Built-in AI Solutions & Automations (Smart Chatbots & WhatsApp CRM).",
-      "Super-fast, 100% mobile-responsive websites & custom mobile apps.",
-      "100% Full Source Code & Database Ownership with zero lock-in contracts."
+      "Project scope, deliverables, and handover are agreed before work begins.",
+      "Responsive layouts are planned for the devices your customers use.",
+      "Support and maintenance options are discussed as part of each project.",
+      "We explain technical choices and keep project decisions visible."
     ]
   },
   founder: {
@@ -265,25 +262,25 @@ const defaultSiteData: SiteData = {
       id: "cloud-services",
       icon: "Cloud",
       title: "Secure Cloud Hosting",
-      description: "Safe and reliable web hosting setups that keep your website online, fast, and secure 24/7."
+      description: "Cloud hosting and deployment options scoped to your application, traffic, security, and support requirements."
     }
   ],
   faq: [
     {
-      q: "What services does Mahi Technocrafts offer?",
-      a: "We offer professional website development, custom mobile apps, easy-to-use business software, and secure hosting setups."
+      q: "What services does Mahi TechnoCrafts offer?",
+      a: "We plan and build business websites, ecommerce experiences, web applications, mobile apps, custom software, and digital marketing work. We confirm the right scope after understanding your requirements."
     },
     {
-      q: "How long does a standard web project take to develop?",
-      a: "A simple business website takes 2-4 weeks, while larger custom software projects take 8-12 weeks depending on your specific needs."
+      q: "How long does a project take?",
+      a: "The schedule depends on features, content readiness, integrations, and review cycles. We agree on a realistic timeline after confirming the project scope."
     },
     {
-      q: "Are your websites optimized for Google Search SEO?",
-      a: "Yes, absolutely. We make sure your website is very fast, clean, and built according to search engine best practices so your business is easy to find on Google."
+      q: "Can you guarantee a Google ranking?",
+      a: "No. Search rankings depend on many factors outside a provider's control. We can improve technical SEO, page content, and local business information, then measure progress."
     },
     {
       q: "Do you provide post-launch maintenance?",
-      a: "Yes! We provide friendly support plans to help you keep your website updated, safe, and running smoothly at all times."
+      a: "Support and maintenance options depend on the project. We discuss the tasks, period, and response expectations before work begins."
     }
   ],
   projects: [
@@ -335,16 +332,16 @@ const defaultBlogs: BlogItem[] = [
     ogDescription: "Discover how Next.js features can propel your business to the top of Google search results.",
     ogImage: "/images/blog-seo.jpg",
     enableBlogSchema: true,
-    enableFaqSchema: true,
+    enableFaqSchema: false,
     faqs: [
       { q: "Is Next.js good for search engine indexing?", a: "Yes, because it serves pre-rendered HTML pages directly to web crawlers rather than serving blank shells." }
     ]
   },
   {
     slug: "top-web-development-company-in-bhopal-nextjs-ai",
-    title: "Top Web Development Company in Bhopal: Driving Local Business Growth with Next.js & AI",
+    title: "Choosing a Web Development Company in Bhopal: A Practical Guide",
     excerpt: "Discover how premium Next.js website engineering and custom AI integrations empower local Bhopal enterprises to rank high on Google and double client conversions in 2026.",
-    content: "<h3>Why Bhopal Businesses Need Modern Web Architectures</h3><p>Bhopal is witnessing a digital revolution. From local retail businesses in New Market and MP Nagar to enterprise service companies across Madhya Pradesh, having an online presence is no longer optional. However, a generic, slow website will not help you stand out. To dominate Google search results and attract high-paying clients, you need a high-performance, premium web application built by a professional web development company in Bhopal.</p><h3>1. High-Performance Next.js and Local Search Dominance</h3><p>Modern search engines like Google prioritize loading speed, mobile responsiveness, and clean semantic structures. Traditional websites built with basic templates load slowly and fail Core Web Vitals checks. Next.js offers Server-Side Rendering (SSR) and Static Site Generation (SSG), serving pre-rendered, rapid HTML pages directly to users and search crawlers. This ensures your site ranks top for local keywords like \"website developer in Bhopal\" or \"software development services near me\".</p><h3>2. The Role of Structured Schema Markup in Local Indexing</h3><p>If you want Google to index your business quickly and display rich snippets (like maps, FAQ lists, and star ratings) directly in search results, schema markup is essential. By implementing Organization, FAQ, and BlogPosting JSON-LD schemas, you tell Google's crawlers exactly who you are, what services you provide, and where you are located. Mahi Technocrafts integrates these advanced schemas automatically into every dynamic page.</p><h3>3. Integrating Artificial Intelligence for Business Operations</h3><p>In 2026, premium websites do more than just display text. By integrating custom AI chatbots, automated service booking forms, and intelligent client onboarding pipelines, local businesses can double their conversions. Whether you operate a healthcare clinic, educational institute, or logistics firm in Bhopal, custom AI workflows can automate up to 70% of support queries and capture leads 24/7.</p>",
+    content: "<h3>Why Bhopal Businesses Need Modern Web Architectures</h3><p>Bhopal is witnessing a digital revolution. From local retail businesses in New Market and MP Nagar to enterprise service companies across Madhya Pradesh, having an online presence is no longer optional. However, a generic, slow website will not help you stand out. To dominate Google search results and attract high-paying clients, you need a high-performance, premium web application built by a professional web development company in Bhopal.</p><h3>1. High-Performance Next.js and Local Search Dominance</h3><p>Modern search engines like Google prioritize loading speed, mobile responsiveness, and clean semantic structures. Traditional websites built with basic templates load slowly and fail Core Web Vitals checks. Next.js offers Server-Side Rendering (SSR) and Static Site Generation (SSG), serving pre-rendered, rapid HTML pages directly to users and search crawlers. This can make important page content easier for search engines to access, but does not guarantee indexing or rankings.</p><h3>2. The Role of Structured Schema Markup in Local Indexing</h3><p>If you want Google to index your business quickly and display rich snippets (like maps, FAQ lists, and star ratings) directly in search results, schema markup is essential. By implementing Organization, FAQ, and BlogPosting JSON-LD schemas, you tell Google's crawlers exactly who you are, what services you provide, and where you are located. Mahi Technocrafts integrates these advanced schemas automatically into every dynamic page.</p><h3>3. Integrating Artificial Intelligence for Business Operations</h3><p>AI tools and workflow automation can be useful when they address a clear business need. Their results depend on data quality, integrations, safeguards, and ongoing review.</p>",
     author: "Vikash Maheshwari",
     publishedAt: "2026-05-26",
     readTime: "6 min read",
@@ -352,17 +349,17 @@ const defaultBlogs: BlogItem[] = [
     imageAlt: "Mahi Technocrafts team of web developers in Bhopal Madhya Pradesh office workspace",
     category: "Local SEO",
     tags: ["Web Development", "Bhopal", "Next.js", "Local SEO"],
-    metaTitle: "Top Web Development Company in Bhopal | Mahi Technocrafts",
-    metaDescription: "Looking for the best web development company in Bhopal? Mahi Technocrafts engineers premium, fast Next.js websites, mobile apps, and custom AI systems.",
+    metaTitle: "Choosing a Web Development Company in Bhopal | Mahi Technocrafts",
+    metaDescription: "Learn what to compare in a web development proposal, from scope and mobile usability to ownership and support.",
     focusKeyword: "Web Development Company in Bhopal",
     canonicalUrl: "https://mahitechnocrafts.in/blog/top-web-development-company-in-bhopal-nextjs-ai",
-    ogTitle: "Top Web Development Company in Bhopal | Mahi Technocrafts",
-    ogDescription: "Discover how premium Next.js website engineering and custom AI integrations empower local Bhopal enterprises to rank high on Google.",
+    ogTitle: "Choosing a Web Development Company in Bhopal | Mahi Technocrafts",
+    ogDescription: "Review project scope, search foundations, ownership, and support before choosing a web development partner.",
     ogImage: "https://idcard-pro-images.s3.ap-south-1.amazonaws.com/mahi-technocrafts/blog-bhopal.jpg",
     enableBlogSchema: true,
-    enableFaqSchema: true,
+    enableFaqSchema: false,
     faqs: [
-      { q: "Which is the best web development company in Bhopal?", a: "Mahi Technocrafts is widely considered the top web development company in Bhopal, Madhya Pradesh, specializing in high-performance Next.js websites, iOS/Android mobile apps, and custom enterprise AI integrations." },
+      { q: "Which is the best web development company in Bhopal?", a: "Compare providers by relevant work, clear deliverables, technical fit, communication, ownership, and support. Choose a team whose proposal matches your needs." },
       { q: "How does local SEO help businesses in Bhopal?", a: "Local SEO optimizes your digital presence to rank high for search queries like 'web developers near me' or 'software agency in Bhopal', driving high-intent local traffic and clients straight to your business." },
       { q: "Does Mahi Technocrafts provide custom software services in Bhopal?", a: "Yes, Mahi Technocrafts is a full-service software development agency in Bhopal offering custom React development, Flutter app engineering, ERP databases, and cloud hosting solutions." }
     ]
@@ -530,42 +527,18 @@ export async function updateContactStatus(id: string, status: 'read' | 'unread' 
   }
 }
 
-// Review Default Seed Data
-const defaultReviews: ReviewItem[] = [
-  {
-    id: '1',
-    name: 'Amit Sharma',
-    role: 'Operations Director',
-    company: 'Logix Supply Co.',
-    text: 'Mahi Technocrafts developed our custom sales and customer software. The system is incredibly fast, easy to use, and their team is extremely professional. Highly recommended!',
-    rating: 5,
-    email: 'amit@logix.com',
-    status: 'approved',
-    submittedAt: '2026-05-24T12:00:00Z',
-  },
-  {
-    id: '2',
-    name: 'Rohan Mehta',
-    role: 'Business Founder',
-    company: 'Holo Startups',
-    text: 'The beautiful, modern design of our new website really wowed our customers. The Mahi Tech team did an excellent job building our easy-to-use business dashboard.',
-    rating: 5,
-    email: 'rohan@holostartups.com',
-    status: 'approved',
-    submittedAt: '2026-05-25T14:30:00Z',
-  },
-  {
-    id: '3',
-    name: 'Sneha Patel',
-    role: 'Marketing Manager',
-    company: 'Kira Global Inc',
-    text: 'Our business website started getting so many new customers from Google search within two months of upgrading our site with Mahi Technocrafts. Great communication and support.',
-    rating: 5,
-    email: 'sneha@kiraglobal.com',
-    status: 'approved',
-    submittedAt: '2026-05-26T09:15:00Z',
-  },
-];
+// Never seed sample testimonials as if they were customer feedback.
+const defaultReviews: ReviewItem[] = [];
+
+const sampleReviewSignatures = new Set([
+  'amit sharma|logix supply co.',
+  'rohan mehta|holo startups',
+  'sneha patel|kira global inc',
+]);
+
+function isSampleReview(review: ReviewItem) {
+  return sampleReviewSignatures.has(`${review.name.trim().toLowerCase()}|${review.company.trim().toLowerCase()}`);
+}
 
 export async function getReviews(): Promise<ReviewItem[]> {
   if (cachedAllReviews) {
@@ -577,7 +550,6 @@ export async function getReviews(): Promise<ReviewItem[]> {
     
     const reviews = await collection.find({}).toArray();
     if (reviews.length === 0) {
-      await collection.insertMany(defaultReviews as any[]);
       cachedAllReviews = defaultReviews;
       return defaultReviews;
     }
@@ -600,10 +572,12 @@ export async function getApprovedReviews(): Promise<ReviewItem[]> {
     const reviews = await collection.find({ status: 'approved' }).toArray();
     if (reviews.length === 0) {
       const allReviews = await getReviews();
-      cachedApprovedReviews = allReviews.filter(r => r.status === 'approved');
+      cachedApprovedReviews = allReviews.filter(r => r.status === 'approved' && !isSampleReview(r));
       return cachedApprovedReviews;
     }
-    cachedApprovedReviews = reviews.map(({ _id, ...r }) => r) as unknown as ReviewItem[];
+    cachedApprovedReviews = reviews
+      .map(({ _id, ...r }) => r as unknown as ReviewItem)
+      .filter((review) => !isSampleReview(review));
     return cachedApprovedReviews;
   } catch (error) {
     console.error('getApprovedReviews failed, falling back to defaults:', error);

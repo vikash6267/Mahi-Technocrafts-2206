@@ -11,7 +11,7 @@ export async function POST(request: Request) {
     if (result.success && result.blog) {
       return NextResponse.json({
         success: true,
-        message: 'Autonomous SEO blog post generated and published successfully via Gemini API!',
+        message: 'A blog draft was generated for editorial review.',
         blog: result.blog
       });
     } else {

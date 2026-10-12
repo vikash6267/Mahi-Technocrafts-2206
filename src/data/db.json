@@ -4,23 +4,17 @@
     "description": "At Mahi Technocrafts, we build beautiful, easy-to-use websites, mobile apps, and custom software that help your business grow. We combine elegant design with smooth performance to make your brand stand out.",
     "ctaPrimary": "Get Started",
     "ctaSecondary": "Explore Services",
-    "stats": [
-      { "id": "1", "value": "150+", "label": "Projects Completed" },
-      { "id": "2", "value": "80+", "label": "Clients Served" },
-      { "id": "3", "value": "8+", "label": "Years Experience" },
-      { "id": "4", "value": "25+", "label": "Team Members" }
-    ]
+    "stats": []
   },
   "about": {
     "story": "Founded with a simple goal—to make high-quality websites and software easy for everyone, Mahi Technocrafts has grown into a trusted tech partner. We don't just build websites; we design complete online systems that help you win more customers.",
     "mission": "To help businesses of all sizes succeed online by providing them with beautiful, fast, and secure websites and apps that make their customers happy.",
     "vision": "To be the most trusted tech partner for businesses worldwide, creating smart, simple, and friendly digital tools for everyday work.",
     "whyChooseUs": [
-      "6 Months 100% Free Maintenance & Bug Fixes included with development cost.",
-      "24/7 Dedicated WhatsApp & Phone Technical Support with rapid turnaround.",
-      "Built-in AI Solutions & Automations (Smart Chatbots & WhatsApp CRM).",
-      "Super-fast, 100% mobile-responsive websites & custom mobile apps.",
-      "100% Full Source Code & Database Ownership with zero lock-in contracts."
+      "Project scope, deliverables, and handover are agreed before work begins.",
+      "Responsive layouts are planned for the devices your customers use.",
+      "Support and maintenance options are discussed as part of each project.",
+      "Technical choices and project decisions are shared clearly."
     ]
   },
   "founder": {
@@ -51,7 +45,7 @@
       "id": "seo-services",
       "icon": "TrendingUp",
       "title": "SEO & Generative Engine Optimization",
-      "description": "High-impact Local SEO, search engine ranking strategies, Generative Engine Optimization (GEO), and schema integrations to rank #1 in Bhopal."
+      "description": "Technical SEO reviews, local business information, page structure, useful content, and measurement. Search rankings are not guaranteed."
     },
     {
       "id": "ai-solutions",
@@ -103,20 +97,20 @@
   ],
   "faq": [
     {
-      "q": "Which is the best website development company in Bhopal?",
-      "a": "Mahi TechnoCrafts is recognized as the best website development company in Bhopal, specializing in premium custom websites, mobile apps, MERN stack, custom e-commerce web design, and high-performance SEO solutions near Hamidia Road."
+      "q": "What services does Mahi TechnoCrafts offer?",
+      "a": "We plan and build business websites, ecommerce experiences, web applications, mobile apps, custom software, and digital marketing work. The project scope is confirmed after discussing your requirements."
     },
     {
       "q": "How much does website development cost in Bhopal?",
-      "a": "The cost of website development in Bhopal varies by project scope. A standard high-speed business website at Mahi TechnoCrafts typically takes 2-4 weeks. Larger custom mobile apps or custom enterprise software projects are scoped based on your specific requirements."
+      "a": "Cost and schedule depend on features, content, integrations, and review cycles. We provide a project-specific estimate after understanding your requirements."
     },
     {
       "q": "Do you provide mobile app development services in Bhopal?",
-      "a": "Yes, Mahi TechnoCrafts is a premier mobile app development agency in Bhopal. We design and build secure, fast, and native-performing Android and iOS apps tailored to your business needs."
+      "a": "We can discuss Android, iOS, or cross-platform app development based on your users, features, integrations, and maintenance requirements."
     },
     {
       "q": "How does Mahi TechnoCrafts optimize websites for Google Search in Bhopal?",
-      "a": "Every website we build is fully optimized with clean Next.js code, dynamic sitemaps, custom robots.txt, fast page speeds (WebP images), and structured JSON-LD local schemas to rank #1 on Google Maps and search results in Bhopal."
+      "a": "We can include crawlable navigation, page metadata, sitemap support, and technical SEO foundations. These do not guarantee indexing or a particular position in Search."
     },
     {
       "q": "Where is Mahi TechnoCrafts located, and do you serve international clients?",

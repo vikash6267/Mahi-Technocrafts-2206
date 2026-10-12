@@ -21,22 +21,28 @@ import {
   Upload,
   ArrowLeft,
   ArrowRight,
-  User,
   LayoutGrid,
   Briefcase,
+  Users,
+  Ticket,
   ExternalLink,
   Info,
   Edit
 } from 'lucide-react';
 import { SiteData, BlogItem, ContactSubmission, BlogFAQ, ProjectItem, ServiceItem, ReviewItem, CareerItem } from '@/lib/db';
+import { PortalAccountsManager } from '@/components/admin/PortalAccountsManager';
 
 // Dynamically import Tiptap Editor (SSR: false because it relies on client browser DOM)
 const TiptapEditor = dynamic(() => import('@/components/TiptapEditor'), { ssr: false });
 
 export default function AdminDashboardPage() {
   const router = useRouter();
-  const [activeTab, setActiveTab] = useState<'content' | 'services' | 'projects' | 'blogs' | 'contacts' | 'reviews' | 'careers'>('content');
+  const [activeTab, setActiveTab] = useState<'content' | 'services' | 'projects' | 'blogs' | 'contacts' | 'reviews' | 'careers' | 'portal'>('content');
   const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (new URLSearchParams(window.location.search).get('section') === 'portal') setActiveTab('portal');
+  }, []);
 
   // Authenticated state & details stores
   const [siteData, setSiteData] = useState<SiteData | null>(null);
@@ -410,14 +416,14 @@ export default function AdminDashboardPage() {
   // Generate autonomous blog post via Gemini AI
   const handleGenerateAiBlog = async () => {
     setIsGeneratingAiBlog(true);
-    setSaveStatus('Connecting to Google Gemini AI to research, write & publish SEO blog...');
+    setSaveStatus('Generating a blog draft for your review...');
     try {
       const res = await fetch('/api/cron/blog?secret=mahi_auto_blog_cron_secret_2026', {
         method: 'POST'
       });
       const data = await res.json();
       if (res.ok && data.success) {
-        setSaveStatus(`Success! Published: "${data.blog.title}"`);
+        setSaveStatus(`Draft ready for review: "${data.blog.title}"`);
         // Refresh blogs list
         const bRes = await fetch('/api/blog');
         const bData = await bRes.json();
@@ -674,34 +680,36 @@ export default function AdminDashboardPage() {
   }
 
   return (
-    <div className="h-screen bg-slate-50 text-slate-800 flex flex-col overflow-hidden font-sans">
+    <div className="min-h-screen md:h-screen bg-slate-50 text-slate-800 flex flex-col md:overflow-hidden font-sans">
       {/* Admin header menu */}
-      <header className="bg-white border-b border-slate-200 px-8 py-4 flex items-center justify-between sticky top-0 z-30 shadow-sm flex-shrink-0">
+      <header className="bg-white border-b border-slate-200 px-4 sm:px-8 py-3 sm:py-4 flex items-center justify-between sticky top-0 z-30 shadow-sm flex-shrink-0 gap-2">
         <div className="flex items-center gap-3">
-          <span className="font-display font-black text-lg tracking-wider bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+          <span className="font-display font-black text-sm sm:text-lg tracking-wider bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
             MAHI TECH SEO CMS
           </span>
-          <span className="px-2.5 py-0.5 rounded-full border border-green-200 bg-green-50 text-green-700 text-[9px] uppercase font-bold tracking-wider">
-            MongoDB Connected
+          <span className="hidden sm:inline px-2.5 py-0.5 rounded-full border border-slate-200 bg-slate-50 text-slate-500 text-[9px] uppercase font-bold tracking-wider">
+            Admin Workspace
           </span>
         </div>
 
+        <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
         <button
           onClick={handleLogout}
-          className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-slate-200 hover:bg-slate-50 text-xs text-red-600 font-semibold cursor-pointer transition-colors"
+          className="flex items-center gap-1.5 px-2.5 sm:px-3.5 py-2 rounded-xl border border-slate-200 hover:bg-slate-50 text-[10px] sm:text-xs text-red-600 font-semibold cursor-pointer transition-colors"
         >
           <LogOut size={12} />
           Sign Out
         </button>
+        </div>
       </header>
 
       {/* Main Workspace split */}
-      <div className="flex-1 flex flex-col md:flex-row overflow-hidden">
+      <div className="flex-1 flex flex-col md:flex-row md:overflow-hidden">
         {/* Left Side menu navigation */}
-        <aside className="w-full md:w-64 flex-shrink-0 border-r border-slate-200 p-6 flex flex-col gap-2 bg-white overflow-y-auto">
+        <aside className="w-full md:w-64 flex-shrink-0 border-b md:border-b-0 md:border-r border-slate-200 p-3 md:p-6 flex flex-row md:flex-col gap-2 bg-white overflow-x-auto md:overflow-y-auto">
           <button
             onClick={() => setActiveTab('content')}
-            className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
+            className={`w-auto shrink-0 md:w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
               activeTab === 'content'
                 ? 'bg-brand-blue text-white shadow-sm shadow-brand-blue/25'
                 : 'hover:bg-slate-50 text-slate-500 hover:text-slate-850'
@@ -713,7 +721,7 @@ export default function AdminDashboardPage() {
 
           <button
             onClick={() => setActiveTab('services')}
-            className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
+            className={`w-auto shrink-0 md:w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
               activeTab === 'services'
                 ? 'bg-brand-blue text-white shadow-sm shadow-brand-blue/25'
                 : 'hover:bg-slate-50 text-slate-500 hover:text-slate-850'
@@ -725,7 +733,7 @@ export default function AdminDashboardPage() {
 
           <button
             onClick={() => setActiveTab('projects')}
-            className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
+            className={`w-auto shrink-0 md:w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
               activeTab === 'projects'
                 ? 'bg-brand-blue text-white shadow-sm shadow-brand-blue/25'
                 : 'hover:bg-slate-50 text-slate-500 hover:text-slate-850'
@@ -737,7 +745,7 @@ export default function AdminDashboardPage() {
           
           <button
             onClick={() => setActiveTab('blogs')}
-            className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
+            className={`w-auto shrink-0 md:w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
               activeTab === 'blogs'
                 ? 'bg-brand-blue text-white shadow-sm shadow-brand-blue/25'
                 : 'hover:bg-slate-50 text-slate-500 hover:text-slate-850'
@@ -749,7 +757,7 @@ export default function AdminDashboardPage() {
 
           <button
             onClick={() => setActiveTab('contacts')}
-            className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-all cursor-pointer justify-between ${
+            className={`w-auto shrink-0 md:w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-all cursor-pointer justify-between ${
               activeTab === 'contacts'
                 ? 'bg-brand-blue text-white shadow-sm shadow-brand-blue/25'
                 : 'hover:bg-slate-50 text-slate-500 hover:text-slate-855'
@@ -768,7 +776,7 @@ export default function AdminDashboardPage() {
 
           <button
             onClick={() => setActiveTab('reviews')}
-            className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-all cursor-pointer justify-between ${
+            className={`w-auto shrink-0 md:w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-all cursor-pointer justify-between ${
               activeTab === 'reviews'
                 ? 'bg-brand-blue text-white shadow-sm shadow-brand-blue/25'
                 : 'hover:bg-slate-50 text-slate-500 hover:text-slate-855'
@@ -787,7 +795,7 @@ export default function AdminDashboardPage() {
 
           <button
             onClick={() => setActiveTab('careers')}
-            className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-all cursor-pointer justify-between ${
+            className={`w-auto shrink-0 md:w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-all cursor-pointer justify-between ${
               activeTab === 'careers'
                 ? 'bg-brand-blue text-white shadow-sm shadow-brand-blue/25'
                 : 'hover:bg-slate-50 text-slate-500 hover:text-slate-855'
@@ -798,10 +806,18 @@ export default function AdminDashboardPage() {
               Careers
             </span>
           </button>
+
+          <button
+            onClick={() => { setActiveTab('portal'); window.history.replaceState(null, '', '/admin/dashboard?section=portal'); }}
+            className={`w-auto shrink-0 md:w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${activeTab === 'portal' ? 'bg-brand-blue text-white shadow-sm shadow-brand-blue/25' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900'}`}
+          >
+            <Ticket size={14} />
+            Support & Portal
+          </button>
         </aside>
 
         {/* Right Content workspace (Stretched full width) */}
-        <main className="flex-1 p-8 overflow-y-auto w-full">
+        <main className="flex-1 p-4 sm:p-8 overflow-y-auto w-full md:min-h-0">
           {/* Tab 1: Static Content Customizer */}
           {activeTab === 'content' && siteData && (
             <div className="space-y-8 animate-fadeIn text-xs">
@@ -2216,6 +2232,8 @@ export default function AdminDashboardPage() {
               </div>
             </div>
           )}
+
+          {activeTab === 'portal' && <PortalAccountsManager embedded />}
         </main>
       </div>
     </div>

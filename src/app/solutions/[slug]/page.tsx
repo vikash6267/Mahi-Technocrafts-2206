@@ -47,46 +47,46 @@ const solutionDetailsMap: Record<string, SolutionDetail> = {
     title: 'Healthcare & Clinic Management Software',
     industry: 'Healthcare',
     metaTitle: 'Healthcare & Hospital Software Development in Bhopal | Mahi TechnoCrafts',
-    metaDescription: 'Top healthcare web & mobile app development company in Bhopal. HIPAA-compliant clinic management, doctor booking, EHR records, and telemedicine apps.',
+    metaDescription: 'Discuss website and software workflows for clinics with Mahi TechnoCrafts in Bhopal. Privacy, security, and compliance requirements must be confirmed for each project.',
     headline: 'Healthcare & Clinic Management Software Solutions',
     emoji: '🏥',
-    heroBadge: 'HIPAA-Compliant & Secure',
-    priceHook: 'Starting from ₹2,999*',
-    deliveryTime: '2-4 Weeks',
-    summary: 'Mahi TechnoCrafts develops secure, high-performance healthcare software, telemedicine mobile apps, and electronic health record (EHR) portals for hospitals, diagnostic labs, and medical practitioners in Bhopal and across India.',
+    heroBadge: 'Healthcare workflow planning',
+    priceHook: 'Estimate based on scope',
+    deliveryTime: 'Confirmed after scope',
+    summary: 'We can discuss clinic websites and software workflows such as appointments, patient communication, and records access. Privacy, security, and applicable compliance requirements must be reviewed and agreed before implementation.',
     painPoints: [
       {
         problem: 'Long patient waiting lines & chaotic manual appointment books.',
-        solution: 'Automated 24/7 online doctor booking with instant WhatsApp appointment confirmations.'
+        solution: 'Online appointment requests and confirmation workflows scoped to the clinic process.'
       },
       {
         problem: 'Lost physical prescriptions and scattered medical reports.',
-        solution: 'Encrypted patient portal where patients and doctors access past test records securely.'
+        solution: 'A patient portal can be scoped for document access, with permissions and security requirements agreed before development.'
       },
       {
         problem: 'High no-show rates for scheduled consultations.',
-        solution: 'Automated SMS and WhatsApp reminder alerts sent 2 hours before appointments.'
+        solution: 'Reminder workflows can be planned around the clinic schedule and selected messaging providers.'
       }
     ],
     coreModules: [
       { title: 'Doctor Scheduling & Slot Booking', desc: 'Real-time appointment slot booking with calendar sync for single or multi-doctor clinics.', iconText: '📅' },
-      { title: 'Electronic Health Records (EHR)', desc: 'Bank-grade encrypted medical history, diagnostic reports, and digital prescription creation.', iconText: '📁' },
+      { title: 'Patient Records Workflow', desc: 'Discuss record access, permissions, and data handling requirements for the proposed system.', iconText: '📁' },
       { title: 'Telemedicine & Video Consultation', desc: 'One-click HD video call integration with in-call digital prescription generation.', iconText: '📹' },
       { title: 'Pharmacy & Inventory Billing', desc: 'Medicine stock tracking, expiry alerts, and GST-compliant thermal printing invoices.', iconText: '💊' },
       { title: 'Lab Test Management', desc: 'Direct patient report upload portal with automated PDF delivery via WhatsApp.', iconText: '🔬' },
       { title: 'Multi-Branch Hospital Admin', desc: 'Centralized dashboard to manage staff shifts, doctor payouts, and daily revenue stats.', iconText: '🏢' }
     ],
-    techStack: ['Next.js 15', 'React Native (iOS/Android)', 'WebRTC Video', 'PostgreSQL', '256-Bit SSL Encryption', 'AWS Cloud'],
+    techStack: ['Web application technologies', 'Mobile app options', 'Database and hosting choices scoped to requirements'],
     processSteps: [
       { step: '01', title: 'Clinic Workflow Audit', desc: 'We analyze your current patient flow and clinic requirements to blueprint the architecture.' },
       { step: '02', title: 'Interactive Prototype', desc: 'We create simple UI wireframes for doctor and patient apps so you test the flow before coding.' },
-      { step: '03', title: 'Secure Development', desc: 'Our engineers build fast, HIPAA-compliant databases and integrate WhatsApp/SMS APIs.' },
-      { step: '04', title: 'Staff Training & Launch', desc: 'We train your reception and medical staff and provide 24/7 ongoing support.' }
+      { step: '03', title: 'Development planning', desc: 'Technical, privacy, security, and third-party integration requirements are agreed before implementation.' },
+      { step: '04', title: 'Testing & handover', desc: 'We review the agreed workflows with your team and document the handover and any ongoing support.' }
     ],
     faqs: [
-      { q: 'Is patient data completely secure and private?', a: 'Yes. We implement 256-bit SSL encryption at rest and in transit, with role-based access control ensuring only authorized doctors view patient records.' },
+      { q: 'How are patient privacy and security handled?', a: 'Privacy, permissions, storage, and security requirements must be reviewed for the project. We do not claim a specific certification or compliance status unless it is verified and included in the agreed scope.' },
       { q: 'Can patients book appointments directly through WhatsApp?', a: 'Yes! We integrate automated WhatsApp chatbot workflows so patients can check available slots and book in seconds.' },
-      { q: 'How much does healthcare software development cost in Bhopal?', a: 'Our customized clinic website and booking solutions start with affordable packages from ₹2,999*, with modular upgrades based on your requirements.' }
+      { q: 'How much does healthcare software development in Bhopal cost?', a: 'Cost depends on features, data handling, integrations, and security requirements. We can estimate the work after reviewing the requirements.' }
     ]
   },
 
@@ -94,21 +94,21 @@ const solutionDetailsMap: Record<string, SolutionDetail> = {
     title: 'Retail & E-Commerce Store Development',
     industry: 'Retail & E-Commerce',
     metaTitle: 'E-Commerce Website Development in Bhopal | Mahi TechnoCrafts',
-    metaDescription: 'Best e-commerce website development company in Bhopal. High-speed custom online stores, 1-click Razorpay checkout, inventory sync, and mobile apps.',
+    metaDescription: 'Plan an ecommerce website for your Bhopal business, including product catalogues, checkout, payment integrations, and order workflows scoped to your needs.',
     headline: 'High-Converting E-Commerce & Retail Stores',
     emoji: '🛒',
-    heroBadge: 'Sub-Second Loading & High Conversions',
-    priceHook: 'Starting from ₹2,999*',
+    heroBadge: 'Store workflow planning',
+    priceHook: 'Estimate based on scope',
     deliveryTime: '2-3 Weeks',
-    summary: 'Turn visitors into paying customers with lightning-fast, custom e-commerce stores engineered by Mahi TechnoCrafts. We build headless Next.js online stores, multi-vendor marketplaces, and D2C brand websites with seamless UPI and payment integrations.',
+    summary: 'Plan an online store around your catalogue, checkout, payment providers, fulfilment process, and order management. The final integrations and features depend on your requirements and provider accounts.',
     painPoints: [
       {
-        problem: 'Slow page loading speeds causing 60%+ visitors to abandon carts.',
-        solution: 'Server-side rendered Next.js architecture with sub-0.5s page load times.'
+        problem: 'Customers have difficulty finding products or completing checkout.',
+        solution: 'Review navigation, product information, checkout steps, and performance on target devices.'
       },
       {
-        problem: 'Expensive marketplace commissions (up to 30%) eating into profits.',
-        solution: 'Your own branded online store with 0% platform commission and direct customer ownership.'
+        problem: 'Reliance on third-party platforms for product discovery and orders.',
+        solution: 'Consider a branded store alongside existing channels, after comparing payment, fulfilment, and platform costs.'
       },
       {
         problem: 'Manual inventory management leading to out-of-stock cancellations.',
@@ -116,12 +116,12 @@ const solutionDetailsMap: Record<string, SolutionDetail> = {
       }
     ],
     coreModules: [
-      { title: 'Sub-Second Product Catalog', desc: 'Instant search, filter by size/color/price, and fast image loading on 4G/5G networks.', iconText: '⚡' },
-      { title: '1-Click Checkout & UPI Gateway', desc: 'Razorpay, Paytm, Cashfree, and Stripe integrations supporting PhonePe, GPay, and cards.', iconText: '💳' },
+      { title: 'Product catalogue and search', desc: 'Instant search, filter by size/color/price, and fast image loading on 4G/5G networks.', iconText: '⚡' },
+      { title: 'Checkout and payment gateway options', desc: 'Razorpay, Paytm, Cashfree, and Stripe integrations supporting PhonePe, GPay, and cards.', iconText: '💳' },
       { title: 'Automated WhatsApp Order Updates', desc: 'Instant WhatsApp notifications for order confirmation, dispatch tracking, and delivery.', iconText: '📲' },
       { title: 'Dynamic Discount & Coupon Engine', desc: 'Create BOGO offers, countdown flash sale timers, and personalized cart-recovery coupons.', iconText: '🏷️' },
       { title: 'Inventory & Order Dashboard', desc: 'Easy-to-use admin panel to add products, print thermal shipping labels, and track profits.', iconText: '📦' },
-      { title: 'Customer Review & Rating System', desc: 'Rich visual customer reviews with photo uploads and Google product schema for SEO.', iconText: '⭐' }
+      { title: 'Customer Review & Rating System', desc: 'Customer review display options. Structured data is used only when it matches visible content and applicable search guidance.', iconText: '⭐' }
     ],
     techStack: ['Next.js 15 (SSR)', 'Tailwind CSS', 'Razorpay / Cashfree APIs', 'MongoDB Atlas', 'Cloudflare CDN', 'Redis Caching'],
     processSteps: [
@@ -131,9 +131,9 @@ const solutionDetailsMap: Record<string, SolutionDetail> = {
       { step: '04', title: 'Go Live & Marketing Setup', desc: 'We launch your store, set up Google Merchant Center, Meta Pixels, and Analytics.' }
     ],
     faqs: [
-      { q: 'Can non-technical staff manage product additions and orders?', a: 'Yes, 100%! We provide an ultra-simple admin dashboard where you can add products, change prices, and view sales in one click from your phone.' },
+      { q: 'Can non-technical staff manage product additions and orders?', a: 'The admin tools can be scoped to let your team manage products, prices, and orders, with workflows agreed before development.' },
       { q: 'Do you integrate all Indian payment gateways like UPI and Cash on Delivery?', a: 'Yes. We support Razorpay, Paytm, Cashfree, Stripe, UPI QR codes, and Cash on Delivery (COD) with automated OTP verification.' },
-      { q: 'How does an e-commerce website help my local Bhopal store?', a: 'A custom online store lets you sell 24/7 across Bhopal, Madhya Pradesh, and all of India without paying huge marketplace cuts.' }
+      { q: 'How does an e-commerce website help my local Bhopal store?', a: 'A custom store gives you a branded channel to present products and accept orders, alongside any marketplaces you use. Payment, fulfilment, and platform costs depend on providers.' }
     ]
   },
 
@@ -141,17 +141,17 @@ const solutionDetailsMap: Record<string, SolutionDetail> = {
     title: 'AI Solutions, WhatsApp Automation & Smart CRM',
     industry: 'AI & Automations',
     metaTitle: 'AI Solutions & WhatsApp Chatbot Development in Bhopal | Mahi TechnoCrafts',
-    metaDescription: 'Top AI solution and WhatsApp automation development company in Bhopal. 24/7 AI chatbots, lead scoring, automatic GST invoicing, and workflow bots.',
-    headline: '24/7 AI WhatsApp Assistants & Workflow Automation',
+    metaDescription: 'Explore business messaging and workflow automation options with Mahi TechnoCrafts in Bhopal. Features and integrations depend on your current tools and requirements.',
+    headline: 'AI Assistants & Workflow Automation',
     emoji: '🤖',
-    heroBadge: '24/7 Instant Auto-Replies & Lead Scoring',
-    priceHook: 'Starting from ₹2,999*',
+    heroBadge: 'Automation scope planning',
+    priceHook: 'Estimate based on scope',
     deliveryTime: '1-2 Weeks',
     summary: 'Automate your customer inquiries, qualify leads instantly, and eliminate manual paperwork with custom AI chatbots, WhatsApp business bots, and smart workflow automations engineered by Mahi TechnoCrafts.',
     painPoints: [
       {
         problem: 'Losing high-value buyer inquiries at night or during peak busy hours.',
-        solution: '24/7 AI WhatsApp bot that replies within 2 seconds with catalogs and pricing.'
+        solution: 'A messaging assistant can answer approved questions and route enquiries based on the connected knowledge and workflow.'
       },
       {
         problem: 'Wasting 3–4 hours daily typing manual quotes, invoices, and payment reminders.',
@@ -163,7 +163,7 @@ const solutionDetailsMap: Record<string, SolutionDetail> = {
       }
     ],
     coreModules: [
-      { title: '24/7 WhatsApp AI Chatbot', desc: 'Natural conversational assistant that answers customer questions and shares PDF catalogs.', iconText: '🤖' },
+      { title: 'WhatsApp AI assistant options', desc: 'Natural conversational assistant that answers customer questions and shares PDF catalogs.', iconText: '🤖' },
       { title: 'Automatic Lead Qualification', desc: 'Asks smart questions to capture budget, location, and requirement before alerting your sales team.', iconText: '🎯' },
       { title: '1-Click GST Invoice Generator', desc: 'Auto-calculates taxes, generates professional PDF bills, and syncs payment status.', iconText: '🧾' },
       { title: 'Automated Payment Follow-up Bot', desc: 'Sends gentle automated WhatsApp payment reminder alerts for pending customer dues.', iconText: '🔔' },
@@ -175,12 +175,12 @@ const solutionDetailsMap: Record<string, SolutionDetail> = {
       { step: '01', title: 'Conversation Flow Blueprint', desc: 'We map your customer FAQs, catalog items, and sales qualification rules.' },
       { step: '02', title: 'AI Assistant Training', desc: 'We train the AI model on your exact business knowledge base and tone of voice.' },
       { step: '03', title: 'WhatsApp & CRM Integration', desc: 'We connect official Meta WhatsApp Cloud APIs and configure automated triggers.' },
-      { step: '04', title: 'Testing & Launch', desc: 'We test across edge cases, train your team, and provide 6 months free maintenance.' }
+      { step: '04', title: 'Testing & handover', desc: 'We review the agreed workflows with your team and document any ongoing support terms.' }
     ],
     faqs: [
       { q: 'Will the AI bot work with our official WhatsApp number?', a: 'Yes! We integrate official Meta WhatsApp Business Cloud APIs so you keep your existing company phone number with green tick verification support.' },
       { q: 'Can human staff take over when a client needs personal attention?', a: 'Absolutely. Whenever a customer asks for a manager or human rep, the AI bot smoothly alerts your sales team for instant live takeover.' },
-      { q: 'How much does WhatsApp AI chatbot development cost in Bhopal?', a: 'Our custom AI chatbot and automation packages start from an affordable ₹2,999* with complete setup, integration, and 6 months free maintenance.' }
+      { q: 'How much does WhatsApp AI chatbot development cost in Bhopal?', a: 'Cost depends on the workflow, connected systems, messaging-provider charges, and support requirements. We provide an estimate after reviewing the scope.' }
     ]
   },
 
@@ -188,12 +188,12 @@ const solutionDetailsMap: Record<string, SolutionDetail> = {
     title: 'Manufacturing & Industrial ERP Solutions',
     industry: 'Manufacturing',
     metaTitle: 'Manufacturing ERP Software Development Bhopal | Mahi TechnoCrafts',
-    metaDescription: 'Best custom manufacturing ERP software development in Bhopal. Track factory production, raw materials, inventory, vendor orders, and supply chains.',
+    metaDescription: 'Discuss custom manufacturing software for production, inventory, vendor, and warehouse workflows with Mahi TechnoCrafts in Bhopal.',
     headline: 'Custom Manufacturing ERP & Factory Operations Software',
     emoji: '🏭',
     heroBadge: 'End-to-End Factory Automation',
-    priceHook: 'Starting from ₹2,999*',
-    deliveryTime: '3-6 Weeks',
+    priceHook: 'Estimate based on scope',
+    deliveryTime: 'Timeline agreed after scope review',
     summary: 'Modernize your plant operations with custom manufacturing ERP software designed by Mahi TechnoCrafts. From raw material procurement and machine downtime logs to automated batch quality control and dispatch tracking.',
     painPoints: [
       {
@@ -235,17 +235,17 @@ const solutionDetailsMap: Record<string, SolutionDetail> = {
     title: 'Real Estate & Property Management Portals',
     industry: 'Real Estate',
     metaTitle: 'Real Estate Website & Portal Development in Bhopal | Mahi TechnoCrafts',
-    metaDescription: 'Best real estate website development company in Bhopal. Property portals, 3D virtual tour integration, broker lead CRM, and WhatsApp broadcasts.',
+    metaDescription: 'Plan property pages and enquiry workflows with Mahi TechnoCrafts in Bhopal. Features and integrations are confirmed for each project.',
     headline: 'High-Converting Real Estate Portals & Builder Showcases',
     emoji: '🏢',
     heroBadge: 'High-Intent Buyer Lead Engine',
-    priceHook: 'Starting from ₹2,999*',
+    priceHook: 'Estimate based on scope',
     deliveryTime: '2-4 Weeks',
     summary: 'Empower your real estate agency or construction firm with premium property portals built by Mahi TechnoCrafts. We combine interactive floor plans, 3D virtual tours, neighborhood maps, and instant WhatsApp lead capture systems.',
     painPoints: [
       {
         problem: 'Low-quality leads from generic property aggregator portals.',
-        solution: 'Your own branded property website capturing 100% exclusive buyer inquiries.'
+        solution: 'A branded property website can present listings and route enquiries to the relevant team.'
       },
       {
         problem: 'Clients unable to visualize ongoing construction and layout plans.',
@@ -272,7 +272,7 @@ const solutionDetailsMap: Record<string, SolutionDetail> = {
       { step: '04', title: 'SEO & Google Ads Integration', desc: 'We integrate RERA tags, Local SEO schemas, and Meta/Google conversion pixels.' }
     ],
     faqs: [
-      { q: 'Will our property listings rank for local Bhopal real estate searches?', a: 'Yes! We pre-integrate localized schema markups (RealEstateAgent, Place, FAQ) and optimize neighborhood keywords so you rank top on Google.' },
+      { q: 'Will our property listings rank for local Bhopal real estate searches?', a: 'No one can guarantee a search position. We can scope crawlable property pages, accurate listing information, internal links, and relevant technical SEO.' },
       { q: 'Can we update property photos and prices ourselves?', a: 'Yes, our custom admin dashboard allows you to add, edit, or mark properties as "Sold Out" in seconds.' },
       { q: 'Can we integrate RERA details and project brochures?', a: 'Yes, we include dedicated sections for RERA certificates, downloadable PDF floor plans, and specification sheets.' }
     ]
@@ -282,17 +282,17 @@ const solutionDetailsMap: Record<string, SolutionDetail> = {
     title: 'Restaurant, Cafe & Food Ordering Systems',
     industry: 'Restaurants & Hospitality',
     metaTitle: 'Restaurant Website & POS Software in Bhopal | Mahi TechnoCrafts',
-    metaDescription: 'Best restaurant website & online food ordering system in Bhopal. 0% commission QR digital menus, table reservation, and kitchen billing POS.',
-    headline: '0% Commission Online Ordering & Restaurant POS Software',
+    metaDescription: 'Explore restaurant websites, menus, booking, and ordering workflows with Mahi TechnoCrafts in Bhopal. Provider fees and integrations vary.',
+    headline: 'Restaurant Websites & Ordering Workflows',
     emoji: '🍽️',
-    heroBadge: 'Save 30% Delivery Commissions',
-    priceHook: 'Starting from ₹2,999*',
+    heroBadge: 'Direct ordering options',
+    priceHook: 'Estimate based on scope',
     deliveryTime: '1-3 Weeks',
-    summary: 'Stop losing 30% of your restaurant profits to third-party delivery apps. Mahi TechnoCrafts builds direct online food ordering websites, contactless QR table menus, kitchen display POS systems, and automated customer loyalty programs.',
+    summary: 'A direct ordering website can complement third-party delivery channels. We can discuss menus, ordering, bookings, and integrations; provider charges and operating costs still apply.',
     painPoints: [
       {
         problem: 'Hefty commission fees eating into restaurant margins.',
-        solution: 'Direct online ordering portal with 100% of the profits kept in your bank account.'
+        solution: 'A direct ordering workflow can offer another channel; payment, delivery, and operating costs still apply.'
       },
       {
         problem: 'Long customer waiting times for printed menus and bills.',
@@ -329,11 +329,11 @@ const solutionDetailsMap: Record<string, SolutionDetail> = {
     title: 'Education, EdTech & Institute Management Systems',
     industry: 'Education',
     metaTitle: 'Education Website & LMS Software in Bhopal | Mahi TechnoCrafts',
-    metaDescription: 'Best school, college & coaching website development in Bhopal. Anti-piracy LMS, online mock tests, student fee collection, and live classes.',
+    metaDescription: 'Plan education websites and student portal workflows with Mahi TechnoCrafts in Bhopal, based on your courses, users, and existing systems.',
     headline: 'Complete LMS, Coaching & School Management Portals',
     emoji: '🎓',
     heroBadge: 'Scale to 50,000+ Students',
-    priceHook: 'Starting from ₹2,999*',
+    priceHook: 'Estimate based on scope',
     deliveryTime: '2-4 Weeks',
     summary: 'Empower your coaching institute, school, or college with custom EdTech software built by Mahi TechnoCrafts. We engineer anti-piracy DRM video course portals, online test series with instant rank generation, and automated student fee management systems.',
     painPoints: [
@@ -376,17 +376,17 @@ const solutionDetailsMap: Record<string, SolutionDetail> = {
     title: 'FinTech, Loan & Invoicing Software Solutions',
     industry: 'Finance & FinTech',
     metaTitle: 'FinTech & Finance Software Development Bhopal | Mahi TechnoCrafts',
-    metaDescription: 'Best financial software development company in Bhopal. Custom loan management, digital wallets, GST invoicing, and encrypted accounting portals.',
-    headline: 'Bank-Grade Encrypted FinTech & Invoicing Platforms',
+    metaDescription: 'Discuss finance software requirements in Bhopal, including client workflows, records, and integrations. Security and regulatory needs require project-specific review.',
+    headline: 'Finance & Invoicing Software Workflows',
     emoji: '💰',
-    heroBadge: '256-Bit Bank Grade Encryption',
-    priceHook: 'Starting from ₹2,999*',
-    deliveryTime: '3-6 Weeks',
-    summary: 'Build high-trust financial applications, digital ledger software, and automated GST billing portals with Mahi TechnoCrafts. We engineer robust, audit-compliant FinTech backends with real-time interest calculation and multi-tier encryption.',
+    heroBadge: 'Security requirements scoped per project',
+    priceHook: 'Estimate based on scope',
+    deliveryTime: 'Timeline agreed after scope review',
+    summary: 'Discuss finance and invoicing workflows with our team. Data protection, security controls, integrations, and regulatory requirements must be reviewed and agreed for the specific project.',
     painPoints: [
       {
         problem: 'Data security vulnerabilities and fear of compliance audits.',
-        solution: '256-bit encrypted databases with role-based permissions and immutable audit logs.'
+        solution: 'Database access controls and audit logging can be planned according to the data sensitivity and agreed security requirements.'
       },
       {
         problem: 'Delayed loan EMI collections and manual interest calculation mistakes.',
@@ -403,9 +403,9 @@ const solutionDetailsMap: Record<string, SolutionDetail> = {
       { title: 'GST-Compliant Automated Invoicing', desc: 'Generate multi-currency GST invoices with automated tax breakdown and thermal printing.', iconText: '🧾' },
       { title: 'Payment Gateway & Escrow Sync', desc: 'Automated bank payout APIs, virtual account creation, and UPI collection links.', iconText: '🏦' },
       { title: 'Investor & Portfolio Portal', desc: 'Interactive ROI graphs, dividend payout history, and financial summary reports.', iconText: '📈' },
-      { title: 'Immutable Audit Trail Logs', desc: 'Every financial entry is timestamped with user ID logs for 100% compliance audits.', iconText: '🛡️' }
+      { title: 'Audit Trail Requirements', desc: 'Define which records and actions need to be logged for the intended workflow.', iconText: '🛡️' }
     ],
-    techStack: ['Node.js', 'PostgreSQL', '256-Bit AES Encryption', 'Docker Containers', 'AWS KMS Keys', 'Redis'],
+    techStack: ['Application and database technologies selected for the project', 'Access controls and security requirements scoped to the system'],
     processSteps: [
       { step: '01', title: 'Financial Architecture & Security Blueprint', desc: 'We define the transaction models, compliance constraints, and cryptographic policies.' },
       { step: '02', title: 'Double-Entry Ledger Design', desc: 'We architect a mathematical double-entry bookkeeping engine with zero rounding errors.' },
@@ -423,11 +423,11 @@ const solutionDetailsMap: Record<string, SolutionDetail> = {
     title: 'AgriTech & Farm Management Platforms',
     industry: 'Agriculture',
     metaTitle: 'AgriTech Software & Portal Development in Bhopal | Mahi TechnoCrafts',
-    metaDescription: 'Best AgriTech software development company in Bhopal. Mandi price broadcast systems, farmer-to-buyer marketplaces, and cold storage inventory ERP.',
+    metaDescription: 'Explore agriculture software workflows for listings, inventory, and communications with Mahi TechnoCrafts in Bhopal.',
     headline: 'AgriTech Platforms & Smart Mandi Supply Chain Systems',
     emoji: '🌾',
     heroBadge: 'Vernacular & High Impact',
-    priceHook: 'Starting from ₹2,999*',
+    priceHook: 'Estimate based on scope',
     deliveryTime: '2-4 Weeks',
     summary: 'Empower farmers, Mandi traders, and agribusinesses with custom AgriTech solutions developed by Mahi TechnoCrafts. We build daily Mandi rate broadcasters, farmer onboarding apps with Hindi voice prompts, and cold storage inventory log systems.',
     painPoints: [
@@ -460,7 +460,7 @@ const solutionDetailsMap: Record<string, SolutionDetail> = {
       { step: '04', title: 'Field Launch & Farmer Onboarding', desc: 'We deploy lightweight Progressive Web Apps (PWAs) that work even on low 2G/3G speeds.' }
     ],
     faqs: [
-      { q: 'Will the app work on basic smartphones and slow mobile internet?', a: 'Yes! We build ultra-lightweight Progressive Web Apps (PWAs) optimized to load in under 1 second even on 2G/3G rural networks.' },
+      { q: 'Will the app work on basic smartphones and slower connections?', a: 'We can plan and measure performance for the devices and connection conditions your users rely on. Results depend on the final implementation and hosting.' },
       { q: 'Is the platform available in Hindi language?', a: 'Yes, we provide full Hindi vernacular interfaces so farmers and rural traders can navigate with zero difficulties.' },
       { q: 'Can cold storage owners manage farmer receipts and billing?', a: 'Yes, our cold storage module generates instant digital receipts with gunny bag counts and calculates storage rent automatically.' }
     ]
@@ -470,15 +470,15 @@ const solutionDetailsMap: Record<string, SolutionDetail> = {
     title: 'Hotel, Resort & Travel Booking Portals',
     industry: 'Hospitality & Tourism',
     metaTitle: 'Hotel & Resort Direct Booking Website in Bhopal | Mahi TechnoCrafts',
-    metaDescription: 'Direct hotel and resort booking portals in Bhopal. 0% OTA commission, instant advance UPI payments, guest ID verification, and seasonal tour packages.',
-    headline: '0% Commission Direct Hotel & Resort Booking Portals',
+    metaDescription: 'Plan hotel and resort websites with availability, enquiry, and booking workflows. Payment providers and integrations are scoped per project.',
+    headline: 'Hotel & Resort Booking Websites',
     emoji: '🏨',
-    heroBadge: 'Save 20-30% OTA Fees',
-    priceHook: 'Starting from ₹2,999*',
+    heroBadge: 'Direct booking options',
+    priceHook: 'Estimate based on scope',
     deliveryTime: '2-3 Weeks',
-    summary: 'Stop losing 20-30% of your room revenues to online travel agencies. We build direct hotel booking websites with instant UPI payments, real-time room availability calendars, guest digital KYC, and automated check-in WhatsApp alerts.',
+    summary: 'A direct booking website can complement online travel agencies. Availability, payments, guest information, and messaging workflows depend on your existing systems and provider requirements.',
     painPoints: [
-      { problem: 'High OTA commissions eating hotel margins.', solution: 'Direct booking website capturing 100% of room revenues in your bank account.' },
+      { problem: 'Reliance on third-party platforms for bookings.', solution: 'Consider a direct enquiry or booking channel alongside existing platforms, accounting for provider and operating costs.' },
       { problem: 'Double bookings caused by manual telephone register logs.', solution: 'Centralized live room calendar synced with instant payment confirmations.' },
       { problem: 'Slow check-in counter lines.', solution: 'Mobile guest check-in with digital Aadhaar/Passport photo upload before arrival.' }
     ],
@@ -509,8 +509,8 @@ const solutionDetailsMap: Record<string, SolutionDetail> = {
     metaDescription: 'Complete appointment booking & gym membership software in Bhopal. Slot booking, member attendance, automated renewal reminders, and diet routines.',
     headline: 'Salon Slot Booking & Gym Membership Management Software',
     emoji: '💇',
-    heroBadge: 'Zero Waiting Lines',
-    priceHook: 'Starting from ₹2,999*',
+    heroBadge: 'Appointment and membership workflows',
+    priceHook: 'Estimate based on scope',
     deliveryTime: '1-3 Weeks',
     summary: 'Eliminate chaotic waiting chairs at salons and automate gym membership renewals. We build custom slot booking systems, QR code member attendance, automated monthly renewal WhatsApp alerts, and digital diet plan portals.',
     painPoints: [
@@ -545,8 +545,8 @@ const solutionDetailsMap: Record<string, SolutionDetail> = {
     metaDescription: 'Digital car repair job cards, vehicle service WhatsApp reminders, spare parts billing POS, and EV charging station slot booking software in Bhopal.',
     headline: 'Digital Garage Job Cards & Vehicle Service Reminder Software',
     emoji: '🚗',
-    heroBadge: '3x Repeat Service Calls',
-    priceHook: 'Starting from ₹2,999*',
+    heroBadge: 'Service reminders and job tracking',
+    priceHook: 'Estimate based on scope',
     deliveryTime: '1-3 Weeks',
     summary: 'Upgrade your auto workshop, detailing studio, or EV charging station with smart digital workflows. We build digital vehicle job cards with damage photos, automated service due WhatsApp alerts, spare parts inventory POS, and EV slot reservation apps.',
     painPoints: [
@@ -581,18 +581,18 @@ const solutionDetailsMap: Record<string, SolutionDetail> = {
     metaDescription: 'Court case hearing diary, confidential document vault, client consultation booking, and 80G NGO donation portals developed in Bhopal.',
     headline: 'Confidential Client Case Diaries & Practice Management Portals',
     emoji: '⚖️',
-    heroBadge: '100% Encrypted & Private',
-    priceHook: 'Starting from ₹2,999*',
+    heroBadge: 'Privacy and access controls scoped to requirements',
+    priceHook: 'Estimate based on scope',
     deliveryTime: '1-3 Weeks',
     summary: 'Professional practice management systems for advocates, Chartered Accountants, and NGOs. We build next hearing date automated alerts, encrypted client case vaults, 1-click consultation booking, and automated 80G tax exemption donation receipts.',
     painPoints: [
       { problem: 'Missed court hearing dates and chaotic paper diaries.', solution: 'Digital case diary with automated WhatsApp hearing reminders the evening before.' },
-      { problem: 'Unsecured client financial and legal documents on WhatsApp.', solution: 'Bank-grade encrypted client vault with password-protected document downloads.' },
+      { problem: 'Unsecured client financial and legal documents on WhatsApp.', solution: 'A client document area can be scoped with access controls and protection requirements agreed for the project.' },
       { problem: 'Time lost on manual consultation fee follow-ups.', solution: '1-Click consultation booking with advance token fee collection.' }
     ],
     coreModules: [
       { title: 'Digital Court Case Hearing Diary', desc: 'Log case number, court room, judge, opposing counsel, and next hearing dates.', iconText: '⚖️' },
-      { title: 'Bank-Grade Client Document Vault', desc: 'Store petitions, balance sheets, and audit reports with 256-bit AES encryption.', iconText: '🔒' },
+      { title: 'Client Document Management', desc: 'Organize petitions, balance sheets, and audit reports with access controls scoped to requirements.', iconText: '🔒' },
       { title: 'Online Paid Consultation Scheduler', desc: 'Clients pick 30-min or 60-min video/in-office consultation slots with UPI payment.', iconText: '📅' },
       { title: 'Instant 80G NGO Donation Receipts', desc: 'Generate instant tax-exempt 80G donation receipts for non-profit organizations.', iconText: '📜' }
     ],
@@ -601,10 +601,10 @@ const solutionDetailsMap: Record<string, SolutionDetail> = {
       { step: '01', title: 'Practice Workflow Mapping', desc: 'We structure your case categories, document requirements, and consultation fees.' },
       { step: '02', title: 'Prestigious & Trustworthy UI', desc: 'We design an authoritative, premium digital presence reflecting your legal expertise.' },
       { step: '03', title: 'Encrypted Vault & Diary Setup', desc: 'We build encrypted storage and sync automated calendar hearing reminders.' },
-      { step: '04', title: 'Launch & Security Audit', desc: 'We perform end-to-end security audits to ensure 100% client data confidentiality.' }
+      { step: '04', title: 'Launch & Security Audit', desc: 'We review the agreed security controls and document the handover and operational responsibilities.' }
     ],
     faqs: [
-      { q: 'Is client case data kept 100% private and encrypted?', a: 'Yes, all case files and client records are stored with 256-bit AES bank-grade encryption with zero third-party access.' },
+      { q: 'How is client case data protected?', a: 'Data protection requirements, access controls, storage, encryption, backups, and third-party services should be reviewed and documented for each project.' },
       { q: 'Will advocates get automated alerts before court hearing dates?', a: 'Yes, an automated WhatsApp summary of tomorrow\'s court hearings is sent every evening at 8 PM.' },
       { q: 'Can clients pay consultation fees before booking an appointment?', a: 'Yes, clients pay via UPI (GPay/PhonePe) to confirm their consultation slot on your calendar.' }
     ]
@@ -618,11 +618,16 @@ solutionDetailsMap['realestate'] = solutionDetailsMap['real-estate'];
 export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
   const details = solutionDetailsMap[slug];
+  const canonicalSlug = ({
+    'retail-ecommerce': 'ecommerce',
+    realestate: 'real-estate',
+  } as Record<string, string>)[slug] || slug;
 
   if (!details) {
     return {
       title: 'Industry Solution | Mahi TechnoCrafts',
-      description: 'Custom software solutions for every business industry.'
+      description: 'Custom software solutions for every business industry.',
+      robots: { index: false, follow: false },
     };
   }
 
@@ -630,12 +635,12 @@ export async function generateMetadata({ params }: PageProps) {
     title: details.metaTitle,
     description: details.metaDescription,
     alternates: {
-      canonical: `https://mahitechnocrafts.in/solutions/${slug}`
+      canonical: `https://mahitechnocrafts.in/solutions/${canonicalSlug}`
     },
     openGraph: {
       title: details.metaTitle,
       description: details.metaDescription,
-      url: `https://mahitechnocrafts.in/solutions/${slug}`,
+      url: `https://mahitechnocrafts.in/solutions/${canonicalSlug}`,
       type: 'website'
     }
   };
@@ -705,21 +710,7 @@ export default async function SolutionDetailPage({ params }: PageProps) {
     description: details.metaDescription
   };
 
-  // JSON-LD FAQ Schema
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: details.faqs.map(faq => ({
-      '@type': 'Question',
-      name: faq.q,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: faq.a
-      }
-    }))
-  };
-
-  const schemas = [breadcrumbSchema, serviceSchema, faqSchema];
+  const schemas = [breadcrumbSchema, serviceSchema];
 
   return (
     <>
@@ -793,12 +784,12 @@ export default async function SolutionDetailPage({ params }: PageProps) {
                   <span className="text-xs font-bold text-sky-600 dark:text-sky-400">{details.priceHook}</span>
                 </div>
                 <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-700/60">
-                  <span className="text-[10px] uppercase font-bold text-slate-400 block">Delivery Speed</span>
+                  <span className="text-[10px] uppercase font-bold text-slate-400 block">Project schedule</span>
                   <span className="text-xs font-bold text-slate-800 dark:text-slate-200">{details.deliveryTime}</span>
                 </div>
                 <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-700/60 col-span-2 sm:col-span-1">
                   <span className="text-[10px] uppercase font-bold text-slate-400 block">Support</span>
-                  <span className="text-xs font-bold text-emerald-600">24/7 Dedicated</span>
+                  <span className="text-xs font-bold text-emerald-600">Project-specific support</span>
                 </div>
               </div>
             </div>
@@ -811,11 +802,11 @@ export default async function SolutionDetailPage({ params }: PageProps) {
                 </span>
                 
                 <h3 className="font-display font-bold text-xl tracking-tight text-white">
-                  Get a Free Custom Proposal & Wireframe
+                  Discuss a project estimate
                 </h3>
                 
                 <p className="text-xs text-slate-300 leading-relaxed">
-                  Discuss your business requirements with our lead technical architect near Hamidia Road, Bhopal. Get an exact timeline and discount estimate in 24 hours.
+                  Share your requirements with our team in Bhopal. We will review the scope and discuss a realistic estimate and schedule.
                 </p>
               </div>
 
@@ -830,7 +821,7 @@ export default async function SolutionDetailPage({ params }: PageProps) {
                 </div>
                 <div className="flex items-center gap-3 text-slate-300">
                   <ShieldCheck size={15} className="text-emerald-400 flex-shrink-0" />
-                  <span>100% Confidentiality & Non-Disclosure</span>
+                  <span>Privacy and confidentiality terms discussed per project</span>
                 </div>
               </div>
 
@@ -838,7 +829,7 @@ export default async function SolutionDetailPage({ params }: PageProps) {
                 href="/contact"
                 className="w-full py-4 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 font-bold text-xs uppercase tracking-wider text-center text-white rounded-xl shadow-xl shadow-sky-500/20 transition-all block mt-2"
               >
-                Claim Free Custom Quote
+                Discuss your requirements
               </Link>
             </div>
           </div>
@@ -949,15 +940,11 @@ export default async function SolutionDetailPage({ params }: PageProps) {
             </div>
             <div className="flex gap-2 flex-wrap">
               {[
-                '🛡️ 6 Months Free Maintenance',
-                '⚡ 24/7 Priority Tech Support',
-                '🤖 AI & WhatsApp Automation',
-                '⚡ Sub-1s Mobile Speed',
-                '🔒 Bank-Grade SSL & Security',
-                '📱 100% Mobile Phone Ready',
-                '💳 1-Click UPI Payment Sync',
-                '🔍 Google #1 Local SEO Setup',
-                '🤝 100% Full Code Ownership'
+                '🧭 Scope and deliverables agreed up front',
+                '📱 Responsive needs discussed for target devices',
+                '🔌 Integrations confirmed against available providers',
+                '🧪 Testing and acceptance criteria agreed',
+                '📝 Handover and support terms documented'
               ].map((feat, idx) => (
                 <span
                   key={idx}
@@ -996,7 +983,7 @@ export default async function SolutionDetailPage({ params }: PageProps) {
               Ready to Launch Your {details.industry} Platform?
             </h2>
             <p className="text-xs sm:text-sm text-slate-200 max-w-2xl mx-auto leading-relaxed">
-              Join 150+ companies who chose Mahi TechnoCrafts. Get your custom scope, prototype, and discounted quote starting from ₹2,999* with 6 months free maintenance.
+              Share your requirements and we will discuss a project scope, deliverables, and estimate with you.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
               <Link

@@ -29,11 +29,11 @@ export default function LeadEstimator() {
   const [submitted, setSubmitted] = useState(false);
 
   const projectOptions = [
-    { id: 'website', name: 'Business Website', icon: <Globe size={18} />, base: 'Starting from ₹2,999*' },
-    { id: 'app', name: 'Mobile App (iOS/Android)', icon: <Smartphone size={18} />, base: 'Starting from ₹2,999*' },
-    { id: 'ecommerce', name: 'Online Shopping Store', icon: <ShoppingCart size={18} />, base: 'Starting from ₹2,999*' },
-    { id: 'erp', name: 'Billing & Management Software', icon: <Database size={18} />, base: 'Starting from ₹2,999*' },
-    { id: 'ai', name: 'WhatsApp & Auto Chatbot', icon: <Bot size={18} />, base: 'Starting from ₹2,999*' },
+    { id: 'website', name: 'Business Website', icon: <Globe size={18} /> },
+    { id: 'app', name: 'Mobile App (iOS/Android)', icon: <Smartphone size={18} /> },
+    { id: 'ecommerce', name: 'Online Shopping Store', icon: <ShoppingCart size={18} /> },
+    { id: 'erp', name: 'Billing & Management Software', icon: <Database size={18} /> },
+    { id: 'ai', name: 'WhatsApp & Auto Chatbot', icon: <Bot size={18} /> },
   ];
 
   const industryOptions = [
@@ -63,13 +63,13 @@ export default function LeadEstimator() {
     });
 
     const selectedProj = projectOptions.find(p => p.id === projectType)?.name || projectType;
-    const msg = `Hi Mahi TechnoCrafts Team, I used your Instant Project Estimator:
+    const msg = `Hi Mahi TechnoCrafts Team, I used your project planner:
 - Project: ${selectedProj}
 - Industry: ${industry}
 - Timeline: ${timeline === 'urgent' ? 'Urgent (1-2 Weeks)' : 'Standard (2-4 Weeks)'}
-- Includes Free SEO & Schemas: ${needsSEO ? 'Yes' : 'No'}
+- SEO and structured data are a priority: ${needsSEO ? 'Yes' : 'No'}
 - My Contact Number: ${clientPhone}
-Please provide me with a custom discounted proposal & free prototype plan.`;
+Please follow up with a suitable project scope and next steps.`;
 
     setTimeout(() => {
       window.open(`https://wa.me/916267144122?text=${encodeURIComponent(msg)}`, '_blank');
@@ -84,15 +84,15 @@ Please provide me with a custom discounted proposal & free prototype plan.`;
         <div className="text-center max-w-2xl mx-auto mb-12 space-y-4">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-50 dark:bg-sky-950/60 border border-sky-200 dark:border-sky-800 text-xs font-bold uppercase tracking-wider text-sky-700 dark:text-sky-300">
             <Calculator size={13} className="text-sky-600" />
-            Instant Project Scope & Quote
+            Project Planner
           </div>
 
           <h2 className="text-3xl sm:text-4xl font-display font-black tracking-tight text-slate-900 dark:text-white">
-            Calculate Your <span className="text-gradient">Project Cost</span> in 30 Seconds
+            Plan Your <span className="text-gradient">Digital Project</span>
           </h2>
 
           <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
-            Select your requirements to receive a customized scope, timeline, and discounted launch proposal.
+            Select what you need and we&apos;ll discuss a scope and timeline that fit your business.
           </p>
         </div>
 
@@ -124,9 +124,7 @@ Please provide me with a custom discounted proposal & free prototype plan.`;
                       </div>
                       <div>
                         <p className="text-xs font-bold leading-tight">{opt.name}</p>
-                        <p className={`text-[10px] mt-1 ${isSelected ? 'text-sky-100' : 'text-slate-500 dark:text-slate-400'}`}>
-                          {opt.base}
-                        </p>
+                        <p className={`text-[10px] mt-1 ${isSelected ? 'text-sky-100' : 'text-slate-500 dark:text-slate-400'}`}>Discuss your scope</p>
                       </div>
                     </button>
                   );
@@ -192,17 +190,17 @@ Please provide me with a custom discounted proposal & free prototype plan.`;
                 </div>
                 <div>
                   <h4 className="text-xs font-bold text-slate-900 dark:text-white">
-                    Includes Free Search Engine Optimization & Mobile Responsive Guarantee
+                    SEO and mobile experience, planned around your goals
                   </h4>
                   <p className="text-[11px] text-slate-500 dark:text-slate-400">
-                    Sitemap, Schema Markup, Speed Optimization & 6 Months Free Maintenance included.
+                    Technical SEO, structured data, performance, and ongoing support can be included in the agreed project scope.
                   </p>
                 </div>
               </div>
 
               <div className="flex items-center gap-2">
                 <span className="text-xs font-bold text-emerald-600 bg-emerald-50 dark:bg-emerald-950/60 px-3 py-1 rounded-full border border-emerald-200 dark:border-emerald-800">
-                  FREE BONUS
+                  PROJECT OPTIONS
                 </span>
               </div>
             </div>
@@ -210,7 +208,7 @@ Please provide me with a custom discounted proposal & free prototype plan.`;
             {/* Step 4: Submission */}
             <div className="space-y-3 pt-2">
               <label className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 block">
-                Enter Your WhatsApp / Phone Number to Receive Free Scope & Prototype:
+                Add your phone number so our team can follow up about your project:
               </label>
 
               <div className="flex flex-col sm:flex-row gap-3">
@@ -228,7 +226,7 @@ Please provide me with a custom discounted proposal & free prototype plan.`;
                   className="px-8 py-4 bg-gradient-to-r from-sky-600 via-indigo-600 to-blue-700 hover:from-sky-500 hover:to-indigo-600 text-white font-extrabold text-xs uppercase tracking-wider rounded-xl flex items-center justify-center gap-2 shadow-xl shadow-sky-600/30 cursor-pointer transition-all hover:scale-[1.02] active:scale-[0.98]"
                 >
                   <Sparkles size={14} className="text-amber-300 animate-spin" />
-                  <span>Get Free Plan & Discounted Quote</span>
+                  <span>Discuss My Project</span>
                   <ArrowRight size={14} />
                 </button>
               </div>

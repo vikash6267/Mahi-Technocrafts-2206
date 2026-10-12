@@ -48,31 +48,31 @@ const serviceDetailsMap: Record<string, ServiceDetailEntry> = {
   'web-dev': {
     title: 'Web Development',
     metaTitle: 'Website Development Company in Bhopal | Mahi TechnoCrafts',
-    metaDescription: 'Top website development company in Bhopal. High-speed custom web design, mobile-friendly stores, and business websites starting from ₹2,999*.',
-    headline: 'Top Website Development Company in Bhopal',
+    metaDescription: 'Plan a responsive business website with Mahi TechnoCrafts in Bhopal. Discuss page design, development, integrations, and a project-specific estimate.',
+    headline: 'Website Development in Bhopal',
     icon: 'Globe',
-    priceHook: 'Starting from ₹2,999*',
-    deliveryTime: '7-14 Days',
-    longDescription: 'Mahi TechnoCrafts is the premier website development agency in Bhopal, engineering high-speed, secure, and Google-ranked custom websites. Our expert design team crafts stunning websites designed to scale your business and generate maximum customer phone calls and inquiries.',
+    priceHook: 'Estimate based on scope',
+    deliveryTime: 'Agreed after scope',
+    longDescription: 'Mahi TechnoCrafts plans and builds business websites in Bhopal and across India. We agree on the page structure, content, integrations, accessibility needs, and technical requirements before estimating the work.',
     features: [
-      'Superfast Loading Mobile & Desktop Business Websites',
-      '100% Mobile Responsive & Modern User-Friendly Design',
-      'Pre-Integrated Local Business Schemas for Top Google Rankings',
-      'Simple Mobile Admin Panel to Update Prices & Photos in 30s',
+      'Mobile and desktop layouts planned for your audience',
+      'Responsive layouts planned for agreed screen sizes and user needs',
+      'Search-friendly page structure and metadata',
+      'Content management options can be scoped for your team',
       'Instant WhatsApp Chat & Lead Capture Forms Integration'
     ],
     faqs: [
       {
-        q: 'Why is Mahi TechnoCrafts the best web development company in Bhopal?',
-        a: 'We build superfast, secure websites that load in under 1 second on mobile phones, look stunning, and are pre-integrated with Local SEO to rank #1 in Bhopal.'
+        q: 'What is included in a business website project?',
+        a: 'The scope can include page planning, responsive layouts, content entry, enquiry forms, integrations, and a handover. We confirm the deliverables for each project before work begins.'
       },
       {
         q: 'How much does web development cost in Bhopal?',
-        a: 'Our custom high-performance business websites start with budget-friendly rates from ₹2,999*, taking about 7–14 days to design, develop, test, and launch.'
+        a: 'Cost and schedule depend on the number of pages, content, integrations, and review cycles. We provide an estimate after understanding your requirements.'
       },
       {
         q: 'Will my website rank on Google Search in Bhopal?',
-        a: 'Yes. We include robots.txt, dynamic sitemaps, custom metadata, and structured JSON-LD schemas out of the box to guarantee your business appears in local searches.'
+        a: 'We can provide technical SEO foundations such as crawlable navigation, metadata, and a sitemap. These improvements do not guarantee indexing or a particular ranking.'
       }
     ]
   },
@@ -80,22 +80,22 @@ const serviceDetailsMap: Record<string, ServiceDetailEntry> = {
   'mobile-dev': {
     title: 'Mobile App Development',
     metaTitle: 'Mobile App Development Company in Bhopal | Mahi TechnoCrafts',
-    metaDescription: 'Best mobile app development company in Bhopal. High-performance, secure iOS and Android custom mobile apps starting from ₹2,999*.',
+    metaDescription: 'mobile app development company in Bhopal. High-performance, secure iOS and Android custom mobile apps with pricing based on project scope.',
     headline: 'Mobile App Development Company in Bhopal',
     icon: 'Smartphone',
-    priceHook: 'Starting from ₹2,999*',
-    deliveryTime: '2-4 Weeks',
-    longDescription: 'Mahi TechnoCrafts is the top-tier mobile app development agency in Bhopal, Madhya Pradesh. We build feature-rich, high-performance, and secure Android and iPhone applications with instant push notifications, 1-click UPI payments, and stunning interfaces.',
+    priceHook: 'Estimate based on scope',
+    deliveryTime: 'Agreed after scope',
+    longDescription: 'Mahi TechnoCrafts is the mobile app development agency in Bhopal, Madhya Pradesh. We build Android and iOS applications with features such as notifications, payment flows, and interfaces selected for the project scope.',
     features: [
       'High-Performance Android & iPhone (iOS) Mobile Apps',
-      'Instant Push Notifications & Live Customer Alerts',
-      '1-Click Google Pay & PhonePe UPI Payment Gateways',
+      'Push notifications can be included where the platform and requirements support them',
+      'Payment gateway integration can be scoped for supported providers',
       'Full Publishing Support on Google Play Store & Apple App Store',
       'Easy Mobile Admin Panel to Manage App Content'
     ],
     faqs: [
       {
-        q: 'Which is the top mobile app development agency in Bhopal?',
+        q: 'How should I compare mobile app development companies in Bhopal?',
         a: 'Mahi TechnoCrafts delivers fast, smooth mobile apps for Android and iPhone, fully integrated with secure databases, UPI payments, and WhatsApp.'
       },
       {
@@ -104,7 +104,7 @@ const serviceDetailsMap: Record<string, ServiceDetailEntry> = {
       },
       {
         q: 'How long does mobile app development take?',
-        a: 'Depending on features, a custom mobile app takes about 2 to 4 weeks to fully design, code, test, and release.'
+        a: 'The timeline depends on platforms, features, integrations, testing, and store review. We set milestones after confirming the first-release scope.'
       }
     ]
   },
@@ -112,11 +112,11 @@ const serviceDetailsMap: Record<string, ServiceDetailEntry> = {
   'digital-marketing': {
     title: 'Digital Marketing & Growth',
     metaTitle: 'Digital Marketing Agency in Bhopal | Mahi TechnoCrafts',
-    metaDescription: 'Top digital marketing agency in Bhopal. Google Ads, Meta PPC, targeted lead funnels, and high-converting marketing strategies starting from ₹2,999*.',
+    metaDescription: 'digital marketing agency in Bhopal. Google Ads, Meta PPC, targeted lead funnels, and high-converting marketing strategies with pricing based on project scope.',
     headline: 'Data-Driven Digital Marketing & Lead Generation in Bhopal',
     icon: 'TrendingUp',
-    priceHook: 'Starting from ₹2,999*',
-    deliveryTime: 'Continuous Growth',
+    priceHook: 'Estimate based on scope',
+    deliveryTime: 'Agreed after scope',
     longDescription: 'Accelerate your customer acquisition with Mahi TechnoCrafts. We design full-funnel digital marketing campaigns across Google Search, Instagram, Facebook, and LinkedIn to generate high-intent inbound calls and leads for your business in Bhopal and across India.',
     features: [
       'High-ROI Google Search & Local Maps PPC Campaigns',
@@ -128,7 +128,7 @@ const serviceDetailsMap: Record<string, ServiceDetailEntry> = {
     faqs: [
       {
         q: 'How quickly can digital marketing generate leads for my business?',
-        a: 'With targeted Google and Meta Ads, our clients typically begin receiving verified inquiries within 48 to 72 hours of campaign launch.'
+        a: 'Paid campaigns can start serving after setup and review, but enquiry volume and timing depend on demand, budget, competition, offer, and landing-page fit.'
       },
       {
         q: 'What makes Mahi TechnoCrafts different from other digital marketing agencies in Bhopal?',
@@ -144,16 +144,16 @@ const serviceDetailsMap: Record<string, ServiceDetailEntry> = {
   'seo-services': {
     title: 'SEO & Generative Engine Optimization',
     metaTitle: 'SEO Services in Bhopal | Local SEO & GEO | Mahi TechnoCrafts',
-    metaDescription: 'Best SEO services company in Bhopal. Boost your Google Search, Google Maps, and AI Engine rankings with expert Local SEO and GEO solutions starting from ₹2,999*.',
+    metaDescription: 'SEO services company in Bhopal. Boost your Google Search, Google Maps, and AI Engine rankings with expert Local SEO and GEO solutions with pricing based on project scope.',
     headline: 'SEO & Generative Engine Optimization in Bhopal',
     icon: 'Search',
-    priceHook: 'Starting from ₹2,999*',
-    deliveryTime: 'Monthly Retainer',
-    longDescription: 'Elevate your organic reach with the best SEO services company in Bhopal. Mahi TechnoCrafts provides cutting-edge Local SEO, Google Business Profile (GBP) ranking optimization, NAP consistency, and modern Generative Engine Optimization (GEO) to ensure your business ranks #1 in standard search and AI systems.',
+    priceHook: 'Estimate based on scope',
+    deliveryTime: 'Agreed after scope',
+    longDescription: 'Mahi TechnoCrafts provides SEO support for businesses in Bhopal and across India. Work can include technical reviews, local business information, page structure, useful content, internal links, and measurement. Search rankings and recommendations by AI systems cannot be guaranteed.',
     features: [
       'High-Impact Local SEO & Google Maps Ranking Optimization',
       'Generative Engine Optimization (GEO) for ChatGPT, Gemini & Perplexity',
-      'Dynamic Schema Markups (LocalBusiness, FAQ, Breadcrumb)',
+      'Relevant structured data that matches visible page content',
       'High-Quality Content Strategy & Keyphrase Analysis',
       'Crawl Budget Management & Indexing Fixes'
     ],
@@ -164,11 +164,11 @@ const serviceDetailsMap: Record<string, ServiceDetailEntry> = {
       },
       {
         q: 'What is Generative Engine Optimization (GEO)?',
-        a: 'GEO is the practice of optimizing your site\'s structure, E-E-A-T signals, and FAQ schemas so that conversational AI engines like ChatGPT, Gemini, and Perplexity recommend your business.'
+        a: 'There is no special markup that guarantees a mention in ChatGPT, Gemini, or other AI tools. Clear, accurate, crawlable pages and a strong public business presence help systems understand your business, but recommendations are outside a provider\'s control.'
       },
       {
         q: 'How long does it take to see results in search rankings?',
-        a: 'While technical fixes index within days, top competitive organic rankings typically show strong compounding growth over 2 to 4 months.'
+        a: 'Timing varies with the site, competition, search demand, and work required. We review technical and Search Console data where access is available, then report progress without promising a fixed ranking date.'
       }
     ]
   },
@@ -176,11 +176,11 @@ const serviceDetailsMap: Record<string, ServiceDetailEntry> = {
   'branding-identity': {
     title: 'Branding & Visual Identity',
     metaTitle: 'Branding & Logo Design Agency in Bhopal | Mahi TechnoCrafts',
-    metaDescription: 'Best branding agency in Bhopal. Premium logo design, brand guideline books, visual identity, and UI/UX design starting from ₹2,999*.',
+    metaDescription: 'branding agency in Bhopal. Premium logo design, brand guideline books, visual identity, and UI/UX design with pricing based on project scope.',
     headline: 'Premium Branding & Visual Identity in Bhopal',
     icon: 'Palette',
-    priceHook: 'Starting from ₹2,999*',
-    deliveryTime: '1-2 Weeks',
+    priceHook: 'Estimate based on scope',
+    deliveryTime: 'Agreed after scope',
     longDescription: 'Establish an unforgettable brand with Mahi TechnoCrafts. We craft distinctive logo identities, typography guidelines, corporate stationery, and modern visual design languages that build instant credibility and trust with your customers.',
     features: [
       'Custom Vector Logo Concepts with Unlimited Revisions',
@@ -208,11 +208,11 @@ const serviceDetailsMap: Record<string, ServiceDetailEntry> = {
   'social-media-marketing': {
     title: 'Social Media Marketing (SMM)',
     metaTitle: 'Social Media Marketing Agency in Bhopal | Mahi TechnoCrafts',
-    metaDescription: 'Best social media marketing agency in Bhopal. Instagram Reels, creative post designs, community management, and paid growth starting from ₹2,999*.',
+    metaDescription: 'social media marketing agency in Bhopal. Instagram Reels, creative post designs, community management, and paid growth with pricing based on project scope.',
     headline: 'High-Engagement Social Media Marketing in Bhopal',
     icon: 'Megaphone',
-    priceHook: 'Starting from ₹2,999*',
-    deliveryTime: 'Monthly Growth',
+    priceHook: 'Estimate based on scope',
+    deliveryTime: 'Agreed after scope',
     longDescription: 'Turn your social media channels into lead generation engines. Mahi TechnoCrafts crafts viral Instagram Reels, aesthetic carousel posts, and targeted engagement campaigns that grow your followers and drive real business inquiries in Bhopal and nationwide.',
     features: [
       'High-Impact Instagram Reels & Short-Form Video Production',
@@ -240,14 +240,14 @@ const serviceDetailsMap: Record<string, ServiceDetailEntry> = {
   'ecommerce-management': {
     title: 'E-Commerce Management & Growth',
     metaTitle: 'E-Commerce Store Setup & Management in Bhopal | Mahi TechnoCrafts',
-    metaDescription: 'Best e-commerce setup and management agency in Bhopal. Online stores, WhatsApp catalog shops, Amazon/Flipkart onboarding, and ad funnels starting from ₹2,999*.',
+    metaDescription: 'e-commerce setup and management agency in Bhopal. Online stores, WhatsApp catalog shops, Amazon/Flipkart onboarding, and ad funnels with pricing based on project scope.',
     headline: 'End-to-End E-Commerce Store Setup & Scaling in Bhopal',
     icon: 'ShoppingCart',
-    priceHook: 'Starting from ₹2,999*',
-    deliveryTime: '7-14 Days',
-    longDescription: 'Launch and scale your online store with Mahi TechnoCrafts. We provide full-service online shopping store design, 1-click UPI payments, WhatsApp catalog syncing, automated shipping courier integration, and sales growth funnels.',
+    priceHook: 'Estimate based on scope',
+    deliveryTime: 'Agreed after scope',
+    longDescription: 'Launch and scale your online store with Mahi TechnoCrafts. We provide full-service online shopping store design, payment gateway, catalog, shipping, and marketing integrations scoped around your chosen providers.',
     features: [
-      'High-Speed Online Shopping Store with 1-Click Mobile Checkout',
+      'Mobile-friendly product browsing and checkout flows',
       'Google Pay, PhonePe & Paytm UPI Payment Gateway Setup',
       'Automated Courier Shipping Sync (Shiprocket / Delhivery)',
       'Amazon, Flipkart & Meesho Marketplace Seller Onboarding',
@@ -264,7 +264,7 @@ const serviceDetailsMap: Record<string, ServiceDetailEntry> = {
       },
       {
         q: 'How much does it cost to launch an e-commerce store?',
-        a: 'Our high-performance custom online store packages start from ₹2,999* with affordable maintenance plans.'
+        a: 'Cost depends on product count, checkout requirements, integrations, content, and order-management workflows. We prepare an estimate after reviewing the requirements.'
       }
     ]
   },
@@ -272,11 +272,11 @@ const serviceDetailsMap: Record<string, ServiceDetailEntry> = {
   'uiux-design': {
     title: 'UI/UX Design & Prototyping',
     metaTitle: 'UI/UX Design Agency in Bhopal | Mahi TechnoCrafts',
-    metaDescription: 'Best UI/UX design agency in Bhopal. Beautiful, conversion-focused app and website Figma prototypes starting from ₹2,999*.',
+    metaDescription: 'UI/UX design agency in Bhopal. Beautiful, conversion-focused app and website Figma prototypes with pricing based on project scope.',
     headline: 'Conversion-Centric UI/UX Design Agency in Bhopal',
     icon: 'Palette',
-    priceHook: 'Starting from ₹2,999*',
-    deliveryTime: '1-3 Weeks',
+    priceHook: 'Estimate based on scope',
+    deliveryTime: 'Agreed after scope',
     longDescription: 'Mahi TechnoCrafts crafts stunning, user-centric UI/UX designs for websites and mobile applications in Bhopal. Our design philosophy blends aesthetics with functionality — creating interfaces that look beautiful, feel natural, and convert visitors into loyal customers.',
     features: [
       'Custom Figma Wireframes & High-Fidelity Prototypes',
@@ -304,11 +304,11 @@ const serviceDetailsMap: Record<string, ServiceDetailEntry> = {
   'erp-crm': {
     title: 'Custom Business Software & ERP',
     metaTitle: 'Custom ERP & CRM Development in Bhopal | Mahi TechnoCrafts',
-    metaDescription: 'Best custom ERP & CRM software development company in Bhopal. Manage customers, sales, inventory, and operations starting from ₹2,999*.',
+    metaDescription: 'custom ERP & CRM software development company in Bhopal. Manage customers, sales, inventory, and operations with pricing based on project scope.',
     headline: 'Custom ERP & CRM Software Development in Bhopal',
     icon: 'Database',
-    priceHook: 'Starting from ₹2,999*',
-    deliveryTime: '3-6 Weeks',
+    priceHook: 'Estimate based on scope',
+    deliveryTime: 'Agreed after scope',
     longDescription: 'Mahi TechnoCrafts builds powerful, easy-to-use custom ERP and CRM business software for companies in Bhopal and across India. From sales pipeline management to inventory tracking and automated invoicing, our systems centralise every business operation into one elegant dashboard.',
     features: [
       'Custom CRM for Leads, Clients & Follow-Ups',
@@ -336,14 +336,14 @@ const serviceDetailsMap: Record<string, ServiceDetailEntry> = {
   'cloud-services': {
     title: 'Secure Cloud Hosting & DevOps',
     metaTitle: 'Cloud Hosting & DevOps Services in Bhopal | Mahi TechnoCrafts',
-    metaDescription: 'Best secure cloud hosting and DevOps services in Bhopal. 99.9% uptime, SSL, daily backups, and scalable infrastructure starting from ₹2,999*.',
+    metaDescription: 'Discuss cloud hosting and DevOps requirements with Mahi TechnoCrafts in Bhopal, including deployment, backups, monitoring, and infrastructure options.',
     headline: 'Secure Cloud Hosting & DevOps in Bhopal',
     icon: 'Cloud',
-    priceHook: 'Starting from ₹2,999*',
-    deliveryTime: 'Instant Setup',
-    longDescription: 'Mahi TechnoCrafts provides enterprise-grade cloud hosting and DevOps services for businesses in Bhopal and across India. We set up scalable, secure, and high-availability infrastructure on AWS, Vercel, and DigitalOcean — ensuring your website or app stays online, fast, and protected 24/7.',
+    priceHook: 'Estimate based on scope',
+    deliveryTime: 'Agreed after scope',
+    longDescription: 'Mahi TechnoCrafts provides cloud hosting and DevOps services for businesses in Bhopal and across India. We set up scalable, secure, and high-availability infrastructure on AWS, Vercel, and DigitalOcean. Availability, security controls, and monitoring depend on the selected infrastructure and service agreement.',
     features: [
-      '99.9% Uptime SLA with Auto-Scaling Infrastructure',
+      'Hosting and availability requirements agreed for each project',
       'SSL Certificates & HTTPS Enforcement',
       'Automated Daily Backups & Disaster Recovery',
       'CI/CD Pipelines for Zero-Downtime Deployments',
@@ -356,7 +356,7 @@ const serviceDetailsMap: Record<string, ServiceDetailEntry> = {
       },
       {
         q: 'What happens if my server goes down?',
-        a: 'Our monitoring systems alert us within minutes of any downtime. With automated backups and redundant setups, we restore service typically in under 30 minutes.'
+        a: 'Monitoring, backups, recovery targets, and incident response depend on the selected provider and support agreement. We document the agreed setup and responsibilities.'
       },
       {
         q: 'Do you handle server migrations?',
@@ -368,12 +368,12 @@ const serviceDetailsMap: Record<string, ServiceDetailEntry> = {
   'ai-solutions': {
     title: 'Smart AI Solutions & Chatbots',
     metaTitle: 'AI Development Company in Bhopal | Mahi TechnoCrafts',
-    metaDescription: 'Best AI solutions and chatbot development company in Bhopal. Automate customer support, sales pipelines, and operations starting from ₹2,999*.',
+    metaDescription: 'AI solutions and chatbot development company in Bhopal. Automate customer support, sales pipelines, and operations with pricing based on project scope.',
     headline: 'AI Development & Smart Chatbots in Bhopal',
     icon: 'Cpu',
-    priceHook: 'Starting from ₹2,999*',
-    deliveryTime: '1-3 Weeks',
-    longDescription: 'Mahi TechnoCrafts is the top AI development company in Bhopal. We engineer custom AI agents, automated workflow pipelines, smart conversational chatbots, and intelligent analytics dashboards to save overhead costs and boost user engagement.',
+    priceHook: 'Estimate based on scope',
+    deliveryTime: 'Agreed after scope',
+    longDescription: 'Mahi TechnoCrafts scopes AI assistants, workflow automation, chatbots, and analytics around business requirements, connected systems, and review needs.',
     features: [
       'Conversational AI Chatbots with Instant Replies',
       'Lead Capture & Automatic CRM Syncing',
@@ -384,7 +384,7 @@ const serviceDetailsMap: Record<string, ServiceDetailEntry> = {
     faqs: [
       {
         q: 'How can smart AI chatbots benefit my business in Bhopal?',
-        a: 'AI chatbots handle 80%+ of customer inquiries instantly 24/7, capture hot leads, and escalate complex support issues to your team, reducing manual support costs significantly.'
+        a: 'A chatbot can answer approved common questions, collect enquiry details, and route requests to your team. Its coverage and response quality depend on the connected knowledge and workflows.'
       },
       {
         q: 'Can you integrate custom AI models with our existing systems?',
@@ -400,12 +400,12 @@ const serviceDetailsMap: Record<string, ServiceDetailEntry> = {
   'cyber-security': {
     title: 'Cyber Security Services',
     metaTitle: 'Cyber Security Services in Bhopal | Mahi TechnoCrafts',
-    metaDescription: 'Best cybersecurity services company in Bhopal. Safe server hardening, secure code audits, and data protection starting from ₹2,999*.',
+    metaDescription: 'cybersecurity services company in Bhopal. Safe server hardening, secure code audits, and data protection with pricing based on project scope.',
     headline: 'Cyber Security Services in Bhopal',
     icon: 'ShieldAlert',
-    priceHook: 'Starting from ₹2,999*',
-    deliveryTime: '1-2 Weeks',
-    longDescription: 'Protect your digital assets with the premier cyber security agency in Bhopal. Mahi TechnoCrafts provides robust server hardening, secure code auditing, data encryption models, and vulnerability assessments to safeguard your customer data from modern cyber threats.',
+    priceHook: 'Estimate based on scope',
+    deliveryTime: 'Agreed after scope',
+    longDescription: 'Protect your digital assets with cyber security service provider in Bhopal. Mahi TechnoCrafts provides robust server hardening, secure code auditing, data encryption models, and vulnerability assessments to safeguard your customer data from modern cyber threats.',
     features: [
       'Comprehensive Vulnerability Assessments & Audits',
       'Secure Server Hardening & SSL Configurations',
@@ -438,11 +438,17 @@ serviceDetailsMap['ecommerce-development'] = serviceDetailsMap['ecommerce-manage
 export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
   const details = serviceDetailsMap[slug];
+  const canonicalSlug = ({
+    'website-development': 'web-dev',
+    'mobile-app-development': 'mobile-dev',
+    'ecommerce-development': 'ecommerce-management',
+  } as Record<string, string>)[slug] || slug;
 
   if (!details) {
     return {
       title: 'Service Not Found | Mahi TechnoCrafts',
-      description: 'The requested service details page could not be found.'
+      description: 'The requested service details page could not be found.',
+      robots: { index: false, follow: false },
     };
   }
 
@@ -450,12 +456,12 @@ export async function generateMetadata({ params }: PageProps) {
     title: details.metaTitle,
     description: details.metaDescription,
     alternates: {
-      canonical: `https://mahitechnocrafts.in/services/${slug}`
+      canonical: `https://mahitechnocrafts.in/services/${canonicalSlug}`
     },
     openGraph: {
       title: details.metaTitle,
       description: details.metaDescription,
-      url: `https://mahitechnocrafts.in/services/${slug}`,
+      url: `https://mahitechnocrafts.in/services/${canonicalSlug}`,
       type: 'website'
     }
   };
@@ -535,21 +541,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
     description: details.metaDescription
   };
 
-  // FAQ Page Structured Data Schema
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: details.faqs.map(faq => ({
-      '@type': 'Question',
-      name: faq.q,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: faq.a
-      }
-    }))
-  };
-
-  const schemas = [breadcrumbSchema, serviceSchema, faqSchema];
+  const schemas = [breadcrumbSchema, serviceSchema];
 
   return (
     <>
@@ -641,7 +633,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                   Start Your Project in Bhopal Today
                 </h3>
                 <p className="text-xs text-slate-300 leading-relaxed">
-                  Let&apos;s engineer something fast, beautiful, and revenue-generating. Speak directly with our lead developer near Hamidia Road and rank #1 in search engines.
+                  Tell us what you want to build. We&apos;ll discuss the requirements, project scope, and an estimate with you.
                 </p>
               </div>
 
@@ -656,7 +648,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                 </div>
                 <div className="flex items-center gap-3 text-slate-300">
                   <ShieldCheck size={15} className="text-emerald-400" />
-                  <span>Transparent Pricing & Free Prototype</span>
+                  <span>Scope-based estimate and project discussion</span>
                 </div>
               </div>
 

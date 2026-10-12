@@ -31,6 +31,24 @@ const nextConfig: NextConfig = {
   },
 
   poweredByHeader: false,
+
+  async rewrites() {
+    return [
+      { source: '/web-development', destination: '/services/web-dev' },
+      { source: '/mobile-app-development', destination: '/services/mobile-dev' },
+      { source: '/ai-services', destination: '/services/ai-solutions' },
+      { source: '/uiuxdesign', destination: '/services/uiux-design' },
+      { source: '/digital-marketing', destination: '/services/digital-marketing' },
+      { source: '/seomarket', destination: '/services/seo-optimization' },
+      { source: '/custom-software', destination: '/services/erp-crm' },
+      { source: '/cloud-services', destination: '/services/cloud-services' },
+      { source: '/service', destination: '/services' },
+      { source: '/news', destination: '/blog' },
+      { source: '/news/:slug', destination: '/blog/:slug' },
+      { source: '/career', destination: '/careers' },
+      { source: '/apply', destination: '/careers' },
+    ];
+  },
 };
 
 export default nextConfig;

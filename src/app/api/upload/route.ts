@@ -1,13 +1,9 @@
 import { NextResponse } from 'next/server';
 import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
-import { cookies } from 'next/headers';
+import { isAdminAuthenticated } from '@/lib/portal';
 import sharp from 'sharp';
 
-async function checkAuth(): Promise<boolean> {
-  const cookieStore = await cookies();
-  const session = cookieStore.get('admin_session');
-  return session?.value === 'mahi_authenticated_session_token';
-}
+const checkAuth = isAdminAuthenticated;
 
 const s3Client = new S3Client({
   region: process.env.AWS_REGION || 'ap-south-1',

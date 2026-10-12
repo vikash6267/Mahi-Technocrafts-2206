@@ -90,8 +90,8 @@ export default function Navbar() {
           name: 'Google Local Search SEO (GMB)',
           path: '/services/seo-services',
           icon: <Search className="w-4 h-4 text-emerald-500" />,
-          desc: 'Rank #1 on Google Search & Maps',
-          badge: 'Rank #1'
+          desc: 'Local search optimisation and technical SEO',
+          badge: 'Local SEO'
         },
         {
           name: 'Online Shopping & D2C Stores',
@@ -112,7 +112,7 @@ export default function Navbar() {
       icon: '🛒',
       accent: 'text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-950/50',
       desc: 'D2C Stores, 1-Click UPI & Inventory Sync',
-      roi: '+320% Sales'
+      roi: 'Online store'
     },
     {
       name: 'Healthcare & Clinics',
@@ -120,7 +120,7 @@ export default function Navbar() {
       icon: '🏥',
       accent: 'text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50',
       desc: 'Doctor Booking, EHR & Telemedicine',
-      roi: '75% Wait Cut'
+      roi: 'Clinic portal'
     },
     {
       name: 'AI & WhatsApp Automation',
@@ -128,7 +128,7 @@ export default function Navbar() {
       icon: '🤖',
       accent: 'text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-950/50',
       desc: '24/7 AI Chatbots & Auto Invoicing',
-      roi: '85% Auto'
+      roi: 'Workflow tools'
     },
     {
       name: 'Real Estate & Builders',
@@ -136,7 +136,7 @@ export default function Navbar() {
       icon: '🏢',
       accent: 'text-sky-600 dark:text-sky-400 bg-sky-50 dark:bg-sky-950/50',
       desc: '3D Virtual Tours & Broker Lead CRM',
-      roi: '4.5x Leads'
+      roi: 'Property portal'
     },
     {
       name: 'Restaurants & Food Tech',
@@ -144,7 +144,7 @@ export default function Navbar() {
       icon: '🍽️',
       accent: 'text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/50',
       desc: '0% Commission Table QR & POS Billing',
-      roi: '0% Comm.'
+      roi: 'Digital menu'
     },
     {
       name: 'EdTech & Coaching',
@@ -152,7 +152,7 @@ export default function Navbar() {
       icon: '🎓',
       accent: 'text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/50',
       desc: 'Anti-Piracy LMS & Mock Test Series',
-      roi: '2x Enrolment'
+      roi: 'Student portal'
     },
     {
       name: 'FinTech & Finance',
@@ -160,7 +160,7 @@ export default function Navbar() {
       icon: '💰',
       accent: 'text-yellow-600 dark:text-yellow-400 bg-yellow-50 dark:bg-yellow-950/50',
       desc: 'Loan Trackers & Encrypted Invoicing',
-      roi: 'Bank Grade'
+      roi: 'Finance tools'
     },
     {
       name: 'Manufacturing & Plants',
@@ -168,7 +168,7 @@ export default function Navbar() {
       icon: '🏭',
       accent: 'text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800',
       desc: 'Production Floor ERP & Batch QC Logs',
-      roi: '+35% Output'
+      roi: 'Operations'
     },
     {
       name: 'AgriTech & Mandi Supply',
@@ -184,7 +184,7 @@ export default function Navbar() {
       icon: '🏨',
       accent: 'text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/50',
       desc: 'Direct Booking Portals & 0% OTA Fees',
-      roi: '0% Comm.'
+      roi: 'Hotel bookings'
     },
     {
       name: 'Salons, Spas & Gyms',
@@ -192,7 +192,7 @@ export default function Navbar() {
       icon: '💇',
       accent: 'text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-pink-950/50',
       desc: 'Slot Booking & Membership Renewals',
-      roi: 'Zero Wait'
+      roi: 'Appointment tools'
     },
     {
       name: 'Automobile & Garages',
@@ -200,7 +200,7 @@ export default function Navbar() {
       icon: '🚗',
       accent: 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/50',
       desc: 'Digital Job Cards & WhatsApp Service Due',
-      roi: '3x Repeat'
+      roi: 'Service workflows'
     },
     {
       name: 'Lawyers & Consultancies',
@@ -208,7 +208,7 @@ export default function Navbar() {
       icon: '⚖️',
       accent: 'text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/50',
       desc: 'Encrypted Case Diaries & Client Vault',
-      roi: '100% Safe'
+      roi: 'Client workflows'
     },
   ];
 
@@ -479,12 +479,14 @@ export default function Navbar() {
             )}
           </div>
 
-          {/* Case Studies Link */}
+          {/* Portfolio Link */}
           <Link
-            href="/#projects"
-            className="text-xs font-bold uppercase tracking-wider transition-colors duration-200 hover:text-sky-600 text-slate-700 dark:text-slate-300"
+            href="/portfolio"
+            className={`text-xs font-bold uppercase tracking-wider transition-colors duration-200 hover:text-sky-600 ${
+              pathname === '/portfolio' ? 'text-sky-600 dark:text-sky-400' : 'text-slate-700 dark:text-slate-300'
+            }`}
           >
-            Case Studies
+            Portfolio
           </Link>
 
           {/* About Us */}
@@ -497,19 +499,13 @@ export default function Navbar() {
             About Us
           </Link>
 
-          {/* Blog */}
-          <Link
-            href="/blog"
-            className={`text-xs font-bold uppercase tracking-wider transition-colors duration-200 hover:text-sky-600 ${
-              pathname.startsWith('/blog') ? 'text-sky-600 dark:text-sky-400' : 'text-slate-700 dark:text-slate-300'
-            }`}
-          >
-            Blog
-          </Link>
         </div>
 
         {/* Header Right Action CTA Button (HIGH CONTRAST & FULLY VISIBLE) */}
         <div className="hidden lg:flex items-center gap-3">
+          <Link href="/portal" className="px-3 py-2.5 text-xs font-bold tracking-wide text-slate-700 transition hover:text-sky-700 dark:text-slate-200 dark:hover:text-sky-300">
+            Client Login
+          </Link>
           <Link
             href="/contact"
             className="px-6 py-2.5 bg-gradient-to-r from-sky-600 via-indigo-600 to-blue-700 hover:from-sky-500 hover:to-indigo-600 text-white font-bold text-xs tracking-wider uppercase rounded-xl transition-all shadow-md shadow-sky-500/25 hover:shadow-sky-500/40 hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-2 cursor-pointer"
@@ -550,6 +546,9 @@ export default function Navbar() {
               }`}
             >
               Home
+            </Link>
+            <Link href="/portal" onClick={() => setIsOpen(false)} className="flex items-center justify-between rounded-xl bg-slate-100 px-4 py-3 text-sm font-bold text-slate-800 dark:bg-slate-900 dark:text-slate-100">
+              Client Login <ArrowRight size={16} className="text-sky-600" />
             </Link>
 
             {/* Mobile Services Accordion */}
@@ -623,10 +622,12 @@ export default function Navbar() {
             </div>
 
             <Link
-              href="/#projects"
-              className="text-sm font-bold uppercase tracking-wider py-2 border-b border-slate-100 dark:border-slate-850 text-slate-800 dark:text-slate-200"
+              href="/portfolio"
+              className={`text-sm font-bold uppercase tracking-wider py-2 border-b border-slate-100 dark:border-slate-850 ${
+                pathname === '/portfolio' ? 'text-sky-600' : 'text-slate-800 dark:text-slate-200'
+              }`}
             >
-              Case Studies
+              Portfolio
             </Link>
 
             <Link
@@ -636,15 +637,6 @@ export default function Navbar() {
               }`}
             >
               About Us
-            </Link>
-
-            <Link
-              href="/blog"
-              className={`text-sm font-bold uppercase tracking-wider py-2 border-b border-slate-100 dark:border-slate-850 ${
-                pathname.startsWith('/blog') ? 'text-sky-600' : 'text-slate-800 dark:text-slate-200'
-              }`}
-            >
-              Blog
             </Link>
 
             <Link

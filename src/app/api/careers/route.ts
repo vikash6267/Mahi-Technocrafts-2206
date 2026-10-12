@@ -1,13 +1,9 @@
 import { NextResponse } from 'next/server';
 import { getCareers, saveCareer, deleteCareerById, CareerItem } from '@/lib/db';
-import { cookies } from 'next/headers';
+import { isAdminAuthenticated } from '@/lib/portal';
 
 // Helper to check admin authentication cookie
-async function checkAuth(): Promise<boolean> {
-  const cookieStore = await cookies();
-  const session = cookieStore.get('admin_session');
-  return session?.value === 'mahi_authenticated_session_token';
-}
+const checkAuth = isAdminAuthenticated;
 
 export async function GET() {
   try {

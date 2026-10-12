@@ -10,7 +10,7 @@ import FloatingWhatsApp from './FloatingWhatsApp';
 
 export default function LayoutWrapper({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const isAdmin = pathname?.startsWith('/admin');
+  const isAdmin = pathname?.startsWith('/admin') || pathname === '/portal';
 
   if (isAdmin) {
     return <>{children}</>;

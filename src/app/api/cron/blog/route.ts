@@ -30,18 +30,18 @@ export async function GET(request: Request) {
       );
     }
 
-    const result = await generateAutonomousBlog({ status: 'published' });
+    const result = await generateAutonomousBlog({ status: 'draft' });
 
     if (result.success && result.blog) {
       return NextResponse.json({
         success: true,
-        message: 'New autonomous SEO blog generated & published successfully via Gemini API!',
+        message: 'A blog draft was generated for editorial review.',
         timestamp: new Date().toISOString(),
         blog: {
           title: result.blog.title,
           slug: result.blog.slug,
           category: result.blog.category,
-          url: `https://mahitechnocrafts.in/blog/${result.blog.slug}`
+          status: result.blog.status
         }
       });
     } else {

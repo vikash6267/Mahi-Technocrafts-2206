@@ -17,7 +17,7 @@ export const metadata = {
   ],
   openGraph: {
     title: 'Contact Mahi TechnoCrafts | Web Development Agency in Bhopal',
-    description: 'Get in touch for custom websites, apps, and software development. Free project quote within 24 hours.',
+    description: 'Get in touch to discuss custom websites, apps, software, and digital marketing. Project scope and estimates are discussed after understanding your requirements.',
     url: 'https://mahitechnocrafts.in/contact',
     siteName: 'Mahi TechnoCrafts',
     images: [{ url: 'https://mahitechnocrafts.in/logo.png', width: 1200, height: 630, alt: 'Contact Mahi TechnoCrafts Bhopal' }]

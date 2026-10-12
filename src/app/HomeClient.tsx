@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Hero from '@/components/Hero';
-import IndustrySolutions from '@/components/IndustrySolutions';
 import Projects from '@/components/Projects';
 import LeadEstimator from '@/components/LeadEstimator';
 import Services from '@/components/Services';
@@ -10,9 +9,9 @@ import About from '@/components/About';
 import TechStack from '@/components/TechStack';
 import TransformationComparison from '@/components/TransformationComparison';
 import Testimonials from '@/components/Testimonials';
-import Timeline from '@/components/Timeline';
 import FAQ from '@/components/FAQ';
 import ContactForm from '@/components/ContactForm';
+import ScrollReveal from '@/components/ScrollReveal';
 import { SiteData, ReviewItem } from '@/lib/db';
 
 export default function HomeClient({ data, reviews }: { data: SiteData; reviews: ReviewItem[] }) {
@@ -24,38 +23,16 @@ export default function HomeClient({ data, reviews }: { data: SiteData; reviews:
       {/* 1. Revamped High-Converting Hero */}
       <Hero data={data.hero} />
 
-      {/* 2. Purpose-Built Industry Solutions (Healthcare, E-Commerce, Real Estate, etc.) */}
-      <IndustrySolutions />
-
-      {/* 3. Featured Case Studies & Proven Client Results */}
-      <Projects data={data.projects} />
-
-      {/* 4. Interactive 30-Second Cost & Timeline Estimator */}
-      <LeadEstimator />
-
-      {/* 5. Core Services & Technical Capabilities */}
-      <Services data={data.services} />
-
-      {/* 6. Why Choose Us vs Others Comparison */}
-      <TransformationComparison />
-
-      {/* 7. About Company & Vision */}
-      <About data={data.about} />
-
-      {/* 8. Enterprise Quality Standards */}
-      <TechStack />
-
-      {/* 8. Client Reviews & Social Proof */}
-      <Testimonials initialReviews={reviews} />
-
-      {/* 9. 4-Step Agile Delivery Process */}
-      <Timeline />
-
-      {/* 10. Frequently Asked Questions */}
-      <FAQ data={data.faq} />
-
-      {/* 11. Instant Contact & Consultation Form */}
-      <ContactForm contactInfo={data.contactInfo} />
+      {/* Core services first, with industries and examples shown later as proof. */}
+      <ScrollReveal><Services data={data.services} /></ScrollReveal>
+      <ScrollReveal><Projects data={data.projects} /></ScrollReveal>
+      <ScrollReveal><LeadEstimator /></ScrollReveal>
+      <ScrollReveal><TransformationComparison /></ScrollReveal>
+      <ScrollReveal><About data={data.about} /></ScrollReveal>
+      <ScrollReveal><TechStack /></ScrollReveal>
+      <ScrollReveal><Testimonials initialReviews={reviews} /></ScrollReveal>
+      <ScrollReveal><FAQ data={data.faq} /></ScrollReveal>
+      <ScrollReveal><ContactForm contactInfo={data.contactInfo} /></ScrollReveal>
     </div>
   );
 }

@@ -1,14 +1,10 @@
 import { NextResponse } from 'next/server';
 import { getBlogs, getBlogBySlug, saveBlog, deleteBlogBySlug, BlogItem } from '@/lib/db';
 import { publishToGoogleIndexing } from '@/lib/google-indexing';
-import { cookies } from 'next/headers';
+import { isAdminAuthenticated } from '@/lib/portal';
 
 // Helper to check admin authentication cookie
-async function checkAuth(): Promise<boolean> {
-  const cookieStore = await cookies();
-  const session = cookieStore.get('admin_session');
-  return session?.value === 'mahi_authenticated_session_token';
-}
+const checkAuth = isAdminAuthenticated;
 
 export async function GET(request: Request) {
   try {

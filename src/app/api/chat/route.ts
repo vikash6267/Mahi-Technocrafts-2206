@@ -6,7 +6,7 @@ const GEMINI_API_KEY = process.env.GEMINI_API_KEY || '';
 
 const SYSTEM_INSTRUCTION = `You are Mahi Technocrafts AI BOT, the customer assistant for Mahi TechnoCrafts in Bhopal, India. Answer the latest question directly and briefly. Match the user's language, including Romanized Hindi/Hinglish. Do not repeat a generic pitch. Only answer about Mahi TechnoCrafts, its services, projects, pricing, founder, or starting a project. Politely decline unrelated topics. Use only these facts; if something is unknown, say so and ask one relevant question.
 
-FACTS: Founder/CEO: Vikash Maheshwari. Office: Hamidia Rd, Badabagh, Shahjahanabad, Bhopal, MP 462001. Phone/WhatsApp: +91 6267144122. Email: support@mahitechnocrafts.in. Services: custom websites/e-commerce, Android/iOS apps, AI chatbots/WhatsApp automation, UI/UX, ERP/CRM/inventory/billing software, hosting/DevOps. Website stack: Next.js, React, Tailwind CSS, TypeScript, Node.js. Mobile apps: Flutter or React Native. Do not claim unlisted technologies such as PHP or WordPress. Starting price is ₹2,999*. This exact starting price is authoritative: never substitute another price or a general market estimate. Final quotes depend on project scope. Packages include 6 months of free maintenance/bug fixes and full source-code/database ownership. Typical delivery depends on scope; do not promise a date without requirements.`;
+FACTS: Founder: Vikash Maheshwari. Office: Hamidia Rd, Badabagh, Shahjahanabad, Bhopal, MP 462001. Phone/WhatsApp: +91 6267144122. Email: support@mahitechnocrafts.in. Services: custom websites/e-commerce, Android/iOS apps, AI chatbots/WhatsApp automation, UI/UX, ERP/CRM/inventory/billing software, hosting/DevOps. Website stack: Next.js, React, Tailwind CSS, TypeScript, Node.js. Mobile apps: Flutter or React Native. Do not invent prices, maintenance terms, ownership terms, rankings, certifications, or timelines. Explain that fees, deliverables, support, and schedule depend on confirmed project scope.`;
 
 // Call Gemini API with fallback
 async function getGeminiReply(messages: ChatMessage[], clientName?: string): Promise<string> {
@@ -126,8 +126,8 @@ function getFallbackReply(query: string, clientName?: string): string | null {
 
   if (/\b(price|pricing|cost|rate|package|kitna|kitne|keemat|daam|kharcha|charges?)\b/.test(q)) {
     return answer(
-      'Projects start at ₹2,999*. The final quote depends on the features and scope. Packages include 6 months of free maintenance and full source-code ownership. Share what you want to build for an exact estimate: WhatsApp +91 6267144122.',
-      'Projects ₹2,999* se shuru hote hain. Final price features aur project ke scope par depend karti hai. Package mein 6 mahine ki free maintenance aur poore source code ka ownership shamil hai. Exact estimate ke liye apni requirement WhatsApp +91 6267144122 par bhejein.'
+      'Project pricing depends on the features, integrations, and support required. Share what you want to build and we can discuss a scope-based estimate: WhatsApp +91 6267144122.',
+      'Project ka kharcha features, integrations aur required support par depend karta hai. Aap kya banwana chahte hain batayein, hum scope ke hisaab se estimate discuss karenge: WhatsApp +91 6267144122.'
     );
   }
 
@@ -154,7 +154,7 @@ function getFallbackReply(query: string, clientName?: string): string | null {
 
   if (/\b(maintenance|support|source code|ownership|malikana|code|warranty)\b/.test(q)) {
     return answer(
-      'Development packages include 6 months of free maintenance and bug-fix support. You receive full ownership of the source code and database.',
+      'Support, maintenance, and code handover terms are agreed in the project proposal before work begins.',
       'Development packages ke saath 6 mahine ki free maintenance aur bug-fix support milti hai. Source code aur database ka poora ownership aapko diya jata hai.'
     );
   }

@@ -1,10 +1,10 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight, CheckCircle, Zap, Shield, Users, TrendingUp, Sparkles } from 'lucide-react';
+import { ArrowRight, Users, TrendingUp, Sparkles } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Custom Industry Software Solutions in Bhopal | Mahi TechnoCrafts',
-  description: 'Specialized software & web solutions for Healthcare, E-commerce, Real Estate, Coaching, Restaurants, and Manufacturing by Bhopal\'s top tech agency.',
+  description: 'Custom web and software solutions for healthcare, ecommerce, real estate, education, restaurants, and manufacturing businesses in Bhopal.',
   alternates: {
     canonical: '/solutions'
   },
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: 'Custom Industry Software Solutions in Bhopal | Mahi TechnoCrafts',
-    description: 'Purpose-built software systems starting ₹2,999. Engineered for local and enterprise businesses.',
+    description: 'Explore business software scopes for local teams. Features and project pricing are confirmed after requirements review.',
     url: 'https://mahitechnocrafts.in/solutions',
     siteName: 'Mahi TechnoCrafts',
     images: [{ url: 'https://mahitechnocrafts.in/logo.png', width: 1200, height: 630, alt: 'Industry Solutions Bhopal' }]
@@ -32,18 +32,16 @@ const industries = [
     icon: '🏥',
     description: 'Digital health solutions, doctor appointment booking, patient EHR, and telemedicine apps',
     features: ['Patient Management', 'Appointment Booking', 'Telemedicine Portal', 'Medical Records Vault'],
-    startingPrice: 'Starting from ₹2,999*',
-    clients: '15+ Healthcare Clients',
+    startingPrice: 'Scope-based quote',
     gradient: 'from-emerald-500 to-teal-600'
   },
   {
     id: 'ecommerce',
     name: 'Retail & E-commerce',
     icon: '🛒',
-    description: 'High-converting online stores, multi-vendor marketplaces, and 1-click UPI checkout systems',
+    description: 'Online stores, marketplaces, product catalogues, and payment workflows scoped to your requirements',
     features: ['Instant UPI Checkout', 'Inventory Management', 'WhatsApp Notifications', 'Analytics Dashboard'],
-    startingPrice: 'Starting from ₹2,999*',
-    clients: '50+ E-commerce Sites',
+    startingPrice: 'Scope-based quote',
     gradient: 'from-purple-500 to-pink-600'
   },
   {
@@ -52,18 +50,16 @@ const industries = [
     icon: '🏢',
     description: 'Property listing portals, 3D virtual tour embeds, broker lead assignment CRM, and maps',
     features: ['Interactive Map Search', 'Broker CRM System', '360° Virtual Tours', 'WhatsApp Lead Routing'],
-    startingPrice: 'Starting from ₹2,999*',
-    clients: '20+ Property Firms',
+    startingPrice: 'Scope-based quote',
     gradient: 'from-sky-500 to-blue-600'
   },
   {
     id: 'restaurants',
     name: 'Restaurants & Cafes',
     icon: '🍽️',
-    description: '0% commission online food ordering, contactless table QR menus, and kitchen billing POS',
+    description: 'Online ordering options, table QR menus, and kitchen billing workflows',
     features: ['Zero-Commission Orders', 'QR Table Menu Cards', 'Kitchen Display System', 'Loyalty Engine'],
-    startingPrice: 'Starting from ₹2,999*',
-    clients: '30+ Restaurants',
+    startingPrice: 'Scope-based quote',
     gradient: 'from-orange-500 to-red-600'
   },
   {
@@ -72,18 +68,16 @@ const industries = [
     icon: '🎓',
     description: 'Anti-piracy LMS platforms, student portals, online mock test series, and fee collection',
     features: ['Anti-Piracy Video Player', 'Live Online Classes', 'Mock Test Engine', 'Student Fee Portal'],
-    startingPrice: 'Starting from ₹2,999*',
-    clients: '25+ Institutes',
+    startingPrice: 'Scope-based quote',
     gradient: 'from-indigo-500 to-purple-600'
   },
   {
     id: 'finance',
     name: 'FinTech & Finance',
     icon: '💰',
-    description: 'Bank-grade encrypted finance software, loan EMI tracking, GST billing, and ledger apps',
-    features: ['Loan Management CRM', 'GST Invoice Generator', '256-Bit Encrypted DB', 'Payout API Sync'],
-    startingPrice: 'Starting from ₹2,999*',
-    clients: '10+ Financial Clients',
+    description: 'Finance workflows for loan tracking, GST billing, and digital ledgers, scoped to your requirements',
+    features: ['Loan Management CRM', 'GST Invoice Generator', 'Access controls and data protection requirements', 'Payout API Sync'],
+    startingPrice: 'Scope-based quote',
     gradient: 'from-yellow-500 to-amber-600'
   },
   {
@@ -92,8 +86,7 @@ const industries = [
     icon: '🏭',
     description: 'Custom industrial ERP, factory production floor tracking, raw material stock, and dispatch',
     features: ['Raw Material Stock', 'Batch QC Tracking', 'Machine Downtime Logs', 'Purchase Orders (PO)'],
-    startingPrice: 'Starting from ₹2,999*',
-    clients: '12+ Plants',
+    startingPrice: 'Scope-based quote',
     gradient: 'from-slate-600 to-zinc-700'
   },
   {
@@ -102,8 +95,7 @@ const industries = [
     icon: '🌾',
     description: 'Daily Mandi price broadcasts, direct farmer-to-buyer marketplaces, and cold storage ERP',
     features: ['Live Mandi Rates', 'Farmer Direct Market', 'Hindi Vernacular UI', 'Cold Storage Logs'],
-    startingPrice: 'Starting from ₹2,999*',
-    clients: '8+ Agri-businesses',
+    startingPrice: 'Scope-based quote',
     gradient: 'from-green-600 to-emerald-600'
   }
 ];
@@ -145,7 +137,7 @@ export default function SolutionsPage() {
         <div className="text-center mb-16 space-y-6">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 shadow-sm">
             <Sparkles size={12} className="text-brand-purple animate-pulse" />
-            Bhopal&apos;s Leading Software Engineering Partner
+            Software and web solutions for Bhopal businesses
           </div>
 
           <h1 className="text-4xl md:text-6xl font-display font-black tracking-tight text-slate-900 dark:text-white">
@@ -156,20 +148,9 @@ export default function SolutionsPage() {
             Tailored software solutions engineered for Bhopal and Indian business models. From healthcare clinics to retail stores, we build high-converting applications that solve operational bottlenecks.
           </p>
           
-          <div className="flex flex-wrap justify-center gap-6 text-xs sm:text-sm font-semibold pt-2">
-            <div className="flex items-center gap-2 text-emerald-600">
-              <CheckCircle size={16} />
-              <span>150+ Successful Deployments</span>
-            </div>
-            <div className="flex items-center gap-2 text-sky-600">
-              <Zap size={16} />
-              <span>Starting from ₹2,999*</span>
-            </div>
-            <div className="flex items-center gap-2 text-purple-600">
-              <Shield size={16} />
-              <span>100% SEO & Cloud Ready</span>
-            </div>
-          </div>
+          <p className="max-w-2xl mx-auto text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+            We discuss your users, workflows, integrations, and priorities before proposing a solution and project scope.
+          </p>
         </div>
 
         {/* Industries Grid */}

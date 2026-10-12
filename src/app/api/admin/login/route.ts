@@ -1,14 +1,16 @@
 import { NextResponse } from 'next/server';
+import { cookies } from 'next/headers';
+import { isValidAdminSession, makeAdminSession } from '@/lib/portal';
 
 export async function POST(request: Request) {
   try {
     const { username, password } = await request.json();
 
     // In a real production app, use bcrypt and load credentials from process.env
-    const adminUser = process.env.ADMIN_USER || 'admin';
-    const adminPass = process.env.ADMIN_PASS || 'mahi123';
+    const adminUser = process.env.ADMIN_USER;
+    const adminPass = process.env.ADMIN_PASS;
 
-    if (username === adminUser && password === adminPass) {
+    if (adminUser && adminPass && username === adminUser && password === adminPass) {
       // Create response and set cookie
       const response = NextResponse.json(
         { success: true, message: 'Login successful' },
@@ -16,7 +18,7 @@ export async function POST(request: Request) {
       );
 
       // Set session cookie (valid for 1 day)
-      response.cookies.set('admin_session', 'mahi_authenticated_session_token', {
+      response.cookies.set('admin_session', makeAdminSession(), {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
         sameSite: 'strict',
@@ -41,9 +43,9 @@ export async function POST(request: Request) {
 }
 
 // Add a logout route or support GET for checking session status
-export async function GET(request: Request) {
-  const cookie = request.headers.get('cookie') || '';
-  const isAuthenticated = cookie.includes('admin_session=mahi_authenticated_session_token');
+export async function GET() {
+  const cookieStore = await cookies();
+  const isAuthenticated = isValidAdminSession(cookieStore.get('admin_session')?.value);
 
   if (isAuthenticated) {
     return NextResponse.json({ authenticated: true });
@@ -56,11 +58,7 @@ export async function DELETE() {
   const response = NextResponse.json({ success: true, message: 'Logged out' });
   
   // Clear session cookie
-  response.cookies.set('admin_session', '', {
-    httpOnly: true,
-    expires: new Date(0),
-    path: '/'
-  });
+  response.cookies.set('admin_session', '', { httpOnly: true, secure: process.env.NODE_ENV === 'production', sameSite: 'strict', expires: new Date(0), path: '/' });
 
   return response;
 }

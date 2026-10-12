@@ -4,8 +4,8 @@ import Founder from '@/components/Founder';
 import { getSiteData } from '@/lib/db';
 
 export const metadata = {
-  title: 'About Mahi TechnoCrafts | Top Web & Software Agency in Bhopal',
-  description: 'Learn about Mahi TechnoCrafts, Bhopal\'s leading website and custom software development agency founded by Vikash Maheshwari. Serving Bhopal, MP, and global businesses.',
+  title: 'About Mahi TechnoCrafts | Web & Software in Bhopal',
+  description: 'Learn about Mahi TechnoCrafts, a Bhopal-based website, software, and digital services business founded by Vikash Maheshwari.',
   alternates: {
     canonical: '/about'
   },
@@ -15,11 +15,11 @@ export const metadata = {
     'software agency bhopal',
     'Vikash Maheshwari',
     'IT company Bhopal',
-    'best web agency madhya pradesh'
+    'Mahi TechnoCrafts Bhopal'
   ],
   openGraph: {
-    title: 'About Mahi TechnoCrafts | Top Web & Software Agency in Bhopal',
-    description: 'Bhopal\'s premier web development and software engineering partner. Learn our story, mission, and team.',
+    title: 'About Mahi TechnoCrafts | Web & Software in Bhopal',
+    description: 'Learn about Mahi TechnoCrafts, a Bhopal-based website, software, and digital services business.',
     url: 'https://mahitechnocrafts.in/about',
     siteName: 'Mahi TechnoCrafts',
     images: [{ url: 'https://mahitechnocrafts.in/logo.png', width: 1200, height: 630, alt: 'About Mahi TechnoCrafts Bhopal' }]
