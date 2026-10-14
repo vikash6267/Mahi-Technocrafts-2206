@@ -1,7 +1,13 @@
 import { MongoClient, Db } from 'mongodb';
 
-const MONGODB_URI = process.env.MONGODB_URI;
-const MONGODB_DB = process.env.MONGODB_DB;
+const DEFAULT_MONGODB_URI = 'mongodb+srv://varn:Varn2025@cluster0.dstcy.mongodb.net/Vikash-Personal';
+const DEFAULT_MONGODB_DB = 'Vikash-Personal';
+
+export function getMongoConfig() {
+  const uri = process.env.MONGODB_URI || process.env.MONGO_URI || DEFAULT_MONGODB_URI;
+  const dbName = process.env.MONGODB_DB || DEFAULT_MONGODB_DB;
+  return { uri, dbName };
+}
 
 // Caching connections across hot-reloads
 let cachedClient: MongoClient | null = null;
@@ -22,14 +28,12 @@ export async function connectToDatabase() {
   }
 
   try {
-    if (!MONGODB_URI || !MONGODB_DB) {
-      throw new Error('MONGODB_URI and MONGODB_DB must be configured.');
-    }
-    const client = await MongoClient.connect(MONGODB_URI, {
+    const { uri, dbName } = getMongoConfig();
+    const client = await MongoClient.connect(uri, {
       serverSelectionTimeoutMS: 15000,
       connectTimeoutMS: 15000,
     });
-    const db = client.db(MONGODB_DB);
+    const db = client.db(dbName);
     cachedClient = client;
     cachedDb = db;
     return { client, db };

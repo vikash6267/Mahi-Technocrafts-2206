@@ -32,7 +32,25 @@ export async function PATCH(request: Request) {
     }
     if (user.role === 'staff') {
       const allowed = ['open','in-progress','waiting-client','resolved']; if (allowed.includes(body.status)) set.status = body.status;
-      if (typeof body.assignedTo === 'string') { const member = await db.collection<PortalUser>('portal_users').findOne({ id: body.assignedTo, role: 'staff', active: true }); if (member) { set.assignedTo = member.id; set.assignedName = member.name; } else if (!body.assignedTo) { set.assignedTo = ''; set.assignedName = ''; } }
+      if (typeof body.assignedTo === 'string') {
+        if (body.assignedTo) {
+          const member = await db.collection<PortalUser>('portal_users').findOne({
+            id: body.assignedTo,
+            role: { $regex: /^staff$/i },
+            active: { $ne: false }
+          });
+          if (member) {
+            set.assignedTo = member.id;
+            set.assignedName = member.name;
+          } else if (typeof body.assignedName === 'string' && body.assignedName) {
+            set.assignedTo = body.assignedTo;
+            set.assignedName = body.assignedName;
+          }
+        } else {
+          set.assignedTo = '';
+          set.assignedName = '';
+        }
+      }
       if (Object.keys(set).length > 1) await col.updateOne({ id: issue.id }, { $set: set });
     }
     return NextResponse.json({ success: true });

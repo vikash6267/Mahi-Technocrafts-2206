@@ -17,10 +17,10 @@ export default function BlogList({ initialBlogs }: { initialBlogs: BlogItem[] })
   // Filter logic
   const filteredBlogs = initialBlogs.filter((blog) => {
     const matchesSearch =
-      blog.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      blog.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
+      (blog.title || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (blog.excerpt || '').toLowerCase().includes(searchQuery.toLowerCase());
     
-    const matchesTag = selectedTag === 'All' || blog.tags.includes(selectedTag);
+    const matchesTag = selectedTag === 'All' || (Array.isArray(blog.tags) && blog.tags.includes(selectedTag));
 
     return matchesSearch && matchesTag;
   });

@@ -15,7 +15,7 @@ export async function GET() {
     const db = await getPortalDb();
     if (!admin) {
       const users = await db.collection<PortalUser>('portal_users')
-        .find({ role: 'staff', active: true }, { projection: { id: 1, name: 1, role: 1, active: 1 } })
+        .find({ role: { $regex: /^staff$/i }, active: { $ne: false } }, { projection: { id: 1, name: 1, role: 1, active: 1 } })
         .toArray();
       return NextResponse.json({ users: users.map(({ _id, ...u }) => u), issues: [] });
     }

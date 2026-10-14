@@ -489,6 +489,16 @@ export default function Navbar() {
             Portfolio
           </Link>
 
+          {/* Blog Link */}
+          <Link
+            href="/blog"
+            className={`text-xs font-bold uppercase tracking-wider transition-colors duration-200 hover:text-sky-600 ${
+              pathname.startsWith('/blog') ? 'text-sky-600 dark:text-sky-400' : 'text-slate-700 dark:text-slate-300'
+            }`}
+          >
+            Blog
+          </Link>
+
           {/* About Us */}
           <Link
             href="/about"
@@ -628,6 +638,16 @@ export default function Navbar() {
               }`}
             >
               Portfolio
+            </Link>
+
+            <Link
+              href="/blog"
+              onClick={() => setIsOpen(false)}
+              className={`text-sm font-bold uppercase tracking-wider py-2 border-b border-slate-100 dark:border-slate-850 ${
+                pathname.startsWith('/blog') ? 'text-sky-600' : 'text-slate-800 dark:text-slate-200'
+              }`}
+            >
+              Blog
             </Link>
 
             <Link

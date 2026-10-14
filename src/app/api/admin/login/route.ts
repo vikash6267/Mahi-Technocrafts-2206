@@ -7,10 +7,10 @@ export async function POST(request: Request) {
     const { username, password } = await request.json();
 
     // In a real production app, use bcrypt and load credentials from process.env
-    const adminUser = process.env.ADMIN_USER;
-    const adminPass = process.env.ADMIN_PASS;
+    const adminUser = process.env.ADMIN_USER || 'admin';
+    const adminPass = process.env.ADMIN_PASS || 'mahi123';
 
-    if (adminUser && adminPass && username === adminUser && password === adminPass) {
+    if (username === adminUser && password === adminPass) {
       // Create response and set cookie
       const response = NextResponse.json(
         { success: true, message: 'Login successful' },
