@@ -1,5 +1,6 @@
 import { generateAutonomousBlog } from '@/lib/gemini-blog';
-import { getBlogs } from '@/lib/db';
+import { getBlogs, getReminders, saveReminder } from '@/lib/db';
+import { sendClientReminderEmail } from '@/lib/email';
 
 let isSchedulerRunning = false;
 let isGenerating = false;
@@ -46,6 +47,57 @@ async function checkAndGenerateBlog() {
 }
 
 /**
+ * Checks pending client reminders (domain, hosting, payment, AMC, etc.)
+ * that have reached their due date and dispatches email notifications.
+ */
+export async function checkAndDispatchDueReminders() {
+  try {
+    const reminders = await getReminders();
+    const todayStr = new Date().toISOString().slice(0, 10);
+    const nowMs = Date.now();
+
+    // Check reminders that are due today or overdue, and pending or notified but not notified in last 24h
+    const dueReminders = reminders.filter(r => {
+      if (r.status === 'completed' || r.status === 'cancelled') return false;
+      if (r.dueDate > todayStr) return false; // not due yet
+
+      // If notified in last 24 hours, don't spam
+      if (r.lastNotifiedAt) {
+        const lastMs = new Date(r.lastNotifiedAt).getTime();
+        if (nowMs - lastMs < 24 * 60 * 60 * 1000) {
+          return false;
+        }
+      }
+      return true;
+    });
+
+    if (dueReminders.length > 0) {
+      console.log(`[Reminder Scheduler] Found ${dueReminders.length} due/overdue reminders to notify.`);
+      for (const item of dueReminders) {
+        let sentAny = false;
+        if (item.notifyClientEmail && item.clientEmail) {
+          const sentClient = await sendClientReminderEmail({ reminder: item, recipientType: 'client' });
+          if (sentClient) sentAny = true;
+        }
+        if (item.notifyAdminEmail) {
+          const sentAdmin = await sendClientReminderEmail({ reminder: item, recipientType: 'admin' });
+          if (sentAdmin) sentAny = true;
+        }
+
+        if (sentAny) {
+          item.status = 'notified';
+          item.lastNotifiedAt = new Date().toISOString();
+          await saveReminder(item);
+          console.log(`[Reminder Scheduler] Dispatched reminder notice for: "${item.title}"`);
+        }
+      }
+    }
+  } catch (err) {
+    console.error('[Reminder Scheduler] Error checking reminders:', err);
+  }
+}
+
+/**
  * Self-Hosted Background Scheduler for VPS Server
  * Runs automatically inside the Node.js Next.js server process
  */
@@ -60,16 +112,18 @@ export function initAutonomousBlogScheduler() {
   }
 
   isSchedulerRunning = true;
-  console.log('[Autonomous Blog Engine] VPS Server Scheduler Initialized.');
+  console.log('[Autonomous Engine] VPS Server Scheduler Initialized (Blogs & Client Reminders).');
 
-  // Run initial check 30 seconds after server boot
+  // Run initial checks 30 seconds after server boot
   setTimeout(() => {
     checkAndGenerateBlog();
+    checkAndDispatchDueReminders();
   }, 30 * 1000);
 
-  // Check every 30 minutes if it is time to generate the next blog post
+  // Check every 30 minutes if it is time to generate the next blog post and check reminders
   const CHECK_INTERVAL_MS = 30 * 60 * 1000;
   setInterval(() => {
     checkAndGenerateBlog();
+    checkAndDispatchDueReminders();
   }, CHECK_INTERVAL_MS);
 }

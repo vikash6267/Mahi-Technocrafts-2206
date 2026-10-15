@@ -139,6 +139,38 @@ export interface CareerItem {
   postedAt?: string;
 }
 
+export type ReminderCategory =
+  | 'domain'
+  | 'hosting'
+  | 'payment'
+  | 'amc'
+  | 'ssl'
+  | 'milestone'
+  | 'general';
+
+export interface ClientReminder {
+  id: string;
+  clientName: string;
+  clientEmail: string;
+  clientPhone?: string;
+  company?: string;
+  title: string;
+  description: string;
+  category: ReminderCategory;
+  dueDate: string; // YYYY-MM-DD format
+  dueTime?: string; // e.g. "14:00"
+  amount?: string; // e.g. "₹15,000" or "$250"
+  priority: 'low' | 'normal' | 'high' | 'urgent';
+  status: 'pending' | 'notified' | 'completed' | 'cancelled';
+  notifyClientEmail: boolean;
+  notifyAdminEmail: boolean;
+  lastNotifiedAt?: string;
+  completedAt?: string;
+  notes?: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
 // Blog interfaces matching Tiptap content and Advanced SEO parameters
 export interface BlogFAQ {
   q: string;
@@ -782,4 +814,125 @@ export async function getAllChatSessions(limit = 100): Promise<ChatSession[]> {
     console.error('getAllChatSessions failed:', error);
     return [];
   }
+}
+
+// ---------------------------------------------------------------------------
+// Client Reminders & Expiry Tracking Engine
+// ---------------------------------------------------------------------------
+
+export async function getReminders(): Promise<ClientReminder[]> {
+  try {
+    const { db } = await connectToDatabase();
+    const collection = db.collection('client_reminders');
+    const reminders = await collection.find({}).sort({ dueDate: 1, createdAt: -1 }).toArray();
+    return reminders.map(({ _id, ...r }) => r) as unknown as ClientReminder[];
+  } catch (error) {
+    console.error('getReminders failed:', error);
+    return [];
+  }
+}
+
+export async function getReminderById(id: string): Promise<ClientReminder | null> {
+  try {
+    const { db } = await connectToDatabase();
+    const collection = db.collection('client_reminders');
+    const item = await collection.findOne({ id });
+    if (!item) return null;
+    const { _id, ...clean } = item;
+    return clean as unknown as ClientReminder;
+  } catch (error) {
+    console.error('getReminderById failed:', error);
+    return null;
+  }
+}
+
+export async function saveReminder(reminder: ClientReminder): Promise<boolean> {
+  try {
+    const { db } = await connectToDatabase();
+    const collection = db.collection('client_reminders');
+    const now = new Date().toISOString();
+
+    const doc: any = {
+      ...reminder,
+      updatedAt: now,
+    };
+    delete doc._id;
+
+    await collection.updateOne(
+      { id: reminder.id },
+      {
+        $set: doc,
+        $setOnInsert: { createdAt: reminder.createdAt || now }
+      },
+      { upsert: true }
+    );
+    return true;
+  } catch (error) {
+    console.error('saveReminder failed:', error);
+    return false;
+  }
+}
+
+export async function deleteReminder(id: string): Promise<boolean> {
+  try {
+    const { db } = await connectToDatabase();
+    const collection = db.collection('client_reminders');
+    const res = await collection.deleteOne({ id });
+    return res.deletedCount > 0;
+  } catch (error) {
+    console.error('deleteReminder failed:', error);
+    return false;
+  }
+}
+
+export async function markReminderStatus(
+  id: string,
+  status: ClientReminder['status'],
+  notes?: string
+): Promise<boolean> {
+  try {
+    const { db } = await connectToDatabase();
+    const collection = db.collection('client_reminders');
+    const now = new Date().toISOString();
+    const update: any = {
+      status,
+      updatedAt: now,
+    };
+    if (status === 'completed') {
+      update.completedAt = now;
+    }
+    if (notes !== undefined) {
+      update.notes = notes;
+    }
+    const res = await collection.updateOne({ id }, { $set: update });
+    return res.matchedCount > 0;
+  } catch (error) {
+    console.error('markReminderStatus failed:', error);
+    return false;
+  }
+}
+
+export async function getReminderStats() {
+  const all = await getReminders();
+  const todayStr = new Date().toISOString().slice(0, 10);
+  const sevenDaysLater = new Date(Date.now() + 7 * 86400000).toISOString().slice(0, 10);
+
+  const pending = all.filter(r => r.status === 'pending' || r.status === 'notified');
+  const overdue = pending.filter(r => r.dueDate < todayStr);
+  const dueToday = pending.filter(r => r.dueDate === todayStr);
+  const upcoming = pending.filter(r => r.dueDate > todayStr && r.dueDate <= sevenDaysLater);
+  const completed = all.filter(r => r.status === 'completed');
+  const urgent = pending.filter(r => r.priority === 'urgent');
+
+  return {
+    total: all.length,
+    activePending: pending.length,
+    overdue: overdue.length,
+    dueToday: dueToday.length,
+    upcoming7Days: upcoming.length,
+    completed: completed.length,
+    urgentCount: urgent.length,
+    overdueList: overdue,
+    dueTodayList: dueToday,
+  };
 }

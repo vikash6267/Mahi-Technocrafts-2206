@@ -264,3 +264,182 @@ export async function sendNewBlogNotification({
   return sendEmail({ subject, text: textMsg, html });
 }
 
+/**
+ * Sends automated / manual reminder emails to clients and/or admin
+ */
+export async function sendClientReminderEmail({
+  reminder,
+  recipientType = 'client',
+  customNote
+}: {
+  reminder: {
+    id: string;
+    clientName: string;
+    clientEmail: string;
+    clientPhone?: string;
+    company?: string;
+    title: string;
+    description: string;
+    category: string;
+    dueDate: string;
+    amount?: string;
+    priority: string;
+  };
+  recipientType?: 'client' | 'admin';
+  customNote?: string;
+}): Promise<boolean> {
+  const categoryNames: Record<string, { label: string; icon: string; color: string }> = {
+    domain: { label: 'Domain Renewal / Expiry', icon: '🌐', color: '#0284c7' },
+    hosting: { label: 'Cloud Hosting Renewal', icon: '🖥️', color: '#6366f1' },
+    payment: { label: 'Payment Due / Invoice', icon: '💰', color: '#059669' },
+    amc: { label: 'Annual Maintenance (AMC)', icon: '🛠️', color: '#d97706' },
+    ssl: { label: 'SSL Security Certificate', icon: '🔒', color: '#7c3aed' },
+    milestone: { label: 'Project Milestone Due', icon: '🎯', color: '#2563eb' },
+    general: { label: 'Important Reminder', icon: '📌', color: '#475569' },
+  };
+
+  const cat = categoryNames[reminder.category] || categoryNames.general;
+  const isClient = recipientType === 'client';
+  const targetEmail = isClient ? reminder.clientEmail : adminEmail;
+
+  if (!targetEmail) {
+    console.error('sendClientReminderEmail: No recipient email provided.');
+    return false;
+  }
+
+  const subject = isClient
+    ? `${cat.icon} Courtesy Reminder: ${reminder.title} (Due: ${reminder.dueDate})`
+    : `⏰ [Admin Reminder Alert] ${reminder.clientName}: ${reminder.title}`;
+
+  const textMsg = isClient
+    ? `Dear ${reminder.clientName},\n\nThis is a courtesy reminder regarding your ${cat.label} with Mahi TechnoCrafts.\n\nItem: ${reminder.title}\nDue Date: ${reminder.dueDate}\n${reminder.amount ? `Amount: ${reminder.amount}\n` : ''}Details: ${reminder.description}\n\n${customNote ? `Note from our team: ${customNote}\n\n` : ''}For questions or assistance, contact us on +91 79878 20358 or reply to this email.\n\nBest regards,\nMahi TechnoCrafts Team\nhttps://mahitechnocrafts.in`
+    : `Admin Alert - Client Reminder Due\n\nClient: ${reminder.clientName} (${reminder.clientEmail})\nCompany: ${reminder.company || 'N/A'}\nTitle: ${reminder.title}\nCategory: ${cat.label}\nDue Date: ${reminder.dueDate}\nAmount: ${reminder.amount || 'N/A'}\nDetails: ${reminder.description}\n\nManage in Admin Panel: https://mahitechnocrafts.in/admin/reminders`;
+
+  const html = `
+    <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 620px; margin: 0 auto; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; background-color: #ffffff; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);">
+      
+      <!-- Top Brand Header -->
+      <div style="background: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 50%, #6366f1 100%); padding: 28px 24px; text-align: center;">
+        <span style="display: inline-block; background-color: rgba(255, 255, 255, 0.2); padding: 4px 14px; border-radius: 20px; color: #ffffff; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">
+          ${isClient ? 'Official Courtesy Notice' : 'Admin Control Notification'}
+        </span>
+        <h1 style="color: #ffffff; margin: 0; font-size: 22px; font-weight: 800; letter-spacing: -0.5px;">MAHI TECHNOCRAFTS</h1>
+        <p style="color: #e0f2fe; margin: 4px 0 0 0; font-size: 12px;">Web Engineering · Cloud Systems · Digital Solutions</p>
+      </div>
+
+      <!-- Main Content -->
+      <div style="padding: 32px 28px; color: #1e293b;">
+        <p style="font-size: 15px; line-height: 1.6; margin-top: 0; color: #334155;">
+          ${isClient ? `Dear <strong>${reminder.clientName}</strong>,` : `Admin Notification for Client: <strong>${reminder.clientName}</strong>,`}
+        </p>
+
+        <p style="font-size: 14px; line-height: 1.6; color: #475569;">
+          ${
+            isClient
+              ? `This is a friendly reminder from the Mahi TechnoCrafts team regarding your scheduled <strong>${cat.label}</strong>.`
+              : `A scheduled reminder for <strong>${reminder.clientName}</strong> (${reminder.company || 'Client'}) has reached its due date.`
+          }
+        </p>
+
+        <!-- Reminder Card Box -->
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-left: 5px solid ${cat.color}; border-radius: 12px; padding: 20px; margin: 24px 0;">
+          <div style="display: flex; align-items: center; margin-bottom: 12px;">
+            <span style="font-size: 20px; margin-right: 8px;">${cat.icon}</span>
+            <span style="font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; color: ${cat.color};">
+              ${cat.label}
+            </span>
+          </div>
+
+          <h3 style="margin: 0 0 10px 0; font-size: 18px; color: #0f172a; font-weight: 700;">
+            ${reminder.title}
+          </h3>
+
+          <p style="margin: 0 0 16px 0; font-size: 13px; line-height: 1.6; color: #475569; white-space: pre-wrap;">
+            ${reminder.description}
+          </p>
+
+          <table style="width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 13px; background-color: #ffffff; border-radius: 8px; border: 1px solid #f1f5f9;">
+            <tr>
+              <td style="padding: 10px 14px; font-weight: 600; color: #64748b; width: 40%; border-bottom: 1px solid #f1f5f9;">Due / Expiry Date:</td>
+              <td style="padding: 10px 14px; font-weight: 700; color: #dc2626; border-bottom: 1px solid #f1f5f9;">
+                📅 ${reminder.dueDate}
+              </td>
+            </tr>
+            ${
+              reminder.amount
+                ? `
+            <tr>
+              <td style="padding: 10px 14px; font-weight: 600; color: #64748b; width: 40%; border-bottom: 1px solid #f1f5f9;">Amount / Fee:</td>
+              <td style="padding: 10px 14px; font-weight: 800; color: #059669; font-size: 15px; border-bottom: 1px solid #f1f5f9;">
+                ${reminder.amount}
+              </td>
+            </tr>`
+                : ''
+            }
+            ${
+              reminder.company
+                ? `
+            <tr>
+              <td style="padding: 10px 14px; font-weight: 600; color: #64748b; width: 40%;">Company / Business:</td>
+              <td style="padding: 10px 14px; color: #0f172a;">${reminder.company}</td>
+            </tr>`
+                : ''
+            }
+          </table>
+        </div>
+
+        ${
+          customNote
+            ? `
+        <div style="background-color: #eff6ff; border: 1px dashed #93c5fd; border-radius: 10px; padding: 14px; margin: 18px 0;">
+          <strong style="color: #1e40af; font-size: 12px; text-transform: uppercase;">Direct message from our coordinator:</strong>
+          <p style="margin: 6px 0 0 0; font-size: 13px; color: #1e3a8a; line-height: 1.5;">${customNote}</p>
+        </div>`
+            : ''
+        }
+
+        <!-- Call to Action Buttons -->
+        ${
+          isClient
+            ? `
+        <div style="text-align: center; margin: 28px 0 10px 0;">
+          <a href="https://wa.me/917987820358?text=${encodeURIComponent(`Hi Mahi Technocrafts, I received the reminder for: ${reminder.title}. Please share details.`)}" 
+             style="background: #25D366; color: #ffffff; padding: 12px 24px; border-radius: 10px; text-decoration: none; font-size: 13px; font-weight: 700; display: inline-block; margin: 0 6px 10px 6px;">
+            💬 Connect on WhatsApp
+          </a>
+          <a href="tel:+917987820358" 
+             style="background: #0ea5e9; color: #ffffff; padding: 12px 24px; border-radius: 10px; text-decoration: none; font-size: 13px; font-weight: 700; display: inline-block; margin: 0 6px 10px 6px;">
+            📞 Call Direct (+91 79878 20358)
+          </a>
+        </div>
+        `
+            : `
+        <div style="text-align: center; margin: 28px 0 10px 0;">
+          <a href="https://mahitechnocrafts.in/admin/reminders" 
+             style="background: #0f172a; color: #ffffff; padding: 12px 28px; border-radius: 10px; text-decoration: none; font-size: 13px; font-weight: 700; display: inline-block;">
+            Open Admin Reminders Panel &rarr;
+          </a>
+        </div>
+        `
+        }
+
+        <p style="font-size: 12px; color: #94a3b8; line-height: 1.6; margin-top: 24px; text-align: center;">
+          ${
+            isClient
+              ? 'Thank you for your valued partnership. If you have already processed this or have questions, feel free to ignore this notice or reply directly.'
+              : 'This is an internal notification dispatched to keep your client accounts and deliverables on track.'
+          }
+        </p>
+      </div>
+
+      <!-- Footer -->
+      <div style="background-color: #f8fafc; padding: 18px 24px; text-align: center; font-size: 11px; color: #94a3b8; border-top: 1px solid #e2e8f0; line-height: 1.5;">
+        <strong>Mahi TechnoCrafts</strong> · MP Nagar Zone II, Bhopal, Madhya Pradesh 462011<br/>
+        Email: <a href="mailto:mahitechnocrats@gmail.com" style="color: #0ea5e9; text-decoration: none;">mahitechnocrats@gmail.com</a> · Web: <a href="https://mahitechnocrafts.in" style="color: #0ea5e9; text-decoration: none;">mahitechnocrafts.in</a>
+      </div>
+    </div>
+  `;
+
+  return sendEmail({ to: targetEmail, subject, text: textMsg, html });
+}
+
