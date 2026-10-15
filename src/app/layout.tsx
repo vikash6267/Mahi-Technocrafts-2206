@@ -6,6 +6,7 @@ import SmoothScroll from '@/components/SmoothScroll';
 import LayoutWrapper from '@/components/LayoutWrapper';
 import Script from 'next/script';
 import MetaPixel from './meta-pixel';
+import AnalyticsTracker from '@/components/AnalyticsTracker';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -295,6 +296,7 @@ export default function RootLayout({
         {/* Meta Pixel for Ads Tracking */}
         <MetaPixel pixelId="4037427749886747" />
 
+        <AnalyticsTracker />
         <ThemeProvider>
           <SmoothScroll>
             <LayoutWrapper>{children}</LayoutWrapper>

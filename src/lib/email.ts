@@ -443,3 +443,78 @@ export async function sendClientReminderEmail({
   return sendEmail({ to: targetEmail, subject, text: textMsg, html });
 }
 
+/**
+ * Dispatches a 2FA One-Time Password (OTP) email for Admin and Super-Admin logins.
+ */
+export async function sendAdminLoginOtpEmail({
+  to,
+  name,
+  otp,
+  ip
+}: {
+  to: string;
+  name: string;
+  otp: string;
+  ip?: string;
+}): Promise<boolean> {
+  const subject = `🔐 [Security Code: ${otp}] Mahi Tech Admin Login Verification`;
+  const textMsg = `Hello ${name},\n\nYour 2-Factor Authentication security code for Mahi Technocrafts Admin Login is: ${otp}\n\nThis code is valid for 10 minutes. If you did not attempt this login from IP ${ip || 'Unknown'}, please secure your account immediately.\n\n— Mahi Technocrafts Security Engine`;
+
+  const html = `
+    <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 540px; margin: 0 auto; background-color: #070918; color: #ffffff; border-radius: 20px; overflow: hidden; border: 1px solid #1e293b; box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
+      <!-- Header banner -->
+      <div style="background: linear-gradient(135deg, #0ea5e9, #6366f1, #a855f7); padding: 28px 24px; text-align: center;">
+        <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 2px; font-weight: 800; color: rgba(255,255,255,0.9);">
+          Mahi Technocrafts Security Center
+        </span>
+        <h1 style="color: #ffffff; font-size: 22px; font-weight: 900; margin: 6px 0 0 0;">
+          Two-Step Login Verification
+        </h1>
+      </div>
+
+      <!-- Main Body -->
+      <div style="padding: 32px 28px;">
+        <p style="font-size: 14px; color: #cbd5e1; margin-top: 0; line-height: 1.6;">
+          Hello <strong style="color: #ffffff;">${name}</strong>,
+        </p>
+        <p style="font-size: 13px; color: #94a3b8; line-height: 1.6;">
+          An authorization request was received to access the <strong>Mahi Tech Control Desk</strong>. Enter the single-use 6-digit verification code below to complete your login:
+        </p>
+
+        <!-- Big OTP Card -->
+        <div style="margin: 28px 0; padding: 20px; background: rgba(14, 165, 233, 0.08); border: 2px dashed #0284c7; border-radius: 16px; text-align: center;">
+          <span style="font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: #38bdf8; display: block; margin-bottom: 8px;">
+            Your 6-Digit OTP Code
+          </span>
+          <div style="font-size: 38px; font-weight: 900; letter-spacing: 8px; color: #ffffff; font-family: 'Courier New', Courier, monospace;">
+            ${otp}
+          </div>
+          <span style="font-size: 11px; color: #94a3b8; display: block; margin-top: 8px;">
+            Valid for the next 10 minutes only
+          </span>
+        </div>
+
+        <!-- Meta Details Box -->
+        <div style="background: #0f172a; padding: 14px 18px; border-radius: 12px; border: 1px solid #1e293b; font-size: 11px; color: #64748b; line-height: 1.8;">
+          <div>• <strong>Recipient:</strong> ${to}</div>
+          <div>• <strong>Access Time:</strong> ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })} (IST)</div>
+          ${ip ? `<div>• <strong>Requesting IP:</strong> <code style="color: #38bdf8;">${ip}</code></div>` : ''}
+        </div>
+
+        <p style="font-size: 12px; color: #f43f5e; line-height: 1.6; margin-top: 24px; padding: 12px; background: rgba(244, 63, 94, 0.1); border-radius: 10px; border: 1px solid rgba(244, 63, 94, 0.2);">
+          ⚠️ <strong>Security Notice:</strong> Never share this code with anyone. Mahi Technocrafts staff will never ask for your authentication OTP. If you did not initiate this login, change your password immediately.
+        </p>
+      </div>
+
+      <!-- Footer -->
+      <div style="background-color: #030213; padding: 18px 24px; text-align: center; font-size: 11px; color: #64748b; border-top: 1px solid #1e293b;">
+        <strong>Mahi TechnoCrafts Engine</strong> · MP Nagar Zone II, Bhopal, MP<br/>
+        Superadmin Security & Authentication Services
+      </div>
+    </div>
+  `;
+
+  return sendEmail({ to, subject, text: textMsg, html });
+}
+
+

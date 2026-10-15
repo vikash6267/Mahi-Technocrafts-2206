@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
@@ -636,35 +636,62 @@ export default function AdminBlogsPage() {
                     key={blog.slug}
                     className="p-5 rounded-3xl bg-white dark:bg-[#070918] border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4 transition-all hover:border-slate-300 dark:hover:border-slate-700"
                   >
-                    <div className="space-y-1.5 flex-1">
-                      <div className="flex items-center gap-2">
-                        <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-lg bg-sky-50 dark:bg-sky-950 text-sky-600 dark:text-sky-400 border border-sky-200 dark:border-sky-800">
-                          {blog.category}
-                        </span>
-                        {blog.status === 'draft' ? (
-                          <span className="text-[10px] font-black px-2 py-0.5 rounded bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-400">
-                            Draft (Review)
-                          </span>
+                    <div className="flex items-start gap-4 flex-1 min-w-0">
+                      {/* Blog Cover Image Thumbnail */}
+                      <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-850 shrink-0 border border-slate-200 dark:border-slate-800 relative shadow-sm">
+                        {blog.coverImage ? (
+                          <img
+                            src={blog.coverImage}
+                            alt={blog.imageAlt || blog.title}
+                            className="w-full h-full object-cover"
+                          />
                         ) : (
-                          <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-400">
-                            Live Published
-                          </span>
+                          <div className="w-full h-full flex items-center justify-center text-slate-400">
+                            <FileText size={20} />
+                          </div>
                         )}
-                        <span className="text-[10px] text-slate-400">
-                          {blog.publishedAt}
-                        </span>
                       </div>
 
-                      <h3 className="text-sm font-bold text-slate-900 dark:text-white">
-                        {blog.title}
-                      </h3>
+                      <div className="space-y-1.5 flex-1 min-w-0">
+                        <div className="flex flex-wrap items-center gap-2">
+                          <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-lg bg-sky-50 dark:bg-sky-950 text-sky-600 dark:text-sky-400 border border-sky-200 dark:border-sky-800">
+                            {blog.category}
+                          </span>
+                          {blog.status === 'draft' ? (
+                            <span className="text-[10px] font-black px-2 py-0.5 rounded bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-400">
+                              Draft (Review)
+                            </span>
+                          ) : (
+                            <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-400">
+                              Live Published
+                            </span>
+                          )}
+                          <span className="text-[10px] text-slate-400">
+                            {blog.publishedAt}
+                          </span>
+                          {blog.readTime && (
+                            <span className="text-[10px] text-slate-400 font-medium">
+                              �• {blog.readTime}
+                            </span>
+                          )}
+                          {blog.focusKeyword && (
+                            <span className="text-[10px] font-semibold text-indigo-500 bg-indigo-50 dark:bg-indigo-950/60 px-2 py-0.5 rounded border border-indigo-200 dark:border-indigo-800">
+                              🎯 {blog.focusKeyword}
+                            </span>
+                          )}
+                        </div>
 
-                      <p className="text-xs text-slate-500 line-clamp-1 max-w-2xl">
-                        {blog.excerpt}
-                      </p>
+                        <h3 className="text-sm font-bold text-slate-900 dark:text-white line-clamp-1">
+                          {blog.title}
+                        </h3>
 
-                      <div className="text-[11px] text-slate-400 font-mono">
-                        Slug: /{blog.slug}
+                        <p className="text-xs text-slate-500 line-clamp-1 max-w-2xl">
+                          {blog.excerpt}
+                        </p>
+
+                        <div className="text-[11px] text-slate-400 font-mono">
+                          Slug: /{blog.slug}
+                        </div>
                       </div>
                     </div>
 

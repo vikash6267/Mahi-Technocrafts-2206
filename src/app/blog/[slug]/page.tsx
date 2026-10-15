@@ -38,6 +38,7 @@ export async function generateMetadata({ params }: PageProps) {
   return {
     title: blog.metaTitle || blog.title,
     description: blog.metaDescription || blog.excerpt,
+    keywords: blog.tags?.join(', ') || blog.focusKeyword,
     alternates: {
       canonical: pageUrl
     },
@@ -163,6 +164,22 @@ export default async function BlogDetailPage({ params }: PageProps) {
         '@id': 'https://mahitechnocrafts.in/blog',
         name: 'Mahi TechnoCrafts Blog'
       }
+    });
+  }
+
+  // FAQ Schema for Rich Search Snippets
+  if (blog.enableFaqSchema && blog.faqs && blog.faqs.length > 0) {
+    schemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: blog.faqs.map((f: any) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: f.a
+        }
+      }))
     });
   }
 

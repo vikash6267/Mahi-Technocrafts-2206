@@ -1,6 +1,8 @@
 import { createHmac, randomBytes, scryptSync, timingSafeEqual } from 'node:crypto';
 import { cookies } from 'next/headers';
 import { connectToDatabase } from '@/lib/db';
+import { verifyTotp } from '@/lib/totp';
+import { sendAdminLoginOtpEmail } from '@/lib/email';
 
 export type AdminRole = 'superadmin' | 'admin' | 'subadmin';
 
@@ -17,6 +19,12 @@ export const ADMIN_PERMISSIONS: AdminPermissionDef[] = [
     label: 'Dashboard Overview',
     description: 'Access main control center, recent activity and live metrics',
     href: '/admin/dashboard'
+  },
+  {
+    id: 'analytics',
+    label: 'Live Traffic & Analytics',
+    description: 'Track visitor traffic, page views, locations, dwell time, and device breakdown',
+    href: '/admin/analytics'
   },
   {
     id: 'reminders',
@@ -95,6 +103,8 @@ export interface AdminUser {
   role: AdminRole;
   permissions: string[];
   active: boolean;
+  mfaEnabled?: boolean;
+  mfaSecret?: string;
   createdAt: string;
   updatedAt: string;
   lastLoginAt?: string;
@@ -108,7 +118,22 @@ export interface AdminSessionUser {
   permissions: string[];
 }
 
-const adminSecret = () => process.env.ADMIN_SESSION_SECRET || process.env.ADMIN_PASS || 'mahi123_admin_secret_key_2026';
+export interface PendingLoginRecord {
+  tempToken: string;
+  userId: string;
+  username: string;
+  name: string;
+  email: string;
+  role: AdminRole;
+  permissions: string[];
+  emailOtp: string;
+  mfaSecret?: string;
+  mfaEnabled: boolean;
+  expiresAt: number; // Unix timestamp ms
+}
+
+const adminSecret = () =>
+  process.env.ADMIN_SESSION_SECRET || process.env.ADMIN_PASS || 'mahi123_admin_secret_key_2026';
 
 // Password hashing & verification
 export const hashPassword = (password: string): string => {
@@ -130,9 +155,23 @@ export const verifyPassword = (password: string, stored?: string): boolean => {
 };
 
 /**
+ * Mask an email address for privacy (e.g. vikasmaheshwari6267@gmail.com -> vi***@gmail.com)
+ */
+export function maskEmail(email?: string): string {
+  if (!email || !email.includes('@')) return 'your registered email';
+  const [local, domain] = email.split('@');
+  if (local.length <= 3) {
+    return `${local[0]}***@${domain}`;
+  }
+  return `${local.slice(0, 2)}***${local.slice(-1)}@${domain}`;
+}
+
+/**
  * Ensures the default superadmin user exists in MongoDB.
  * Username: superadmin
  * Password: Mahi@2025
+ * Name: Founder Account
+ * Email: vikasmaheshwari6267@gmail.com
  */
 export async function ensureSuperAdmin(): Promise<AdminUser | null> {
   try {
@@ -140,15 +179,17 @@ export async function ensureSuperAdmin(): Promise<AdminUser | null> {
     const collection = db.collection<AdminUser>('admin_users');
     const existing = await collection.findOne({ username: 'superadmin' });
     const passwordHash = hashPassword('Mahi@2025');
-    const allPermissions = ADMIN_PERMISSIONS.map(p => p.id);
+    const allPermissions = ADMIN_PERMISSIONS.map((p) => p.id);
+    const founderName = 'Founder Account';
+    const founderEmail = 'vikasmaheshwari6267@gmail.com';
 
     if (!existing) {
       const now = new Date().toISOString();
       const superadmin: AdminUser = {
         id: 'user_superadmin_master',
         username: 'superadmin',
-        name: 'Super Admin',
-        email: 'vikasmaheshwari6267@gmail.com',
+        name: founderName,
+        email: founderEmail,
         passwordHash,
         role: 'superadmin',
         permissions: allPermissions,
@@ -157,17 +198,26 @@ export async function ensureSuperAdmin(): Promise<AdminUser | null> {
         updatedAt: now
       };
       await collection.insertOne(superadmin as any);
-      console.log('[Admin Auth] Default Super-Admin seeded successfully.');
+      console.log('[Admin Auth] Default Super-Admin (Founder Account) seeded successfully.');
       return superadmin;
     }
 
-    // If existing password doesn't match Mahi@2025, sync it
-    if (!verifyPassword('Mahi@2025', existing.passwordHash) || existing.active === false || existing.role !== 'superadmin') {
+    // Ensure password matches Mahi@2025, name is Founder Account, email is vikasmaheshwari6267@gmail.com
+    const needsUpdate =
+      !verifyPassword('Mahi@2025', existing.passwordHash) ||
+      existing.name !== founderName ||
+      existing.email !== founderEmail ||
+      existing.active === false ||
+      existing.role !== 'superadmin';
+
+    if (needsUpdate) {
       await collection.updateOne(
         { username: 'superadmin' },
         {
           $set: {
             passwordHash,
+            name: founderName,
+            email: founderEmail,
             role: 'superadmin',
             active: true,
             permissions: allPermissions,
@@ -176,10 +226,12 @@ export async function ensureSuperAdmin(): Promise<AdminUser | null> {
         }
       );
       existing.passwordHash = passwordHash;
+      existing.name = founderName;
+      existing.email = founderEmail;
       existing.role = 'superadmin';
       existing.active = true;
       existing.permissions = allPermissions;
-      console.log('[Admin Auth] Super-Admin credentials synchronized to Mahi@2025.');
+      console.log('[Admin Auth] Super-Admin updated to Founder Account with credentials Mahi@2025.');
     }
 
     return existing;
@@ -191,16 +243,20 @@ export async function ensureSuperAdmin(): Promise<AdminUser | null> {
 
 /**
  * Creates a signed admin session token carrying user data.
+ * Validity: 30 days (1 month sliding window).
  */
 export function makeAdminSession(user?: Partial<AdminSessionUser>): string {
   const key = adminSecret();
-  const exp = Date.now() + 1000 * 60 * 60 * 24 * 7; // 7 days
+  const exp = Date.now() + 1000 * 60 * 60 * 24 * 30; // 30 days (1 Month sliding session)
   const data = {
     id: user?.id || 'user_superadmin_master',
     username: user?.username || 'superadmin',
-    name: user?.name || 'Super Admin',
+    name: user?.name || 'Founder Account',
     role: user?.role || 'superadmin',
-    permissions: user?.role === 'superadmin' ? ADMIN_PERMISSIONS.map(p => p.id) : (user?.permissions || ['dashboard']),
+    permissions:
+      user?.role === 'superadmin'
+        ? ADMIN_PERMISSIONS.map((p) => p.id)
+        : user?.permissions || ['dashboard'],
     exp
   };
 
@@ -211,7 +267,7 @@ export function makeAdminSession(user?: Partial<AdminSessionUser>): string {
 
 /**
  * Reads and verifies an admin session token.
- * Compatible with both admin_v2.* (JWT style) and legacy admin.<exp>.<sig> tokens.
+ * Compatible with both admin_v2.* and legacy admin.<exp>.<sig> tokens.
  */
 export function readAdminSession(token?: string): AdminSessionUser | null {
   if (!token) return null;
@@ -233,7 +289,10 @@ export function readAdminSession(token?: string): AdminSessionUser | null {
         username: data.username,
         name: data.name,
         role: data.role || 'subadmin',
-        permissions: data.role === 'superadmin' ? ADMIN_PERMISSIONS.map(p => p.id) : (data.permissions || [])
+        permissions:
+          data.role === 'superadmin'
+            ? ADMIN_PERMISSIONS.map((p) => p.id)
+            : data.permissions || []
       };
     } catch {
       return null;
@@ -253,11 +312,11 @@ export function readAdminSession(token?: string): AdminSessionUser | null {
   }
   if (expected.length === provided.length && timingSafeEqual(expected, provided)) {
     return {
-      id: 'superadmin',
+      id: 'user_superadmin_master',
       username: 'superadmin',
-      name: 'Super Admin',
+      name: 'Founder Account',
       role: 'superadmin',
-      permissions: ADMIN_PERMISSIONS.map(p => p.id)
+      permissions: ADMIN_PERMISSIONS.map((p) => p.id)
     };
   }
 
@@ -291,19 +350,185 @@ export async function hasAdminPermission(permissionId: string): Promise<boolean>
 }
 
 // ==========================================
+// 2FA / MFA & Email OTP Pending Login Engine
+// ==========================================
+
+export async function createPendingLogin({
+  user,
+  ip
+}: {
+  user: AdminUser;
+  ip?: string;
+}): Promise<{
+  tempToken: string;
+  mfaEnabled: boolean;
+  emailMasked: string;
+  targetEmail: string;
+}> {
+  const { db } = await connectToDatabase();
+  const collection = db.collection<PendingLoginRecord>('admin_pending_logins');
+
+  // Generate 6-digit Email OTP
+  const emailOtp = Math.floor(100000 + Math.random() * 900000).toString();
+  const tempToken = `login_${randomBytes(24).toString('hex')}`;
+  const expiresAt = Date.now() + 10 * 60 * 1000; // 10 minutes validity
+  const targetEmail = user.email || 'vikasmaheshwari6267@gmail.com';
+
+  const pendingRecord: PendingLoginRecord = {
+    tempToken,
+    userId: user.id,
+    username: user.username,
+    name: user.name,
+    email: targetEmail,
+    role: user.role,
+    permissions:
+      user.role === 'superadmin'
+        ? ADMIN_PERMISSIONS.map((p) => p.id)
+        : user.permissions || ['dashboard'],
+    emailOtp,
+    mfaSecret: user.mfaSecret,
+    mfaEnabled: Boolean(user.mfaEnabled && user.mfaSecret),
+    expiresAt
+  };
+
+  // Clean old pending records for this user
+  await collection.deleteMany({ username: user.username });
+  await collection.insertOne(pendingRecord as any);
+
+  // Send Email OTP asynchronously
+  sendAdminLoginOtpEmail({
+    to: targetEmail,
+    name: user.name,
+    otp: emailOtp,
+    ip
+  }).catch((err) => console.error('[2FA OTP Email Error]:', err));
+
+  return {
+    tempToken,
+    mfaEnabled: Boolean(user.mfaEnabled && user.mfaSecret),
+    emailMasked: maskEmail(targetEmail),
+    targetEmail
+  };
+}
+
+export async function verifyPendingLogin({
+  tempToken,
+  code
+}: {
+  tempToken: string;
+  code: string;
+}): Promise<{
+  success: boolean;
+  user?: AdminSessionUser;
+  error?: string;
+}> {
+  const { db } = await connectToDatabase();
+  const collection = db.collection<PendingLoginRecord>('admin_pending_logins');
+
+  const pending = await collection.findOne({ tempToken });
+  if (!pending) {
+    return { success: false, error: 'Session expired or invalid. Please try logging in again.' };
+  }
+
+  if (pending.expiresAt <= Date.now()) {
+    await collection.deleteOne({ tempToken });
+    return { success: false, error: 'Security code has expired. Please request a new one.' };
+  }
+
+  const cleanCode = code.trim().replace(/\s+/g, '');
+
+  // 1. Verify Email OTP
+  const isEmailOtpMatch = cleanCode === pending.emailOtp;
+
+  // 2. Verify Google Authenticator TOTP (if user has MFA enabled)
+  let isTotpMatch = false;
+  if (pending.mfaSecret) {
+    isTotpMatch = verifyTotp({ token: cleanCode, secret: pending.mfaSecret });
+  }
+
+  if (isEmailOtpMatch || isTotpMatch) {
+    // Delete pending record
+    await collection.deleteOne({ tempToken });
+
+    // Update lastLoginAt in admin_users
+    await db.collection('admin_users').updateOne(
+      { username: pending.username },
+      { $set: { lastLoginAt: new Date().toISOString() } }
+    );
+
+    return {
+      success: true,
+      user: {
+        id: pending.userId,
+        username: pending.username,
+        name: pending.name,
+        role: pending.role,
+        permissions: pending.permissions
+      }
+    };
+  }
+
+  return {
+    success: false,
+    error: 'Incorrect 6-digit code. Please check your email or Google Authenticator.'
+  };
+}
+
+export async function resendPendingOtp({
+  tempToken,
+  ip
+}: {
+  tempToken: string;
+  ip?: string;
+}): Promise<{ success: boolean; message?: string; error?: string }> {
+  const { db } = await connectToDatabase();
+  const collection = db.collection<PendingLoginRecord>('admin_pending_logins');
+
+  const pending = await collection.findOne({ tempToken });
+  if (!pending) {
+    return { success: false, error: 'Session expired. Please log in again.' };
+  }
+
+  const newOtp = Math.floor(100000 + Math.random() * 900000).toString();
+  const newExpiresAt = Date.now() + 10 * 60 * 1000;
+
+  await collection.updateOne(
+    { tempToken },
+    { $set: { emailOtp: newOtp, expiresAt: newExpiresAt } }
+  );
+
+  const sent = await sendAdminLoginOtpEmail({
+    to: pending.email,
+    name: pending.name,
+    otp: newOtp,
+    ip
+  });
+
+  if (sent) {
+    return { success: true, message: `New code sent to ${maskEmail(pending.email)}` };
+  } else {
+    return { success: false, error: 'Failed to send email. Check SMTP settings.' };
+  }
+}
+
+// ==========================================
 // Database Operations for Admin & Subadmins
 // ==========================================
 
-export async function getAdminUsers(): Promise<Omit<AdminUser, 'passwordHash'>[]> {
+export async function getAdminUsers(): Promise<Omit<AdminUser, 'passwordHash' | 'mfaSecret'>[]> {
   try {
     await ensureSuperAdmin();
     const { db } = await connectToDatabase();
-    const users = await db.collection<AdminUser>('admin_users')
+    const users = await db
+      .collection<AdminUser>('admin_users')
       .find({})
       .sort({ createdAt: -1 })
       .toArray();
 
-    return users.map(({ _id, passwordHash, ...rest }: any) => rest);
+    return users.map(({ _id, passwordHash, mfaSecret, ...rest }: any) => ({
+      ...rest,
+      mfaEnabled: Boolean(rest.mfaEnabled && mfaSecret)
+    }));
   } catch (error) {
     console.error('getAdminUsers failed:', error);
     return [];

@@ -27,6 +27,7 @@ import {
   CheckCircle2,
   Calendar,
   Wallet,
+  BarChart3,
   KeyRound,
   ShieldAlert,
   Lock,
@@ -129,6 +130,13 @@ export function AdminLayoutShell({ children, title, subtitle }: AdminLayoutShell
       label: 'Dashboard',
       href: '/admin/dashboard',
       icon: <LayoutDashboard size={18} />,
+      badge: null
+    },
+    {
+      id: 'analytics',
+      label: 'Live Traffic & Analytics',
+      href: '/admin/analytics',
+      icon: <BarChart3 size={18} />,
       badge: null
     },
     {
