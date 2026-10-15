@@ -171,6 +171,77 @@ export interface ClientReminder {
   updatedAt: string;
 }
 
+// ---------------------------------------------------------------------------
+// Financial & Accounting Engine (Income & Expenses)
+// ---------------------------------------------------------------------------
+
+export type FinanceType = 'income' | 'expense';
+
+export type FinanceCategory =
+  // Income categories
+  | 'client_payment'
+  | 'project_milestone'
+  | 'retainer'
+  | 'domain_hosting_charge'
+  | 'amc_service'
+  | 'consulting'
+  | 'other_income'
+  // Expense categories
+  | 'server_hosting'
+  | 'domain_purchase'
+  | 'software_tools'
+  | 'salaries_freelancers'
+  | 'marketing_ads'
+  | 'office_supplies'
+  | 'legal_tax'
+  | 'other_expense';
+
+export interface FinanceRecord {
+  id: string;
+  type: FinanceType;
+  title: string;
+  description?: string;
+  amount: number;
+  category: FinanceCategory | string;
+  date: string; // YYYY-MM-DD format
+  status: 'completed' | 'pending';
+  paymentMethod?: string; // 'upi' | 'bank_transfer' | 'cash' | 'credit_card' | 'cheque' | 'stripe' | 'other'
+  clientName?: string;
+  vendorName?: string;
+  referenceNumber?: string; // UTR / Invoice # / Bill # / Receipt #
+  invoiceUrl?: string;
+  reminderId?: string; // Linked client reminder if converted from reminder
+  tags?: string[];
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface FinanceStats {
+  totalIncome: number;
+  totalExpense: number;
+  netProfit: number;
+  pendingIncome: number;
+  pendingExpense: number;
+  thisMonthIncome: number;
+  thisMonthExpense: number;
+  thisMonthNet: number;
+  lastMonthIncome: number;
+  lastMonthExpense: number;
+  incomeCount: number;
+  expenseCount: number;
+  categoryBreakdown: {
+    income: Record<string, number>;
+    expense: Record<string, number>;
+  };
+  monthlyTrend: Array<{
+    month: string; // "2026-10"
+    label: string; // "Oct 2026"
+    income: number;
+    expense: number;
+    net: number;
+  }>;
+}
+
 // Blog interfaces matching Tiptap content and Advanced SEO parameters
 export interface BlogFAQ {
   q: string;
@@ -936,3 +1007,238 @@ export async function getReminderStats() {
     dueTodayList: dueToday,
   };
 }
+
+// ---------------------------------------------------------------------------
+// Finance & Accounting (Income / Expense) Engine
+// ---------------------------------------------------------------------------
+
+export async function getFinanceRecords(filters?: {
+  type?: string;
+  category?: string;
+  month?: string; // e.g. "2026-10"
+  status?: string;
+  search?: string;
+}): Promise<FinanceRecord[]> {
+  try {
+    const { db } = await connectToDatabase();
+    const collection = db.collection('finance_records');
+
+    const query: any = {};
+    if (filters?.type && filters.type !== 'all') {
+      query.type = filters.type;
+    }
+    if (filters?.category && filters.category !== 'all') {
+      query.category = filters.category;
+    }
+    if (filters?.status && filters.status !== 'all') {
+      query.status = filters.status;
+    }
+    if (filters?.month && filters.month !== 'all') {
+      query.date = { $regex: `^${filters.month}` };
+    }
+    if (filters?.search) {
+      const s = filters.search.trim();
+      query.$or = [
+        { title: { $regex: s, $options: 'i' } },
+        { clientName: { $regex: s, $options: 'i' } },
+        { vendorName: { $regex: s, $options: 'i' } },
+        { referenceNumber: { $regex: s, $options: 'i' } },
+        { description: { $regex: s, $options: 'i' } },
+      ];
+    }
+
+    const records = await collection.find(query).sort({ date: -1, createdAt: -1 }).toArray();
+    return records.map(({ _id, ...r }) => r) as unknown as FinanceRecord[];
+  } catch (error) {
+    console.error('getFinanceRecords failed:', error);
+    return [];
+  }
+}
+
+export async function getFinanceRecordById(id: string): Promise<FinanceRecord | null> {
+  try {
+    const { db } = await connectToDatabase();
+    const collection = db.collection('finance_records');
+    const item = await collection.findOne({ id });
+    if (!item) return null;
+    const { _id, ...clean } = item;
+    return clean as unknown as FinanceRecord;
+  } catch (error) {
+    console.error('getFinanceRecordById failed:', error);
+    return null;
+  }
+}
+
+export async function saveFinanceRecord(record: FinanceRecord): Promise<boolean> {
+  try {
+    const { db } = await connectToDatabase();
+    const collection = db.collection('finance_records');
+    const now = new Date().toISOString();
+
+    const doc: any = {
+      ...record,
+      amount: Number(record.amount) || 0,
+      updatedAt: now,
+    };
+    delete doc._id;
+
+    await collection.updateOne(
+      { id: record.id },
+      {
+        $set: doc,
+        $setOnInsert: { createdAt: record.createdAt || now }
+      },
+      { upsert: true }
+    );
+    return true;
+  } catch (error) {
+    console.error('saveFinanceRecord failed:', error);
+    return false;
+  }
+}
+
+export async function deleteFinanceRecord(id: string): Promise<boolean> {
+  try {
+    const { db } = await connectToDatabase();
+    const collection = db.collection('finance_records');
+    const res = await collection.deleteOne({ id });
+    return res.deletedCount > 0;
+  } catch (error) {
+    console.error('deleteFinanceRecord failed:', error);
+    return false;
+  }
+}
+
+export async function getFinanceStats(): Promise<FinanceStats> {
+  try {
+    const records = await getFinanceRecords();
+
+    const now = new Date();
+    const thisMonthStr = now.toISOString().slice(0, 7);
+    const lastMonthDate = new Date(now.getFullYear(), now.getMonth() - 1, 1);
+    const lastMonthStr = lastMonthDate.toISOString().slice(0, 7);
+
+    let totalIncome = 0;
+    let totalExpense = 0;
+    let pendingIncome = 0;
+    let pendingExpense = 0;
+    let thisMonthIncome = 0;
+    let thisMonthExpense = 0;
+    let lastMonthIncome = 0;
+    let lastMonthExpense = 0;
+    let incomeCount = 0;
+    let expenseCount = 0;
+
+    const incomeCatMap: Record<string, number> = {};
+    const expenseCatMap: Record<string, number> = {};
+
+    for (const r of records) {
+      const amt = Number(r.amount) || 0;
+      const rMonth = (r.date || '').slice(0, 7);
+
+      if (r.type === 'income') {
+        incomeCount++;
+        if (r.status === 'completed') {
+          totalIncome += amt;
+          incomeCatMap[r.category] = (incomeCatMap[r.category] || 0) + amt;
+
+          if (rMonth === thisMonthStr) {
+            thisMonthIncome += amt;
+          } else if (rMonth === lastMonthStr) {
+            lastMonthIncome += amt;
+          }
+        } else if (r.status === 'pending') {
+          pendingIncome += amt;
+        }
+      } else if (r.type === 'expense') {
+        expenseCount++;
+        if (r.status === 'completed') {
+          totalExpense += amt;
+          expenseCatMap[r.category] = (expenseCatMap[r.category] || 0) + amt;
+
+          if (rMonth === thisMonthStr) {
+            thisMonthExpense += amt;
+          } else if (rMonth === lastMonthStr) {
+            lastMonthExpense += amt;
+          }
+        } else if (r.status === 'pending') {
+          pendingExpense += amt;
+        }
+      }
+    }
+
+    // Generate last 6 months trend
+    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const monthlyTrend: Array<{
+      month: string;
+      label: string;
+      income: number;
+      expense: number;
+      net: number;
+    }> = [];
+
+    for (let i = 5; i >= 0; i--) {
+      const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+      const mStr = d.toISOString().slice(0, 7);
+      const mLabel = `${monthNames[d.getMonth()]} ${d.getFullYear()}`;
+
+      let mIncome = 0;
+      let mExpense = 0;
+
+      for (const r of records) {
+        if (r.status === 'completed' && (r.date || '').startsWith(mStr)) {
+          const amt = Number(r.amount) || 0;
+          if (r.type === 'income') mIncome += amt;
+          if (r.type === 'expense') mExpense += amt;
+        }
+      }
+
+      monthlyTrend.push({
+        month: mStr,
+        label: mLabel,
+        income: mIncome,
+        expense: mExpense,
+        net: mIncome - mExpense,
+      });
+    }
+
+    return {
+      totalIncome,
+      totalExpense,
+      netProfit: totalIncome - totalExpense,
+      pendingIncome,
+      pendingExpense,
+      thisMonthIncome,
+      thisMonthExpense,
+      thisMonthNet: thisMonthIncome - thisMonthExpense,
+      lastMonthIncome,
+      lastMonthExpense,
+      incomeCount,
+      expenseCount,
+      categoryBreakdown: {
+        income: incomeCatMap,
+        expense: expenseCatMap,
+      },
+      monthlyTrend,
+    };
+  } catch (error) {
+    console.error('getFinanceStats failed:', error);
+    return {
+      totalIncome: 0,
+      totalExpense: 0,
+      netProfit: 0,
+      pendingIncome: 0,
+      pendingExpense: 0,
+      thisMonthIncome: 0,
+      thisMonthExpense: 0,
+      thisMonthNet: 0,
+      lastMonthIncome: 0,
+      lastMonthExpense: 0,
+      incomeCount: 0,
+      expenseCount: 0,
+      categoryBreakdown: { income: {}, expense: {} },
+      monthlyTrend: [],
+    };
+  }
+}
+

@@ -25,12 +25,13 @@ import {
   ExternalLink,
   MessageCircle,
   TrendingUp,
-  Check
+  Check,
+  Wallet
 } from 'lucide-react';
 import { AdminLayoutShell } from '@/components/admin/AdminLayoutShell';
 import { ReminderModal } from '@/components/admin/ReminderModal';
 import { SendEmailReminderModal } from '@/components/admin/SendEmailReminderModal';
-import { ClientReminder, ContactSubmission } from '@/lib/db';
+import { ClientReminder, ContactSubmission, FinanceStats } from '@/lib/db';
 
 export default function AdminDashboardPage() {
   const router = useRouter();
@@ -50,7 +51,8 @@ export default function AdminDashboardPage() {
         reviews: '/admin/reviews',
         careers: '/admin/careers',
         content: '/admin/settings',
-        reminders: '/admin/reminders'
+        reminders: '/admin/reminders',
+        finance: '/admin/finance'
       };
       if (redirects[tab]) {
         router.replace(redirects[tab]);
@@ -70,6 +72,7 @@ export default function AdminDashboardPage() {
     urgentCount: 0
   });
 
+  const [financeStats, setFinanceStats] = useState<FinanceStats | null>(null);
   const [recentContacts, setRecentContacts] = useState<ContactSubmission[]>([]);
   const [blogCount, setBlogCount] = useState(0);
   const [ticketStats, setTicketStats] = useState({ total: 0, open: 0 });
@@ -81,17 +84,23 @@ export default function AdminDashboardPage() {
   const fetchDashboardData = async () => {
     setIsLoading(true);
     try {
-      const [remindersRes, contactsRes, blogsRes, portalRes] = await Promise.all([
+      const [remindersRes, contactsRes, blogsRes, portalRes, financeRes] = await Promise.all([
         fetch('/api/admin/reminders'),
         fetch('/api/contact'),
         fetch('/api/blog'),
-        fetch('/api/admin/portal')
+        fetch('/api/admin/portal'),
+        fetch('/api/admin/finance')
       ]);
 
       if (remindersRes.ok) {
         const data = await remindersRes.json();
         setReminders(data.reminders || []);
         if (data.stats) setReminderStats(data.stats);
+      }
+
+      if (financeRes.ok) {
+        const fData = await financeRes.json();
+        if (fData.stats) setFinanceStats(fData.stats);
       }
 
       if (contactsRes.ok) {
@@ -278,6 +287,82 @@ export default function AdminDashboardPage() {
             </div>
           </Link>
         </div>
+
+        {/* ========================================================================= */}
+        {/* Company Financial & Cash Flow Snapshot */}
+        {/* ========================================================================= */}
+        {financeStats && (
+          <div className="p-6 rounded-3xl bg-white dark:bg-[#070918] border border-slate-200 dark:border-slate-800 shadow-sm transition-all">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5">
+              <div className="flex items-center gap-3.5">
+                <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 flex items-center justify-center shrink-0">
+                  <Wallet size={24} />
+                </div>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <h3 className="font-display font-black text-lg text-slate-900 dark:text-white">
+                      Company Finance & Cash Flow
+                    </h3>
+                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 font-bold uppercase tracking-wider">
+                      Live P&L
+                    </span>
+                  </div>
+                  <p className="text-xs text-slate-500 mt-0.5">
+                    Real-time revenue, operational expenses, server bills & pending client dues
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 lg:gap-8 py-2 lg:py-0 border-y lg:border-y-0 lg:border-l border-slate-100 dark:border-slate-800 lg:pl-8">
+                <div>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-0.5">
+                    Net Balance / Profit
+                  </span>
+                  <span className={`text-lg font-black ${
+                    financeStats.netProfit >= 0 ? 'text-emerald-500 dark:text-emerald-400' : 'text-rose-500'
+                  }`}>
+                    ₹{new Intl.NumberFormat('en-IN').format(financeStats.netProfit)}
+                  </span>
+                </div>
+                <div>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-0.5">
+                    Total Income
+                  </span>
+                  <span className="text-lg font-black text-slate-900 dark:text-white">
+                    ₹{new Intl.NumberFormat('en-IN').format(financeStats.totalIncome)}
+                  </span>
+                </div>
+                <div>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-0.5">
+                    Total Expenses
+                  </span>
+                  <span className="text-lg font-black text-rose-500">
+                    ₹{new Intl.NumberFormat('en-IN').format(financeStats.totalExpense)}
+                  </span>
+                </div>
+                <div>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-0.5">
+                    Pending Receivables
+                  </span>
+                  <span className="text-lg font-black text-amber-500">
+                    ₹{new Intl.NumberFormat('en-IN').format(financeStats.pendingIncome)}
+                  </span>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <Link
+                  href="/admin/finance"
+                  className="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100 font-bold text-xs flex items-center gap-2 transition-all shadow-sm"
+                >
+                  <Wallet size={14} />
+                  <span>Open Full Finance</span>
+                  <ArrowRight size={13} />
+                </Link>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* ========================================================================= */}
         {/* Core Reminder Alert & Expiry Desk (User's Key Feature) */}

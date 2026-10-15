@@ -25,7 +25,8 @@ import {
   ChevronRight,
   Send,
   CheckCircle2,
-  Calendar
+  Calendar,
+  Wallet
 } from 'lucide-react';
 import { ReminderModal } from './ReminderModal';
 import { ClientReminder } from '@/lib/db';
@@ -102,6 +103,12 @@ export function AdminLayoutShell({ children, title, subtitle }: AdminLayoutShell
           {reminderStats.dueToday}
         </span>
       ) : null
+    },
+    {
+      label: 'Finance & Accounts',
+      href: '/admin/finance',
+      icon: <Wallet size={18} />,
+      badge: null
     },
     {
       label: 'Blogs & AI Writer',
