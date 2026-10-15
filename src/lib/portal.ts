@@ -7,10 +7,23 @@ export type PortalUser = { id: string; name: string; email: string; role: Portal
 export type PortalIssue = { id: string; clientId: string; clientName: string; clientEmail: string; title: string; description: string; category: string; priority: 'low' | 'normal' | 'high' | 'urgent'; status: 'open' | 'in-progress' | 'waiting-client' | 'resolved'; assignedTo?: string; assignedName?: string; createdAt: string; updatedAt: string; updates: { id: string; authorId: string; authorName: string; message: string; createdAt: string }[] };
 
 const secret = () => process.env.PORTAL_SESSION_SECRET || process.env.ADMIN_PASS || 'mahi123_portal_secret_key_2026';
-const adminSecret = () => process.env.ADMIN_SESSION_SECRET || process.env.ADMIN_PASS || 'mahi123';
-export function makeAdminSession() { const key = adminSecret(); if (!key) throw new Error('ADMIN_PASS must be configured'); const value = `admin.${Date.now() + 86400000}`; return `${value}.${createHmac('sha256', key).update(value).digest('base64url')}`; }
-export function isValidAdminSession(token?: string) { const key = adminSecret(); if (!key || !token) return false; const [prefix, expires, signature] = token.split('.'); const value = `${prefix}.${expires}`; if (prefix !== 'admin' || !expires || !signature || Number(expires) <= Date.now()) return false; const expected = createHmac('sha256', key).update(value).digest(); let provided: Buffer; try { provided = Buffer.from(signature, 'base64url'); } catch { return false; } return expected.length === provided.length && timingSafeEqual(expected, provided); }
-export async function isAdminAuthenticated() { const jar = await cookies(); return isValidAdminSession(jar.get('admin_session')?.value); }
+import {
+  makeAdminSession,
+  isValidAdminSession,
+  isAdminAuthenticated,
+  getAdminSessionUser,
+  type AdminRole,
+  type AdminSessionUser
+} from '@/lib/admin-auth';
+
+export {
+  makeAdminSession,
+  isValidAdminSession,
+  isAdminAuthenticated,
+  getAdminSessionUser,
+  type AdminRole,
+  type AdminSessionUser
+};
 export const hashPassword = (password: string) => { const salt = randomBytes(16).toString('hex'); return `${salt}:${scryptSync(password, salt, 64).toString('hex')}`; };
 export const verifyPassword = (password: string, stored: string) => { try { const [salt, hash] = stored.split(':'); const actual = scryptSync(password, salt, 64); const expected = Buffer.from(hash, 'hex'); return actual.length === expected.length && timingSafeEqual(actual, expected); } catch { return false; } };
 const sign = (value: string, key: string) => createHmac('sha256', key).update(value).digest('base64url');
