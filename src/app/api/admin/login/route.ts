@@ -12,6 +12,7 @@ import {
   resendPendingOtp,
   ADMIN_PERMISSIONS
 } from '@/lib/admin-auth';
+import { createAuditLog } from '@/lib/audit-logger';
 
 function getIpAddress(request: Request): string {
   const cfIp = request.headers.get('cf-connecting-ip');
@@ -27,6 +28,7 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
     const ip = getIpAddress(request);
+    const userAgent = request.headers.get('user-agent') || '';
 
     // ==========================================
     // ACTION: Resend OTP Email
@@ -53,6 +55,17 @@ export async function POST(request: Request) {
 
       const verification = await verifyPendingLogin({ tempToken, code });
       if (!verification.success || !verification.user) {
+        // Log failed 2FA verification attempt
+        await createAuditLog({
+          action: '2FA_VERIFICATION_FAILED',
+          category: 'AUTH',
+          actor: { username: 'pending_user', role: 'unknown' },
+          status: 'FAILED',
+          details: `2-Factor verification code failed: ${verification.error || 'Invalid 6-digit code'}`,
+          ip,
+          userAgent
+        });
+
         return NextResponse.json(
           { success: false, error: verification.error || 'Invalid or expired verification code' },
           { status: 401 }
@@ -61,13 +74,30 @@ export async function POST(request: Request) {
 
       // Successful 2FA verification! Issue 30-Day (1 Month) Sliding Session Cookie
       const sessionUser = verification.user;
+
+      // Log successful login
+      await createAuditLog({
+        action: 'LOGIN_SUCCESS',
+        category: 'AUTH',
+        actor: {
+          id: sessionUser.id,
+          username: sessionUser.username,
+          name: sessionUser.name,
+          role: sessionUser.role
+        },
+        status: 'SUCCESS',
+        details: `Administrator ${sessionUser.name} (@${sessionUser.username}) successfully authenticated with 2-Factor Verification. Session valid for 30 days.`,
+        ip,
+        userAgent
+      });
+
       const response = NextResponse.json({
         success: true,
         message: `Welcome back, ${sessionUser.name}!`,
         user: sessionUser
       });
 
-      // 30 Days = 2,592,000 seconds
+      // 30 Days = 2,592,000 seconds (1 Month sliding session)
       const ONE_MONTH_SECONDS = 30 * 24 * 60 * 60;
 
       response.cookies.set('admin_session', makeAdminSession(sessionUser), {
@@ -106,6 +136,17 @@ export async function POST(request: Request) {
     }
 
     if (!dbUser) {
+      // Record failed sign-in attempt
+      await createAuditLog({
+        action: 'LOGIN_FAILED',
+        category: 'AUTH',
+        actor: { username, role: 'guest' },
+        status: 'FAILED',
+        details: `Failed sign-in attempt: username "${username}" not found.`,
+        ip,
+        userAgent
+      });
+
       return NextResponse.json(
         { success: false, error: 'Invalid username or password' },
         { status: 401 }
@@ -113,6 +154,16 @@ export async function POST(request: Request) {
     }
 
     if (dbUser.active === false) {
+      await createAuditLog({
+        action: 'LOGIN_FAILED',
+        category: 'AUTH',
+        actor: { username, name: dbUser.name, role: dbUser.role },
+        status: 'FAILED',
+        details: `Blocked sign-in attempt: account for "${username}" is deactivated.`,
+        ip,
+        userAgent
+      });
+
       return NextResponse.json(
         { success: false, error: 'Your account has been deactivated. Please contact Super Admin.' },
         { status: 403 }
@@ -123,6 +174,17 @@ export async function POST(request: Request) {
     const isSuperMaster = username === 'superadmin' && password === 'Mahi@2025';
 
     if (!isPasswordValid && !isSuperMaster) {
+      // Record failed password attempt
+      await createAuditLog({
+        action: 'LOGIN_FAILED',
+        category: 'AUTH',
+        actor: { username, name: dbUser.name, role: dbUser.role },
+        status: 'FAILED',
+        details: `Failed sign-in attempt: incorrect password entered for "${username}".`,
+        ip,
+        userAgent
+      });
+
       return NextResponse.json(
         { success: false, error: 'Invalid username or password' },
         { status: 401 }
@@ -177,7 +239,29 @@ export async function GET() {
   return NextResponse.json({ authenticated: false }, { status: 401 });
 }
 
-export async function DELETE() {
+export async function DELETE(request: Request) {
+  const sessionUser = await getAdminSessionUser();
+
+  if (sessionUser) {
+    const ip = getIpAddress(request);
+    const userAgent = request.headers.get('user-agent') || '';
+
+    await createAuditLog({
+      action: 'LOGOUT',
+      category: 'AUTH',
+      actor: {
+        id: sessionUser.id,
+        username: sessionUser.username,
+        name: sessionUser.name,
+        role: sessionUser.role
+      },
+      status: 'SUCCESS',
+      details: `Administrator ${sessionUser.name} (@${sessionUser.username}) signed out of administrative session.`,
+      ip,
+      userAgent
+    });
+  }
+
   const response = NextResponse.json({ success: true, message: 'Logged out successfully' });
 
   response.cookies.set('admin_session', '', {

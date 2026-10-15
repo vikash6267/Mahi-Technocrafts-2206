@@ -31,7 +31,8 @@ import {
   KeyRound,
   ShieldAlert,
   Lock,
-  ArrowRight
+  ArrowRight,
+  History
 } from 'lucide-react';
 import { ReminderModal } from './ReminderModal';
 import { ClientReminder } from '@/lib/db';
@@ -211,8 +212,15 @@ export function AdminLayoutShell({ children, title, subtitle }: AdminLayoutShell
       badge: null
     },
     {
+      id: 'audit-logs',
+      label: 'Audit & Activity Logs',
+      href: '/admin/audit-logs',
+      icon: <History size={18} />,
+      badge: null
+    },
+    {
       id: 'settings',
-      label: 'Site Content & SEO',
+      label: 'Site Content & Settings',
       href: '/admin/settings',
       icon: <Settings size={18} />,
       badge: null

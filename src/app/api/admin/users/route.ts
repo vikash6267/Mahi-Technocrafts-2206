@@ -12,6 +12,17 @@ import {
   type AdminUser,
   type AdminRole
 } from '@/lib/admin-auth';
+import { createAuditLog } from '@/lib/audit-logger';
+
+function getIpAddress(request: Request): string {
+  const cfIp = request.headers.get('cf-connecting-ip');
+  if (cfIp) return cfIp.trim();
+  const realIp = request.headers.get('x-real-ip');
+  if (realIp) return realIp.trim();
+  const forwarded = request.headers.get('x-forwarded-for');
+  if (forwarded) return forwarded.split(',')[0].trim();
+  return '127.0.0.1';
+}
 
 // Helper to check if caller has permission to manage users
 async function canManageUsers() {
@@ -46,6 +57,10 @@ export async function POST(request: Request) {
     if (!authorized) {
       return NextResponse.json({ error: 'Unauthorized. Super Admin access required.' }, { status: 403 });
     }
+
+    const currentActor = await getAdminSessionUser();
+    const ip = getIpAddress(request);
+    const userAgent = request.headers.get('user-agent') || '';
 
     const body = await request.json();
     const username = String(body.username || '').trim().toLowerCase();
@@ -98,6 +113,25 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Database save failed.' }, { status: 500 });
     }
 
+    // Audit log
+    if (currentActor) {
+      await createAuditLog({
+        action: 'USER_CREATED',
+        category: 'USERS',
+        actor: {
+          id: currentActor.id,
+          username: currentActor.username,
+          name: currentActor.name,
+          role: currentActor.role
+        },
+        status: 'SUCCESS',
+        details: `Created new admin account "${name}" (@${username}) with role ${role.toUpperCase()} and ${newUser.permissions.length} permissions.`,
+        metadata: { targetUserId: newUser.id, role, permissions: newUser.permissions },
+        ip,
+        userAgent
+      });
+    }
+
     const { passwordHash: _, ...safeUser } = newUser;
     return NextResponse.json({
       success: true,
@@ -117,6 +151,10 @@ export async function PATCH(request: Request) {
       return NextResponse.json({ error: 'Unauthorized. Super Admin access required.' }, { status: 403 });
     }
 
+    const currentActor = await getAdminSessionUser();
+    const ip = getIpAddress(request);
+    const userAgent = request.headers.get('user-agent') || '';
+
     const body = await request.json();
     const id = String(body.id || '').trim();
 
@@ -128,8 +166,6 @@ export async function PATCH(request: Request) {
     if (!existing) {
       return NextResponse.json({ error: 'User not found' }, { status: 404 });
     }
-
-    const currentSession = await getAdminSessionUser();
 
     // Protection: Prevent demoting or deactivating main superadmin
     if (existing.username === 'superadmin') {
@@ -165,6 +201,25 @@ export async function PATCH(request: Request) {
       return NextResponse.json({ error: 'Failed to update user' }, { status: 500 });
     }
 
+    // Audit log
+    if (currentActor) {
+      await createAuditLog({
+        action: 'USER_UPDATED',
+        category: 'USERS',
+        actor: {
+          id: currentActor.id,
+          username: currentActor.username,
+          name: currentActor.name,
+          role: currentActor.role
+        },
+        status: 'SUCCESS',
+        details: `Updated administrative user account "${updated.name}" (@${updated.username}). Status: ${updated.active ? 'ACTIVE' : 'DEACTIVATED'}, Role: ${updated.role}.`,
+        metadata: { targetUserId: updated.id, role: updated.role, active: updated.active },
+        ip,
+        userAgent
+      });
+    }
+
     const { passwordHash: _, ...safeUser } = updated;
     return NextResponse.json({
       success: true,
@@ -184,6 +239,10 @@ export async function DELETE(request: Request) {
       return NextResponse.json({ error: 'Unauthorized. Super Admin access required.' }, { status: 403 });
     }
 
+    const currentActor = await getAdminSessionUser();
+    const ip = getIpAddress(request);
+    const userAgent = request.headers.get('user-agent') || '';
+
     const { searchParams } = new URL(request.url);
     const id = searchParams.get('id');
 
@@ -191,9 +250,30 @@ export async function DELETE(request: Request) {
       return NextResponse.json({ error: 'User ID is required' }, { status: 400 });
     }
 
+    const existingUser = await getAdminUserById(id);
+
     const result = await deleteAdminUser(id);
     if (!result.success) {
       return NextResponse.json({ error: result.message || 'Failed to delete user' }, { status: 400 });
+    }
+
+    // Audit log
+    if (currentActor && existingUser) {
+      await createAuditLog({
+        action: 'USER_DELETED',
+        category: 'USERS',
+        actor: {
+          id: currentActor.id,
+          username: currentActor.username,
+          name: currentActor.name,
+          role: currentActor.role
+        },
+        status: 'WARNING',
+        details: `Deleted user account "${existingUser.name}" (@${existingUser.username}, ${existingUser.role}).`,
+        metadata: { targetUserId: id, username: existingUser.username },
+        ip,
+        userAgent
+      });
     }
 
     return NextResponse.json({ success: true, message: 'User deleted successfully' });

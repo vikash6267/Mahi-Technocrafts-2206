@@ -81,9 +81,15 @@ export const ADMIN_PERMISSIONS: AdminPermissionDef[] = [
     href: '/admin/careers'
   },
   {
+    id: 'audit-logs',
+    label: 'Audit & Security Logs',
+    description: 'Track login history, IP addresses, security events, and administrative activities',
+    href: '/admin/audit-logs'
+  },
+  {
     id: 'settings',
-    label: 'Site Content & SEO',
-    description: 'Manage site settings, company details and SEO metadata',
+    label: 'Site Content & Settings',
+    description: 'Manage account security, password, 2FA MFA, site settings and SEO metadata',
     href: '/admin/settings'
   },
   {
