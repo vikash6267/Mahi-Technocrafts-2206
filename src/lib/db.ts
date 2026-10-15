@@ -849,22 +849,28 @@ export async function saveChatSession(session: Partial<ChatSession> & { sessionI
     const collection = db.collection('chat_sessions');
     const now = new Date().toISOString();
     
-    const updateDoc: any = {
-      ...session,
+    const { _id, createdAt, messages, ...restDoc } = session as any;
+
+    const setDoc: any = {
+      ...restDoc,
       updatedAt: now,
     };
-    
-    // Don't overwrite _id if it slipped in
-    delete updateDoc._id;
+    if (messages !== undefined) {
+      setDoc.messages = messages;
+    }
+
+    const setOnInsertDoc: any = {
+      createdAt: createdAt || session.createdAt || now,
+    };
+    if (messages === undefined) {
+      setOnInsertDoc.messages = [];
+    }
 
     await collection.updateOne(
       { sessionId: session.sessionId },
       { 
-        $set: updateDoc,
-        $setOnInsert: { 
-          createdAt: session.createdAt || now,
-          messages: session.messages || []
-        } 
+        $set: setDoc,
+        $setOnInsert: setOnInsertDoc
       },
       { upsert: true }
     );
@@ -923,17 +929,17 @@ export async function saveReminder(reminder: ClientReminder): Promise<boolean> {
     const collection = db.collection('client_reminders');
     const now = new Date().toISOString();
 
+    const { _id, createdAt, ...updateFields } = reminder as any;
     const doc: any = {
-      ...reminder,
+      ...updateFields,
       updatedAt: now,
     };
-    delete doc._id;
 
     await collection.updateOne(
       { id: reminder.id },
       {
         $set: doc,
-        $setOnInsert: { createdAt: reminder.createdAt || now }
+        $setOnInsert: { createdAt: createdAt || reminder.createdAt || now }
       },
       { upsert: true }
     );
@@ -1075,18 +1081,18 @@ export async function saveFinanceRecord(record: FinanceRecord): Promise<boolean>
     const collection = db.collection('finance_records');
     const now = new Date().toISOString();
 
+    const { _id, createdAt, ...updateFields } = record as any;
     const doc: any = {
-      ...record,
+      ...updateFields,
       amount: Number(record.amount) || 0,
       updatedAt: now,
     };
-    delete doc._id;
 
     await collection.updateOne(
       { id: record.id },
       {
         $set: doc,
-        $setOnInsert: { createdAt: record.createdAt || now }
+        $setOnInsert: { createdAt: createdAt || record.createdAt || now }
       },
       { upsert: true }
     );

@@ -187,7 +187,7 @@ export async function PATCH(request: Request) {
       amount: body.amount !== undefined ? String(body.amount).trim() : existing.amount,
       priority: body.priority || existing.priority,
       status: body.status || existing.status,
-      notifyClientEmail: body.notifyClientEmail !== undefined ? Boolean(body.notifyClientEmail) : existing.notifyClientEmail,
+      notifyClientEmail: false, // Strict requirement: Client receives NO reminder emails
       notifyAdminEmail: body.notifyAdminEmail !== undefined ? Boolean(body.notifyAdminEmail) : existing.notifyAdminEmail,
       notes: body.notes !== undefined ? String(body.notes).trim() : existing.notes,
       updatedAt: new Date().toISOString()
