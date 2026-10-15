@@ -74,21 +74,15 @@ export async function checkAndDispatchDueReminders() {
     if (dueReminders.length > 0) {
       console.log(`[Reminder Scheduler] Found ${dueReminders.length} due/overdue reminders to notify.`);
       for (const item of dueReminders) {
-        let sentAny = false;
-        if (item.notifyClientEmail && item.clientEmail) {
-          const sentClient = await sendClientReminderEmail({ reminder: item, recipientType: 'client' });
-          if (sentClient) sentAny = true;
-        }
-        if (item.notifyAdminEmail) {
+        // Admin-only reminder alerts per user requirement (no emails to client)
+        if (item.notifyAdminEmail !== false) {
           const sentAdmin = await sendClientReminderEmail({ reminder: item, recipientType: 'admin' });
-          if (sentAdmin) sentAny = true;
-        }
-
-        if (sentAny) {
-          item.status = 'notified';
-          item.lastNotifiedAt = new Date().toISOString();
-          await saveReminder(item);
-          console.log(`[Reminder Scheduler] Dispatched reminder notice for: "${item.title}"`);
+          if (sentAdmin) {
+            item.status = 'notified';
+            item.lastNotifiedAt = new Date().toISOString();
+            await saveReminder(item);
+            console.log(`[Reminder Scheduler] Dispatched reminder notice to Admin for: "${item.title}"`);
+          }
         }
       }
     }

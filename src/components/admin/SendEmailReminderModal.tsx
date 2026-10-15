@@ -17,7 +17,7 @@ export function SendEmailReminderModal({
   reminder,
   onSuccess
 }: SendEmailReminderModalProps) {
-  const [recipientType, setRecipientType] = useState<'client' | 'admin' | 'both'>('client');
+  const [recipientType] = useState<'admin'>('admin');
   const [customNote, setCustomNote] = useState('');
   const [isSending, setIsSending] = useState(false);
   const [error, setError] = useState('');
@@ -27,10 +27,6 @@ export function SendEmailReminderModal({
 
   const handleSend = async (e: React.FormEvent) => {
     e.preventDefault();
-    if ((recipientType === 'client' || recipientType === 'both') && !reminder.clientEmail) {
-      setError('Client does not have a valid email address on file.');
-      return;
-    }
 
     setIsSending(true);
     setError('');
@@ -43,14 +39,14 @@ export function SendEmailReminderModal({
         body: JSON.stringify({
           id: reminder.id,
           action: 'send_email',
-          recipientType,
+          recipientType: 'admin',
           customNote: customNote.trim()
         })
       });
 
       const data = await res.json();
       if (res.ok && data.success) {
-        setSuccessMsg(data.message || 'Reminder email dispatched successfully!');
+        setSuccessMsg(data.message || 'Reminder alert sent to Admin successfully!');
         if (data.reminder) {
           onSuccess(data.reminder);
         }
@@ -60,7 +56,7 @@ export function SendEmailReminderModal({
           setCustomNote('');
         }, 1200);
       } else {
-        setError(data.error || 'Failed to send email');
+        setError(data.error || 'Failed to send email to Admin');
       }
     } catch (err) {
       console.error('Error sending reminder email:', err);
@@ -86,10 +82,10 @@ export function SendEmailReminderModal({
             </div>
             <div>
               <span className="text-[10px] font-extrabold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">
-                Instant Dispatch
+                Admin Alert Dispatch
               </span>
               <h3 className="text-base font-bold text-slate-900 dark:text-white">
-                Send Reminder Email
+                Send Reminder Email to Admin
               </h3>
             </div>
           </div>
@@ -127,9 +123,9 @@ export function SendEmailReminderModal({
               <span className="flex items-center gap-1">
                 <User size={12} /> {reminder.clientName} {reminder.company ? `(${reminder.company})` : ''}
               </span>
-              <span className="flex items-center gap-1">
-                <Mail size={12} /> {reminder.clientEmail || 'No Email'}
-              </span>
+              {reminder.clientPhone && (
+                <span>• Phone: {reminder.clientPhone}</span>
+              )}
             </div>
             {reminder.amount && (
               <div className="text-[11px] font-bold text-emerald-600 dark:text-emerald-400 pt-1">
@@ -138,30 +134,18 @@ export function SendEmailReminderModal({
             )}
           </div>
 
-          {/* Recipient Selection */}
-          <div>
-            <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">
-              Send Email To:
-            </label>
-            <div className="grid grid-cols-3 gap-2">
-              {[
-                { id: 'client', label: 'Client Only', desc: reminder.clientEmail },
-                { id: 'both', label: 'Client & Admin', desc: 'Both receive' },
-                { id: 'admin', label: 'Admin Only', desc: 'Internal alert' }
-              ].map((t) => (
-                <button
-                  type="button"
-                  key={t.id}
-                  onClick={() => setRecipientType(t.id as any)}
-                  className={`p-2.5 rounded-xl border text-center transition-all ${
-                    recipientType === t.id
-                      ? 'border-indigo-500 bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 font-bold'
-                      : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400'
-                  }`}
-                >
-                  <p className="text-xs">{t.label}</p>
-                </button>
-              ))}
+          {/* Admin Recipient Notice */}
+          <div className="p-3.5 rounded-2xl bg-indigo-50/70 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-900/60 flex items-center gap-3">
+            <div className="w-9 h-9 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center shrink-0">
+              <Mail size={16} />
+            </div>
+            <div>
+              <p className="font-bold text-slate-900 dark:text-white text-xs">
+                Recipient: Admin Inbox
+              </p>
+              <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                vikasmaheshwari6267@gmail.com (No email will be sent to the client)
+              </p>
             </div>
           </div>
 

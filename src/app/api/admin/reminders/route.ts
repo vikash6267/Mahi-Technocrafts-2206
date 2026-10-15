@@ -36,10 +36,20 @@ export async function GET() {
   }
 }
 
+function normalizeDateString(dateStr: string): string {
+  if (!dateStr) return new Date().toISOString().slice(0, 10);
+  const trimmed = dateStr.trim();
+  const dmy = trimmed.match(/^(\d{1,2})[-/](\d{1,2})[-/](\d{4})$/);
+  if (dmy) {
+    return `${dmy[3]}-${dmy[2].padStart(2, '0')}-${dmy[1].padStart(2, '0')}`;
+  }
+  return trimmed;
+}
+
 export async function POST(request: Request) {
   const isAuth = await isAdminAuthenticated();
   if (!isAuth) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    return NextResponse.json({ error: 'Unauthorized: Admin session expired or invalid. Please re-login.' }, { status: 401 });
   }
 
   try {
@@ -49,16 +59,17 @@ export async function POST(request: Request) {
     const clientEmail = String(body.clientEmail || '').trim();
     const title = String(body.title || '').trim();
     const description = String(body.description || '').trim();
-    const dueDate = String(body.dueDate || '').trim();
+    const dueDateRaw = String(body.dueDate || '').trim();
     const category = (body.category || 'general') as ReminderCategory;
 
-    if (!clientName || !title || !dueDate) {
+    if (!clientName || !title || !dueDateRaw) {
       return NextResponse.json(
         { error: 'Client Name, Reminder Title, and Due Date are required.' },
         { status: 400 }
       );
     }
 
+    const dueDate = normalizeDateString(dueDateRaw);
     const now = new Date().toISOString();
     const reminder: ClientReminder = {
       id: randomUUID(),
@@ -76,7 +87,7 @@ export async function POST(request: Request) {
         ? body.priority
         : 'normal',
       status: 'pending',
-      notifyClientEmail: Boolean(body.notifyClientEmail ?? true),
+      notifyClientEmail: false, // Per user requirement: Client receives NO reminder emails
       notifyAdminEmail: Boolean(body.notifyAdminEmail ?? true),
       notes: String(body.notes || '').trim() || undefined,
       createdAt: now,
@@ -85,25 +96,16 @@ export async function POST(request: Request) {
 
     const saved = await saveReminder(reminder);
     if (!saved) {
-      return NextResponse.json({ error: 'Failed to save reminder' }, { status: 500 });
+      return NextResponse.json({ error: 'Database save failed. Please check MongoDB connection.' }, { status: 500 });
     }
 
-    // If immediate notification was requested
-    if (body.sendImmediateEmail) {
-      if (reminder.notifyClientEmail && reminder.clientEmail) {
-        await sendClientReminderEmail({
-          reminder,
-          recipientType: 'client',
-          customNote: body.customNote
-        });
-      }
-      if (reminder.notifyAdminEmail) {
-        await sendClientReminderEmail({
-          reminder,
-          recipientType: 'admin',
-          customNote: body.customNote
-        });
-      }
+    // If immediate notification was requested, send ONLY to Admin
+    if (body.sendImmediateEmail && reminder.notifyAdminEmail) {
+      await sendClientReminderEmail({
+        reminder,
+        recipientType: 'admin',
+        customNote: body.customNote
+      });
       reminder.status = 'notified';
       reminder.lastNotifiedAt = now;
       await saveReminder(reminder);
@@ -112,7 +114,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ success: true, reminder }, { status: 201 });
   } catch (error) {
     console.error('Error creating reminder:', error);
-    return NextResponse.json({ error: 'Failed to create reminder' }, { status: 500 });
+    return NextResponse.json({ error: 'Failed to create reminder: ' + (error instanceof Error ? error.message : 'Unknown error') }, { status: 500 });
   }
 }
 
@@ -135,42 +137,27 @@ export async function PATCH(request: Request) {
       return NextResponse.json({ error: 'Reminder not found' }, { status: 404 });
     }
 
-    // Action: Trigger manual email notification
+    // Action: Trigger manual email notification (Admin only)
     if (body.action === 'send_email') {
-      const recipientType = body.recipientType || 'client'; // 'client' | 'admin' | 'both'
-      let sentAny = false;
+      const adminSent = await sendClientReminderEmail({
+        reminder: existing,
+        recipientType: 'admin',
+        customNote: body.customNote
+      });
 
-      if ((recipientType === 'client' || recipientType === 'both') && existing.clientEmail) {
-        const clientSent = await sendClientReminderEmail({
-          reminder: existing,
-          recipientType: 'client',
-          customNote: body.customNote
-        });
-        if (clientSent) sentAny = true;
-      }
-
-      if (recipientType === 'admin' || recipientType === 'both') {
-        const adminSent = await sendClientReminderEmail({
-          reminder: existing,
-          recipientType: 'admin',
-          customNote: body.customNote
-        });
-        if (adminSent) sentAny = true;
-      }
-
-      if (sentAny) {
+      if (adminSent) {
         existing.status = 'notified';
         existing.lastNotifiedAt = new Date().toISOString();
         existing.updatedAt = new Date().toISOString();
         await saveReminder(existing);
         return NextResponse.json({
           success: true,
-          message: 'Reminder email sent successfully!',
+          message: 'Reminder alert email sent to Admin successfully!',
           reminder: existing
         });
       } else {
         return NextResponse.json(
-          { error: 'Failed to send email. Check SMTP settings or recipient email.' },
+          { error: 'Failed to send email to Admin. Check SMTP mail settings in .env.' },
           { status: 500 }
         );
       }

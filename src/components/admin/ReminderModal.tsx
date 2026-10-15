@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { X, Calendar, DollarSign, Mail, Phone, Building2, User, AlertCircle, Loader2, Send } from 'lucide-react';
+import { X, Calendar, DollarSign, Mail, Phone, Building2, User, AlertCircle, Loader2, Send, ShieldCheck } from 'lucide-react';
 import { ClientReminder, ReminderCategory } from '@/lib/db';
 
 interface ReminderModalProps {
@@ -9,6 +9,16 @@ interface ReminderModalProps {
   onClose: () => void;
   onSaved: (reminder: ClientReminder) => void;
   reminderToEdit?: ClientReminder | null;
+}
+
+function normalizeDueDate(val: string): string {
+  if (!val) return new Date().toISOString().slice(0, 10);
+  const trimmed = val.trim();
+  const dmyMatch = trimmed.match(/^(\d{1,2})[-/](\d{1,2})[-/](\d{4})$/);
+  if (dmyMatch) {
+    return `${dmyMatch[3]}-${dmyMatch[2].padStart(2, '0')}-${dmyMatch[1].padStart(2, '0')}`;
+  }
+  return trimmed;
 }
 
 export function ReminderModal({ isOpen, onClose, onSaved, reminderToEdit }: ReminderModalProps) {
@@ -24,7 +34,6 @@ export function ReminderModal({ isOpen, onClose, onSaved, reminderToEdit }: Remi
   const [dueDate, setDueDate] = useState('');
   const [amount, setAmount] = useState('');
   const [priority, setPriority] = useState<'low' | 'normal' | 'high' | 'urgent'>('normal');
-  const [notifyClientEmail, setNotifyClientEmail] = useState(true);
   const [notifyAdminEmail, setNotifyAdminEmail] = useState(true);
   const [sendImmediateEmail, setSendImmediateEmail] = useState(false);
   const [customNote, setCustomNote] = useState('');
@@ -56,7 +65,6 @@ export function ReminderModal({ isOpen, onClose, onSaved, reminderToEdit }: Remi
       setDueDate(reminderToEdit.dueDate || '');
       setAmount(reminderToEdit.amount || '');
       setPriority(reminderToEdit.priority || 'normal');
-      setNotifyClientEmail(reminderToEdit.notifyClientEmail ?? true);
       setNotifyAdminEmail(reminderToEdit.notifyAdminEmail ?? true);
       setNotes(reminderToEdit.notes || '');
       setSendImmediateEmail(false);
@@ -74,7 +82,6 @@ export function ReminderModal({ isOpen, onClose, onSaved, reminderToEdit }: Remi
       setDueDate(defaultDate);
       setAmount('');
       setPriority('normal');
-      setNotifyClientEmail(true);
       setNotifyAdminEmail(true);
       setSendImmediateEmail(false);
       setCustomNote('');
@@ -87,13 +94,9 @@ export function ReminderModal({ isOpen, onClose, onSaved, reminderToEdit }: Remi
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!clientName.trim() || !title.trim() || !dueDate) {
+    const cleanDueDate = normalizeDueDate(dueDate);
+    if (!clientName.trim() || !title.trim() || !cleanDueDate) {
       setError('Client Name, Title, and Due Date are required fields.');
-      return;
-    }
-
-    if (notifyClientEmail && !clientEmail.trim()) {
-      setError('Please provide Client Email to enable client email notifications.');
       return;
     }
 
@@ -103,17 +106,17 @@ export function ReminderModal({ isOpen, onClose, onSaved, reminderToEdit }: Remi
     try {
       const payload: any = {
         clientName: clientName.trim(),
-        clientEmail: clientEmail.trim(),
+        clientEmail: clientEmail.trim(), // Optional now
         clientPhone: clientPhone.trim(),
         company: company.trim(),
         title: title.trim(),
         description: description.trim(),
         category,
-        dueDate,
+        dueDate: cleanDueDate,
         amount: amount.trim(),
         priority,
-        notifyClientEmail,
-        notifyAdminEmail,
+        notifyClientEmail: false, // Per user requirement: Client receives NO emails
+        notifyAdminEmail: Boolean(notifyAdminEmail),
         notes: notes.trim(),
         sendImmediateEmail,
         customNote: customNote.trim()
@@ -255,13 +258,13 @@ export function ReminderModal({ isOpen, onClose, onSaved, reminderToEdit }: Remi
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-1.5">
-                Client Email (For Automated Reminders) *
+                Client Email (Optional)
               </label>
               <div className="relative">
                 <Mail size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
                 <input
                   type="email"
-                  placeholder="client@company.com"
+                  placeholder="client@company.com (optional)"
                   value={clientEmail}
                   onChange={(e) => setClientEmail(e.target.value)}
                   className="w-full pl-9 pr-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none focus:border-sky-500 transition-colors"
@@ -383,63 +386,57 @@ export function ReminderModal({ isOpen, onClose, onSaved, reminderToEdit }: Remi
             />
           </div>
 
-          {/* Email Notification Toggles */}
-          <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 space-y-3">
-            <span className="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400 block">
-              Automated Email Reminders
-            </span>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <label className="flex items-center gap-2.5 cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={notifyClientEmail}
-                  onChange={(e) => setNotifyClientEmail(e.target.checked)}
-                  className="rounded text-sky-600 focus:ring-sky-500"
-                />
-                <span className="text-slate-700 dark:text-slate-300">
-                  Send email reminder to <strong>Client</strong> on due date
+          {/* Email Notification Settings - ADMIN ONLY per user request */}
+          <div className="p-4 rounded-2xl bg-sky-50/70 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-900/60 space-y-3">
+            <div className="flex items-start gap-2.5">
+              <ShieldCheck size={18} className="text-sky-600 dark:text-sky-400 shrink-0 mt-0.5" />
+              <div>
+                <span className="text-xs font-bold text-slate-900 dark:text-white block">
+                  Admin-Only Email Reminder
                 </span>
-              </label>
+                <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">
+                  Reminder email alerts will be sent <strong>strictly to Admin</strong> (vikasmaheshwari6267@gmail.com). Client will <strong>never</strong> receive automated emails.
+                </p>
+              </div>
+            </div>
 
-              <label className="flex items-center gap-2.5 cursor-pointer">
+            <div className="pt-2.5 border-t border-sky-200/60 dark:border-sky-900/50 flex flex-col sm:flex-row gap-3">
+              <label className="flex items-center gap-2 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={notifyAdminEmail}
                   onChange={(e) => setNotifyAdminEmail(e.target.checked)}
                   className="rounded text-sky-600 focus:ring-sky-500"
                 />
-                <span className="text-slate-700 dark:text-slate-300">
-                  Send email alert to <strong>Admin</strong> on due date
+                <span className="text-xs font-bold text-slate-800 dark:text-slate-200">
+                  Send email alert to Admin on due date
                 </span>
               </label>
-            </div>
 
-            {/* Send immediate email checkbox */}
-            <div className="pt-2 border-t border-slate-200 dark:border-slate-800">
-              <label className="flex items-center gap-2.5 cursor-pointer text-indigo-600 dark:text-indigo-400 font-semibold">
+              <label className="flex items-center gap-2 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={sendImmediateEmail}
                   onChange={(e) => setSendImmediateEmail(e.target.checked)}
                   className="rounded text-indigo-600 focus:ring-indigo-500"
                 />
-                <span className="flex items-center gap-1.5">
-                  <Send size={13} />
-                  Also send courtesy email notice immediately right now
+                <span className="text-xs font-semibold text-indigo-700 dark:text-indigo-400 flex items-center gap-1">
+                  <Send size={12} /> Also send test reminder alert to Admin now
                 </span>
               </label>
-              {sendImmediateEmail && (
-                <div className="mt-2.5">
-                  <input
-                    type="text"
-                    placeholder="Optional short message note to include in email..."
-                    value={customNote}
-                    onChange={(e) => setCustomNote(e.target.value)}
-                    className="w-full px-3 py-2 rounded-xl border border-indigo-200 dark:border-indigo-900 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 text-xs"
-                  />
-                </div>
-              )}
             </div>
+
+            {sendImmediateEmail && (
+              <div className="mt-2.5">
+                <input
+                  type="text"
+                  placeholder="Optional short message note to include in email..."
+                  value={customNote}
+                  onChange={(e) => setCustomNote(e.target.value)}
+                  className="w-full px-3 py-2 rounded-xl border border-indigo-200 dark:border-indigo-900 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 text-xs"
+                />
+              </div>
+            )}
           </div>
 
           {/* Internal Private Notes */}
@@ -457,31 +454,40 @@ export function ReminderModal({ isOpen, onClose, onSaved, reminderToEdit }: Remi
           </div>
         </form>
 
-        {/* Footer Actions */}
-        <div className="p-5 border-t border-slate-100 dark:border-slate-800 flex items-center justify-end gap-3 bg-slate-50/50 dark:bg-slate-900/40">
-          <button
-            type="button"
-            onClick={onClose}
-            className="px-5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 font-bold text-xs transition-colors"
-          >
-            Cancel
-          </button>
+        {/* Footer Actions with Instant Error Display */}
+        <div className="p-4 sm:p-5 border-t border-slate-100 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-900/60">
+          {error && (
+            <div className="mb-3 p-3 rounded-xl bg-rose-50 dark:bg-rose-950/70 border border-rose-200 dark:border-rose-900 text-rose-700 dark:text-rose-400 text-xs flex items-center gap-2 animate-fadeIn">
+              <AlertCircle size={15} className="shrink-0 text-rose-600" />
+              <span className="font-semibold">{error}</span>
+            </div>
+          )}
 
-          <button
-            type="button"
-            disabled={isSubmitting}
-            onClick={handleSubmit}
-            className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 text-white font-bold text-xs shadow-md shadow-sky-600/25 flex items-center gap-2 transition-all disabled:opacity-50"
-          >
-            {isSubmitting ? (
-              <>
-                <Loader2 size={14} className="animate-spin" />
-                <span>Saving Reminder...</span>
-              </>
-            ) : (
-              <span>{isEditing ? 'Save Changes' : 'Create Reminder'}</span>
-            )}
-          </button>
+          <div className="flex items-center justify-end gap-3">
+            <button
+              type="button"
+              onClick={onClose}
+              className="px-5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 font-bold text-xs transition-colors cursor-pointer"
+            >
+              Cancel
+            </button>
+
+            <button
+              type="button"
+              disabled={isSubmitting}
+              onClick={handleSubmit}
+              className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 text-white font-bold text-xs shadow-md shadow-sky-600/25 flex items-center gap-2 transition-all disabled:opacity-50 cursor-pointer"
+            >
+              {isSubmitting ? (
+                <>
+                  <Loader2 size={14} className="animate-spin" />
+                  <span>Saving Reminder...</span>
+                </>
+              ) : (
+                <span>{isEditing ? 'Save Changes' : 'Create Reminder'}</span>
+              )}
+            </button>
+          </div>
         </div>
       </div>
     </div>
