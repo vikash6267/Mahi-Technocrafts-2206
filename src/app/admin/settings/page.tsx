@@ -83,17 +83,16 @@ export default function AdminSettingsPage() {
 
     // Fetch MFA Status
     fetchMfaStatus();
-
-    // Fetch Site Data
-    fetchSiteData();
   }, []);
 
-  // Fetch audit logs when switching to audit tab
+  // Fetch on-demand when switching tabs
   useEffect(() => {
     if (activeTab === 'audit') {
       fetchRecentAuditLogs();
+    } else if (activeTab === 'content' && !siteData) {
+      fetchSiteData();
     }
-  }, [activeTab]);
+  }, [activeTab, siteData]);
 
   const fetchMfaStatus = async () => {
     try {

@@ -32,7 +32,8 @@ export async function POST(request: Request) {
     const sessionId = body.sessionId || `ses_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
     const visitorId = body.visitorId || `vtr_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
 
-    const result = await recordVisit({
+    // Dispatch visit recording asynchronously in background without blocking the client response
+    recordVisit({
       visitId,
       sessionId,
       visitorId,
@@ -45,13 +46,12 @@ export async function POST(request: Request) {
       utmMedium: body.utmMedium ? String(body.utmMedium) : undefined,
       utmCampaign: body.utmCampaign ? String(body.utmCampaign) : undefined,
       adminSessionToken
-    });
+    }).catch((err) => console.error('[Visit Log Async Error]:', err));
 
     return NextResponse.json({
       success: true,
       visitId,
-      sessionId,
-      skipped: result.skipped
+      sessionId
     });
   } catch (error) {
     console.error('Error tracking visit:', error);

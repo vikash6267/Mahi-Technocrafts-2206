@@ -9,35 +9,67 @@ export function getMongoConfig() {
   return { uri, dbName };
 }
 
-// Caching connections across hot-reloads
-let cachedClient: MongoClient | null = null;
-let cachedDb: Db | null = null;
+declare global {
+  var _mongoClientPromise: Promise<MongoClient> | undefined;
+  var _mongoDb: Db | undefined;
+  var _indexesEnsured: boolean | undefined;
+  var _cachedSiteData: SiteData | null | undefined;
+  var _cachedApprovedReviews: ReviewItem[] | null | undefined;
+  var _cachedBlogs: BlogItem[] | null | undefined;
+  var _cachedBlogsTime: number | undefined;
+}
 
-// In-memory cache to completely bypass MongoDB Atlas connection latencies
-let cachedSiteData: SiteData | null = null;
-let cachedApprovedReviews: ReviewItem[] | null = null;
+// In-memory cache TTL (60 seconds)
+const CACHE_TTL_MS = 60 * 1000;
 let cachedAllReviews: ReviewItem[] | null = null;
-let cachedBlogs: BlogItem[] | null = null;
-let cachedBlogsTime = 0;
 let cachedCareers: CareerItem[] | null = null;
-const CACHE_TTL_MS = 30 * 1000; // 30 seconds TTL
 
-export async function connectToDatabase() {
-  if (cachedClient && cachedDb) {
-    return { client: cachedClient, db: cachedDb };
+async function ensureDbIndexes(db: Db) {
+  if (globalThis._indexesEnsured) return;
+  globalThis._indexesEnsured = true;
+  try {
+    db.collection('visit_logs').createIndex({ createdAt: -1 }, { background: true }).catch(() => {});
+    db.collection('visit_logs').createIndex({ updatedAt: -1 }, { background: true }).catch(() => {});
+    db.collection('visit_logs').createIndex({ visitorId: 1 }, { background: true }).catch(() => {});
+    db.collection('visit_logs').createIndex({ path: 1 }, { background: true }).catch(() => {});
+    db.collection('visit_logs').createIndex({ visitId: 1 }, { unique: true, background: true }).catch(() => {});
+
+    db.collection('admin_audit_logs').createIndex({ timestamp: -1 }, { background: true }).catch(() => {});
+    db.collection('admin_audit_logs').createIndex({ 'actor.username': 1 }, { background: true }).catch(() => {});
+    db.collection('admin_audit_logs').createIndex({ category: 1 }, { background: true }).catch(() => {});
+
+    db.collection('client_reminders').createIndex({ dueDate: 1, createdAt: -1 }, { background: true }).catch(() => {});
+    db.collection('client_reminders').createIndex({ status: 1 }, { background: true }).catch(() => {});
+  } catch {
+    // Non-blocking
+  }
+}
+
+export async function connectToDatabase(): Promise<{ client: MongoClient; db: Db }> {
+  const { uri, dbName } = getMongoConfig();
+
+  if (!globalThis._mongoClientPromise) {
+    const client = new MongoClient(uri, {
+      maxPoolSize: 30,
+      minPoolSize: 2,
+      maxIdleTimeMS: 60000,
+      serverSelectionTimeoutMS: 5000,
+      connectTimeoutMS: 5000,
+      socketTimeoutMS: 20000,
+    });
+    globalThis._mongoClientPromise = client.connect();
   }
 
   try {
-    const { uri, dbName } = getMongoConfig();
-    const client = await MongoClient.connect(uri, {
-      serverSelectionTimeoutMS: 15000,
-      connectTimeoutMS: 15000,
-    });
-    const db = client.db(dbName);
-    cachedClient = client;
-    cachedDb = db;
-    return { client, db };
+    const client = await globalThis._mongoClientPromise;
+    if (!globalThis._mongoDb) {
+      globalThis._mongoDb = client.db(dbName);
+      ensureDbIndexes(globalThis._mongoDb).catch(() => {});
+    }
+    return { client, db: globalThis._mongoDb };
   } catch (error) {
+    globalThis._mongoClientPromise = undefined;
+    globalThis._mongoDb = undefined;
     console.error('Failed to connect to MongoDB Atlas', error);
     throw new Error('Database connection failed');
   }
@@ -475,8 +507,8 @@ const defaultBlogs: BlogItem[] = [
 
 // Async MongoDB wrappers
 export async function getSiteData(): Promise<SiteData> {
-  if (cachedSiteData) {
-    return cachedSiteData;
+  if (globalThis._cachedSiteData) {
+    return globalThis._cachedSiteData;
   }
   try {
     const { db } = await connectToDatabase();
@@ -488,14 +520,14 @@ export async function getSiteData(): Promise<SiteData> {
       // Seed default content
       const seed = { _id: 'site_configs', ...defaultSiteData };
       await collection.insertOne(seed as any);
-      cachedSiteData = defaultSiteData;
+      globalThis._cachedSiteData = defaultSiteData;
       return defaultSiteData;
     }
     
     // Clean MongoDB _id before returning
     const { _id, ...cleanData } = data;
-    cachedSiteData = cleanData as unknown as SiteData;
-    return cachedSiteData;
+    globalThis._cachedSiteData = cleanData as unknown as SiteData;
+    return globalThis._cachedSiteData;
   } catch (error) {
     console.error('getSiteData failed, falling back to default site data:', error);
     return defaultSiteData;
@@ -512,7 +544,7 @@ export async function updateSiteData(data: SiteData): Promise<boolean> {
       { $set: data },
       { upsert: true }
     );
-    cachedSiteData = data; // Update cache
+    globalThis._cachedSiteData = data; // Update cache
     return true;
   } catch (error) {
     console.error('Error writing content to MongoDB', error);
@@ -522,27 +554,27 @@ export async function updateSiteData(data: SiteData): Promise<boolean> {
 
 export async function getBlogs(): Promise<BlogItem[]> {
   const now = Date.now();
-  if (cachedBlogs && (now - cachedBlogsTime < CACHE_TTL_MS)) {
-    return cachedBlogs;
+  if (globalThis._cachedBlogs && globalThis._cachedBlogsTime && (now - globalThis._cachedBlogsTime < CACHE_TTL_MS)) {
+    return globalThis._cachedBlogs;
   }
   try {
     const { db } = await connectToDatabase();
     const collection = db.collection('blogs');
     
     const blogs = await collection.find({}).sort({ publishedAt: -1 }).toArray();
-    cachedBlogs = blogs.map(({ _id, ...b }) => b) as unknown as BlogItem[];
-    cachedBlogsTime = now;
-    return cachedBlogs;
+    globalThis._cachedBlogs = blogs.map(({ _id, ...b }) => b) as unknown as BlogItem[];
+    globalThis._cachedBlogsTime = now;
+    return globalThis._cachedBlogs;
   } catch (error) {
     console.error('getBlogs failed, falling back to cached or default blogs:', error);
-    return cachedBlogs || defaultBlogs;
+    return globalThis._cachedBlogs || defaultBlogs;
   }
 }
 
 export async function getBlogBySlug(slug: string): Promise<BlogItem | null> {
   try {
-    if (cachedBlogs) {
-      const match = cachedBlogs.find(b => b.slug === slug);
+    if (globalThis._cachedBlogs) {
+      const match = globalThis._cachedBlogs.find(b => b.slug === slug);
       if (match) return match;
     }
     const { db } = await connectToDatabase();
@@ -570,7 +602,7 @@ export async function saveBlog(blog: BlogItem): Promise<boolean> {
       { $set: blog },
       { upsert: true }
     );
-    cachedBlogs = null; // Invalidate cache
+    globalThis._cachedBlogs = null; // Invalidate cache
     return true;
   } catch (error) {
     console.error('Error saving blog to MongoDB', error);
@@ -584,7 +616,7 @@ export async function deleteBlogBySlug(slug: string): Promise<boolean> {
     const collection = db.collection('blogs');
     
     const result = await collection.deleteOne({ slug });
-    cachedBlogs = null; // Invalidate cache
+    globalThis._cachedBlogs = null; // Invalidate cache
     return result.deletedCount > 0;
   } catch (error) {
     console.error('Error deleting blog from MongoDB', error);
@@ -669,8 +701,8 @@ export async function getReviews(): Promise<ReviewItem[]> {
 }
 
 export async function getApprovedReviews(): Promise<ReviewItem[]> {
-  if (cachedApprovedReviews) {
-    return cachedApprovedReviews;
+  if (globalThis._cachedApprovedReviews) {
+    return globalThis._cachedApprovedReviews;
   }
   try {
     const { db } = await connectToDatabase();
@@ -679,13 +711,13 @@ export async function getApprovedReviews(): Promise<ReviewItem[]> {
     const reviews = await collection.find({ status: 'approved' }).toArray();
     if (reviews.length === 0) {
       const allReviews = await getReviews();
-      cachedApprovedReviews = allReviews.filter(r => r.status === 'approved' && !isSampleReview(r));
-      return cachedApprovedReviews;
+      globalThis._cachedApprovedReviews = allReviews.filter(r => r.status === 'approved' && !isSampleReview(r));
+      return globalThis._cachedApprovedReviews;
     }
-    cachedApprovedReviews = reviews
+    globalThis._cachedApprovedReviews = reviews
       .map(({ _id, ...r }) => r as unknown as ReviewItem)
       .filter((review) => !isSampleReview(review));
-    return cachedApprovedReviews;
+    return globalThis._cachedApprovedReviews;
   } catch (error) {
     console.error('getApprovedReviews failed, falling back to defaults:', error);
     return defaultReviews.filter(r => r.status === 'approved');
@@ -702,8 +734,7 @@ export async function saveReview(review: ReviewItem): Promise<boolean> {
       { $set: review },
       { upsert: true }
     );
-    cachedAllReviews = null; // Invalidate cache
-    cachedApprovedReviews = null; // Invalidate cache
+    globalThis._cachedApprovedReviews = null; // Invalidate cache
     return true;
   } catch (error) {
     console.error('Error saving review to MongoDB', error);
@@ -721,7 +752,7 @@ export async function updateReviewStatus(id: string, status: 'pending' | 'approv
       { $set: { status } }
     );
     cachedAllReviews = null; // Invalidate cache
-    cachedApprovedReviews = null; // Invalidate cache
+    globalThis._cachedApprovedReviews = null; // Invalidate cache
     return result.modifiedCount > 0;
   } catch (error) {
     console.error('Error updating review status', error);
@@ -736,7 +767,7 @@ export async function deleteReviewById(id: string): Promise<boolean> {
     
     const result = await collection.deleteOne({ id });
     cachedAllReviews = null; // Invalidate cache
-    cachedApprovedReviews = null; // Invalidate cache
+    globalThis._cachedApprovedReviews = null; // Invalidate cache
     return result.deletedCount > 0;
   } catch (error) {
     console.error('Error deleting review from MongoDB', error);
@@ -989,8 +1020,8 @@ export async function markReminderStatus(
   }
 }
 
-export async function getReminderStats() {
-  const all = await getReminders();
+export async function getReminderStats(existingList?: ClientReminder[]) {
+  const all = existingList || (await getReminders());
   const todayStr = new Date().toISOString().slice(0, 10);
   const sevenDaysLater = new Date(Date.now() + 7 * 86400000).toISOString().slice(0, 10);
 

@@ -66,8 +66,8 @@ export async function generateMetadata({ params }: PageProps) {
   };
 }
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
+export const revalidate = 60;
+
 
 export default async function BlogDetailPage({ params }: PageProps) {
   const { slug } = await params;

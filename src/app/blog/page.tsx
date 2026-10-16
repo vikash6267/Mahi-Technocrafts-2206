@@ -23,8 +23,7 @@ export const metadata = {
   }
 };
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
+export const revalidate = 60; // ISR cache for instant load times
 
 export default async function BlogPage() {
   const blogs = await getBlogs();

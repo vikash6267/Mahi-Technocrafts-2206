@@ -71,7 +71,7 @@ const STATE_NAMES: Record<string, string> = {
   PY: 'Puducherry'
 };
 
-const geoCache = new Map<string, { country: string; state: string; city: string }>();
+const geoCache = ((globalThis as any)._geoCache = (globalThis as any)._geoCache || new Map<string, { country: string; state: string; city: string }>());
 
 export function isPrivateIp(ip: string): boolean {
   if (!ip) return true;
@@ -84,11 +84,12 @@ export function isPrivateIp(ip: string): boolean {
 
 /**
  * Resolves Geolocation (Country, State, City) from IP
+ * Uses global in-memory cache and 600ms fast timeout to eliminate latency.
  */
 export async function resolveGeo(ip: string): Promise<{ country: string; state: string; city: string }> {
-  const cleanIp = ip.replace(/^::ffff:/, '').trim();
+  const cleanIp = (ip || '').replace(/^::ffff:/, '').trim();
 
-  if (isPrivateIp(cleanIp)) {
+  if (!cleanIp || isPrivateIp(cleanIp)) {
     return { country: 'India', state: 'Madhya Pradesh', city: 'Bhopal (Local Test)' };
   }
 
@@ -97,40 +98,27 @@ export async function resolveGeo(ip: string): Promise<{ country: string; state: 
   }
 
   let country = 'India';
-  let state = 'Other / Unspecified';
-  let city = 'Other / Unspecified';
+  let state = 'Madhya Pradesh';
+  let city = 'Bhopal';
 
   try {
     const res = await fetch(`http://ip-api.com/json/${cleanIp}?fields=status,country,region,regionName,city`, {
-      signal: AbortSignal.timeout(2500)
+      signal: AbortSignal.timeout(600)
     });
     if (res.ok) {
       const data = await res.json();
       if (data && data.status === 'success') {
         country = data.country || 'India';
         state = data.regionName || STATE_NAMES[data.region?.toUpperCase()] || data.region || 'Madhya Pradesh';
-        city = data.city || 'Other';
+        city = data.city || 'Bhopal';
       }
     }
   } catch {
-    // Secondary fallback to ipwho.is
-    try {
-      const res2 = await fetch(`https://ipwho.is/${cleanIp}`, { signal: AbortSignal.timeout(2500) });
-      if (res2.ok) {
-        const data2 = await res2.json();
-        if (data2 && data2.success) {
-          country = data2.country || 'India';
-          state = data2.region || 'Other';
-          city = data2.city || 'Other';
-        }
-      }
-    } catch {
-      // offline fallback
-    }
+    // Return fast fallback without secondary blocking delay
   }
 
   const result = { country, state, city };
-  if (geoCache.size > 5000) geoCache.clear();
+  if (geoCache.size > 10000) geoCache.clear();
   geoCache.set(cleanIp, result);
   return result;
 }

@@ -105,7 +105,8 @@ export default function AdminDashboardPage() {
 
       if (contactsRes.ok) {
         const cData = await contactsRes.json();
-        setRecentContacts((cData.contacts || []).slice(0, 5));
+        const list = Array.isArray(cData) ? cData : (cData.contacts || []);
+        setRecentContacts(list.slice(0, 5));
       }
 
       if (blogsRes.ok) {

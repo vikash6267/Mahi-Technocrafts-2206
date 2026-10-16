@@ -172,6 +172,8 @@ export function maskEmail(email?: string): string {
   return `${local.slice(0, 2)}***${local.slice(-1)}@${domain}`;
 }
 
+let isSuperAdminEnsured = false;
+
 /**
  * Ensures the default superadmin user exists in MongoDB.
  * Username: superadmin
@@ -179,18 +181,24 @@ export function maskEmail(email?: string): string {
  * Name: Founder Account
  * Email: vikasmaheshwari6267@gmail.com
  */
-export async function ensureSuperAdmin(): Promise<AdminUser | null> {
+export async function ensureSuperAdmin(force = false): Promise<AdminUser | null> {
   try {
     const { db } = await connectToDatabase();
     const collection = db.collection<AdminUser>('admin_users');
+
+    if (isSuperAdminEnsured && !force) {
+      const cached = await collection.findOne({ username: 'superadmin' });
+      if (cached) return cached;
+    }
+
     const existing = await collection.findOne({ username: 'superadmin' });
-    const passwordHash = hashPassword('Mahi@2025');
     const allPermissions = ADMIN_PERMISSIONS.map((p) => p.id);
     const founderName = 'Founder Account';
     const founderEmail = 'vikasmaheshwari6267@gmail.com';
 
     if (!existing) {
       const now = new Date().toISOString();
+      const passwordHash = hashPassword('Mahi@2025');
       const superadmin: AdminUser = {
         id: 'user_superadmin_master',
         username: 'superadmin',
@@ -204,19 +212,21 @@ export async function ensureSuperAdmin(): Promise<AdminUser | null> {
         updatedAt: now
       };
       await collection.insertOne(superadmin as any);
+      isSuperAdminEnsured = true;
       console.log('[Admin Auth] Default Super-Admin (Founder Account) seeded successfully.');
       return superadmin;
     }
 
-    // Ensure password matches Mahi@2025, name is Founder Account, email is vikasmaheshwari6267@gmail.com
+    // Only verify & update password if name, email, or active state changed or force check
     const needsUpdate =
-      !verifyPassword('Mahi@2025', existing.passwordHash) ||
+      force ||
       existing.name !== founderName ||
       existing.email !== founderEmail ||
       existing.active === false ||
       existing.role !== 'superadmin';
 
     if (needsUpdate) {
+      const passwordHash = hashPassword('Mahi@2025');
       await collection.updateOne(
         { username: 'superadmin' },
         {
@@ -240,6 +250,7 @@ export async function ensureSuperAdmin(): Promise<AdminUser | null> {
       console.log('[Admin Auth] Super-Admin updated to Founder Account with credentials Mahi@2025.');
     }
 
+    isSuperAdminEnsured = true;
     return existing;
   } catch (error) {
     console.error('[Admin Auth] ensureSuperAdmin error:', error);

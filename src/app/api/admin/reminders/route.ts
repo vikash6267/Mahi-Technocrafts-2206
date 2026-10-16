@@ -20,10 +20,8 @@ export async function GET() {
   }
 
   try {
-    const [reminders, stats] = await Promise.all([
-      getReminders(),
-      getReminderStats()
-    ]);
+    const reminders = await getReminders();
+    const stats = await getReminderStats(reminders);
 
     return NextResponse.json({
       success: true,
