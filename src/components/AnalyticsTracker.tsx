@@ -95,28 +95,50 @@ function AnalyticsTrackerContent() {
 
     const fullPath = pathname + (searchParams?.toString() ? `?${searchParams.toString()}` : '');
 
-    // 1. Post Visit Telemetry
-    fetch('/api/analytics/track-visit', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        visitorId,
-        sessionId,
-        path: fullPath,
-        pageTitle: document.title || 'Mahi Technocrafts',
-        referrer: document.referrer || 'Direct',
-        utmSource: utm.source || undefined,
-        utmMedium: utm.medium || undefined,
-        utmCampaign: utm.campaign || undefined
+    // 1. Post Visit Telemetry with client IP detection fallback
+    const sendVisit = (detectedIp?: string) => {
+      fetch('/api/analytics/track-visit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          visitorId,
+          sessionId,
+          path: fullPath,
+          pageTitle: document.title || 'Mahi Technocrafts',
+          referrer: document.referrer || 'Direct',
+          utmSource: utm.source || undefined,
+          utmMedium: utm.medium || undefined,
+          utmCampaign: utm.campaign || undefined,
+          clientIp: detectedIp || sessionStorage.getItem('mt_client_ip') || undefined
+        })
       })
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success && !data.skipped) {
-          currentVisitIdRef.current = data.visitId;
-        }
-      })
-      .catch(() => {});
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.success && !data.skipped) {
+            currentVisitIdRef.current = data.visitId;
+          }
+        })
+        .catch(() => {});
+    };
+
+    const existingIp = sessionStorage.getItem('mt_client_ip');
+    if (existingIp) {
+      sendVisit(existingIp);
+    } else {
+      fetch('https://api.ipify.org?format=json', { signal: AbortSignal.timeout(1200) })
+        .then((r) => r.json())
+        .then((d) => {
+          if (d?.ip) {
+            sessionStorage.setItem('mt_client_ip', d.ip);
+            sendVisit(d.ip);
+          } else {
+            sendVisit();
+          }
+        })
+        .catch(() => {
+          sendVisit();
+        });
+    }
 
     // 2. Active Tab-Aware Dwell Time Heartbeat (Every 15 Seconds)
     if (heartbeatTimerRef.current) clearInterval(heartbeatTimerRef.current);

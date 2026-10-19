@@ -330,6 +330,7 @@ export default function AdminAnalyticsPage() {
                     <thead>
                       <tr className="border-b border-slate-100 dark:border-slate-800 text-[10px] font-extrabold uppercase tracking-wider text-slate-400">
                         <th className="py-2.5 px-3">Location</th>
+                        <th className="py-2.5 px-3">IP Address</th>
                         <th className="py-2.5 px-3">Page Visited</th>
                         <th className="py-2.5 px-3">Device / Browser</th>
                         <th className="py-2.5 px-3">Referrer</th>
@@ -343,10 +344,22 @@ export default function AdminAnalyticsPage() {
                             <div className="flex items-center gap-1.5">
                               <MapPin size={12} className="text-rose-500 shrink-0" />
                               <span className="font-bold text-slate-800 dark:text-slate-200">
-                                {log.city !== 'Other / Unspecified' ? log.city : log.state}
+                                {log.city && log.city !== 'Other / Unspecified' && log.city !== 'Unspecified'
+                                  ? log.city
+                                  : log.state && log.state !== 'Other / Unspecified' && log.state !== 'Unspecified'
+                                  ? log.state
+                                  : 'Unknown'}
                               </span>
                             </div>
-                            <p className="text-[10px] text-slate-400 pl-4">{log.country}</p>
+                            <p className="text-[10px] text-slate-400 pl-4">
+                              {log.state && log.state !== log.city && log.state !== 'Unspecified' ? `${log.state}, ` : ''}
+                              {log.country || 'India'}
+                            </p>
+                          </td>
+                          <td className="py-3 px-3">
+                            <span className="inline-flex items-center px-2 py-0.5 rounded-md font-mono text-[11px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                              {log.ip || '—'}
+                            </span>
                           </td>
                           <td className="py-3 px-3 font-mono text-sky-600 dark:text-sky-400 max-w-xs truncate">
                             {log.path}

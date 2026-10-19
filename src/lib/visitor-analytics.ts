@@ -79,45 +79,130 @@ export function isPrivateIp(ip: string): boolean {
   if (clean === '127.0.0.1' || clean === '::1' || clean === 'localhost') return true;
   if (/^10\./.test(clean) || /^192\.168\./.test(clean) || /^127\./.test(clean)) return true;
   if (/^172\.(1[6-9]|2[0-9]|3[0-1])\./.test(clean)) return true;
+  if (clean === '0.0.0.0' || clean === '::') return true;
   return false;
+}
+
+let cachedDevPublicIp: string | null = null;
+let lastDevIpFetchTime = 0;
+
+/**
+ * Fetch dev / server WAN IP when running on localhost or private network
+ */
+export async function getDevPublicIp(): Promise<string | null> {
+  const now = Date.now();
+  if (cachedDevPublicIp && now - lastDevIpFetchTime < 3600000) {
+    return cachedDevPublicIp;
+  }
+  try {
+    const res = await fetch('https://api.ipify.org?format=json', {
+      signal: AbortSignal.timeout(2500)
+    });
+    if (res.ok) {
+      const data = await res.json();
+      if (data && data.ip && !isPrivateIp(data.ip)) {
+        cachedDevPublicIp = String(data.ip).trim();
+        lastDevIpFetchTime = now;
+        return cachedDevPublicIp;
+      }
+    }
+  } catch {
+    // Silent catch
+  }
+  return cachedDevPublicIp || null;
 }
 
 /**
  * Resolves Geolocation (Country, State, City) from IP
- * Uses global in-memory cache and 600ms fast timeout to eliminate latency.
+ * Uses global in-memory cache and reliable multi-provider failover.
  */
 export async function resolveGeo(ip: string): Promise<{ country: string; state: string; city: string }> {
-  const cleanIp = (ip || '').replace(/^::ffff:/, '').trim();
+  let cleanIp = (ip || '').replace(/^::ffff:/, '').trim();
 
-  if (!cleanIp || isPrivateIp(cleanIp)) {
-    return { country: 'India', state: 'Madhya Pradesh', city: 'Bhopal (Local Test)' };
+  // If IP is localhost or private, attempt resolving real WAN IP
+  if (isPrivateIp(cleanIp)) {
+    const devIp = await getDevPublicIp();
+    if (devIp) {
+      cleanIp = devIp;
+    }
   }
 
+  // 1. Check in-memory cache
   if (geoCache.has(cleanIp)) {
     return geoCache.get(cleanIp)!;
   }
 
-  let country = 'India';
-  let state = 'Madhya Pradesh';
-  let city = 'Bhopal';
+  // If still private IP (e.g. completely offline machine)
+  if (isPrivateIp(cleanIp)) {
+    return { country: 'India', state: 'Dev Environment', city: 'Localhost' };
+  }
 
+  let countryName = '';
+  let stateName = '';
+  let cityName = '';
+
+  // Provider 1: ip-api.com (primary)
   try {
     const res = await fetch(`http://ip-api.com/json/${cleanIp}?fields=status,country,region,regionName,city`, {
-      signal: AbortSignal.timeout(600)
+      signal: AbortSignal.timeout(2500)
     });
     if (res.ok) {
       const data = await res.json();
       if (data && data.status === 'success') {
-        country = data.country || 'India';
-        state = data.regionName || STATE_NAMES[data.region?.toUpperCase()] || data.region || 'Madhya Pradesh';
-        city = data.city || 'Bhopal';
+        countryName = data.country || '';
+        stateName = data.regionName || STATE_NAMES[data.region?.toUpperCase()] || data.region || '';
+        cityName = data.city || '';
       }
     }
   } catch {
-    // Return fast fallback without secondary blocking delay
+    // try fallback
   }
 
-  const result = { country, state, city };
+  // Provider 2: ipwho.is (secondary fallback)
+  if (!cityName || !stateName) {
+    try {
+      const res = await fetch(`https://ipwho.is/${cleanIp}`, {
+        signal: AbortSignal.timeout(2500)
+      });
+      if (res.ok) {
+        const data = await res.json();
+        if (data && data.success) {
+          countryName = data.country || countryName || 'India';
+          stateName = data.region || stateName || '';
+          cityName = data.city || cityName || '';
+        }
+      }
+    } catch {
+      // try tertiary fallback
+    }
+  }
+
+  // Provider 3: freeipapi.com (tertiary fallback)
+  if (!cityName || !stateName) {
+    try {
+      const res = await fetch(`https://freeipapi.com/api/json/${cleanIp}`, {
+        signal: AbortSignal.timeout(2500)
+      });
+      if (res.ok) {
+        const data = await res.json();
+        if (data) {
+          countryName = data.countryName || countryName || 'India';
+          stateName = data.regionName || stateName || '';
+          cityName = data.cityName || cityName || '';
+        }
+      }
+    } catch {
+      // fallback
+    }
+  }
+
+  // Final fallback values: never falsely attribute to Bhopal or hardcoded fake test labels
+  const result = {
+    country: countryName || 'India',
+    state: stateName || 'Unspecified',
+    city: cityName || 'Unspecified'
+  };
+
   if (geoCache.size > 10000) geoCache.clear();
   geoCache.set(cleanIp, result);
   return result;
@@ -135,7 +220,7 @@ export function parseUserAgent(uaString: string): {
   const ua = (uaString || '').toLowerCase();
 
   // Bot detection
-  const botRegex = /googlebot|bingbot|slurp|duckduckbot|baiduspider|yandexbot|sogou|exabot|facebookexternalhit|facebot|ia_archiver|twitterbot|linkedinbot|crawler|spider|robot/i;
+  const botRegex = /googlebot|bingbot|slurp|duckduckbot|baiduspider|yandexbot|sogou|exabot|facebookexternalhit|facebot|ia_archiver|twitterbot|linkedinbot|\bcrawler\b|\bspider\b|\brobot\b/i;
   const isBot = botRegex.test(ua);
 
   // Device detection
@@ -196,8 +281,15 @@ export async function recordVisit(data: {
     const { db } = await connectToDatabase();
     const collection = db.collection<VisitLog>('visit_logs');
 
+    // Resolve real IP: fallback to server WAN IP if request arrived with private/localhost IP
+    let finalIp = (data.ip || '').replace(/^::ffff:/, '').trim();
+    if (isPrivateIp(finalIp)) {
+      const devIp = await getDevPublicIp();
+      if (devIp) finalIp = devIp;
+    }
+
     const uaInfo = parseUserAgent(data.ua);
-    const geo = await resolveGeo(data.ip);
+    const geo = await resolveGeo(finalIp);
     const now = new Date().toISOString();
 
     const visitDoc: VisitLog = {
@@ -207,7 +299,7 @@ export async function recordVisit(data: {
       path: data.path,
       pageTitle: data.pageTitle || 'Mahi Technocrafts',
       referrer: data.referrer && data.referrer !== '' ? data.referrer : 'Direct',
-      ip: isPrivateIp(data.ip) ? '127.0.0.1' : data.ip,
+      ip: finalIp,
       country: geo.country,
       state: geo.state,
       city: geo.city,
