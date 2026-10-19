@@ -666,6 +666,18 @@ export async function updateContactStatus(id: string, status: 'read' | 'unread' 
   }
 }
 
+export async function deleteContact(id: string): Promise<boolean> {
+  try {
+    const { db } = await connectToDatabase();
+    const collection = db.collection('contacts');
+    const result = await collection.deleteOne({ id });
+    return result.deletedCount > 0;
+  } catch (error) {
+    console.error('Error deleting inquiry from MongoDB', error);
+    return false;
+  }
+}
+
 // Never seed sample testimonials as if they were customer feedback.
 const defaultReviews: ReviewItem[] = [];
 

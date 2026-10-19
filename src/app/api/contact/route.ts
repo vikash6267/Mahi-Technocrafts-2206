@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getContacts, saveContact, updateContactStatus, ContactSubmission } from '@/lib/db';
+import { getContacts, saveContact, updateContactStatus, deleteContact, ContactSubmission } from '@/lib/db';
 import { isAdminAuthenticated } from '@/lib/portal';
 import { sendContactNotification } from '@/lib/email';
 
@@ -100,6 +100,33 @@ export async function PATCH(request: Request) {
     }
   } catch (error) {
     console.error('Contact PATCH API error', error);
+    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+  }
+}
+
+export async function DELETE(request: Request) {
+  try {
+    const isAuth = await checkAuth();
+    if (!isAuth) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const { searchParams } = new URL(request.url);
+    const id = searchParams.get('id');
+
+    if (!id) {
+      return NextResponse.json({ error: 'ID is required' }, { status: 400 });
+    }
+
+    const success = await deleteContact(id);
+
+    if (success) {
+      return NextResponse.json({ success: true, message: 'Inquiry deleted successfully' });
+    } else {
+      return NextResponse.json({ error: 'Failed to delete inquiry or submission not found' }, { status: 404 });
+    }
+  } catch (error) {
+    console.error('Contact DELETE API error', error);
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }

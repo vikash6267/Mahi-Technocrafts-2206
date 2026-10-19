@@ -37,7 +37,8 @@ export default function AdminContactsPage() {
       const res = await fetch('/api/contact');
       if (res.ok) {
         const data = await res.json();
-        setContacts(data.contacts || []);
+        const list = Array.isArray(data) ? data : (data.contacts || []);
+        setContacts(list);
       }
     } catch (err) {
       console.error('Failed to fetch contacts:', err);
