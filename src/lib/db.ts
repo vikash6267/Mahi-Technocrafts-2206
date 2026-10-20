@@ -274,6 +274,106 @@ export interface FinanceStats {
   }>;
 }
 
+// ---------------------------------------------------------------------------
+// Client Proposals & Quotations Engine
+// ---------------------------------------------------------------------------
+
+export interface ProposalItem {
+  id: string;
+  name: string;
+  description?: string;
+  qty: number;
+  rate: number;
+  amount: number;
+}
+
+export interface ProposalMilestone {
+  phase: string;
+  duration: string;
+  deliverables: string;
+  percentage: number;
+}
+
+export interface ProposalTerms {
+  paymentTerms: string[];
+  warrantySupport: string;
+  validityDays: number;
+  clientObligations: string[];
+  extraClauses?: string[];
+}
+
+export interface ClientProposal {
+  id: string;
+  proposalNumber: string; // e.g. "MTC-2026-001"
+  title: string;
+  category:
+    | 'web_development'
+    | 'mobile_app'
+    | 'ecommerce'
+    | 'custom_software'
+    | 'digital_marketing'
+    | 'seo_branding'
+    | 'maintenance_amc'
+    | 'other';
+  status: 'draft' | 'sent' | 'accepted' | 'declined';
+
+  // Client Details
+  clientName: string;
+  clientCompany?: string;
+  clientEmail?: string;
+  clientPhone?: string;
+  clientAddress?: string;
+
+  // Company Issuer Details
+  companyName: string;
+  companyTagline?: string;
+  companyAddress: string;
+  companyEmail: string;
+  companyPhone: string;
+  companyWebsite: string;
+  companyGst?: string;
+
+  // Dates
+  proposalDate: string; // YYYY-MM-DD
+  validUntil: string; // YYYY-MM-DD
+
+  // Narrative Content
+  overview: string;
+  scopeOfWork: string[];
+  techStack?: {
+    frontend?: string[];
+    backend?: string[];
+    database?: string[];
+    cloudHosting?: string[];
+    tools?: string[];
+  };
+
+  // Pricing & Commercials
+  currency: 'INR' | 'USD';
+  items: ProposalItem[];
+  subtotal: number;
+  discount: number;
+  taxRate: number; // e.g. 18 for 18% GST or 0
+  taxAmount: number;
+  grandTotal: number;
+
+  // Schedule & Milestones
+  projectDuration: string;
+  milestones: ProposalMilestone[];
+
+  // Terms & Conditions
+  terms: ProposalTerms;
+
+  // Signatures
+  signatoryName: string;
+  signatoryDesignation: string;
+  clientSignatoryName?: string;
+
+  notes?: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
 // Blog interfaces matching Tiptap content and Advanced SEO parameters
 export interface BlogFAQ {
   q: string;
@@ -1288,6 +1388,98 @@ export async function getFinanceStats(): Promise<FinanceStats> {
       categoryBreakdown: { income: {}, expense: {} },
       monthlyTrend: [],
     };
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Client Proposals & Quotations Database Methods
+// ---------------------------------------------------------------------------
+
+export async function getProposals(): Promise<ClientProposal[]> {
+  try {
+    const { db } = await connectToDatabase();
+    const collection = db.collection('client_proposals');
+    const list = await collection.find({}).sort({ updatedAt: -1, createdAt: -1 }).toArray();
+    return list.map(({ _id, ...p }) => p) as unknown as ClientProposal[];
+  } catch (error) {
+    console.error('getProposals failed:', error);
+    return [];
+  }
+}
+
+export async function getProposalById(id: string): Promise<ClientProposal | null> {
+  try {
+    const { db } = await connectToDatabase();
+    const collection = db.collection('client_proposals');
+    const doc = await collection.findOne({ id });
+    if (!doc) return null;
+    const { _id, ...rest } = doc;
+    return rest as unknown as ClientProposal;
+  } catch (error) {
+    console.error('getProposalById failed:', error);
+    return null;
+  }
+}
+
+export async function saveProposal(proposal: ClientProposal): Promise<boolean> {
+  try {
+    const { db } = await connectToDatabase();
+    const collection = db.collection('client_proposals');
+    const now = new Date().toISOString();
+
+    const { _id, createdAt, ...updateFields } = proposal as any;
+    const doc: any = {
+      ...updateFields,
+      subtotal: Number(proposal.subtotal) || 0,
+      discount: Number(proposal.discount) || 0,
+      taxRate: Number(proposal.taxRate) || 0,
+      taxAmount: Number(proposal.taxAmount) || 0,
+      grandTotal: Number(proposal.grandTotal) || 0,
+      updatedAt: now,
+    };
+
+    await collection.updateOne(
+      { id: proposal.id },
+      {
+        $set: doc,
+        $setOnInsert: { createdAt: createdAt || proposal.createdAt || now }
+      },
+      { upsert: true }
+    );
+    return true;
+  } catch (error) {
+    console.error('saveProposal failed:', error);
+    return false;
+  }
+}
+
+export async function deleteProposal(id: string): Promise<boolean> {
+  try {
+    const { db } = await connectToDatabase();
+    const collection = db.collection('client_proposals');
+    const res = await collection.deleteOne({ id });
+    return res.deletedCount > 0;
+  } catch (error) {
+    console.error('deleteProposal failed:', error);
+    return false;
+  }
+}
+
+export async function updateProposalStatus(
+  id: string,
+  status: ClientProposal['status']
+): Promise<boolean> {
+  try {
+    const { db } = await connectToDatabase();
+    const collection = db.collection('client_proposals');
+    const res = await collection.updateOne(
+      { id },
+      { $set: { status, updatedAt: new Date().toISOString() } }
+    );
+    return res.matchedCount > 0;
+  } catch (error) {
+    console.error('updateProposalStatus failed:', error);
+    return false;
   }
 }
 

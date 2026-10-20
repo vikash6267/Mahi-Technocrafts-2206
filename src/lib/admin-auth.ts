@@ -39,6 +39,12 @@ export const ADMIN_PERMISSIONS: AdminPermissionDef[] = [
     href: '/admin/finance'
   },
   {
+    id: 'proposals',
+    label: 'Client Proposals',
+    description: 'Create, customize, preview, and download professional client proposals and quotations as PDF',
+    href: '/admin/proposals'
+  },
+  {
     id: 'blogs',
     label: 'Blogs & AI Writer',
     description: 'Publish, edit blogs and use autonomous AI blog generator',

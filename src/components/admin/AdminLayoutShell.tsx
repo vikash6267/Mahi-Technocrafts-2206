@@ -32,7 +32,8 @@ import {
   ShieldAlert,
   Lock,
   ArrowRight,
-  History
+  History,
+  FileSignature
 } from 'lucide-react';
 import { ReminderModal } from './ReminderModal';
 import { ClientReminder } from '@/lib/db';
@@ -161,6 +162,17 @@ export function AdminLayoutShell({ children, title, subtitle }: AdminLayoutShell
       href: '/admin/finance',
       icon: <Wallet size={18} />,
       badge: null
+    },
+    {
+      id: 'proposals',
+      label: 'Client Proposals',
+      href: '/admin/proposals',
+      icon: <FileSignature size={18} />,
+      badge: (
+        <span className="px-1.5 py-0.2 rounded text-[9px] font-bold bg-amber-500/10 dark:bg-amber-500/20 text-amber-600 dark:text-amber-400 border border-amber-200 dark:border-amber-800">
+          PDF
+        </span>
+      )
     },
     {
       id: 'blogs',
