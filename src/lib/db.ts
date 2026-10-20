@@ -302,6 +302,23 @@ export interface ProposalTerms {
   extraClauses?: string[];
 }
 
+export interface ProposalDisplayOptions {
+  showLogo?: boolean;
+  showCompanyDetails?: boolean;
+  showGst?: boolean;
+  showClientDetails?: boolean;
+  showOverview?: boolean;
+  showScopeOfWork?: boolean;
+  showTechStack?: boolean;
+  showPricingTable?: boolean;
+  showMilestones?: boolean;
+  showTermsAndConditions?: boolean;
+  showSignatures?: boolean;
+  showCompanySignatory?: boolean;
+  showClientSignatory?: boolean;
+  showCopyrightFooter?: boolean;
+}
+
 export interface ClientProposal {
   id: string;
   proposalNumber: string; // e.g. "MTC-2026-001"
@@ -331,6 +348,7 @@ export interface ClientProposal {
   companyEmail: string;
   companyPhone: string;
   companyWebsite: string;
+  companyLogoUrl?: string;
   companyGst?: string;
 
   // Dates
@@ -368,6 +386,9 @@ export interface ClientProposal {
   signatoryName: string;
   signatoryDesignation: string;
   clientSignatoryName?: string;
+
+  // Section Display Toggles
+  displayOptions?: ProposalDisplayOptions;
 
   notes?: string;
   createdAt: string;

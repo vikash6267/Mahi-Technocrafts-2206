@@ -7,9 +7,158 @@ export const DEFAULT_COMPANY_DETAILS = {
   companyEmail: 'contact@mahitechnocrafts.in',
   companyPhone: '+91 62671 44122',
   companyWebsite: 'https://mahitechnocrafts.in',
+  companyLogoUrl: '/logo.png',
   companyGst: '',
   signatoryName: 'Vikash Maheshwari',
   signatoryDesignation: 'Founder & Technical Director'
+};
+
+export const DEFAULT_DISPLAY_OPTIONS = {
+  showLogo: true,
+  showCompanyDetails: true,
+  showGst: true,
+  showClientDetails: true,
+  showOverview: true,
+  showScopeOfWork: true,
+  showTechStack: true,
+  showPricingTable: true,
+  showMilestones: true,
+  showTermsAndConditions: true,
+  showSignatures: true,
+  showCompanySignatory: true,
+  showClientSignatory: true,
+  showCopyrightFooter: true
+};
+
+export const SAMPLE_PROPOSAL_JSON = {
+  proposalNumber: "MTC-PROP-2026-1088",
+  title: "Full-Stack Web Portal & E-Commerce Application",
+  category: "web_development",
+  status: "sent",
+  clientName: "Rajesh Kumar",
+  clientCompany: "Apex Innovations Pvt Ltd",
+  clientEmail: "rajesh@apexinnovations.in",
+  clientPhone: "+91 98765 43210",
+  clientAddress: "Zone-II, MP Nagar, Bhopal, MP - 462011",
+  companyName: "Mahi TechnoCrafts",
+  companyTagline: "Engineering Digital Excellence & Scalable Software",
+  companyAddress: "Hamidia Rd, Badabagh, Shahjahanabad, Bhopal, Madhya Pradesh, India - 462001",
+  companyEmail: "contact@mahitechnocrafts.in",
+  companyPhone: "+91 62671 44122",
+  companyWebsite: "https://mahitechnocrafts.in",
+  companyLogoUrl: "/logo.png",
+  companyGst: "",
+  proposalDate: "2026-10-20",
+  validUntil: "2026-11-05",
+  overview: "Mahi TechnoCrafts proposes designing and engineering an enterprise-grade digital web portal with sub-second page speeds, seamless payment gateway integrations, and self-service administrative controls.",
+  scopeOfWork: [
+    "Complete UI/UX Figma wireframes & interactive prototypes",
+    "Next.js 16 high-performance responsive web application",
+    "Secure REST APIs & role-based authentication (RBAC)",
+    "Payment Gateway integration (Razorpay / UPI / Cards)",
+    "Admin Dashboard for user management & live analytics",
+    "Cloud VPS deployment, SSL certificate & daily backups"
+  ],
+  techStack: {
+    frontend: ["Next.js 16", "React 19", "Tailwind CSS"],
+    backend: ["Node.js", "Server Actions", "REST APIs"],
+    database: ["MongoDB Atlas", "Redis Cache"],
+    cloudHosting: ["AWS / Cloud VPS", "Cloudflare CDN", "SSL"]
+  },
+  currency: "INR",
+  items: [
+    {
+      id: "item_1",
+      name: "UI/UX Architecture & Figma Prototype",
+      description: "User journey mapping, mobile-first responsive wireframes and design system.",
+      qty: 1,
+      rate: 15000,
+      amount: 15000
+    },
+    {
+      id: "item_2",
+      name: "Frontend Application Engineering",
+      description: "Next.js responsive web application, fast page transitions and customer portal.",
+      qty: 1,
+      rate: 30000,
+      amount: 30000
+    },
+    {
+      id: "item_3",
+      name: "Backend APIs & Payment Gateway",
+      description: "Secure database, Razorpay integration, automated PDF invoices and alerts.",
+      qty: 1,
+      rate: 20000,
+      amount: 20000
+    },
+    {
+      id: "item_4",
+      name: "Deployment, SSL & Speed Optimization",
+      description: "Production server setup, SSL security, CDN and Google 90+ score optimization.",
+      qty: 1,
+      rate: 10000,
+      amount: 10000
+    }
+  ],
+  subtotal: 75000,
+  discount: 5000,
+  taxRate: 18,
+  taxAmount: 12600,
+  grandTotal: 82600,
+  projectDuration: "4 to 6 Weeks",
+  milestones: [
+    {
+      phase: "Phase 1: Architecture & UI/UX Sign-off",
+      duration: "Week 1 - 2",
+      deliverables: "Technical blueprint, database schema, and Figma layout approval.",
+      percentage: 30
+    },
+    {
+      phase: "Phase 2: Core Development & Integration",
+      duration: "Week 3 - 4",
+      deliverables: "Frontend screens, backend APIs, client portal, and payment sandbox.",
+      percentage: 40
+    },
+    {
+      phase: "Phase 3: QA, Beta Staging & Go-Live",
+      duration: "Week 5 - 6",
+      deliverables: "Security testing, production rollout, and staff training.",
+      percentage: 30
+    }
+  ],
+  terms: {
+    paymentTerms: [
+      "30% Advance deposit upon contract signing to initiate project.",
+      "40% Milestone payment upon demonstration of core development on staging.",
+      "30% Final balance payment before production deployment and code handover."
+    ],
+    warrantySupport: "90 Days complimentary post-launch technical warranty covering bug fixes.",
+    validityDays: 15,
+    clientObligations: [
+      "Provide brand assets, images, and content in a timely manner.",
+      "Designate a single primary point of contact for milestone approvals."
+    ]
+  },
+  signatoryName: "Vikash Maheshwari",
+  signatoryDesignation: "Founder & Technical Director",
+  clientSignatoryName: "Rajesh Kumar",
+  displayOptions: {
+    showLogo: true,
+    showCompanyDetails: true,
+    showGst: false,
+    showClientDetails: true,
+    showOverview: true,
+    showScopeOfWork: true,
+    showTechStack: true,
+    showPricingTable: true,
+    showMilestones: true,
+    showTermsAndConditions: true,
+    showSignatures: true,
+    showCompanySignatory: true,
+    showClientSignatory: true,
+    showCopyrightFooter: true
+  },
+  notes: "All intellectual property rights will be transferred upon final invoice settlement."
 };
 
 /**

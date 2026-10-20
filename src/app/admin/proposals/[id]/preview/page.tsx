@@ -13,11 +13,13 @@ import {
   Loader2,
   Send,
   MessageCircle,
-  FileText
+  FileText,
+  Download
 } from 'lucide-react';
 import { ClientProposal } from '@/lib/db';
 import { ProposalDocument } from '@/components/admin/ProposalDocument';
 import { ProposalEditorModal } from '@/components/admin/ProposalEditorModal';
+import { downloadProposalPdf } from '@/lib/pdf-generator';
 
 export default function ProposalPreviewPage() {
   const params = useParams();
@@ -29,6 +31,8 @@ export default function ProposalPreviewPage() {
   const [errorMsg, setErrorMsg] = useState('');
   const [isCopied, setIsCopied] = useState(false);
   const [isEditorOpen, setIsEditorOpen] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
+  const [downloadStatus, setDownloadStatus] = useState('');
 
   const fetchProposal = async () => {
     if (!id) return;
@@ -52,6 +56,23 @@ export default function ProposalPreviewPage() {
   const handlePrint = () => {
     if (typeof window !== 'undefined') {
       window.print();
+    }
+  };
+
+  const handleDownloadPdf = async () => {
+    if (!proposal || isDownloading) return;
+    setIsDownloading(true);
+    setDownloadStatus('Generating PDF...');
+    try {
+      const fileName = `${proposal.proposalNumber || 'Proposal'}_${(proposal.clientName || 'Client').replace(/\s+/g, '_')}.pdf`;
+      await downloadProposalPdf('proposal-document', fileName, (status) => {
+        setDownloadStatus(status);
+      });
+    } catch (err) {
+      console.error('Download PDF failed:', err);
+    } finally {
+      setIsDownloading(false);
+      setDownloadStatus('');
     }
   };
 
@@ -174,13 +195,33 @@ export default function ProposalPreviewPage() {
             <span>WhatsApp</span>
           </button>
 
-          {/* Primary Action: Download PDF / Print */}
+          {/* Secondary Action: Print */}
           <button
             onClick={handlePrint}
-            className="px-4 py-2 rounded-xl bg-sky-600 hover:bg-sky-500 text-white text-xs font-black flex items-center gap-2 shadow-md shadow-sky-600/20 transition-all cursor-pointer"
+            className="px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-bold flex items-center gap-1.5 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors cursor-pointer"
+            title="Open browser print dialogue"
           >
-            <Printer size={15} />
-            <span>Download PDF / Print</span>
+            <Printer size={13} />
+            <span className="hidden sm:inline">Print</span>
+          </button>
+
+          {/* Primary Action: Direct PDF Download */}
+          <button
+            onClick={handleDownloadPdf}
+            disabled={isDownloading}
+            className="px-4 py-2 rounded-xl bg-sky-600 hover:bg-sky-500 text-white text-xs font-black flex items-center gap-2 shadow-md shadow-sky-600/20 transition-all cursor-pointer disabled:opacity-50"
+          >
+            {isDownloading ? (
+              <>
+                <Loader2 size={15} className="animate-spin" />
+                <span>{downloadStatus || 'Exporting PDF...'}</span>
+              </>
+            ) : (
+              <>
+                <Download size={15} />
+                <span>Download PDF</span>
+              </>
+            )}
           </button>
         </div>
       </div>

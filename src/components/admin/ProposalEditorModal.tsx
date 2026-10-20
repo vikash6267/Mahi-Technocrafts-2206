@@ -10,14 +10,20 @@ import {
   Layers,
   CreditCard,
   Calendar,
-  FileText,
   Building2,
-  Check,
-  ChevronRight
+  ChevronRight,
+  SlidersHorizontal,
+  Code,
+  Copy,
+  CheckCheck,
+  Eye,
+  CheckCircle2
 } from 'lucide-react';
-import { ClientProposal, ProposalItem, ProposalMilestone } from '@/lib/db';
+import { ClientProposal, ProposalItem, ProposalMilestone, ProposalDisplayOptions } from '@/lib/db';
 import {
   DEFAULT_COMPANY_DETAILS,
+  DEFAULT_DISPLAY_OPTIONS,
+  SAMPLE_PROPOSAL_JSON,
   PROPOSAL_TEMPLATES,
   generateProposalNumber
 } from '@/lib/proposal-templates';
@@ -35,9 +41,15 @@ export function ProposalEditorModal({
   proposal,
   onSaved
 }: ProposalEditorModalProps) {
-  const [activeTab, setActiveTab] = useState<'client' | 'scope' | 'pricing' | 'timeline'>('client');
+  const [activeTab, setActiveTab] = useState<'client' | 'scope' | 'pricing' | 'timeline' | 'display'>('client');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
+
+  // JSON Import & Paste Modal State
+  const [isJsonModalOpen, setIsJsonModalOpen] = useState(false);
+  const [jsonInputText, setJsonInputText] = useState('');
+  const [jsonError, setJsonError] = useState('');
+  const [copiedSample, setCopiedSample] = useState(false);
 
   // Form State
   const [formData, setFormData] = useState<Partial<ClientProposal>>({
@@ -57,6 +69,7 @@ export function ProposalEditorModal({
     companyPhone: DEFAULT_COMPANY_DETAILS.companyPhone,
     companyWebsite: DEFAULT_COMPANY_DETAILS.companyWebsite,
     companyGst: DEFAULT_COMPANY_DETAILS.companyGst,
+    companyLogoUrl: DEFAULT_COMPANY_DETAILS.companyLogoUrl,
     proposalDate: new Date().toISOString().slice(0, 10),
     validUntil: new Date(Date.now() + 15 * 86400000).toISOString().slice(0, 10),
     overview: '',
@@ -84,7 +97,8 @@ export function ProposalEditorModal({
     signatoryName: DEFAULT_COMPANY_DETAILS.signatoryName,
     signatoryDesignation: DEFAULT_COMPANY_DETAILS.signatoryDesignation,
     clientSignatoryName: '',
-    notes: ''
+    notes: '',
+    displayOptions: { ...DEFAULT_DISPLAY_OPTIONS }
   });
 
   // Scope of work string for multi-line editing
@@ -92,7 +106,10 @@ export function ProposalEditorModal({
 
   useEffect(() => {
     if (proposal) {
-      setFormData(proposal);
+      setFormData({
+        ...proposal,
+        displayOptions: { ...DEFAULT_DISPLAY_OPTIONS, ...(proposal.displayOptions || {}) }
+      });
       setScopeString((proposal.scopeOfWork || []).join('\n'));
     } else {
       // Default to Web Development Template
@@ -105,7 +122,8 @@ export function ProposalEditorModal({
         clientEmail: '',
         clientPhone: '',
         clientAddress: '',
-        clientSignatoryName: ''
+        clientSignatoryName: '',
+        displayOptions: { ...DEFAULT_DISPLAY_OPTIONS }
       });
       setScopeString((defaultTemplate.scopeOfWork || []).join('\n'));
     }
@@ -141,7 +159,8 @@ export function ProposalEditorModal({
     setFormData({
       ...formData,
       ...tpl,
-      ...currentClient
+      ...currentClient,
+      displayOptions: { ...DEFAULT_DISPLAY_OPTIONS, ...(formData.displayOptions || {}) }
     });
     setScopeString((tpl.scopeOfWork || []).join('\n'));
   };
@@ -198,6 +217,72 @@ export function ProposalEditorModal({
       ...formData,
       milestones: (formData.milestones || []).filter((_, i) => i !== index)
     });
+  };
+
+  // Toggle display option checkbox
+  const handleToggleDisplayOption = (key: keyof ProposalDisplayOptions) => {
+    setFormData((prev) => ({
+      ...prev,
+      displayOptions: {
+        ...DEFAULT_DISPLAY_OPTIONS,
+        ...(prev.displayOptions || {}),
+        [key]: !((prev.displayOptions || {})[key] ?? true)
+      }
+    }));
+  };
+
+  // JSON Import & Apply logic
+  const handleApplyJson = () => {
+    setJsonError('');
+    if (!jsonInputText.trim()) {
+      setJsonError('Please paste a JSON object first.');
+      return;
+    }
+
+    try {
+      const parsed = JSON.parse(jsonInputText);
+      if (typeof parsed !== 'object' || parsed === null) {
+        throw new Error('Pasted content is not a valid JSON object.');
+      }
+
+      // Merge with defaults
+      const items = Array.isArray(parsed.items) ? parsed.items : formData.items || [];
+      const discount = typeof parsed.discount === 'number' ? parsed.discount : (formData.discount || 0);
+      const taxRate = typeof parsed.taxRate === 'number' ? parsed.taxRate : (formData.taxRate ?? 18);
+      const totals = calculateTotals(items, discount, taxRate);
+
+      const mergedData: Partial<ClientProposal> = {
+        ...formData,
+        ...parsed,
+        items,
+        ...totals,
+        displayOptions: {
+          ...DEFAULT_DISPLAY_OPTIONS,
+          ...(formData.displayOptions || {}),
+          ...(parsed.displayOptions || {})
+        }
+      };
+
+      setFormData(mergedData);
+      if (Array.isArray(parsed.scopeOfWork)) {
+        setScopeString(parsed.scopeOfWork.join('\n'));
+      }
+      setIsJsonModalOpen(false);
+      setJsonInputText('');
+    } catch (err: any) {
+      setJsonError(`JSON Syntax Error: ${err.message}`);
+    }
+  };
+
+  const handleCopySampleJson = () => {
+    navigator.clipboard.writeText(JSON.stringify(SAMPLE_PROPOSAL_JSON, null, 2));
+    setCopiedSample(true);
+    setTimeout(() => setCopiedSample(false), 2000);
+  };
+
+  const handleLoadSampleIntoTextarea = () => {
+    setJsonInputText(JSON.stringify(SAMPLE_PROPOSAL_JSON, null, 2));
+    setJsonError('');
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -266,12 +351,31 @@ export function ProposalEditorModal({
               Sequence-wise official business proposal with company header, pricing schedule & PDF export
             </p>
           </div>
-          <button
-            onClick={onClose}
-            className="w-8 h-8 rounded-full border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-500 hover:text-slate-800 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
-          >
-            <X size={16} />
-          </button>
+
+          <div className="flex items-center gap-2">
+            {/* Paste JSON Button */}
+            <button
+              type="button"
+              onClick={() => {
+                setJsonInputText('');
+                setJsonError('');
+                setIsJsonModalOpen(true);
+              }}
+              className="px-3 py-1.5 rounded-xl border border-sky-300 dark:border-sky-800 bg-sky-50 dark:bg-sky-950/50 text-sky-700 dark:text-sky-300 text-xs font-bold hover:bg-sky-100 dark:hover:bg-sky-900/50 flex items-center gap-1.5 transition-all cursor-pointer shadow-xs"
+              title="Paste raw JSON or load template"
+            >
+              <Code size={14} />
+              <span className="hidden sm:inline">Paste / Import JSON</span>
+              <span className="sm:hidden">JSON</span>
+            </button>
+
+            <button
+              onClick={onClose}
+              className="w-8 h-8 rounded-full border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-500 hover:text-slate-800 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+            >
+              <X size={16} />
+            </button>
+          </div>
         </div>
 
         {/* Quick Template Selector (If new proposal) */}
@@ -304,7 +408,8 @@ export function ProposalEditorModal({
             { id: 'client', label: '1. Client & Info', icon: Building2 },
             { id: 'scope', label: '2. Scope & Tech Stack', icon: Layers },
             { id: 'pricing', label: '3. Pricing Schedule', icon: CreditCard },
-            { id: 'timeline', label: '4. Timeline & Terms', icon: Calendar }
+            { id: 'timeline', label: '4. Timeline & Terms', icon: Calendar },
+            { id: 'display', label: '5. Display Toggles', icon: SlidersHorizontal }
           ].map((tab) => {
             const Icon = tab.icon;
             return (
@@ -491,6 +596,63 @@ export function ProposalEditorModal({
                     placeholder="e.g. Sector 5, Bhopal, Madhya Pradesh - 462001"
                     className="w-full mt-1 px-3 py-2 text-xs rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
                   />
+                </div>
+              </div>
+
+              {/* Company Details (Customizable) */}
+              <div className="p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/30 space-y-3">
+                <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400 block">
+                  Issuing Company Profile (Defaults to Mahi TechnoCrafts)
+                </span>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <label className="text-[11px] font-bold text-slate-700 dark:text-slate-300">Company Name</label>
+                    <input
+                      type="text"
+                      value={formData.companyName || ''}
+                      onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
+                      className="w-full mt-1 px-3 py-2 text-xs rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-[11px] font-bold text-slate-700 dark:text-slate-300">Tagline</label>
+                    <input
+                      type="text"
+                      value={formData.companyTagline || ''}
+                      onChange={(e) => setFormData({ ...formData, companyTagline: e.target.value })}
+                      className="w-full mt-1 px-3 py-2 text-xs rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900"
+                    />
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <div>
+                    <label className="text-[11px] font-bold text-slate-700 dark:text-slate-300">Company Phone</label>
+                    <input
+                      type="text"
+                      value={formData.companyPhone || ''}
+                      onChange={(e) => setFormData({ ...formData, companyPhone: e.target.value })}
+                      className="w-full mt-1 px-3 py-2 text-xs rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-[11px] font-bold text-slate-700 dark:text-slate-300">Company Email</label>
+                    <input
+                      type="text"
+                      value={formData.companyEmail || ''}
+                      onChange={(e) => setFormData({ ...formData, companyEmail: e.target.value })}
+                      className="w-full mt-1 px-3 py-2 text-xs rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-[11px] font-bold text-slate-700 dark:text-slate-300">GSTIN Number</label>
+                    <input
+                      type="text"
+                      value={formData.companyGst || ''}
+                      onChange={(e) => setFormData({ ...formData, companyGst: e.target.value })}
+                      placeholder="e.g. 23AAAAA0000A1Z5"
+                      className="w-full mt-1 px-3 py-2 text-xs rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -848,7 +1010,7 @@ export function ProposalEditorModal({
                 </div>
               </div>
 
-              {/* Warranty and Terms */}
+              {/* Warranty and Signatory */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase">
@@ -870,7 +1032,7 @@ export function ProposalEditorModal({
 
                 <div>
                   <label className="text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase">
-                    Authorized Signatory Name
+                    Company Authorized Signatory
                   </label>
                   <input
                     type="text"
@@ -878,6 +1040,34 @@ export function ProposalEditorModal({
                     onChange={(e) => setFormData({ ...formData, signatoryName: e.target.value })}
                     placeholder="Vikash Maheshwari"
                     className="w-full mt-1 px-3 py-2 text-xs rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-bold"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase">
+                    Signatory Designation
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.signatoryDesignation || ''}
+                    onChange={(e) => setFormData({ ...formData, signatoryDesignation: e.target.value })}
+                    placeholder="Founder & Technical Director"
+                    className="w-full mt-1 px-3 py-2 text-xs rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900"
+                  />
+                </div>
+
+                <div>
+                  <label className="text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase">
+                    Client Authorized Signatory Name
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.clientSignatoryName || ''}
+                    onChange={(e) => setFormData({ ...formData, clientSignatoryName: e.target.value })}
+                    placeholder="Leave blank to use Client Name"
+                    className="w-full mt-1 px-3 py-2 text-xs rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900"
                   />
                 </div>
               </div>
@@ -897,6 +1087,134 @@ export function ProposalEditorModal({
             </div>
           )}
 
+          {/* TAB 5: DISPLAY OPTIONS & TOGGLES */}
+          {activeTab === 'display' && (
+            <div className="space-y-4 animate-in fade-in duration-150">
+              <div className="p-3.5 rounded-2xl bg-sky-50 dark:bg-sky-950/30 border border-sky-100 dark:border-sky-900/40 text-xs text-sky-800 dark:text-sky-300 leading-relaxed">
+                <strong>Custom Document View:</strong> Select which sections, logos, signatures, and terms appear on the generated client proposal & downloaded PDF.
+              </div>
+
+              {/* Group 1: Company Branding */}
+              <div className="p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/30 space-y-3">
+                <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400 block">
+                  Company Branding & Header
+                </span>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  {[
+                    { key: 'showLogo' as const, label: 'Company Logo', desc: 'Display Mahi TechnoCrafts official logo in header' },
+                    { key: 'showCompanyDetails' as const, label: 'Company Details', desc: 'Company name, tagline, email, phone & website' },
+                    { key: 'showGst' as const, label: 'GSTIN Number', desc: 'Include company GST identification number' },
+                    { key: 'showCompanySignatory' as const, label: 'Mahi TechnoCrafts Signatory', desc: 'Founder signature stamp, name & designation' }
+                  ].map((opt) => {
+                    const isChecked = (formData.displayOptions as any)?.[opt.key] !== false;
+                    return (
+                      <label
+                        key={opt.key}
+                        onClick={() => handleToggleDisplayOption(opt.key)}
+                        className={`p-3 rounded-xl border transition-all cursor-pointer flex items-start gap-3 select-none ${
+                          isChecked
+                            ? 'bg-white dark:bg-slate-850 border-sky-500/60 shadow-xs'
+                            : 'bg-white/50 dark:bg-slate-900/50 border-slate-200 dark:border-slate-800 opacity-60'
+                        }`}
+                      >
+                        <input
+                          type="checkbox"
+                          checked={isChecked}
+                          onChange={() => {}}
+                          className="mt-0.5 rounded text-sky-600 focus:ring-sky-500 h-4 w-4"
+                        />
+                        <div className="text-xs">
+                          <span className="font-bold text-slate-900 dark:text-white block">{opt.label}</span>
+                          <span className="text-[11px] text-slate-500 dark:text-slate-400">{opt.desc}</span>
+                        </div>
+                      </label>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Group 2: Client & Project Info */}
+              <div className="p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/30 space-y-3">
+                <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400 block">
+                  Client & Project Content
+                </span>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  {[
+                    { key: 'showClientDetails' as const, label: 'Client Info Card', desc: '"Prepared Exclusively For" client contact block' },
+                    { key: 'showOverview' as const, label: 'Executive Summary', desc: 'Project overview paragraph and value proposition' },
+                    { key: 'showScopeOfWork' as const, label: 'Scope of Work', desc: 'Architectural deliverables & bullet points' },
+                    { key: 'showTechStack' as const, label: 'Technology Stack', desc: 'Frontend, backend, DB & cloud stack badges' }
+                  ].map((opt) => {
+                    const isChecked = (formData.displayOptions as any)?.[opt.key] !== false;
+                    return (
+                      <label
+                        key={opt.key}
+                        onClick={() => handleToggleDisplayOption(opt.key)}
+                        className={`p-3 rounded-xl border transition-all cursor-pointer flex items-start gap-3 select-none ${
+                          isChecked
+                            ? 'bg-white dark:bg-slate-850 border-sky-500/60 shadow-xs'
+                            : 'bg-white/50 dark:bg-slate-900/50 border-slate-200 dark:border-slate-800 opacity-60'
+                        }`}
+                      >
+                        <input
+                          type="checkbox"
+                          checked={isChecked}
+                          onChange={() => {}}
+                          className="mt-0.5 rounded text-sky-600 focus:ring-sky-500 h-4 w-4"
+                        />
+                        <div className="text-xs">
+                          <span className="font-bold text-slate-900 dark:text-white block">{opt.label}</span>
+                          <span className="text-[11px] text-slate-500 dark:text-slate-400">{opt.desc}</span>
+                        </div>
+                      </label>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Group 3: Commercials & Authorization */}
+              <div className="p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/30 space-y-3">
+                <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400 block">
+                  Commercials, Legal & Signatures
+                </span>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  {[
+                    { key: 'showPricingTable' as const, label: 'Pricing Table & Schedule', desc: 'Tabular itemized fees, subtotal, tax & grand total' },
+                    { key: 'showMilestones' as const, label: 'Milestones & Timeline', desc: 'Phase breakdown cards, durations & percentage' },
+                    { key: 'showTermsAndConditions' as const, label: 'Terms & Warranty SLA', desc: 'Payment milestones & 90-day technical support warranty' },
+                    { key: 'showSignatures' as const, label: 'Signatures Area', desc: 'Entire dual authorization and acceptance block' },
+                    { key: 'showClientSignatory' as const, label: 'Client Acceptance Stamp', desc: 'Signature line for client authorization' },
+                    { key: 'showCopyrightFooter' as const, label: 'Copyright & Confidentiality', desc: 'Legal confidentiality disclaimer and company address' }
+                  ].map((opt) => {
+                    const isChecked = (formData.displayOptions as any)?.[opt.key] !== false;
+                    return (
+                      <label
+                        key={opt.key}
+                        onClick={() => handleToggleDisplayOption(opt.key)}
+                        className={`p-3 rounded-xl border transition-all cursor-pointer flex items-start gap-3 select-none ${
+                          isChecked
+                            ? 'bg-white dark:bg-slate-850 border-sky-500/60 shadow-xs'
+                            : 'bg-white/50 dark:bg-slate-900/50 border-slate-200 dark:border-slate-800 opacity-60'
+                        }`}
+                      >
+                        <input
+                          type="checkbox"
+                          checked={isChecked}
+                          onChange={() => {}}
+                          className="mt-0.5 rounded text-sky-600 focus:ring-sky-500 h-4 w-4"
+                        />
+                        <div className="text-xs">
+                          <span className="font-bold text-slate-900 dark:text-white block">{opt.label}</span>
+                          <span className="text-[11px] text-slate-500 dark:text-slate-400">{opt.desc}</span>
+                        </div>
+                      </label>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* Footer Controls */}
           <div className="pt-4 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
             <div className="flex items-center gap-2">
@@ -907,6 +1225,7 @@ export function ProposalEditorModal({
                     if (activeTab === 'scope') setActiveTab('client');
                     if (activeTab === 'pricing') setActiveTab('scope');
                     if (activeTab === 'timeline') setActiveTab('pricing');
+                    if (activeTab === 'display') setActiveTab('timeline');
                   }}
                   className="px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
                 >
@@ -914,13 +1233,14 @@ export function ProposalEditorModal({
                 </button>
               )}
 
-              {activeTab !== 'timeline' && (
+              {activeTab !== 'display' && (
                 <button
                   type="button"
                   onClick={() => {
                     if (activeTab === 'client') setActiveTab('scope');
                     if (activeTab === 'scope') setActiveTab('pricing');
                     if (activeTab === 'pricing') setActiveTab('timeline');
+                    if (activeTab === 'timeline') setActiveTab('display');
                   }}
                   className="px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-white hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center gap-1 transition-colors cursor-pointer"
                 >
@@ -949,6 +1269,96 @@ export function ProposalEditorModal({
             </div>
           </div>
         </form>
+
+        {/* =========================================================================
+            JSON PASTE & IMPORT MODAL OVERLAY
+        ========================================================================== */}
+        {isJsonModalOpen && (
+          <div className="absolute inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-200">
+            <div className="w-full max-w-2xl bg-white dark:bg-[#0b0f24] border border-slate-200 dark:border-slate-800 rounded-3xl shadow-2xl p-5 sm:p-6 flex flex-col max-h-[85vh]">
+              <div className="flex justify-between items-start pb-3 border-b border-slate-200 dark:border-slate-800">
+                <div>
+                  <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                    <Code size={18} className="text-sky-600" />
+                    <span>Paste Proposal JSON Format</span>
+                  </h3>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                    Paste any custom JSON structure or copy our official schema to import all client, pricing & scope fields instantly.
+                  </p>
+                </div>
+                <button
+                  onClick={() => setIsJsonModalOpen(false)}
+                  className="text-slate-400 hover:text-slate-600 dark:hover:text-white p-1"
+                >
+                  <X size={18} />
+                </button>
+              </div>
+
+              {jsonError && (
+                <div className="mt-3 p-3 rounded-xl bg-rose-50 dark:bg-rose-950/50 border border-rose-200 dark:border-rose-900 text-xs text-rose-600 dark:text-rose-400 font-medium">
+                  {jsonError}
+                </div>
+              )}
+
+              <div className="mt-3 flex-1 flex flex-col min-h-0">
+                <div className="flex items-center justify-between pb-2">
+                  <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">
+                    Raw JSON Object Input
+                  </span>
+                  <div className="flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={handleLoadSampleIntoTextarea}
+                      className="text-xs text-sky-600 hover:text-sky-700 font-bold cursor-pointer"
+                    >
+                      Fill Sample JSON
+                    </button>
+                    <span className="text-slate-300">•</span>
+                    <button
+                      type="button"
+                      onClick={handleCopySampleJson}
+                      className="text-xs text-slate-600 dark:text-slate-300 hover:text-sky-600 font-bold flex items-center gap-1 cursor-pointer"
+                    >
+                      {copiedSample ? <CheckCheck size={13} className="text-emerald-500" /> : <Copy size={13} />}
+                      <span>{copiedSample ? 'Copied!' : 'Copy Sample Format'}</span>
+                    </button>
+                  </div>
+                </div>
+
+                <textarea
+                  rows={12}
+                  value={jsonInputText}
+                  onChange={(e) => setJsonInputText(e.target.value)}
+                  placeholder={`{\n  "title": "E-Commerce Web Portal",\n  "clientName": "Rajesh Kumar",\n  "clientCompany": "Apex Innovations",\n  "currency": "INR",\n  "items": [\n    { "name": "Web Design", "qty": 1, "rate": 25000, "amount": 25000 }\n  ]\n}`}
+                  className="w-full flex-1 p-3.5 text-xs font-mono rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-sky-500 leading-relaxed resize-none"
+                />
+              </div>
+
+              <div className="pt-4 mt-3 border-t border-slate-200 dark:border-slate-800 flex justify-between items-center">
+                <span className="text-[11px] text-slate-400">
+                  Tip: Totals will be auto-calculated upon import.
+                </span>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setIsJsonModalOpen(false)}
+                    className="px-4 py-2 text-xs font-bold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleApplyJson}
+                    className="px-5 py-2 text-xs font-bold bg-sky-600 hover:bg-sky-500 text-white rounded-xl shadow-md shadow-sky-600/20 flex items-center gap-1.5"
+                  >
+                    <CheckCircle2 size={14} />
+                    <span>Validate & Apply JSON</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
