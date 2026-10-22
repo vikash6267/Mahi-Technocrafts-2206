@@ -14,7 +14,8 @@ import {
   Sparkles,
   Layers,
   CreditCard,
-  FileText
+  FileText,
+  MapPin
 } from 'lucide-react';
 import { ClientProposal } from '@/lib/db';
 import { formatIndianCurrencyWords } from '@/lib/proposal-templates';
@@ -95,84 +96,80 @@ export function ProposalDocument({ proposal, isPrintMode = false }: ProposalDocu
 
       {/* =========================================================================
           1. HEADER SECTION (Official Branding, Company Info & Proposal Metadata)
+          Compact height <= 200px
       ========================================================================== */}
-      <div className="p-8 sm:p-10 border-b-2 border-slate-900/10 bg-gradient-to-br from-slate-50 via-white to-sky-50/30 print:bg-none print:p-6 print:pb-4">
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
+      <div className="px-6 py-4 sm:px-8 sm:py-4.5 border-b border-slate-200 bg-gradient-to-r from-slate-50 via-sky-50/20 to-slate-50 print:px-6 print:py-3.5 print:border-b print:border-slate-300">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           {/* Company Brand & Logo */}
-          <div className="flex items-start gap-4">
+          <div className="flex items-center gap-3.5 sm:gap-4">
             {showLogo && (
-              <div className="w-16 h-16 rounded-2xl bg-white border border-slate-200 p-2 shadow-sm flex items-center justify-center shrink-0">
+              <div className="h-20 sm:h-22 w-32 sm:w-40 rounded-xl bg-white border border-slate-200 shadow-xs p-1.5 flex items-center justify-center shrink-0 overflow-hidden">
                 <Image
                   src={proposal.companyLogoUrl || '/logo.png'}
                   alt={proposal.companyName || 'Mahi TechnoCrafts'}
-                  width={56}
-                  height={56}
-                  className="object-contain max-h-12 w-auto"
+                  width={200}
+                  height={100}
+                  className="w-full h-full object-contain"
                   priority
                 />
               </div>
             )}
             {showCompanyDetails && (
-              <div>
-                <div className="flex items-center gap-2">
-                  <h1 className="text-xl sm:text-2xl font-black tracking-tight text-slate-950 font-display">
-                    {proposal.companyName || 'Mahi TechnoCrafts'}
-                  </h1>
-                  <span className="hidden sm:inline-block px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-sky-100 text-sky-800 uppercase tracking-wider">
-                    Verified IT Agency
-                  </span>
-                </div>
-                <p className="text-xs font-semibold text-slate-500 mt-0.5">
+              <div className="space-y-0.5">
+                <h1 className="text-xl sm:text-2xl font-black tracking-tight text-slate-950 font-display">
+                  {proposal.companyName || 'Mahi TechnoCrafts'}
+                </h1>
+                <p className="text-[11px] font-semibold text-slate-500">
                   {proposal.companyTagline || 'Engineering Digital Excellence & Scalable Software'}
                 </p>
-                <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] text-slate-500 mt-2 font-medium">
-                  <span className="flex items-center gap-1">
+                <div className="flex flex-wrap items-center gap-x-3.5 gap-y-0.5 text-[10.5px] text-slate-600 pt-0.5 font-medium">
+                  <span className="inline-flex items-center gap-1 text-slate-700 font-semibold">
                     <Phone size={11} className="text-sky-600" />
                     {proposal.companyPhone || '+91 62671 44122'}
                   </span>
-                  <span className="flex items-center gap-1">
+                  <span className="inline-flex items-center gap-1 text-slate-600">
                     <Mail size={11} className="text-sky-600" />
-                    {proposal.companyEmail || 'contact@mahitechnocrafts.in'}
+                    {proposal.companyEmail || 'support@mahitechnocrafts.in'}
                   </span>
-                  <span className="flex items-center gap-1">
+                  <span className="inline-flex items-center gap-1 text-sky-700 font-semibold">
                     <Globe size={11} className="text-sky-600" />
-                    {proposal.companyWebsite || 'www.mahitechnocrafts.in'}
+                    {proposal.companyWebsite || 'https://mahitechnocrafts.in'}
                   </span>
                 </div>
               </div>
             )}
           </div>
 
-          {/* Proposal Ref No & Dates Card */}
-          <div className="w-full sm:w-auto bg-white/90 border border-slate-200/80 rounded-xl p-3.5 sm:text-right shadow-xs print:border print:border-slate-300">
+          {/* Proposal Ref No & Dates Card (Compact) */}
+          <div className="w-full sm:w-auto bg-white border border-slate-200/90 rounded-xl px-3.5 py-2.5 sm:text-right shadow-xs print:border print:border-slate-300 shrink-0">
             <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
-              Commercial Proposal Ref
+              Proposal Number
             </div>
             <div className="text-sm font-black text-sky-700 font-mono tracking-tight mt-0.5">
               {proposal.proposalNumber || 'MTC-PROP-2026'}
             </div>
-            <div className="mt-2 space-y-1 text-[11px] text-slate-600">
-              <div className="flex sm:justify-end gap-2">
-                <span className="text-slate-400 font-medium">Date:</span>
+            <div className="mt-1.5 pt-1.5 border-t border-slate-100 flex sm:justify-end justify-between items-center gap-3 text-[10.5px] text-slate-600">
+              <div>
+                <span className="text-slate-400 mr-1 text-[10px]">Date:</span>
                 <span className="font-semibold text-slate-800">{formatDate(proposal.proposalDate)}</span>
               </div>
-              <div className="flex sm:justify-end gap-2">
-                <span className="text-slate-400 font-medium">Valid Until:</span>
-                <span className="font-semibold text-amber-700">{formatDate(proposal.validUntil)}</span>
+              <div>
+                <span className="text-slate-400 mr-1 text-[10px]">Valid:</span>
+                <span className="font-bold text-amber-700">{formatDate(proposal.validUntil)}</span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Corporate Address Banner */}
-        <div className="mt-4 pt-3 border-t border-slate-200/70 text-[10px] text-slate-400 flex flex-wrap justify-between items-center gap-2">
-          <span>
-            <strong className="text-slate-600">Head Office:</strong>{' '}
-            {proposal.companyAddress || 'Hamidia Rd, Badabagh, Shahjahanabad, Bhopal, Madhya Pradesh, India - 462001'}
+        {/* Address & GSTIN Banner (Without 'Head Office:' label) */}
+        <div className="mt-3 pt-2.5 border-t border-slate-200/80 text-[10.5px] text-slate-500 flex flex-wrap justify-between items-center gap-2">
+          <span className="flex items-center gap-1.5">
+            <MapPin size={11} className="text-sky-600 shrink-0" />
+            <span>{proposal.companyAddress || 'Hamidia Rd, Badabagh, Shahjahanabad, Bhopal, Madhya Pradesh, India - 462001'}</span>
           </span>
           {showGst && proposal.companyGst && (
-            <span>
-              <strong className="text-slate-600">GSTIN:</strong> {proposal.companyGst}
+            <span className="inline-flex items-center gap-1 bg-slate-100 px-2 py-0.5 rounded text-[10px] text-slate-600 font-mono">
+              <span className="text-slate-400">GSTIN:</span> <strong>{proposal.companyGst}</strong>
             </span>
           )}
         </div>

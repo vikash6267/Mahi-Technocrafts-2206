@@ -206,8 +206,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const bhopalServicePagesInSitemap = bhopalServicePages.map((page) => ({
     url: `${baseUrl}/${page.slug}`,
-    changeFrequency: 'monthly' as const,
-    priority: 0.8,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: 0.95,
   }));
 
   return [...staticPages, ...bhopalServicePagesInSitemap, ...blogPages];

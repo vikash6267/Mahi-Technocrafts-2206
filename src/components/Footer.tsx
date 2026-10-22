@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Send, Sparkles } from 'lucide-react';
+import confetti from 'canvas-confetti';
 
 const Instagram = ({ size = 16 }: { size?: number }) => (
   <svg viewBox="0 0 24 24" width={size} height={size} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -27,7 +28,6 @@ const Twitter = ({ size = 16 }: { size?: number }) => (
     <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
   </svg>
 );
-import confetti from 'canvas-confetti';
 
 export default function Footer() {
   const pathname = usePathname();
@@ -200,7 +200,56 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-slate-200 dark:border-slate-900/60 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
+      {/* Bhopal Local Services SEO Strip (Internal Link Equity) */}
+      <div className="max-w-7xl mx-auto px-6 mt-12 pt-8 border-t border-slate-200 dark:border-slate-900/60">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+          <span className="text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200">
+            Top IT & Web Development Services in Bhopal
+          </span>
+          <span className="text-[11px] text-slate-400">
+            Serving MP Nagar, Arera Colony, Kolar, BHEL & All Bhopal
+          </span>
+        </div>
+        <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs">
+          <Link href="/web-development-company-bhopal" className="hover:text-brand-blue transition-colors">
+            Web Development Company in Bhopal
+          </Link>
+          <span className="text-slate-300 dark:text-slate-700">•</span>
+          <Link href="/website-design-company-bhopal" className="hover:text-brand-blue transition-colors">
+            Website Design Company in Bhopal
+          </Link>
+          <span className="text-slate-300 dark:text-slate-700">•</span>
+          <Link href="/software-development-company-bhopal" className="hover:text-brand-blue transition-colors">
+            Software Development Company in Bhopal
+          </Link>
+          <span className="text-slate-300 dark:text-slate-700">•</span>
+          <Link href="/it-company-in-bhopal" className="hover:text-brand-blue transition-colors">
+            IT Company in Bhopal
+          </Link>
+          <span className="text-slate-300 dark:text-slate-700">•</span>
+          <Link href="/mobile-app-development-company-bhopal" className="hover:text-brand-blue transition-colors">
+            Mobile App Development in Bhopal
+          </Link>
+          <span className="text-slate-300 dark:text-slate-700">•</span>
+          <Link href="/ecommerce-development-company-bhopal" className="hover:text-brand-blue transition-colors">
+            E-Commerce Development in Bhopal
+          </Link>
+          <span className="text-slate-300 dark:text-slate-700">•</span>
+          <Link href="/digital-marketing-company-bhopal" className="hover:text-brand-blue transition-colors">
+            Digital Marketing Company in Bhopal
+          </Link>
+          <span className="text-slate-300 dark:text-slate-700">•</span>
+          <Link href="/seo-company-bhopal" className="hover:text-brand-blue transition-colors">
+            SEO Company in Bhopal
+          </Link>
+          <span className="text-slate-300 dark:text-slate-700">•</span>
+          <Link href="/google-ads-agency-bhopal" className="hover:text-brand-blue transition-colors">
+            Google Ads Agency in Bhopal
+          </Link>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 mt-8 pt-6 border-t border-slate-200 dark:border-slate-900/60 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
         <div>
           © {new Date().getFullYear()} Mahi Technocrafts. All rights reserved.
         </div>
