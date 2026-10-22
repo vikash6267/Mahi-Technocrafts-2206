@@ -1,0 +1,22 @@
+{
+  "doctor_clinic": {
+    "title": "Doctors / Clinics / Hospitals",
+    "template_hinglish": "Namaste Dr. {lead_name},\n\nMai Vikash, Mahi Technocrafts se. Maine dekha ki aapke clinic ki Google profile bohot acchi hai, lekin patients ke liye direct online appointment booking aur digital presence missing hai.\n\nHumne doctor clinics ke liye ek instant patient booking & consultation portal design kiya hai jo automatically appointments ko manage karta hai aur Google par #1 rank karwata hai.\n\nKya mai aapko 2 minute ka ek short demo link bhej sakta hoon?\n\nDhanyawad,\nMahi Technocrafts\nhttps://mahitechnocrafts.com",
+    "template_english": "Hello Dr. {lead_name},\n\nThis is Vikash from Mahi Technocrafts. I noticed your clinic has great local reviews, but patients currently lack a dedicated appointment booking website and streamlined digital presence.\n\nWe build modern healthcare websites and automated booking portals that increase patient visits by 35%.\n\nWould it be okay if I share a 2-minute demo preview of what we built for clinics?\n\nBest regards,\nMahi Technocrafts"
+  },
+  "business_without_website": {
+    "title": "Local Businesses Without a Website (High-Value Lead)",
+    "template_hinglish": "Namaste {lead_name} ji,\n\nMai Vikash, Mahi Technocrafts se. Maine aapka business Google par dekha. Aapke competitors ki professional website Google search me top par aa rahi hai jabki aapka online business page abhi missing hai.\n\nHum local businesses ke liye modern, fast aur mobile-friendly websites banate hain jisse roz naye customers direct WhatsApp par call aur order kar sakein.\n\nHumne aapke business type ke liye ek ready-made design mockup banaya hai. Kya mai aapko preview link share karu?\n\nRegards,\nMahi Technocrafts",
+    "template_english": "Hi {lead_name},\n\nI was browsing Google for {category} in your area and noticed you don't have a dedicated website linked yet, while competitors are taking search inquiries.\n\nAt Mahi Technocrafts, we build high-converting, lightning-fast business websites tailored to bring inbound calls directly to your WhatsApp and phone.\n\nCan I send you a quick 2-minute preview of a design suited for your business?"
+  },
+  "coaching_institute": {
+    "title": "Coaching & Training Institutes",
+    "template_hinglish": "Namaste Sir/Mam,\n\nMai Vikash, Mahi Technocrafts se. Coaching institutes aur academies ke liye students admission portal aur automated fee receipt system kitna zaroori hai aap jante hi hain.\n\nHum institutes ke liye custom website, test series portal aur mobile app develop karte hain.\n\nAapke institute ke liye ek short 2-minute demo link share karu sir?\n\nRegards,\nMahi Technocrafts",
+    "template_english": "Hi {lead_name},\n\nWe build dedicated admission portals, online test series, and mobile apps for leading educational institutes.\n\nCould I send over a quick sample demo of an institute portal we recently built?"
+  },
+  "ecommerce_retail": {
+    "title": "Retail / Wholesale / E-commerce",
+    "template_hinglish": "Namaste {lead_name} ji,\n\nAapka product catalog dekha. Agar aap bina kisi marketplace commission ke direct apne brand name se website & mobile app par orders lena chahte hain, toh hum isme help kar sakte hain.\n\nNext.js based superfast e-commerce stores with automated payment & delivery tracking.\n\nKya aapko demo dekhna pasand aayega?\n\nMahi Technocrafts",
+    "template_english": "Hi {lead_name},\n\nLoved your product range! We help retail brands launch direct-to-consumer e-commerce websites with zero marketplace commissions and instant UPI/Card checkout.\n\nWould you be open to a quick look at a store demo?"
+  }
+}

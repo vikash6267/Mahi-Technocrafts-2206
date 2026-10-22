@@ -1,0 +1,14 @@
+{
+  "startup_mvp_founder": {
+    "subject": "Quick question regarding {company_name}'s web stack / MVP",
+    "body": "Hi {founder_name},\n\nCame across {company_name} on {source} — congratulations on the launch!\n\nAs technical founders scaling fast, one of the biggest bottlenecks is spending months hiring developers for frontend, dashboards, and internal tooling.\n\nAt Mahi Technocrafts (https://mahitechnocrafts.com), we build production-grade Next.js, React, and mobile apps with clean TypeScript code, delivered in under 3 weeks at a fraction of standard agency costs.\n\nWould you be open to a 5-minute chat or seeing a sample repo/dashboard we shipped?\n\nBest,\nVikash\nMahi Technocrafts\nhttps://mahitechnocrafts.com"
+  },
+  "website_redesign_performance": {
+    "subject": "3 performance bottlenecks noticed on {website_domain}",
+    "body": "Hi {lead_name},\n\nI was reviewing your website ({website_url}) and noticed a few key opportunities that might be costing you customers:\n\n1. {pain_point_1}\n2. {pain_point_2}\n\nWe specialize in rebuilding legacy websites into modern, ultra-fast Next.js web applications that load in under 1 second and rank significantly higher on Google.\n\nWould you be open to reviewing a free audit breakdown and redesign concept for {lead_name}?\n\nBest regards,\nVikash\nMahi Technocrafts"
+  },
+  "custom_software_crm": {
+    "subject": "Automating operations for {company_name}",
+    "body": "Hi {lead_name},\n\nManaging team workflows, customer inquiries, and client portals on spreadsheets often leads to lost leads and manual overhead.\n\nAt Mahi Technocrafts, we build custom internal tools, client portals, and CRM automation tailored specifically to your business operations.\n\nCan I send over a quick 2-minute video walkthrough of a custom portal we recently deployed?\n\nWarm regards,\nVikash\nMahi Technocrafts"
+  }
+}
