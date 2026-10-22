@@ -922,6 +922,948 @@ export const bhopalServicePages: BhopalServicePage[] = [
         answer: 'You own the Google Ads account 100%. All billing and payment methods are tied directly to your business card/UPI, ensuring complete financial transparency.'
       }
     ]
+  },
+  {
+    slug: 'website-developers-for-doctors-bhopal',
+    title: 'Website Developers For Doctors & Clinics in Bhopal | Medical Portals',
+    h1: 'Website Developers For Doctors & Clinics in Bhopal',
+    tagline: 'Online Appointment Booking, WhatsApp OPD & Patient Portals · 4.9★ Rated',
+    metaDescription: 'Top website developers for doctors, dentists & clinics in Bhopal. Online appointment booking, WhatsApp OPD, patient records & Google Maps clinic SEO. Call +91 62671 44122.',
+    summary: 'Searching for website developers for doctors or clinic website design in Bhopal? Mahi TechnoCrafts builds patient-friendly medical websites, OPD appointment booking systems, teleconsultation video portals, and WhatsApp chatbots for private doctors, dentists, polyclinics, and hospitals across Bhopal.',
+    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1400&q=85',
+    imageAlt: 'Doctor reviewing patient records on tablet in modern clinic',
+    label: 'Doctor & Clinic Websites',
+    startingPrice: '₹8,999',
+    deliveryTime: '4 - 8 Days',
+    ratingValue: 4.9,
+    reviewCount: 168,
+    focus: [
+      'Interactive online doctor appointment booking calendar with instant slot confirmation',
+      'Automated WhatsApp OPD reminders and direct clinic consultation buttons',
+      'Doctor professional bio, qualifications, clinic timings, and OPD fee showcase',
+      'Patient test report download portal with secure cloud storage',
+      'Google Maps 3-Pack clinic ranking SEO for "best doctor near me in Bhopal"',
+      'Mobile-first responsive design easy for elderly patients to navigate'
+    ],
+    packages: [
+      {
+        name: 'Doctor Single Page Clinic Profile',
+        price: '₹8,999 - ₹13,500',
+        duration: '4 to 6 Days',
+        bestFor: 'Private consultants, pediatricians, dentists, and eye specialists in Bhopal',
+        features: [
+          'Doctor Bio, Specialization & Clinical Experience',
+          'Clinic Timings & Google Maps Location Pin',
+          'Direct Click-to-Call & WhatsApp Appointment Button',
+          'Patient Review & Google 5-Star Testimonial Cards',
+          'Free SSL Security & 1 Year Domain'
+        ]
+      },
+      {
+        name: 'Polyclinic & Multi-Doctor Portal',
+        price: '₹18,000 - ₹32,000',
+        duration: '8 to 14 Days',
+        popular: true,
+        bestFor: 'Polyclinics, dental centers, diagnostic labs, and fertility clinics',
+        features: [
+          'Multi-Doctor Roster with Individual Shift Timings',
+          'Real-Time Patient Slot Booking & Confirmation SMS/WhatsApp',
+          'Treatment & Service Procedure Guides with FAQs',
+          'Patient Case Studies & Transformation Galleries',
+          'Local Clinic SEO & Google Business Profile 3-Pack Sync',
+          '90 Days Free Technical Support'
+        ]
+      },
+      {
+        name: 'Hospital Management & Telemedicine Suite',
+        price: '₹45,000 - ₹85,000+',
+        duration: '3 to 6 Weeks',
+        bestFor: 'Multi-specialty hospitals, nursing homes, and diagnostic chains',
+        features: [
+          'Full Patient Portal with Digital Prescriptions & Lab Reports',
+          '1-Click HD Video Teleconsultation Integration',
+          'OPD/IPD Bed & Doctor Schedule Management',
+          'Pharmacy Billing & GST Invoicing Dashboard',
+          'Complete Source Code Ownership & On-Site Staff Training'
+        ]
+      }
+    ],
+    value: 'Designed to eliminate waiting room chaos, cut phone inquiries by 70%, and attract new local patients via Google Search.',
+    targetKeywords: [
+      'website developers for doctor in bhopal',
+      'internet website developers for clinic bhopal',
+      'doctor website design bhopal',
+      'dental clinic website developers bhopal',
+      'hospital website development bhopal',
+      'medical website designer in mp nagar bhopal',
+      'clinic appointment booking software bhopal',
+      'best doctor website agency bhopal'
+    ],
+    faqs: [
+      {
+        question: 'Can patients book appointments directly on WhatsApp from the website?',
+        answer: 'Yes! We integrate automated WhatsApp booking triggers so patients can pick a preferred consultation date and morning/evening slot with just one tap on mobile.'
+      },
+      {
+        question: 'Will our clinic appear when someone searches "best doctor near me" in Bhopal?',
+        answer: 'Yes. We implement Local SEO, Google Business Profile (Maps) optimization, and Schema.org MedicalClinic structured data so patients in your Bhopal locality easily find you.'
+      },
+      {
+        question: 'Can patients download blood test and radiology reports online?',
+        answer: 'Yes. In our clinic and hospital portals, lab technicians can upload PDF reports against the patient phone number, and patients receive a secure download link instantly.'
+      },
+      {
+        question: 'What is the cost of a doctor website in Bhopal?',
+        answer: 'A doctor practice profile website starts from ₹8,999. Multi-doctor polyclinic portals range from ₹18,000 to ₹32,000, and complete hospital management software suites start from ₹45,000.'
+      }
+    ]
+  },
+  {
+    slug: 'website-developers-for-schools-bhopal',
+    title: 'Website Developers For Schools & Coaching in Bhopal | Educational Portals',
+    h1: 'Website Developers For Schools & Coaching Institutes in Bhopal',
+    tagline: 'Online Admission Inquiries, Fee Payment Gateways & Student Notice Portals · 4.9★ Rated',
+    metaDescription: 'Top website developers for schools, colleges & coaching institutes in Bhopal (MP Nagar). Online admission forms, fee payment gateway, LMS & student portals. Call +91 62671 44122.',
+    summary: 'Looking for website developers for schools or coaching institutes in Bhopal? Mahi TechnoCrafts builds educational web portals, online admission inquiry engines, student notice boards, fee payment gateways, and coaching test series portals tailored for schools and institutes in MP Nagar & Bhopal.',
+    image: 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1400&q=85',
+    imageAlt: 'Students and teacher working in modern digital school classroom',
+    label: 'School & Education Websites',
+    startingPrice: '₹9,999',
+    deliveryTime: '5 - 10 Days',
+    ratingValue: 4.9,
+    reviewCount: 154,
+    focus: [
+      'Digital admission inquiry forms with automated SMS/WhatsApp alerts to principal',
+      'Online fee collection gateway (UPI, NetBanking, Debit/Credit Cards) with 0% hassle',
+      'Student and parent notice board for circulars, exam dates, and holiday updates',
+      'Interactive photo and video galleries showcasing campus, sports & annual day',
+      'Staff directory, faculty profiles, syllabus downloads, and timetable schedules',
+      'LMS integration, online test series, and study material PDF download vaults'
+    ],
+    packages: [
+      {
+        name: 'School / Play School Showcase',
+        price: '₹9,999 - ₹16,000',
+        duration: '5 to 7 Days',
+        bestFor: 'Play schools, primary schools, daycare centers, and local academies',
+        features: [
+          'Up to 8 Colorful, Mobile-Friendly School Pages',
+          'Online Admission Inquiry Form with Admin Alerts',
+          'Notice Board & Circular PDF Downloads',
+          'Photo Gallery & Facilities Showcase',
+          'Google Maps Location & Contact Integration'
+        ]
+      },
+      {
+        name: 'Coaching Institute & Lead Engine',
+        price: '₹18,500 - ₹35,000',
+        duration: '8 to 14 Days',
+        popular: true,
+        bestFor: 'IIT-JEE, NEET, UPSC, and competitive coaching classes in MP Nagar Bhopal',
+        features: [
+          'High-Converting Course Landing Pages with Batch Timings',
+          'Topper Testimonials & Results Banner Showcase',
+          'Free Demo Class Booking & WhatsApp Lead Bot',
+          'Downloadable Study Material & Syllabus PDFs',
+          'SEO optimized for "best coaching in mp nagar bhopal"',
+          '90 Days Free Support & Minor Updates'
+        ]
+      },
+      {
+        name: 'Full School / College ERP & LMS Portal',
+        price: '₹45,000 - ₹95,000+',
+        duration: '3 to 6 Weeks',
+        bestFor: 'CBSE/ICSE Higher Secondary Schools, degree colleges, and universities',
+        features: [
+          'Integrated Online Fee Payment Gateway with Digital Receipts',
+          'Student / Parent Login Portal for Attendance & Report Cards',
+          'Online Quiz & Multiple-Choice Test Series Engine',
+          'Staff Payroll, Attendance & Leave Management',
+          'Complete Source Code Ownership & Staff Training'
+        ]
+      }
+    ],
+    value: 'Designed to drive admission inquiries year-round and automate tedious parent notices and fee collection.',
+    targetKeywords: [
+      'website developers for school in bhopal',
+      'internet website developers for school bhopal',
+      'coaching institute website design bhopal',
+      'school website developers mp nagar bhopal',
+      'online test series portal developers bhopal',
+      'college web portal developers bhopal',
+      'school admission form website bhopal',
+      'education website design company bhopal'
+    ],
+    faqs: [
+      {
+        question: 'Can parents pay school fees online through the website?',
+        answer: 'Yes! We integrate Indian payment gateways (Razorpay, Paytm, Cashfree) that allow parents to pay via UPI (GPay, PhonePe), NetBanking, and Cards, generating instant printable PDF receipts.'
+      },
+      {
+        question: 'Can non-technical school teachers update notices and photo galleries?',
+        answer: 'Yes. We provide an intuitive mobile-friendly admin panel where teachers or administrative staff can upload new circulars, photos, and news in less than 30 seconds.'
+      },
+      {
+        question: 'Do you design coaching institute websites in MP Nagar Bhopal?',
+        answer: 'Yes! We have designed high-converting websites for competitive coaching institutes in MP Nagar with batch countdowns, scholarship test registration, topper galleries, and WhatsApp inquiry buttons.'
+      },
+      {
+        question: 'What is the cost of a school website in Bhopal?',
+        answer: 'A standard school or play school website starts from ₹9,999. Feature-packed coaching websites range from ₹18,500 to ₹35,000, while complete school ERP portals range from ₹45,000 upwards.'
+      }
+    ]
+  },
+  {
+    slug: 'website-developers-for-real-estate-bhopal',
+    title: 'Website Developers For Real Estate & Builders in Bhopal | Property Portals',
+    h1: 'Website Developers For Real Estate & Builders in Bhopal',
+    tagline: 'Interactive 3D Floor Plans, Site Visit Booking & WhatsApp Lead Engines · 4.9★ Rated',
+    metaDescription: 'Best website developers for real estate, builders & colonizers in Bhopal. High-converting property landing pages, 2BHK/3BHK floor plans & RERA badges. Call +91 62671 44122.',
+    summary: 'Searching for website developers for real estate or builders in Bhopal? Mahi TechnoCrafts builds luxury property portals, residential township showcases, 3D floor plan layouts, project brochure lead magnets, and site visit booking engines for builders, colonizers, and property agents across Bhopal.',
+    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1400&q=85',
+    imageAlt: 'Modern residential apartment tower and real estate blueprint layout',
+    label: 'Real Estate & Builder Websites',
+    startingPrice: '₹14,999',
+    deliveryTime: '6 - 14 Days',
+    ratingValue: 4.9,
+    reviewCount: 147,
+    focus: [
+      'High-converting project landing pages with RERA compliance number and approval badges',
+      'Interactive 2BHK, 3BHK, duplex, and penthouse floor plans with dimension details',
+      'Download Brochure lead gate that captures buyer name and verified WhatsApp number',
+      'Interactive Bhopal neighborhood map showing distance to airport, railway, and schools',
+      'Direct WhatsApp chat bot for instant pricing, payment plans, and site visit booking',
+      'Construction progress photo/video gallery with month-by-month timeline updates'
+    ],
+    packages: [
+      {
+        name: 'Single Project Launch Landing Page',
+        price: '₹14,999 - ₹22,000',
+        duration: '5 to 8 Days',
+        bestFor: 'New residential project launches, commercial plots, and township phases in Bhopal',
+        features: [
+          'High-Speed Luxury Single-Page Responsive Showcase',
+          'RERA Number Display & Legal Disclaimers',
+          'Download Brochure & Price Sheet Lead Form',
+          'Interactive Google Location Map & Landmarks',
+          'WhatsApp Chatbot & Direct Call Floating Action'
+        ]
+      },
+      {
+        name: 'Builder Corporate Showcase & Multi-Project Portal',
+        price: '₹32,000 - ₹55,000',
+        duration: '10 to 18 Days',
+        popular: true,
+        bestFor: 'Established builders, colonizers, and construction firms with multiple sites',
+        features: [
+          'Multi-Project Directory (Ongoing, Completed & Upcoming)',
+          'Detailed Floor Plans, Specifications & Video Walkthroughs',
+          'EMI Loan Calculator & Bank Approval Badges',
+          'CRM Lead Sync (Admin Dashboard, Email, and Google Sheets)',
+          'Local Real Estate SEO for Kolar, Hoshangabad Rd & Bhopal',
+          '90 Days Free Post-Launch Support'
+        ]
+      },
+      {
+        name: 'Full Real Estate Broker Aggregator & CRM',
+        price: '₹65,000 - ₹1,25,000',
+        duration: '3 to 6 Weeks',
+        bestFor: 'Real estate advisory firms, property broker networks, and rental platforms',
+        features: [
+          'Property Listing Search & Filters (Buy, Rent, Commercial, Plots)',
+          'Agent / Owner Property Submission Dashboard',
+          'Automated Lead Routing to Sales Executives via WhatsApp',
+          'Customer Favorites, Inquiries, and Tour Scheduler',
+          'Complete Source Code Ownership & Admin Handover'
+        ]
+      }
+    ],
+    value: 'Engineered to generate high-intent NRI and local Bhopal buyer inquiries rather than junk tire-kicker clicks.',
+    targetKeywords: [
+      'website developers for real estate in bhopal',
+      'internet website developers for real estate bhopal',
+      'builders website designer bhopal',
+      'property portal developers bhopal',
+      'real estate landing page designer bhopal',
+      'colonizer website developers bhopal',
+      'kolar road real estate website developers',
+      'hoshangabad road builder website design'
+    ],
+    faqs: [
+      {
+        question: 'Can buyers book site visits directly from the website?',
+        answer: 'Yes! We integrate 1-click site visit booking calendars where buyers pick a convenient date and time slot, and your sales team receives an immediate WhatsApp lead notification.'
+      },
+      {
+        question: 'How do you capture verified phone numbers before giving the brochure?',
+        answer: 'We build gated lead captures where buyers enter their name and WhatsApp number to download the project brochure or price breakdown, ensuring your sales team gets valid contact details.'
+      },
+      {
+        question: 'Are your real estate landing pages compliant with MP RERA guidelines?',
+        answer: 'Yes. We properly display MP RERA registration numbers, disclaimers, promoter details, and approved master layouts to ensure complete compliance.'
+      },
+      {
+        question: 'What is the cost of a builder website in Bhopal?',
+        answer: 'A dedicated project launch landing page starts from ₹14,999. Comprehensive multi-project builder portals range from ₹32,000 to ₹55,000, and full property aggregator portals start from ₹65,000.'
+      }
+    ]
+  },
+  {
+    slug: 'website-developers-for-restaurants-bhopal',
+    title: 'Website Developers For Restaurants, Cafes & Hotels in Bhopal',
+    h1: 'Website Developers For Restaurants, Cafes & Hotels in Bhopal',
+    tagline: 'Digital QR Code Menus, Table Booking & Banquet Hall Inquiries · 4.9★ Rated',
+    metaDescription: 'Top website developers for restaurants, cafes, hotels & marriage gardens in Bhopal. Digital QR menus, table booking, banquet inquiry forms & Google reviews. Call +91 62671 44122.',
+    summary: 'Looking for website developers for restaurants, cafes, or hotels in Bhopal? Mahi TechnoCrafts crafts mouth-watering restaurant websites, contactless digital QR code food menus, online table reservation systems, and banquet/marriage garden booking inquiry portals.',
+    image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=85',
+    imageAlt: 'Modern fine dining restaurant interior and digital food menu showcase',
+    label: 'Restaurant & Hotel Websites',
+    startingPrice: '₹7,999',
+    deliveryTime: '4 - 7 Days',
+    ratingValue: 4.9,
+    reviewCount: 139,
+    focus: [
+      'Interactive contactless digital QR code menu cards updated in real time',
+      'Table reservation booking form with date, time, and guest count confirmation',
+      'Banquet hall and marriage garden event booking lead capture for weddings/parties',
+      'High-resolution food gallery, chef specials, and dining ambiance showcase',
+      'Google 5-Star customer review showcase and Zomato/Swiggy order redirects',
+      'Google Maps location routing so diners find your restaurant in Bhopal easily'
+    ],
+    packages: [
+      {
+        name: 'Digital Menu & Cafe Showcase',
+        price: '₹7,999 - ₹12,999',
+        duration: '4 to 6 Days',
+        bestFor: 'Cafes, bakeries, fast food lounges, and quick-service joints in Bhopal',
+        features: [
+          'Mobile-First Digital Food Menu with Price & Veg/Non-Veg Tags',
+          'Custom Printable QR Code for Dining Tables',
+          'Direct WhatsApp Order & Takeaway Inquiries',
+          'Instagram Feed & Food Photo Showcase',
+          'Google Maps Location & Contact Integration'
+        ]
+      },
+      {
+        name: 'Fine Dining & Table Reservation Portal',
+        price: '₹16,500 - ₹28,000',
+        duration: '7 to 12 Days',
+        popular: true,
+        bestFor: 'Fine dining restaurants, rooftop lounges, and family dining restaurants',
+        features: [
+          'Full Responsive Website with Ambiance Gallery',
+          'Online Table Reservation Form with Instant Confirmation Alert',
+          'Event & Birthday Party Booking Section',
+          'Google Maps 3-Pack SEO for "best restaurant in bhopal"',
+          'Menu Manager Admin to update prices anytime',
+          '90 Days Free Support'
+        ]
+      },
+      {
+        name: 'Hotel, Resort & Banquet Booking Engine',
+        price: '₹35,000 - ₹65,000',
+        duration: '2 to 4 Weeks',
+        bestFor: 'Hotels, highway resorts, marriage gardens, and luxury banquets in Bhopal',
+        features: [
+          'Room / Suite Showcase with Amenity Filters',
+          'Online Room Booking Engine with Advance Payment Gateway',
+          'Marriage Garden & Wedding Hall Inquiry System',
+          'Multi-Day Event Calendar & Availability Checker',
+          'Complete Source Code Ownership & Staff Handover'
+        ]
+      }
+    ],
+    value: 'Designed to drive direct dine-in table reservations and wedding banquet leads without paying high aggregator commissions.',
+    targetKeywords: [
+      'website developers for restaurant in bhopal',
+      'internet website developers for restaurant bhopal',
+      'cafe website designer bhopal',
+      'hotel booking website developers bhopal',
+      'digital qr menu card developer bhopal',
+      'marriage garden website designer bhopal',
+      'restaurant web development mp nagar bhopal',
+      'banquet hall website cost bhopal'
+    ],
+    faqs: [
+      {
+        question: 'Can we change menu items and prices ourselves when rates change?',
+        answer: 'Yes! We provide a simple mobile-friendly admin panel where you can change food prices, add new seasonal dishes, or mark items as "sold out" in 10 seconds.'
+      },
+      {
+        question: 'Do diners need to download an app to view the QR menu?',
+        answer: 'No app download is needed. Diners simply scan the QR code with their mobile phone camera, and your digital menu opens instantly in their mobile browser.'
+      },
+      {
+        question: 'Can we get marriage and banquet hall booking inquiries for weddings?',
+        answer: 'Yes! We build dedicated banquet hall inquiry forms that capture event date, expected guest count, catering preferences, and phone number, alerting you instantly on WhatsApp.'
+      },
+      {
+        question: 'What is the cost of a restaurant website in Bhopal?',
+        answer: 'A digital QR menu and cafe website starts from ₹7,999. Complete table reservation fine-dining websites range from ₹16,500 to ₹28,000, while hotel and marriage garden portals range from ₹35,000 upwards.'
+      }
+    ]
+  },
+  {
+    slug: 'website-developers-for-lawyers-bhopal',
+    title: 'Website Developers For Advocates & Legal Law Firms in Bhopal',
+    h1: 'Website Developers For Advocates & Legal Law Firms in Bhopal',
+    tagline: 'Bar Council Compliant, Professional Practice Profiles & Consultation Booking · 4.9★',
+    metaDescription: 'Professional website developers for advocates, high court lawyers & legal firms in Bhopal. Bar Council compliant, practice areas, case inquiries & appointment booking. Call +91 62671 44122.',
+    summary: 'Searching for website developers for advocates or legal law firms in Bhopal? Mahi TechnoCrafts builds dignified, authoritative websites for High Court advocates, criminal/civil lawyers, corporate legal consultants, and law firms across Bhopal, strictly adhering to Bar Council of India standards.',
+    image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1400&q=85',
+    imageAlt: 'Law books and gavel in a sophisticated modern law office',
+    label: 'Lawyer & Legal Websites',
+    startingPrice: '₹8,999',
+    deliveryTime: '4 - 8 Days',
+    ratingValue: 4.9,
+    reviewCount: 126,
+    focus: [
+      'Bar Council of India (BCI) compliant layout with mandatory disclaimer acknowledgment',
+      'Practice areas breakdown: High Court, District Court, Criminal, Civil, Corporate & Family Law',
+      'Senior advocate biography, landmark judgments, bar council enrollment & expertise',
+      'Confidential consultation booking form with calendar appointment scheduler',
+      'Legal blog, knowledge base, and recent legal updates section for credibility',
+      'Mobile-first responsive typography and fast, secure SSL encryption'
+    ],
+    packages: [
+      {
+        name: 'Advocate Professional Practice Profile',
+        price: '₹8,999 - ₹14,000',
+        duration: '4 to 6 Days',
+        bestFor: 'High Court & District Court advocates, legal consultants, and notaries in Bhopal',
+        features: [
+          'BCI Compliant Disclaimer Popup & Layout',
+          'Detailed Practice Areas & Advocate Profile',
+          'Direct Consultation Inquiry Form & Phone Link',
+          'Chamber Address & Google Maps Direction Pin',
+          '1 Year Free Domain & SSL Security'
+        ]
+      },
+      {
+        name: 'Full Legal Law Firm Web Portal',
+        price: '₹18,000 - ₹32,000',
+        duration: '7 to 12 Days',
+        popular: true,
+        bestFor: 'Partnership law firms, corporate legal counsels, and taxation advocates',
+        features: [
+          'Multi-Advocate & Partner Showcase with Team Bios',
+          'In-Depth Practice Area Modules with FAQs',
+          'Legal Article & Case Law Knowledge Center',
+          'Online Consultation Fee Payment Integration',
+          'Local Legal SEO for Bhopal & MP High Court search',
+          '90 Days Free Technical Support'
+        ]
+      },
+      {
+        name: 'Corporate Legal Suite & Client Document Portal',
+        price: '₹38,000 - ₹65,000',
+        duration: '2 to 4 Weeks',
+        bestFor: 'Large corporate advisory firms, IP/Patent attorneys, and arbitration centers',
+        features: [
+          'Secure Client Portal with Encrypted Case Document Uploads',
+          'Confidential Case Status & Hearing Date Updates',
+          'Automated WhatsApp Hearing Reminders for Clients',
+          'Complete IP Transfer & Source Code Handover'
+        ]
+      }
+    ],
+    value: 'Builds instant institutional trust and authoritative professional credibility without violating Bar Council rules.',
+    targetKeywords: [
+      'website developers for advocate in bhopal',
+      'internet website developers for lawyer bhopal',
+      'lawyer website designer bhopal',
+      'legal firm web development bhopal',
+      'high court advocate website bhopal',
+      'law firm website cost bhopal',
+      'advocate chamber website designer bhopal',
+      'best legal website agency bhopal'
+    ],
+    faqs: [
+      {
+        question: 'Are your lawyer websites compliant with Bar Council of India (BCI) rules?',
+        answer: 'Yes. We strictly incorporate the mandatory Bar Council disclaimer popup requiring user consent before viewing information, ensuring the website serves as a factual professional profile rather than prohibited commercial advertisement.'
+      },
+      {
+        question: 'Can clients book consultations and upload documents online?',
+        answer: 'Yes! Clients can request consultation appointments and upload confidential case documents directly through a secure, SSL-encrypted form.'
+      },
+      {
+        question: 'Can we publish legal articles and judgment summaries on the website?',
+        answer: 'Yes. We provide a clean blog and legal update section where you can publish case analyses and legal commentary to establish legal thought leadership.'
+      },
+      {
+        question: 'What is the cost of an advocate website in Bhopal?',
+        answer: 'An individual advocate practice profile website starts from ₹8,999. Multi-partner law firm web portals range between ₹18,000 to ₹32,000, and complete client document portals start from ₹38,000.'
+      }
+    ]
+  },
+  {
+    slug: 'website-developers-for-ca-bhopal',
+    title: 'Website Developers For Chartered Accountants (CA) & Tax Consultants in Bhopal',
+    h1: 'Website Developers For Chartered Accountants & Tax Consultants in Bhopal',
+    tagline: 'GST, ITR, Company Registration Tools & Secure Client Document Portals · 4.9★ Rated',
+    metaDescription: 'Expert website developers for CA firms, tax consultants & GST practitioners in Bhopal. Tax calculators, client document upload & consultation bookings. Call +91 62671 44122.',
+    summary: 'Looking for website developers for Chartered Accountants (CA) or tax consultants in Bhopal? Mahi TechnoCrafts builds ICAI-compliant websites for CA firms, tax practitioners, company secretaries (CS), and financial advisors with built-in financial calculators, tax due-date tickers, and secure document upload vaults.',
+    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1400&q=85',
+    imageAlt: 'Financial balance sheets, calculator, and tax documents in accountant office',
+    label: 'Chartered Accountant Websites',
+    startingPrice: '₹8,999',
+    deliveryTime: '4 - 8 Days',
+    ratingValue: 4.9,
+    reviewCount: 133,
+    focus: [
+      'ICAI website guidelines compliant layout with required professional disclaimers',
+      'Comprehensive service breakdown: Audit, GST, Income Tax, ROC, and Project Financing',
+      'Interactive financial tools: GST calculator, Income Tax calculator, and EMI estimators',
+      'Real-time statutory tax due-date alert ticker for GST, ITR, and TDS deadlines',
+      'Secure client document upload portal for PAN, Aadhaar, bank statements, and invoices',
+      'Partner bios, firm registration details, and appointment consultation scheduler'
+    ],
+    packages: [
+      {
+        name: 'CA Professional Profile & Services',
+        price: '₹8,999 - ₹14,999',
+        duration: '4 to 6 Days',
+        bestFor: 'Practicing Chartered Accountants, tax practitioners, and financial consultants',
+        features: [
+          'ICAI Guideline Compliant Layout & Disclaimer',
+          'Core Services Showcase (GST, Audit, Tax, ROC)',
+          'Statutory Due-Date Calendar & Tax Alerts',
+          'Consultation Inquiry Form & Chamber Address',
+          '1 Year Free Domain & SSL Security'
+        ]
+      },
+      {
+        name: 'Full Audit & Tax Firm Portal with Calculators',
+        price: '₹18,500 - ₹34,000',
+        duration: '7 to 12 Days',
+        popular: true,
+        bestFor: 'Established multi-partner CA firms, audit practices, and corporate advisors',
+        features: [
+          'Multi-Partner Bio & Sectoral Expertise Showcase',
+          'Interactive GST, TDS & Income Tax Calculators',
+          'Downloadable Tax Utility Forms & Notification Ticker',
+          'Online Consultation Fee Payment Gateway',
+          'Local SEO for MP Nagar & Bhopal commercial areas',
+          '90 Days Free Technical Support'
+        ]
+      },
+      {
+        name: 'Client Secure Document Vault & Billing Portal',
+        price: '₹39,000 - ₹70,000',
+        duration: '2 to 4 Weeks',
+        bestFor: 'Large accounting firms managing hundreds of corporate business clients',
+        features: [
+          'Client Login Portal for Document Upload & Acknowledgment',
+          'Automated WhatsApp Reminders for Pending Tax Documents',
+          'Invoice Billing Dashboard with Online UPI Payments',
+          'Complete Source Code Ownership & Admin Handover'
+        ]
+      }
+    ],
+    value: 'Elevates your firm’s corporate stature and streamlines document collection during peak tax filing seasons.',
+    targetKeywords: [
+      'website developers for ca in bhopal',
+      'internet website developers for chartered accountant bhopal',
+      'chartered accountant website design bhopal',
+      'tax consultant website developer bhopal',
+      'gst practitioner web designer bhopal',
+      'ca firm website cost bhopal',
+      'accounting firm website design mp nagar bhopal'
+    ],
+    faqs: [
+      {
+        question: 'Are your websites compliant with ICAI guidelines for Chartered Accountants?',
+        answer: 'Yes. We strictly follow ICAI Council guidelines governing websites of practicing members, ensuring factual presentation of services without prohibited advertisement or solicitation.'
+      },
+      {
+        question: 'Can clients upload bank statements and invoices through the website?',
+        answer: 'Yes. We can provide a secure document upload portal where clients select their service, upload PDFs or zip files, and your office receives an encrypted notification.'
+      },
+      {
+        question: 'Do you provide financial calculators on the website?',
+        answer: 'Yes! We embed interactive GST calculators, Income Tax regime comparisons (New vs Old), and loan EMI estimators to provide immediate utility to your visitors.'
+      },
+      {
+        question: 'What is the cost of a CA website in Bhopal?',
+        answer: 'A standard CA practice website starts from ₹8,999. Multi-partner firm portals with financial calculators range from ₹18,500 to ₹34,000, while complete client document portals range from ₹39,000 upwards.'
+      }
+    ]
+  },
+  {
+    slug: 'website-developers-for-gym-fitness-bhopal',
+    title: 'Website Developers For Gyms, Fitness Clubs & Salons in Bhopal',
+    h1: 'Website Developers For Gyms, Fitness Clubs & Salons in Bhopal',
+    tagline: 'Membership Pricing Tables, Transformation Galleries & Online Booking · 4.9★ Rated',
+    metaDescription: 'Top website developers for gyms, fitness centers, yoga studios & beauty salons in Bhopal. Membership packages, trainer profiles, before/after galleries & booking. Call +91 62671 44122.',
+    summary: 'Searching for website developers for gyms, fitness clubs, or beauty salons in Bhopal? Mahi TechnoCrafts builds high-energy fitness websites, gym membership pricing tables, before/after client transformation galleries, trainer showcase profiles, and online trial pass booking systems.',
+    image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1400&q=85',
+    imageAlt: 'Modern gym interior with weights, machines, and fitness training equipment',
+    label: 'Gym & Salon Websites',
+    startingPrice: '₹7,999',
+    deliveryTime: '4 - 7 Days',
+    ratingValue: 4.9,
+    reviewCount: 141,
+    focus: [
+      'High-impact modern design showcasing workout equipment, studio ambiance & energy',
+      'Membership pricing comparison cards (Monthly, Quarterly, Annual & Personal Training)',
+      '1-Click Free Day Pass / Trial Session booking form with instant WhatsApp alerts',
+      'Before & After transformation visual slider showing real client fitness results',
+      'Trainer credentials, certified specialization (Crossfit, Zumba, Yoga) profiles',
+      'Google Maps 3-Pack SEO for "best gym near me in Bhopal" (Kolar, Arera Colony, MP Nagar)'
+    ],
+    packages: [
+      {
+        name: 'Fitness Studio / Salon Landing Page',
+        price: '₹7,999 - ₹12,999',
+        duration: '4 to 6 Days',
+        bestFor: 'Yoga studios, CrossFit boxes, bridal makeup artists, and local gyms in Bhopal',
+        features: [
+          'High-Energy Single Page Responsive Showcase',
+          'Membership Plans & Price Table',
+          'Free Trial Workout / Appointment Booking Form',
+          'Trainer & Facility Photo Gallery',
+          'Google Maps Location & WhatsApp Direct Chat'
+        ]
+      },
+      {
+        name: 'Gym Portal with Membership Checkout',
+        price: '₹16,000 - ₹28,000',
+        duration: '7 to 12 Days',
+        popular: true,
+        bestFor: 'Commercial gyms, premium fitness clubs, and multi-service wellness spas',
+        features: [
+          'Full Multi-Page Website with Service & Class Schedules',
+          'Online Membership Payment Gateway (UPI / Cards)',
+          'Transformation Slider & Client Video Reviews',
+          'Local Gym SEO for high Google Maps ranking in Bhopal',
+          'Lead Management Dashboard with Export options',
+          '90 Days Free Support'
+        ]
+      },
+      {
+        name: 'Multi-Branch Fitness Chain Management',
+        price: '₹35,000 - ₹65,000',
+        duration: '2 to 4 Weeks',
+        bestFor: 'Fitness brands with multiple centers across Bhopal and Madhya Pradesh',
+        features: [
+          'Multi-Location Branch Selector with Location Timings',
+          'Member Account Portal with Expiry & Renewal Reminders',
+          'Automated WhatsApp Membership Expiry Alerts',
+          'Complete Source Code Ownership & Admin Handover'
+        ]
+      }
+    ],
+    value: 'Engineered to generate daily walk-in trial passes and recurring membership signups directly through your website.',
+    targetKeywords: [
+      'website developers for gym in bhopal',
+      'internet website developers for gym bhopal',
+      'fitness club website designer bhopal',
+      'salon website development bhopal',
+      'spa appointment booking website bhopal',
+      'gym membership website bhopal',
+      'best gym website developers mp nagar bhopal',
+      'kolar road gym website design'
+    ],
+    faqs: [
+      {
+        question: 'Can visitors book a free trial workout or salon appointment from the website?',
+        answer: 'Yes! We embed high-converting "Book a Free 1-Day Trial" forms that capture the lead’s name and phone number, sending an instant alert to your front desk on WhatsApp.'
+      },
+      {
+        question: 'Can members buy and renew gym memberships online via UPI?',
+        answer: 'Yes. We integrate Razorpay and Paytm gateways so members can purchase monthly or annual packages via Google Pay, PhonePe, or cards, receiving automated payment receipts.'
+      },
+      {
+        question: 'Can we showcase before-and-after client transformation pictures?',
+        answer: 'Yes. We build interactive before-and-after image comparison sliders that showcase your client weight-loss and muscle-gain success stories vividly.'
+      },
+      {
+        question: 'What is the cost of a gym or salon website in Bhopal?',
+        answer: 'A single-page gym or salon website starts from ₹7,999. Multi-page portals with online membership checkout range from ₹16,000 to ₹28,000, while multi-branch fitness platforms start from ₹35,000.'
+      }
+    ]
+  },
+  {
+    slug: 'website-developers-for-travel-agency-bhopal',
+    title: 'Website Developers For Travel Agencies & Tour Operators in Bhopal',
+    h1: 'Website Developers For Travel Agencies & Tour Operators in Bhopal',
+    tagline: 'Tour Package Itineraries, Cab Booking & WhatsApp Instant Quotes · 4.9★ Rated',
+    metaDescription: 'Best website developers for travel agencies, taxi hire & tour operators in Bhopal. MP tourism packages, itinerary builders, cab booking & WhatsApp inquiry engines. Call +91 62671 44122.',
+    summary: 'Looking for website developers for travel agencies or tour operators in Bhopal? Mahi TechnoCrafts builds travel portals with day-wise tour package itineraries (Pachmarhi, Ujjain, Sanchi, Kanha), cab rental booking engines, and instant WhatsApp quote generators that turn travel dreamers into paying travelers.',
+    image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1400&q=85',
+    imageAlt: 'Travel passport, sunglasses, and camera with tropical destination itinerary',
+    label: 'Travel & Tour Websites',
+    startingPrice: '₹9,999',
+    deliveryTime: '5 - 10 Days',
+    ratingValue: 4.9,
+    reviewCount: 135,
+    focus: [
+      'Day-by-day tour package itinerary builder with inclusions, exclusions & hotel options',
+      'One-click WhatsApp itinerary share and instant custom quotation inquiry form',
+      'Taxi & outstation cab booking engine with fixed-route and per-km fare calculator',
+      'Special MP Tourism packages: Pachmarhi, Mahakaleshwar Ujjain, Bandhavgarh, Kanha',
+      'Online advance booking deposit payment gateway (UPI, PhonePe, GPay, Cards)',
+      'Customer travel reviews, photo galleries, and TripAdvisor/Google review integration'
+    ],
+    packages: [
+      {
+        name: 'Tour Agency Package Showcase',
+        price: '₹9,999 - ₹16,000',
+        duration: '5 to 7 Days',
+        bestFor: 'Local travel agents, tour operators, and cab service providers in Bhopal',
+        features: [
+          'Up to 10 Detailed Tour Package Itinerary Pages',
+          'Instant WhatsApp Quote & Inquiry Button per Package',
+          'Customer Reviews & High-Resolution Travel Gallery',
+          'Outstation Taxi Route & Fare Chart',
+          'Free 1 Year Domain & SSL Security'
+        ]
+      },
+      {
+        name: 'Dynamic Tour Package Booking Portal',
+        price: '₹19,000 - ₹35,000',
+        duration: '8 to 14 Days',
+        popular: true,
+        bestFor: 'Established travel companies offering domestic, international & religious tours',
+        features: [
+          'Package Filtering by Duration, Budget & Destination',
+          'Download PDF Itinerary with Tour Agent Branding',
+          'Online Advance Booking Token Payment Gateway',
+          'Admin CMS to add new holiday packages anytime',
+          'Local Tourism SEO for Bhopal & MP destination queries',
+          '90 Days Free Support'
+        ]
+      },
+      {
+        name: 'Full Fleet Cab Rental & Payment Booking Engine',
+        price: '₹42,000 - ₹75,000',
+        duration: '3 to 5 Weeks',
+        bestFor: 'Taxi operators, fleet owners, and car rental platforms across Madhya Pradesh',
+        features: [
+          'Automated Distance (KM) & Toll Fare Calculator',
+          'Instant Driver Assignment & Booking SMS/WhatsApp Notification',
+          'Online Advance / Full Payment via Razorpay',
+          'Complete Source Code Ownership & Admin Handover'
+        ]
+      }
+    ],
+    value: 'Designed to capture holiday travelers at the exact moment they research trips and convert them via instant WhatsApp quotes.',
+    targetKeywords: [
+      'website developers for travel agency in bhopal',
+      'internet website developers for travel agency bhopal',
+      'tour operator website design bhopal',
+      'taxi cab booking website developer bhopal',
+      'mp tourism package website bhopal',
+      'car rental website developers bhopal',
+      'holiday package website cost bhopal'
+    ],
+    faqs: [
+      {
+        question: 'Can travelers request a custom quote directly on WhatsApp?',
+        answer: 'Yes! On every tour package (e.g. 3N/4D Pachmarhi Tour), we place a "Get Custom Quote on WhatsApp" button that pre-fills the package name and dates into WhatsApp for fast chat closure.'
+      },
+      {
+        question: 'Can travelers download a branded PDF itinerary from the website?',
+        answer: 'Yes. We can generate a 1-click professional PDF itinerary carrying your agency logo, phone number, day-wise schedule, and inclusions that travelers can save or share with family.'
+      },
+      {
+        question: 'Can we accept online advance deposits for tour bookings?',
+        answer: 'Yes. We connect Indian payment gateways like Razorpay so travelers can pay a 25% or 50% advance token via Google Pay, PhonePe, or cards to confirm bookings.'
+      },
+      {
+        question: 'What is the cost of a travel agency website in Bhopal?',
+        answer: 'A standard tour showcase website starts from ₹9,999. Dynamic package portals with itinerary builders range from ₹19,000 to ₹35,000, while automated cab rental platforms start from ₹42,000.'
+      }
+    ]
+  },
+  {
+    slug: 'website-developers-for-manufacturers-bhopal',
+    title: 'Website Developers For Manufacturers & Industrial Suppliers in Bhopal',
+    h1: 'Website Developers For Manufacturers & Industrial Suppliers in Bhopal',
+    tagline: 'B2B Product Catalogs, Technical Spec Sheets & RFQ Quote Engines · 4.9★ Rated',
+    metaDescription: 'Leading website developers for Govindpura & Mandideep manufacturers & industrial suppliers in Bhopal. B2B product catalogs, RFQ inquiry forms & ISO compliance. Call +91 62671 44122.',
+    summary: 'Searching for website developers for manufacturers or industrial suppliers in Bhopal? Mahi TechnoCrafts builds robust B2B industrial websites, digital product catalogs with downloadable technical PDF spec sheets, Request for Quotation (RFQ) inquiry forms, and ISO certification showcases for factories in Govindpura, Mandideep, and Bhopal.',
+    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1400&q=85',
+    imageAlt: 'Industrial manufacturing factory floor with precision engineering equipment',
+    label: 'Industrial & Manufacturing Websites',
+    startingPrice: '₹12,999',
+    deliveryTime: '7 - 14 Days',
+    ratingValue: 4.9,
+    reviewCount: 149,
+    focus: [
+      'Comprehensive B2B product directory categorized by industrial grade, material & size',
+      'Downloadable technical spec sheets, engineering drawings & material test certificates (PDF)',
+      '1-Click "Request for Quotation" (RFQ) form capturing quantity, delivery timeline & drawings',
+      'Plant machinery, factory infrastructure, testing lab & warehouse photo/video gallery',
+      'ISO 9001, CE, MSME, and environmental compliance certificate showcase',
+      'Global and national B2B SEO targeting corporate procurement and purchase managers'
+    ],
+    packages: [
+      {
+        name: 'Industrial Product Showcase & RFQ',
+        price: '₹12,999 - ₹22,000',
+        duration: '7 to 10 Days',
+        bestFor: 'Factories, fabrication workshops, packaging units, and local parts suppliers in Govindpura & Mandideep',
+        features: [
+          'Up to 15 Categorized Product Showcase Pages',
+          'Downloadable Technical PDF Specification Sheets',
+          'Request for Quotation (RFQ) Form with File Upload',
+          'Factory Infrastructure & ISO Certification Gallery',
+          'Google Maps & Contact Info for Procurement Teams'
+        ]
+      },
+      {
+        name: 'Multi-Category Manufacturing Catalog',
+        price: '₹25,000 - ₹45,000',
+        duration: '10 to 18 Days',
+        popular: true,
+        bestFor: 'Established manufacturers, chemical plants, engineering exporters, and electrical equipment firms',
+        features: [
+          'Unlimited Product Catalog with Search & Material Filters',
+          'Technical Datasheet Download Gating (Lead Capture)',
+          'Client Testimonials & Major PSU / Corporate Client Logos',
+          'Pan-India B2B SEO targeting purchase managers on Google',
+          'Admin CMS to add new machinery or products anytime',
+          '90 Days Free Post-Launch Support'
+        ]
+      },
+      {
+        name: 'Full B2B Supply Chain & Distributor Portal',
+        price: '₹55,000 - ₹1,10,000',
+        duration: '3 to 6 Weeks',
+        bestFor: 'Large industrial brands managing dealer networks, bulk pricing & dispatch tracking',
+        features: [
+          'Dealer / Distributor Login Portal with Tiered Wholesale Pricing',
+          'Bulk Order Placement with Purchase Order (PO) PDF Upload',
+          'Automated Order Tracking & GST Invoicing Sync',
+          'Complete Source Code Ownership & Admin Handover'
+        ]
+      }
+    ],
+    value: 'Presents your factory with undeniable corporate stature, winning lucrative tenders and bulk B2B contracts.',
+    targetKeywords: [
+      'website developers for manufacturers in bhopal',
+      'internet website developers for manufacturers bhopal',
+      'industrial website designer bhopal',
+      'govindpura manufacturers website developer',
+      'mandideep b2b website developer',
+      'engineering goods website bhopal',
+      'factory website cost in bhopal',
+      'b2b product catalog website bhopal'
+    ],
+    faqs: [
+      {
+        question: 'Can buyers upload drawings and technical blueprints in the inquiry form?',
+        answer: 'Yes! We configure secure file upload inputs allowing corporate procurement engineers to attach PDF drawings, CAD specs, and RFQ documents directly with their inquiry.'
+      },
+      {
+        question: 'Do you help manufacturers in Govindpura and Mandideep Industrial Areas?',
+        answer: 'Yes. We work closely with manufacturing units across Govindpura, Mandideep, and Raisen Road, offering on-site factory visits and photography guidance.'
+      },
+      {
+        question: 'Can we upload technical specification PDFs for every product?',
+        answer: 'Yes. Each product can have a 1-click downloadable technical spec sheet or brochure, giving purchasing officers the exact technical data they need to approve orders.'
+      },
+      {
+        question: 'What is the cost of a manufacturing company website in Bhopal?',
+        answer: 'A standard industrial showcase website starts from ₹12,999. Comprehensive B2B catalog portals range from ₹25,000 to ₹45,000, and full dealer/distributor portals start from ₹55,000.'
+      }
+    ]
+  },
+  {
+    slug: 'website-developers-for-jewellers-bhopal',
+    title: 'Website Developers For Jewellers & Retail Showrooms in Bhopal',
+    h1: 'Website Developers For Jewellers & Retail Showrooms in Bhopal',
+    tagline: 'Luxury Virtual Showcases, Live Gold Rate Tickers & WhatsApp Catalogs · 4.9★ Rated',
+    metaDescription: 'Best website developers for jewellery showrooms, boutiques & retail stores in Bhopal. Live gold rates, high-definition jewellery catalogs & WhatsApp orders. Call +91 62671 44122.',
+    summary: 'Looking for website developers for jewellers or retail showrooms in Bhopal? Mahi TechnoCrafts creates luxury jewellery websites, live 22K/24K gold rate tickers, high-definition bridal collection showcases, virtual try-on previews, and WhatsApp order inquiry catalogs for showrooms in New Market, Sarafa Chowk, and Bhopal.',
+    image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1400&q=85',
+    imageAlt: 'Luxury diamond and gold bridal jewellery collection on velvet showcase',
+    label: 'Jewellery & Retail Websites',
+    startingPrice: '₹14,999',
+    deliveryTime: '6 - 12 Days',
+    ratingValue: 4.9,
+    reviewCount: 137,
+    focus: [
+      'Bespoke luxury visual aesthetics with elegant typography, dark themes & gold accents',
+      'Daily live 22K & 24K gold and silver rate ticker updated directly from your phone',
+      'High-definition bridal, polki, diamond, and antique jewellery digital showcase',
+      '1-Click "Inquire Price on WhatsApp" with automatic product picture and SKU code',
+      'Showroom visit appointment booking with custom private consultation scheduling',
+      'BIS Hallmark, HUID compliance badges, and trusted purity certification display'
+    ],
+    packages: [
+      {
+        name: 'Jewellery Showroom Digital Catalog',
+        price: '₹14,999 - ₹24,000',
+        duration: '6 to 9 Days',
+        bestFor: 'Traditional jewellery showrooms, boutique jewelers, and bridal designers in Bhopal',
+        features: [
+          'High-Definition Collection Showcase (Rings, Necklaces, Bangles)',
+          'Daily Gold & Silver Live Rate Ticker on Header',
+          'Instant "Inquire on WhatsApp" per Jewellery Design',
+          'Showroom Location, Timings & Google Maps Pin',
+          'BIS Hallmark & Authenticity Trust Badges'
+        ]
+      },
+      {
+        name: 'E-Commerce Jewellery Store with Security',
+        price: '₹38,000 - ₹65,000',
+        duration: '12 to 20 Days',
+        popular: true,
+        bestFor: 'Modern lightweight diamond, silver, and gold gift item retailers selling online',
+        features: [
+          'Complete Online Shopping Cart with Secure Payment Gateway',
+          'Dynamic Price Calculator based on live gold weight & making charges',
+          'Customer Account Dashboard with Order Tracking',
+          'Insured Delivery Partner API Sync',
+          'Local Jewellery SEO for Bhopal & MP wedding shoppers',
+          '90 Days Free Post-Launch Support'
+        ]
+      },
+      {
+        name: 'Custom Omnichannel Retail & Inventory Suite',
+        price: '₹75,000 - ₹1,40,000',
+        duration: '4 to 8 Weeks',
+        bestFor: 'Multi-branch jewellery chains managing live barcode inventory and showroom sales',
+        features: [
+          'Live Showroom Barcode / RFID Tag Inventory Sync',
+          'VIP Customer Loyalty & Gold Saving Scheme Portal',
+          'Automated Installment Reminder Alerts via WhatsApp',
+          'Complete Source Code Ownership & Admin Handover'
+        ]
+      }
+    ],
+    value: 'Captures young wedding shoppers researching online and directs them straight into your showroom with high purchase intent.',
+    targetKeywords: [
+      'website developers for jewellers in bhopal',
+      'internet website developers for jewellers bhopal',
+      'jewellery showroom website design bhopal',
+      'retail store website developer bhopal',
+      'boutique website design bhopal',
+      'gold rate ticker website bhopal',
+      'new market jewellery website designer',
+      'sarafa chowk jewellers web developer bhopal'
+    ],
+    faqs: [
+      {
+        question: 'Can we update daily gold and silver rates on the website easily?',
+        answer: 'Yes! We embed a live rate ticker where you can update today’s 22K and 24K gold rates in 5 seconds from your phone, and it immediately reflects across your website.'
+      },
+      {
+        question: 'Can customers ask for the price of a specific jewellery design on WhatsApp?',
+        answer: 'Yes. Under every jewellery item, there is an "Inquire on WhatsApp" button that automatically attaches the item name, image, and code into WhatsApp so your staff can share the price instantly.'
+      },
+      {
+        question: 'Can we run a monthly Gold Saving Scheme (Bachat Yojana) through the website?',
+        answer: 'Yes! In our custom retail suite, customers can enroll in your monthly gold saving scheme, pay installments online via UPI, and track their accumulated gold weight.'
+      },
+      {
+        question: 'What is the cost of a jewellery showroom website in Bhopal?',
+        answer: 'A luxury showroom catalog website starts from ₹14,999. Full e-commerce jewellery stores range from ₹38,000 to ₹65,000, and complete multi-branch retail suites start from ₹75,000.'
+      }
+    ]
   }
 ];
 

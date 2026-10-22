@@ -201,51 +201,104 @@ export default function Footer() {
       </div>
 
       {/* Bhopal Local Services SEO Strip (Internal Link Equity) */}
-      <div className="max-w-7xl mx-auto px-6 mt-12 pt-8 border-t border-slate-200 dark:border-slate-900/60">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
-          <span className="text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200">
-            Top IT & Web Development Services in Bhopal
-          </span>
-          <span className="text-[11px] text-slate-400">
-            Serving MP Nagar, Arera Colony, Kolar, BHEL & All Bhopal
-          </span>
+      <div className="max-w-7xl mx-auto px-6 mt-12 pt-8 border-t border-slate-200 dark:border-slate-900/60 space-y-6">
+        {/* Core IT Services */}
+        <div>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2.5">
+            <span className="text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200">
+              Top IT & Web Development Services in Bhopal
+            </span>
+            <span className="text-[11px] text-slate-400">
+              Serving MP Nagar, Arera Colony, Kolar, BHEL & All Bhopal Localities
+            </span>
+          </div>
+          <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs">
+            <Link href="/web-development-company-bhopal" className="hover:text-brand-blue transition-colors">
+              Web Development Company in Bhopal
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/website-design-company-bhopal" className="hover:text-brand-blue transition-colors">
+              Website Design Company in Bhopal
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/software-development-company-bhopal" className="hover:text-brand-blue transition-colors">
+              Software Development Company in Bhopal
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/it-company-in-bhopal" className="hover:text-brand-blue transition-colors">
+              IT Company in Bhopal
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/mobile-app-development-company-bhopal" className="hover:text-brand-blue transition-colors">
+              Mobile App Development in Bhopal
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/ecommerce-development-company-bhopal" className="hover:text-brand-blue transition-colors">
+              E-Commerce Development in Bhopal
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/digital-marketing-company-bhopal" className="hover:text-brand-blue transition-colors">
+              Digital Marketing Company in Bhopal
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/seo-company-bhopal" className="hover:text-brand-blue transition-colors">
+              SEO Company in Bhopal
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/google-ads-agency-bhopal" className="hover:text-brand-blue transition-colors">
+              Google Ads Agency in Bhopal
+            </Link>
+          </div>
         </div>
-        <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs">
-          <Link href="/web-development-company-bhopal" className="hover:text-brand-blue transition-colors">
-            Web Development Company in Bhopal
-          </Link>
-          <span className="text-slate-300 dark:text-slate-700">•</span>
-          <Link href="/website-design-company-bhopal" className="hover:text-brand-blue transition-colors">
-            Website Design Company in Bhopal
-          </Link>
-          <span className="text-slate-300 dark:text-slate-700">•</span>
-          <Link href="/software-development-company-bhopal" className="hover:text-brand-blue transition-colors">
-            Software Development Company in Bhopal
-          </Link>
-          <span className="text-slate-300 dark:text-slate-700">•</span>
-          <Link href="/it-company-in-bhopal" className="hover:text-brand-blue transition-colors">
-            IT Company in Bhopal
-          </Link>
-          <span className="text-slate-300 dark:text-slate-700">•</span>
-          <Link href="/mobile-app-development-company-bhopal" className="hover:text-brand-blue transition-colors">
-            Mobile App Development in Bhopal
-          </Link>
-          <span className="text-slate-300 dark:text-slate-700">•</span>
-          <Link href="/ecommerce-development-company-bhopal" className="hover:text-brand-blue transition-colors">
-            E-Commerce Development in Bhopal
-          </Link>
-          <span className="text-slate-300 dark:text-slate-700">•</span>
-          <Link href="/digital-marketing-company-bhopal" className="hover:text-brand-blue transition-colors">
-            Digital Marketing Company in Bhopal
-          </Link>
-          <span className="text-slate-300 dark:text-slate-700">•</span>
-          <Link href="/seo-company-bhopal" className="hover:text-brand-blue transition-colors">
-            SEO Company in Bhopal
-          </Link>
-          <span className="text-slate-300 dark:text-slate-700">•</span>
-          <Link href="/google-ads-agency-bhopal" className="hover:text-brand-blue transition-colors">
-            Google Ads Agency in Bhopal
-          </Link>
+
+        {/* Industry-Specific Justdial-Style Categories */}
+        <div className="pt-4 border-t border-slate-200/60 dark:border-slate-800/60">
+          <div className="mb-2.5">
+            <span className="text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200">
+              Industry-Specific Website Developers in Bhopal (Justdial Categories)
+            </span>
+          </div>
+          <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs">
+            <Link href="/website-developers-for-doctors-bhopal" className="hover:text-brand-blue transition-colors">
+              Website Developers For Doctors & Clinics
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/website-developers-for-schools-bhopal" className="hover:text-brand-blue transition-colors">
+              Website Developers For Schools & Coaching
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/website-developers-for-real-estate-bhopal" className="hover:text-brand-blue transition-colors">
+              Website Developers For Real Estate & Builders
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/website-developers-for-restaurants-bhopal" className="hover:text-brand-blue transition-colors">
+              Website Developers For Restaurants & Hotels
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/website-developers-for-lawyers-bhopal" className="hover:text-brand-blue transition-colors">
+              Website Developers For Advocates & Legal Firms
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/website-developers-for-ca-bhopal" className="hover:text-brand-blue transition-colors">
+              Website Developers For Chartered Accountants (CA)
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/website-developers-for-gym-fitness-bhopal" className="hover:text-brand-blue transition-colors">
+              Website Developers For Gyms & Salons
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/website-developers-for-travel-agency-bhopal" className="hover:text-brand-blue transition-colors">
+              Website Developers For Travel Agencies & Tours
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/website-developers-for-manufacturers-bhopal" className="hover:text-brand-blue transition-colors">
+              Website Developers For Manufacturers (Govindpura & Mandideep)
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/website-developers-for-jewellers-bhopal" className="hover:text-brand-blue transition-colors">
+              Website Developers For Jewellers & Showrooms
+            </Link>
+          </div>
         </div>
       </div>
 
