@@ -42,3 +42,11 @@ next-env.d.ts
 
 # AI scratch files
 /scratch/
+
+# Leads generation and automation
+leads-automation/
+leads-generation/
+*.csv
+*.xlsx
+__pycache__/
+*.pyc
