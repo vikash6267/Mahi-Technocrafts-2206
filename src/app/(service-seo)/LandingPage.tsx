@@ -27,13 +27,24 @@ import {
   Users
 } from 'lucide-react';
 import { getBhopalServicePage, BHOPAL_LOCALITIES } from '@/lib/bhopal-service-pages';
+import { getIndiaServicePage } from '@/lib/india-service-pages';
 
 interface LandingPageProps {
   slug: string;
 }
 
 export default function LandingPage({ slug }: LandingPageProps) {
-  const page = getBhopalServicePage(slug);
+  const bhopalPage = getBhopalServicePage(slug);
+  const indiaPage = getIndiaServicePage(slug);
+  const page = bhopalPage || indiaPage;
+
+  if (!page) return null;
+
+  const cityName = indiaPage ? indiaPage.cityName : 'Bhopal';
+  const stateName = indiaPage ? indiaPage.stateName : 'Madhya Pradesh';
+  const locationLabel = cityName === 'India' ? 'Across India' : `in ${cityName}`;
+  const localities = (indiaPage && indiaPage.localities && indiaPage.localities.length > 0) ? indiaPage.localities : BHOPAL_LOCALITIES;
+  const coordinates = (indiaPage && indiaPage.coordinates) ? indiaPage.coordinates : { lat: 23.259933, lng: 77.412613 };
 
   // Form State
   const [formData, setFormData] = useState({
@@ -81,8 +92,8 @@ export default function LandingPage({ slug }: LandingPageProps) {
           name: formData.name,
           email: formData.email || `${formData.phone.replace(/\D/g, '')}@lead.mahitechnocrafts.in`,
           phone: formData.phone,
-          subject: `[Bhopal Local Lead] ${page.label} Inquiry`,
-          message: `Service: ${page.title}\nBudget: ${formData.budget}\nMessage: ${formData.message || 'Customer requested quick consultation'}`
+          subject: `[${cityName} Lead] ${page.label} Inquiry`,
+          message: `Service: ${page.title}\nLocation: ${cityName}, ${stateName}\nBudget: ${formData.budget}\nMessage: ${formData.message || 'Customer requested quick consultation'}`
         })
       });
 
@@ -106,7 +117,7 @@ export default function LandingPage({ slug }: LandingPageProps) {
     '@id': 'https://mahitechnocrafts.in/#organization',
     name: 'Mahi TechnoCrafts',
     legalName: 'Mahi TechnoCrafts IT Solutions',
-    alternateName: 'Mahi TechnoCrafts Bhopal',
+    alternateName: cityName === 'India' ? 'Mahi TechnoCrafts India' : `Mahi TechnoCrafts ${cityName}`,
     url: `https://mahitechnocrafts.in/${page.slug}`,
     logo: 'https://mahitechnocrafts.in/logo.png',
     image: 'https://mahitechnocrafts.in/logo.png',
@@ -119,15 +130,15 @@ export default function LandingPage({ slug }: LandingPageProps) {
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Hamidia Rd, Badabagh, Shahjahanabad',
-      addressLocality: 'Bhopal',
-      addressRegion: 'Madhya Pradesh',
-      postalCode: '462001',
+      addressLocality: cityName === 'India' ? 'Bhopal' : cityName,
+      addressRegion: stateName,
+      postalCode: cityName === 'Bhopal' ? '462001' : undefined,
       addressCountry: 'IN'
     },
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: 23.259933,
-      longitude: 77.412613
+      latitude: coordinates.lat,
+      longitude: coordinates.lng
     },
     openingHoursSpecification: [
       {
@@ -144,9 +155,9 @@ export default function LandingPage({ slug }: LandingPageProps) {
       bestRating: '5',
       worstRating: '1'
     },
-    areaServed: BHOPAL_LOCALITIES.map((loc) => ({
+    areaServed: localities.map((loc) => ({
       '@type': 'AdministrativeArea',
-      name: `${loc}, Bhopal`
+      name: cityName === 'India' ? loc : `${loc}, ${cityName}`
     })),
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
@@ -185,7 +196,7 @@ export default function LandingPage({ slug }: LandingPageProps) {
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mahitechnocrafts.in/' },
-      { '@type': 'ListItem', position: 2, name: 'Bhopal IT Services', item: 'https://mahitechnocrafts.in/services' },
+      { '@type': 'ListItem', position: 2, name: `${cityName} IT Services`, item: 'https://mahitechnocrafts.in/services' },
       { '@type': 'ListItem', position: 3, name: page.title, item: `https://mahitechnocrafts.in/${page.slug}` }
     ]
   };
@@ -215,7 +226,7 @@ export default function LandingPage({ slug }: LandingPageProps) {
           <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-[11px] text-slate-400">
             <Link href="/" className="hover:text-white transition-colors">Home</Link>
             <span>/</span>
-            <Link href="/services" className="hover:text-white transition-colors">Bhopal Services</Link>
+            <Link href="/services" className="hover:text-white transition-colors">{cityName} Services</Link>
             <span>/</span>
             <span className="text-sky-400 font-bold truncate max-w-[200px] sm:max-w-none">{page.label}</span>
           </nav>
@@ -246,7 +257,7 @@ export default function LandingPage({ slug }: LandingPageProps) {
               {/* Location Badge */}
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs font-bold text-slate-700 dark:text-slate-300 shadow-xs">
                 <MapPin size={14} className="text-rose-500" />
-                <span>Bhopal, Madhya Pradesh • M.P. Nagar & Citywide</span>
+                <span>{cityName === 'India' ? 'All India Service • Nationwide Delivery' : `${cityName}, ${stateName} • Citywide & Regional`}</span>
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
               </div>
 
@@ -291,7 +302,7 @@ export default function LandingPage({ slug }: LandingPageProps) {
                 </a>
 
                 <a
-                  href="https://wa.me/916267144122?text=Hello%20Mahi%20TechnoCrafts%2C%20I%20need%20details%20for%20web%20development%20in%20Bhopal."
+                  href={`https://wa.me/916267144122?text=Hello%20Mahi%20TechnoCrafts%2C%20I%20need%20details%20for%20${encodeURIComponent(page.label)}%20${encodeURIComponent(locationLabel)}.`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-5 py-3.5 rounded-xl border border-emerald-500 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-100 text-xs sm:text-sm font-extrabold flex items-center gap-2 transition-all cursor-pointer"
@@ -426,13 +437,13 @@ export default function LandingPage({ slug }: LandingPageProps) {
 
                       <div>
                         <label className="text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase">
-                          Bhopal Location
+                          {cityName === 'India' ? 'City / State' : `${cityName} Area`}
                         </label>
                         <input
                           type="text"
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          placeholder="e.g. MP Nagar / Kolar"
+                          placeholder={cityName === 'India' ? 'e.g. Mumbai / Delhi / Indore' : `e.g. ${localities[0] || 'City Center'}`}
                           className="w-full mt-1 px-3 py-2 text-xs rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none"
                         />
                       </div>
@@ -481,7 +492,7 @@ export default function LandingPage({ slug }: LandingPageProps) {
               Clear & Transparent Pricing
             </span>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-950 dark:text-white font-display mt-1">
-              Estimated Packages for {page.label} in Bhopal
+              Estimated Packages for {page.label} {locationLabel}
             </h2>
             <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-2">
               All plans include 100% source code ownership, mobile-first responsiveness, and Google SEO foundations.
@@ -604,7 +615,7 @@ export default function LandingPage({ slug }: LandingPageProps) {
               The Clear Difference
             </span>
             <h2 className="text-2xl sm:text-3xl font-black text-slate-950 dark:text-white font-display mt-1">
-              Why Choose Mahi TechnoCrafts in Bhopal?
+              Why Choose Mahi TechnoCrafts {locationLabel}?
             </h2>
             <p className="text-xs sm:text-sm text-slate-500 mt-2">
               See how our engineering approach protects your investment compared to local freelancers or outdated template shops.
@@ -657,8 +668,8 @@ export default function LandingPage({ slug }: LandingPageProps) {
                       agency: 'Hidden renewal and maintenance fees'
                     },
                     {
-                      feat: 'Bhopal Local Face-to-Face Consultations',
-                      mtc: 'Available across all Bhopal areas',
+                      feat: cityName === 'India' ? 'Pan-India Remote & On-Site Consultation' : `${cityName} Local Face-to-Face Consultations`,
+                      mtc: cityName === 'India' ? 'Available nationwide across all states' : `Available across all ${cityName} areas`,
                       free: 'Only calls or remote',
                       agency: 'Rigid office hours only'
                     }
@@ -681,29 +692,29 @@ export default function LandingPage({ slug }: LandingPageProps) {
       </section>
 
       {/* =========================================================================
-          6. LOCALITIES WE SERVE ACROSS BHOPAL (Local SEO Powerhouse)
+          6. LOCALITIES WE SERVE (Local SEO Powerhouse)
       ========================================================================== */}
       <section className="py-14 sm:py-20 bg-slate-50 dark:bg-[#070918]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <span className="text-xs font-black uppercase tracking-widest text-sky-600 dark:text-sky-400">
-              Citywide Coverage
+              {cityName === 'India' ? 'Nationwide Coverage' : 'Citywide Coverage'}
             </span>
             <h2 className="text-2xl sm:text-3xl font-black text-slate-950 dark:text-white font-display mt-1">
-              Areas We Serve in Bhopal & Madhya Pradesh
+              Areas We Serve {locationLabel} & {stateName}
             </h2>
             <p className="text-xs sm:text-sm text-slate-500 mt-2">
-              Whether your office or showroom is in commercial M.P. Nagar, residential Arera Colony, or the industrial zones, we provide direct on-site consultations and rapid technical execution.
+              Whether your office or showroom is in {localities[0] || cityName}, {localities[1] || 'major commercial hubs'}, or surrounding industrial corridors, we provide rapid technical execution and high-converting results.
             </p>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-2.5 max-w-4xl mx-auto">
-            {BHOPAL_LOCALITIES.map((loc, idx) => (
+          <div className="flex flex-wrap justify-center gap-2.5 max-w-5xl mx-auto max-h-[380px] overflow-y-auto p-2 border border-slate-200/60 dark:border-slate-800/60 rounded-3xl bg-slate-100/50 dark:bg-slate-900/20">
+            {localities.map((loc, idx) => (
               <div
                 key={idx}
-                className="px-3.5 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs font-bold text-slate-800 dark:text-slate-300 shadow-xs flex items-center gap-1.5 hover:border-sky-500 transition-colors"
+                className="px-3 py-1.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-[11px] font-bold text-slate-800 dark:text-slate-300 shadow-xs flex items-center gap-1.5 hover:border-sky-500 transition-colors"
               >
-                <MapPin size={13} className="text-rose-500" />
+                <MapPin size={12} className="text-rose-500 shrink-0" />
                 <span>{loc}</span>
               </div>
             ))}
@@ -712,7 +723,7 @@ export default function LandingPage({ slug }: LandingPageProps) {
           {/* Quick Search Intent Tags Cloud */}
           <div className="mt-12 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0b0f24] max-w-4xl mx-auto">
             <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 block mb-3 text-center">
-              Popular Searches Related to {page.label} in Bhopal
+              Popular Searches Related to {page.label} {locationLabel}
             </span>
             <div className="flex flex-wrap justify-center gap-2">
               {page.targetKeywords.map((kw, idx) => (
@@ -782,13 +793,13 @@ export default function LandingPage({ slug }: LandingPageProps) {
           <div>
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-500/20 text-sky-300 text-xs font-bold mb-3">
               <Sparkles size={13} />
-              <span>Ready to Scale Your Business in Bhopal?</span>
+              <span>Ready to Scale Your Business {locationLabel}?</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black font-display tracking-tight">
               Let&apos;s Build Something Extraordinary Together
             </h2>
             <p className="text-xs sm:text-sm text-slate-300 mt-2 max-w-xl leading-relaxed">
-              Call us directly or send a WhatsApp message to schedule a project scoping discussion at our Bhopal office or at your premises.
+              Call us directly or send a WhatsApp message to schedule a project scoping discussion with our technical engineering team.
             </p>
           </div>
 
@@ -801,7 +812,7 @@ export default function LandingPage({ slug }: LandingPageProps) {
               <span>Call +91 62671 44122</span>
             </a>
             <a
-              href="https://wa.me/916267144122?text=Hello%20Mahi%20TechnoCrafts%2C%20I%20want%20to%20discuss%20a%20project%20in%20Bhopal."
+              href={`https://wa.me/916267144122?text=Hello%20Mahi%20TechnoCrafts%2C%20I%20want%20to%20discuss%20a%20project%20${encodeURIComponent(locationLabel)}.`}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-black flex items-center justify-center gap-2 transition-all cursor-pointer shadow-lg"
@@ -825,7 +836,7 @@ export default function LandingPage({ slug }: LandingPageProps) {
           <span>Call Now</span>
         </a>
         <a
-          href={`https://wa.me/916267144122?text=Hi%20Mahi%20TechnoCrafts%2C%20I%20am%20interested%20in%20${encodeURIComponent(page.label)}%20in%20Bhopal.`}
+          href={`https://wa.me/916267144122?text=Hi%20Mahi%20TechnoCrafts%2C%20I%20am%20interested%20in%20${encodeURIComponent(page.label)}%20${encodeURIComponent(locationLabel)}.`}
           target="_blank"
           rel="noopener noreferrer"
           className="flex-1 py-2.5 rounded-xl bg-emerald-600 text-white text-xs font-extrabold flex items-center justify-center gap-1.5 shadow-sm"

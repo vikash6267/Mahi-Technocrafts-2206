@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { getBlogs } from '@/lib/db';
 import { bhopalServicePages } from '@/lib/bhopal-service-pages';
+import { indiaServicePages } from '@/lib/india-service-pages';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -211,5 +212,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.95,
   }));
 
-  return [...staticPages, ...bhopalServicePagesInSitemap, ...blogPages];
+  const indiaServicePagesInSitemap = indiaServicePages.map((page) => ({
+    url: `${baseUrl}/${page.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: 0.95,
+  }));
+
+  return [...staticPages, ...bhopalServicePagesInSitemap, ...indiaServicePagesInSitemap, ...blogPages];
 }

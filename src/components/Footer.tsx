@@ -200,9 +200,9 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bhopal Local Services SEO Strip (Internal Link Equity) */}
+            {/* Bhopal & Pan-India SEO Strips (Internal Link Equity) */}
       <div className="max-w-7xl mx-auto px-6 mt-12 pt-8 border-t border-slate-200 dark:border-slate-900/60 space-y-6">
-        {/* Core IT Services */}
+        {/* 1. Core IT Services */}
         <div>
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2.5">
             <span className="text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200">
@@ -251,7 +251,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Industry-Specific Justdial-Style Categories */}
+        {/* 2. Industry-Specific Justdial-Style Categories */}
         <div className="pt-4 border-t border-slate-200/60 dark:border-slate-800/60">
           <div className="mb-2.5">
             <span className="text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200">
@@ -299,6 +299,105 @@ export default function Footer() {
               Website Developers For Jewellers & Showrooms
             </Link>
           </div>
+        </div>
+
+        {/* 3. Pan-India & Major Indian Cities */}
+        <div className="pt-4 border-t border-slate-200/60 dark:border-slate-800/60">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2.5">
+            <span className="text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200">
+              Web & Software Development Across India (Pan-India Presence)
+            </span>
+            <span className="text-[11px] text-slate-400">
+              Nationwide Delivery Across All 28 States & Metro Hubs
+            </span>
+          </div>
+          <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs">
+            <Link href="/web-development-company-in-india" className="font-semibold text-sky-600 dark:text-sky-400 hover:underline">
+              Web Development Company in India
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/software-development-company-in-india" className="hover:text-brand-blue transition-colors">
+              Custom Software Development India
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/ecommerce-development-company-in-india" className="hover:text-brand-blue transition-colors">
+              E-Commerce Development India
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/mobile-app-development-company-in-india" className="hover:text-brand-blue transition-colors">
+              Mobile App Development India
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/seo-company-in-india" className="hover:text-brand-blue transition-colors">
+              SEO Company in India
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/web-development-company-indore" className="hover:text-brand-blue transition-colors">
+              Indore
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/web-development-company-jabalpur" className="hover:text-brand-blue transition-colors">
+              Jabalpur
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/web-development-company-gwalior" className="hover:text-brand-blue transition-colors">
+              Gwalior
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/web-development-company-ujjain" className="hover:text-brand-blue transition-colors">
+              Ujjain
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/web-development-company-raipur" className="hover:text-brand-blue transition-colors">
+              Raipur
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/web-development-company-mumbai" className="hover:text-brand-blue transition-colors">
+              Mumbai
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/web-development-company-delhi-ncr" className="hover:text-brand-blue transition-colors">
+              Delhi NCR
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/web-development-company-bangalore" className="hover:text-brand-blue transition-colors">
+              Bangalore
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/web-development-company-pune" className="hover:text-brand-blue transition-colors">
+              Pune
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/web-development-company-hyderabad" className="hover:text-brand-blue transition-colors">
+              Hyderabad
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/web-development-company-ahmedabad" className="hover:text-brand-blue transition-colors">
+              Ahmedabad
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/web-development-company-jaipur" className="hover:text-brand-blue transition-colors">
+              Jaipur
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/web-development-company-lucknow" className="hover:text-brand-blue transition-colors">
+              Lucknow
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/web-development-company-kolkata" className="hover:text-brand-blue transition-colors">
+              Kolkata
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/web-development-company-chandigarh" className="hover:text-brand-blue transition-colors">
+              Chandigarh
+            </Link>
+          </div>
+        </div>
+
+        {/* 4. Bhopal Full Localities Text Cloud */}
+        <div className="pt-4 border-t border-slate-200/60 dark:border-slate-800/60 text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
+          <span className="font-bold text-slate-700 dark:text-slate-300">All Bhopal Localities Served: </span>
+          M.P. Nagar (Zone 1 & 2), Arera Colony (E1-E8), New Market, 10 Number Market, 11 Number Stop, Bittan Market, Kolar Road, Hoshangabad Road, Shahpura, Bawadia Kalan, Ayodhya Bypass, Ashoka Garden, Govindpura Industrial Area, Mandideep Industrial Area, Lalghati, Bairagarh (Sant Hirdaram Nagar), Saket Nagar, Misrod, Indrapuri, BHEL Township, Piplani, Shahjahanabad, Hamidia Road, T.T. Nagar, Chuna Bhatti, Shivaji Nagar, Raisen Road, Karond, Jahangirabad, Koh-e-Fiza, Idgah Hills, Shyamla Hills, Malviya Nagar, Anand Nagar, Gandhi Nagar, Katara Hills, Bagsewaniya, Gulmohar, Rohit Nagar, Trilanga, Nehru Nagar, Kotra Sultanabad, Jawahar Chowk, Subhash Nagar, Gautam Nagar, Habibganj, Salaiya, Danish Kunj, Bairagarh Chichali, Ratanpur, Sukhi Sewaniya, Khajuri Kalan, Suraj Nagar, Barkheda Pathani, Peer Gate, Ibrahimpura, Nadra, Sindhi Colony, MANIT, AIIMS Bhopal.
         </div>
       </div>
 
