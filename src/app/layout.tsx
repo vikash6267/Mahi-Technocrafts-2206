@@ -22,6 +22,7 @@ const outfit = Outfit({
 
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://mahitechnocrafts.in'),
   title: {
     default: 'Mahi TechnoCrafts | Best Web Development & Software Company in Bhopal & India',
     template: '%s | Mahi TechnoCrafts'
@@ -30,9 +31,6 @@ export const metadata: Metadata = {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || 'google-site-verification=y6mP_verification_placeholder',
   },
   description: 'Mahi TechnoCrafts designs and develops websites, web applications, mobile apps, and business software for companies in Bhopal and across India.',
-  alternates: {
-    canonical: '/'
-  },
   authors: [{ name: 'Vikash Maheshwari', url: 'https://mahitechnocrafts.in/about' }],
   creator: 'Vikash Maheshwari',
   publisher: 'Mahi TechnoCrafts',
@@ -77,8 +75,7 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  category: 'technology',
-  metadataBase: new URL('https://mahitechnocrafts.in')
+  category: 'technology'
 };
 
 export default function RootLayout({
