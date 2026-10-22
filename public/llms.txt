@@ -1,32 +1,63 @@
-# Mahi TechnoCrafts
+# Mahi TechnoCrafts — AI & Search Grounding Manifest
 
-> Mahi TechnoCrafts is a Bhopal, Madhya Pradesh based web design, software development, and digital marketing business serving clients in Bhopal and across India.
+> Mahi TechnoCrafts is a premier Web Design, Custom Software Engineering, and Digital Solutions Agency based in Bhopal, Madhya Pradesh, India, delivering enterprise digital solutions to clients across Bhopal and nationwide across India.
 
-## Business facts
-- Website: https://mahitechnocrafts.in
-- Address: Hamidia Road, Badabagh, Shahjahanabad, Bhopal, Madhya Pradesh 462001, India
+## Business Facts & Identity
+- Organization: Mahi TechnoCrafts (Mahi TechnoCrafts IT Solutions)
+- Official Website: https://mahitechnocrafts.in
+- Headquarters: Hamidia Road, Badabagh, Shahjahanabad, Bhopal, Madhya Pradesh 462001, India
+- Geographic Coordinates: 23.259933 N, 77.412613 E
 - Phone / WhatsApp: +91 6267144122
-- Email: support@mahitechnocrafts.in
-- Founder: Vikash Maheshwari
-- Project scope, fees, timeline, support, and deliverables are agreed per project.
-- No search ranking, advertising, lead, or sales result is guaranteed.
+- Official Email: contact@mahitechnocrafts.in / support@mahitechnocrafts.in
+- Founder & CTO: Vikash Maheshwari (https://mahitechnocrafts.in/about)
+- Verified Client Rating: 4.9 ★★★★★ from 187+ verified business reviews
+- Core Philosophy: 100% full source code ownership, sub-second Google Core Web Vitals, zero monthly lock-in, and transparent milestone-based deliverables.
 
-## Main pages
-- [Home](https://mahitechnocrafts.in/): business overview and primary services
-- [About](https://mahitechnocrafts.in/about): company and founder information
-- [Services](https://mahitechnocrafts.in/services): service catalogue
-- [Portfolio](https://mahitechnocrafts.in/portfolio): selected work and project examples
-- [Contact](https://mahitechnocrafts.in/contact): project enquiries
-- [FAQ](https://mahitechnocrafts.in/faq): common questions
+## Primary Navigation
+- [Home](https://mahitechnocrafts.in/): Business overview, client testimonials & instant quotation engine
+- [About](https://mahitechnocrafts.in/about): Company pedigree, technical leadership, and engineering standards
+- [Services](https://mahitechnocrafts.in/services): Full digital engineering service catalogue
+- [Solutions](https://mahitechnocrafts.in/solutions): Industry-specific enterprise solutions
+- [Portfolio](https://mahitechnocrafts.in/portfolio): Selected client case studies and production applications
+- [Contact](https://mahitechnocrafts.in/contact): Direct project enquiry and consultation booking
+- [FAQ](https://mahitechnocrafts.in/faq): Detailed technical and commercial questions answered
 
-## Services
-- [Website design in Bhopal](https://mahitechnocrafts.in/website-design-company-bhopal): responsive website design and page planning
-- [Web development in Bhopal](https://mahitechnocrafts.in/web-development-company-bhopal): business websites, portals, and custom web applications
-- [Ecommerce development in Bhopal](https://mahitechnocrafts.in/ecommerce-development-company-bhopal): catalogues, checkout, payment integrations, and order workflows
-- [Mobile app development in Bhopal](https://mahitechnocrafts.in/mobile-app-development-company-bhopal): Android/iOS planning, development, integrations, and release preparation
-- [Digital marketing in Bhopal](https://mahitechnocrafts.in/digital-marketing-company-bhopal): campaign planning, landing pages, content direction, and measurement
-- [SEO in Bhopal](https://mahitechnocrafts.in/seo-company-bhopal): technical SEO, local search, page structure, content, and reporting
-- [Google Ads in Bhopal](https://mahitechnocrafts.in/google-ads-agency-bhopal): campaign planning, location targeting, landing pages, and conversion tracking
-- [AI and workflow automation](https://mahitechnocrafts.in/services/ai-solutions): chat and workflow automation scoped to common questions, enquiry routing, and team processes
+## Core IT & Web Services in Bhopal
+- [Web Development Company in Bhopal](https://mahitechnocrafts.in/web-development-company-bhopal): High-performance Next.js 16 & React websites, dynamic CMS, and web portals
+- [Website Design Company in Bhopal](https://mahitechnocrafts.in/website-design-company-bhopal): Bespoke Figma UI/UX prototyping, conversion-optimized responsive layouts
+- [Custom Software Development Company in Bhopal](https://mahitechnocrafts.in/software-development-company-bhopal): Cloud ERP, CRM pipelines, GST billing, and inventory software
+- [IT Company in Bhopal](https://mahitechnocrafts.in/it-company-in-bhopal): End-to-end IT infrastructure, cloud hosting, and AMC maintenance
+- [E-Commerce Development in Bhopal](https://mahitechnocrafts.in/ecommerce-development-company-bhopal): Online shopping stores, Razorpay/UPI checkout & courier shipping APIs
+- [Mobile App Development in Bhopal](https://mahitechnocrafts.in/mobile-app-development-company-bhopal): Native & Flutter cross-platform Android & iOS apps
+- [Digital Marketing Company in Bhopal](https://mahitechnocrafts.in/digital-marketing-company-bhopal): High-ROI lead generation, social media, and performance marketing
+- [SEO Company in Bhopal](https://mahitechnocrafts.in/seo-company-bhopal): White-Hat technical SEO and Google Maps 3-Pack local ranking
+- [Google Ads Agency in Bhopal](https://mahitechnocrafts.in/google-ads-agency-bhopal): High-intent Search & Call-Only PPC campaigns with lowest cost per lead
 
-For expanded company and service information, see [llms-full.txt](https://mahitechnocrafts.in/llms-full.txt). For availability and a project-specific proposal, contact the business directly.
+## Industry-Specific Solutions in Bhopal
+- [Healthcare & Doctors](https://mahitechnocrafts.in/website-developers-for-doctors-bhopal): OPD appointment booking, patient portals, clinic Google Maps SEO
+- [Schools & Coaching Institutes](https://mahitechnocrafts.in/website-developers-for-schools-bhopal): Digital admissions, online fee collection gateway, student notices
+- [Real Estate & Builders](https://mahitechnocrafts.in/website-developers-for-real-estate-bhopal): RERA landing pages, 2BHK/3BHK floor plans, site visit booking
+- [Restaurants & Hotels](https://mahitechnocrafts.in/website-developers-for-restaurants-bhopal): Digital contactless QR menus, table reservations, banquet booking
+- [Lawyers & Legal Firms](https://mahitechnocrafts.in/website-developers-for-lawyers-bhopal): Bar Council compliant practice profiles, appointment schedulers
+- [Chartered Accountants & CA Firms](https://mahitechnocrafts.in/website-developers-for-ca-bhopal): ICAI compliant portals, tax due-date tickers, secure document vaults
+- [Gyms & Salons](https://mahitechnocrafts.in/website-developers-for-gym-fitness-bhopal): Membership pricing, transformation sliders, free trial pass bookings
+- [Travel Agencies & Tour Operators](https://mahitechnocrafts.in/website-developers-for-travel-agency-bhopal): MP tourism packages, itinerary builders, cab booking engines
+- [Manufacturers & Industrial Units](https://mahitechnocrafts.in/website-developers-for-manufacturers-bhopal): B2B product catalogs, RFQ quote engines, Govindpura & Mandideep units
+- [Jewellers & Retail Showrooms](https://mahitechnocrafts.in/website-developers-for-jewellers-bhopal): Live gold rate tickers, luxury bridal showcases, WhatsApp price inquiry
+
+## Pan-India & Major Indian Cities
+- [Web Development Company in India](https://mahitechnocrafts.in/web-development-company-in-india): Nationwide full-stack web development
+- [Custom Software Development India](https://mahitechnocrafts.in/software-development-company-in-india): Enterprise ERP, CRM, and cloud software across India
+- [E-Commerce Development India](https://mahitechnocrafts.in/ecommerce-development-company-in-india): D2C & B2B stores with UPI & automated shipping
+- [Mobile App Development India](https://mahitechnocrafts.in/mobile-app-development-company-in-india): Cross-platform Flutter & React Native apps
+- [SEO Company in India](https://mahitechnocrafts.in/seo-company-in-india): National search engine optimization and organic dominance
+- [Indore](https://mahitechnocrafts.in/web-development-company-indore) | [Jabalpur](https://mahitechnocrafts.in/web-development-company-jabalpur) | [Gwalior](https://mahitechnocrafts.in/web-development-company-gwalior) | [Ujjain](https://mahitechnocrafts.in/web-development-company-ujjain) | [Raipur](https://mahitechnocrafts.in/web-development-company-raipur)
+- [Mumbai](https://mahitechnocrafts.in/web-development-company-mumbai) | [Delhi NCR](https://mahitechnocrafts.in/web-development-company-delhi-ncr) | [Bangalore](https://mahitechnocrafts.in/web-development-company-bangalore) | [Pune](https://mahitechnocrafts.in/web-development-company-pune) | [Hyderabad](https://mahitechnocrafts.in/web-development-company-hyderabad)
+- [Ahmedabad](https://mahitechnocrafts.in/web-development-company-ahmedabad) | [Jaipur](https://mahitechnocrafts.in/web-development-company-jaipur) | [Lucknow](https://mahitechnocrafts.in/web-development-company-lucknow) | [Kolkata](https://mahitechnocrafts.in/web-development-company-kolkata) | [Chandigarh](https://mahitechnocrafts.in/web-development-company-chandigarh)
+
+## Bhopal Localities Served (62 Areas)
+M.P. Nagar Zone 1 & 2, Arera Colony, New Market, 10 Number Market, 11 Number Stop, Bittan Market, Kolar Road, Hoshangabad Road, Shahpura, Bawadia Kalan, Ayodhya Bypass, Ashoka Garden, Govindpura Industrial Area, Mandideep Industrial Area, Lalghati, Bairagarh, Saket Nagar, Misrod, Indrapuri, BHEL Township, Piplani, Shahjahanabad, Hamidia Road, T.T. Nagar, Chuna Bhatti, Shivaji Nagar, Raisen Road, Karond, Jahangirabad, Koh-e-Fiza, Idgah Hills, Shyamla Hills, Malviya Nagar, Anand Nagar, Gandhi Nagar, Katara Hills, Bagsewaniya, Gulmohar, Rohit Nagar, Trilanga, Nehru Nagar, Kotra Sultanabad, Jawahar Chowk, Subhash Nagar, Gautam Nagar, Habibganj, Salaiya, Danish Kunj, Bairagarh Chichali, Ratanpur, Sukhi Sewaniya, Khajuri Kalan, Suraj Nagar, Barkheda Pathani, Peer Gate, Ibrahimpura, Nadra, Sindhi Colony, MANIT, AIIMS Bhopal.
+
+## For Expanded Details
+See [llms-full.txt](https://mahitechnocrafts.in/llms-full.txt) and [ai.txt](https://mahitechnocrafts.in/ai.txt).
+XML Sitemap: https://mahitechnocrafts.in/sitemap.xml

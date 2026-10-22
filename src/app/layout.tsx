@@ -23,8 +23,11 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Web Design & Software Development in Bhopal | Mahi TechnoCrafts',
+    default: 'Mahi TechnoCrafts | Best Web Development & Software Company in Bhopal & India',
     template: '%s | Mahi TechnoCrafts'
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || 'google-site-verification=y6mP_verification_placeholder',
   },
   description: 'Mahi TechnoCrafts designs and develops websites, web applications, mobile apps, and business software for companies in Bhopal and across India.',
   alternates: {
@@ -131,10 +134,26 @@ export default function RootLayout({
       addressCountry: 'IN'
     },
     areaServed: [
+      { '@type': 'Country', name: 'India' },
+      { '@type': 'State', name: 'Madhya Pradesh' },
       { '@type': 'City', name: 'Bhopal' },
       { '@type': 'City', name: 'Indore' },
-      { '@type': 'State', name: 'Madhya Pradesh' },
-      { '@type': 'Country', name: 'India' }
+      { '@type': 'City', name: 'Jabalpur' },
+      { '@type': 'City', name: 'Gwalior' },
+      { '@type': 'City', name: 'Ujjain' },
+      { '@type': 'City', name: 'Raipur' },
+      { '@type': 'City', name: 'Mumbai' },
+      { '@type': 'City', name: 'Pune' },
+      { '@type': 'City', name: 'Delhi' },
+      { '@type': 'City', name: 'Gurgaon' },
+      { '@type': 'City', name: 'Noida' },
+      { '@type': 'City', name: 'Bangalore' },
+      { '@type': 'City', name: 'Hyderabad' },
+      { '@type': 'City', name: 'Ahmedabad' },
+      { '@type': 'City', name: 'Jaipur' },
+      { '@type': 'City', name: 'Lucknow' },
+      { '@type': 'City', name: 'Kolkata' },
+      { '@type': 'City', name: 'Chandigarh' }
     ],
     sameAs: [
       'https://github.com/vikash6267',

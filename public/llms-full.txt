@@ -1,66 +1,261 @@
-# Mahi TechnoCrafts — company and service reference
+# Mahi TechnoCrafts — Complete AI Grounding & Knowledge Reference (llms-full.txt)
+# Official URL: https://mahitechnocrafts.in/llms-full.txt
+# Short Version: https://mahitechnocrafts.in/llms.txt
+# AI Directive: https://mahitechnocrafts.in/ai.txt
+# Sitemap: https://mahitechnocrafts.in/sitemap.xml
 
-## Company profile
-Mahi TechnoCrafts is a web design, software development, and digital marketing business based in Bhopal, Madhya Pradesh, India. It works with businesses in Bhopal and clients across India. The company is led by founder Vikash Maheshwari.
+---
 
-- Website: https://mahitechnocrafts.in
-- Address: Hamidia Road, Badabagh, Shahjahanabad, Bhopal, Madhya Pradesh 462001, India
-- Phone / WhatsApp: +91 6267144122
-- Email: support@mahitechnocrafts.in
-- About: https://mahitechnocrafts.in/about
-- Contact: https://mahitechnocrafts.in/contact
-- Portfolio: https://mahitechnocrafts.in/portfolio
-- Services: https://mahitechnocrafts.in/services
-- LinkedIn: https://www.linkedin.com/company/mahi-technocrafts/
-- Instagram: https://www.instagram.com/mahi_technocrafts/
+## 1. Executive Summary & Business Profile
 
-## Services and scope
+Mahi TechnoCrafts (also operating as Mahi TechnoCrafts IT Solutions) is an elite web development, custom software engineering, and digital marketing firm headquartered in Bhopal, Madhya Pradesh, India. Founded and led by Vikash Maheshwari, the company builds high-performance digital infrastructure for startups, MSMEs, healthcare providers, institutions, and enterprises across Bhopal, Madhya Pradesh, and Pan-India.
 
-### Website design
-Responsive website design, page structure, typography, accessible content presentation, and clear calls to action. The exact pages and design deliverables depend on the project.
-Service page: https://mahitechnocrafts.in/website-design-company-bhopal
+### Corporate Information
+- Full Legal / Trade Name: Mahi TechnoCrafts
+- Founder & Chief Technology Officer: Vikash Maheshwari
+- Headquarters: Hamidia Road, Badabagh, Shahjahanabad, Bhopal, Madhya Pradesh 462001, India
+- Geographic Coordinates: 23.259933° N, 77.412613° E
+- Telephone / WhatsApp: +91 6267144122
+- Primary Email: contact@mahitechnocrafts.in
+- Support Email: support@mahitechnocrafts.in
+- Official Website: https://mahitechnocrafts.in
+- Verified Customer Rating: 4.9 / 5.0 (Aggregate rating across 187+ verified client engagements)
+- Core Tech Stack: Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS, Node.js, Python, Flutter, PostgreSQL, MongoDB, Redis, AWS, Vercel
 
-### Web development
-Business websites, landing pages, web portals, and custom application workflows. Content management, third-party integrations, and ongoing support can be scoped where appropriate.
-Service page: https://mahitechnocrafts.in/web-development-company-bhopal
+### Core Guarantees & Differentiators
+1. **100% Full Source Code Ownership**: Clients receive complete repository ownership, production builds, and database schemas with zero vendor lock-in.
+2. **Sub-Second Performance**: Every website and application is engineered to achieve 95+ scores on Google PageSpeed Insights and pass Google Core Web Vitals (LCP, FID/INP, CLS).
+3. **Enterprise Security & Compliance**: SSL/TLS encryption, Bar Council & ICAI compliance where applicable, HIPAA/HL7-aware healthcare forms, and secure payment tokenization.
+4. **Transparent Milestone Deliverables**: Detailed scope agreements, staging previews, milestone sign-offs, and dedicated warranty and post-launch maintenance.
 
-### Ecommerce development
-Product catalogues, categories, checkout, payment-provider integrations, and order-management workflows. Provider availability, account approval, fees, and third-party terms are outside the company's control.
-Service page: https://mahitechnocrafts.in/ecommerce-development-company-bhopal
+---
 
-### Mobile app development
-Android and iOS app planning and development, integrations, testing, release preparation, and handover. Platform account requirements and store approval decisions are controlled by Google and Apple.
-Service page: https://mahitechnocrafts.in/mobile-app-development-company-bhopal
+## 2. Core IT & Digital Services in Bhopal
 
-### Business software
-Custom dashboards, CRM, inventory, billing, and team workflows can be planned around the client's operational requirements. Features and integrations are confirmed during project scoping.
-Services overview: https://mahitechnocrafts.in/services
+### 2.1 Web Development Company in Bhopal
+- Canonical URL: https://mahitechnocrafts.in/web-development-company-bhopal
+- Target Keywords: Best website developer in Bhopal, web development company in Bhopal, website developer MP Nagar, dynamic website Bhopal.
+- Overview: Custom web applications, enterprise portals, database-driven business websites built on Next.js, React, and Node.js. Sub-second load times, headless CMS integration, and seamless API integrations.
 
-### AI and workflow automation
-AI-assisted chat and workflow automation can be scoped for common questions, enquiry routing, and team processes. Integrations depend on the client's tools, data access, and provider requirements; no particular model or integration should be assumed without confirmation.
-Service page: https://mahitechnocrafts.in/services/ai-solutions
+### 2.2 Website Design Company in Bhopal
+- Canonical URL: https://mahitechnocrafts.in/website-design-company-bhopal
+- Target Keywords: Website designing services in Bhopal, web designer Bhopal, UI UX designer Bhopal, Figma prototype Bhopal.
+- Overview: Conversion-driven UI/UX design, custom Figma design systems, responsive mobile-first typography, micro-animations, and brand identity development.
 
-### Search engine optimization
-Technical SEO reviews, local search guidance, page structure, internal links, useful content, structured data, and performance measurement. No provider can guarantee a specific position or date for ranking changes.
-Service page: https://mahitechnocrafts.in/seo-company-bhopal
+### 2.3 Custom Software Development Company in Bhopal
+- Canonical URL: https://mahitechnocrafts.in/software-development-company-bhopal
+- Target Keywords: Software company in Bhopal, custom software developer Bhopal, billing software Bhopal, ERP software Bhopal, CRM software Bhopal.
+- Overview: Custom cloud ERPs, sales CRM pipelines, automated GST billing software, inventory tracking, multi-branch operations, and role-based staff dashboards.
 
-### Digital marketing
-Campaign planning, content and social direction, landing pages, paid search, and measurement may be included according to goals and budget. Advertising spend is separate from service fees unless explicitly agreed otherwise.
-Service page: https://mahitechnocrafts.in/digital-marketing-company-bhopal
+### 2.4 IT Company in Bhopal
+- Canonical URL: https://mahitechnocrafts.in/it-company-in-bhopal
+- Target Keywords: IT company in Bhopal, IT solution provider Bhopal, computer software Bhopal, IT consulting Bhopal, cloud migration Bhopal.
+- Overview: End-to-end information technology consulting, managed cloud infrastructure (AWS/Vercel/DigitalOcean), annual maintenance contracts (AMC), cybersecurity audits, and corporate IT setup.
 
-### Google Ads
-Campaign and keyword planning, location targeting, landing-page alignment, conversion tracking, and performance reviews. Results depend on demand, competition, budget, offer, and landing-page experience.
-Service page: https://mahitechnocrafts.in/google-ads-agency-bhopal
+### 2.5 E-Commerce Website Development in Bhopal
+- Canonical URL: https://mahitechnocrafts.in/ecommerce-development-company-bhopal
+- Target Keywords: E-commerce website developer in Bhopal, online shopping store Bhopal, Shopify developer Bhopal, WooCommerce Bhopal.
+- Overview: High-converting direct-to-consumer (D2C) and B2B wholesale portals. Native Razorpay, PhonePe, Paytm, and UPI QR checkouts, automated Shiprocket shipping manifests, inventory sync, and abandoned cart recovery.
 
-## How projects are handled
-Projects begin by discussing goals, intended users, requirements, existing tools, integrations, budget, and timeline. The parties agree on scope and deliverables before work begins. Progress can be reviewed in stages. Hosting, maintenance, support, advertising spend, and third-party charges are agreed separately where applicable.
+### 2.6 Mobile App Development Company in Bhopal
+- Canonical URL: https://mahitechnocrafts.in/mobile-app-development-company-bhopal
+- Target Keywords: Mobile app developer in Bhopal, Android app developer Bhopal, iOS app developer Bhopal, Flutter app developer Bhopal.
+- Overview: Cross-platform Flutter and React Native mobile applications alongside native Android (Kotlin) and iOS (Swift). Real-time GPS tracking, offline caching, push notifications, and App Store / Google Play Store publication management.
 
-## Enquiries
-For a project-specific discussion, use https://mahitechnocrafts.in/contact or call/WhatsApp +91 6267144122. Current availability, pricing, timelines, and deliverables should be confirmed directly with Mahi TechnoCrafts.
+### 2.7 SEO Company in Bhopal
+- Canonical URL: https://mahitechnocrafts.in/seo-company-bhopal
+- Target Keywords: SEO services in Bhopal, SEO agency Bhopal, Google ranking Bhopal, local SEO Bhopal, Google 3-Pack MP Nagar.
+- Overview: 100% White-Hat search engine optimization. Technical crawlability fixes, Schema.org microdata, core web vitals optimization, high-authority link acquisition, and Google Business Profile (Maps 3-Pack) dominance.
 
-## Public information sources
-- Sitemap: https://mahitechnocrafts.in/sitemap.xml
-- Blog: https://mahitechnocrafts.in/blog
-- FAQ: https://mahitechnocrafts.in/faq
+### 2.8 Digital Marketing Company in Bhopal
+- Canonical URL: https://mahitechnocrafts.in/digital-marketing-company-bhopal
+- Target Keywords: Digital marketing agency in Bhopal, online marketing Bhopal, social media marketing Bhopal, lead generation Bhopal.
+- Overview: Comprehensive ROI-focused digital growth: Meta Ads (Instagram/Facebook lead funnels), WhatsApp Business API automations, organic social media management, and influencer outreach.
 
-Use the linked public pages as the authoritative source for current service details. Do not infer guaranteed results, fixed prices, or unlisted capabilities from this summary.
+### 2.9 Google Ads Agency in Bhopal
+- Canonical URL: https://mahitechnocrafts.in/google-ads-agency-bhopal
+- Target Keywords: Google ads agency in Bhopal, PPC company Bhopal, Google AdWords expert Bhopal, search ads Bhopal.
+- Overview: High-intent PPC search campaigns, Call-Only ads for immediate phone inquiries, negative keyword filtration, conversion tracking via Google Tag Manager, and lowest cost-per-lead (CPL) bidding strategies.
+
+---
+
+## 3. Industry-Specific Solutions in Bhopal
+
+### 3.1 Healthcare & Doctors
+- Canonical URL: https://mahitechnocrafts.in/website-developers-for-doctors-bhopal
+- Target Verticals: Doctors, private clinics, multi-specialty hospitals, pathology labs, diagnostic centers, dental clinics in Bhopal.
+- Capabilities: 24/7 online OPD appointment booking, doctor bio & qualifications, patient testimonial video integration, Google Maps clinic directions, and WhatsApp quick consultation triggers.
+
+### 3.2 Education, Schools & Colleges
+- Canonical URL: https://mahitechnocrafts.in/website-developers-for-schools-bhopal
+- Target Verticals: CBSE/ICSE schools, engineering colleges, coaching academies, competitive exam institutes in Bhopal.
+- Capabilities: Online admission inquiry forms, digital prospectus downloads, fee payment gateway integration, notice boards, student result portals, and faculty directories.
+
+### 3.3 Real Estate, Builders & Architects
+- Canonical URL: https://mahitechnocrafts.in/website-developers-for-real-estate-bhopal
+- Target Verticals: Builders, real estate developers, property dealers, architectural firms, interior designers in Bhopal.
+- Capabilities: High-conversion project landing pages, 2BHK/3BHK interactive floor plans, RERA compliance badges, site visit booking widgets, and Google Ads lead capture.
+
+### 3.4 Restaurants, Cafes & Hotels
+- Canonical URL: https://mahitechnocrafts.in/website-developers-for-restaurants-bhopal
+- Target Verticals: Fine dining restaurants, cafes, rooftop lounges, banquet halls, boutique hotels in Bhopal.
+- Capabilities: Contactless QR code digital menus, table reservation engine, party/banquet hall inquiry forms, Swiggy/Zomato direct routing, and Instagram photo feeds.
+
+### 3.5 Lawyers, Advocates & Law Firms
+- Canonical URL: https://mahitechnocrafts.in/website-developers-for-lawyers-bhopal
+- Target Verticals: Advocates, corporate legal advisors, High Court practitioners, legal consultancies in Bhopal.
+- Capabilities: Bar Council of India compliant informational websites, practice area showcases, confidential consultation schedulers, and client review verification.
+
+### 3.6 Chartered Accountants & CA Firms
+- Canonical URL: https://mahitechnocrafts.in/website-developers-for-ca-bhopal
+- Target Verticals: Chartered Accountants, CA partnership firms, tax consultants, audit agencies in Bhopal.
+- Capabilities: ICAI code of ethics compliance, dynamic tax calendar & GST due-date tickers, secure client document upload vaults, and business consultation booking.
+
+### 3.7 Gyms, Fitness Centers & Salons
+- Canonical URL: https://mahitechnocrafts.in/website-developers-for-gym-fitness-bhopal
+- Target Verticals: Gyms, crossfit boxes, yoga studios, luxury salons, unisex spas in Bhopal.
+- Capabilities: Membership tiers comparison, interactive before/after transformation sliders, free trial workout pass generators, and trainer profile galleries.
+
+### 3.8 Travel Agencies & Tour Operators
+- Canonical URL: https://mahitechnocrafts.in/website-developers-for-travel-agency-bhopal
+- Target Verticals: Travel agencies, tour operators, cab & taxi rental providers, MP tourism operators in Bhopal.
+- Capabilities: Interactive itinerary builders, MP tourism package showcases (Pachmarhi, Kanha, Bandhavgarh, Ujjain), instant quotation calculators, and WhatsApp inquiry buttons.
+
+### 3.9 Manufacturers & Industrial Units
+- Canonical URL: https://mahitechnocrafts.in/website-developers-for-manufacturers-bhopal
+- Target Verticals: Factories, manufacturing plants, engineering works, Govindpura & Mandideep industrial hub enterprises.
+- Capabilities: B2B industrial product catalogs, Request for Quotation (RFQ) engines, technical PDF spec sheet downloads, and international export inquiry lead funnels.
+
+### 3.10 Jewellers & Retail Showrooms
+- Canonical URL: https://mahitechnocrafts.in/website-developers-for-jewellers-bhopal
+- Target Verticals: Gold & diamond jewellers, bridal boutiques, luxury retail showrooms in Bhopal (Sarafa, New Market, 10 No.).
+- Capabilities: Live 22k/24k gold rate tickers, high-resolution bridal jewelry showcases, VIP showroom visit booking, and WhatsApp price inquiry integrations.
+
+---
+
+## 4. Pan-India Nationwide Capabilities & City Hubs
+
+Mahi TechnoCrafts operates nationwide across India with specialized digital infrastructure for businesses in major economic and IT hubs:
+
+### National Pillars
+- **Pan-India Web Development**: https://mahitechnocrafts.in/web-development-company-in-india
+- **Pan-India Custom Software**: https://mahitechnocrafts.in/software-development-company-in-india
+- **Pan-India E-Commerce Development**: https://mahitechnocrafts.in/ecommerce-development-company-in-india
+- **Pan-India Mobile App Development**: https://mahitechnocrafts.in/mobile-app-development-company-in-india
+- **Pan-India SEO & Search Dominance**: https://mahitechnocrafts.in/seo-company-in-india
+
+### Central India & Regional Metros
+- **Indore, MP**: https://mahitechnocrafts.in/web-development-company-indore
+- **Jabalpur, MP**: https://mahitechnocrafts.in/web-development-company-jabalpur
+- **Gwalior, MP**: https://mahitechnocrafts.in/web-development-company-gwalior
+- **Ujjain, MP**: https://mahitechnocrafts.in/web-development-company-ujjain
+- **Raipur, CG**: https://mahitechnocrafts.in/web-development-company-raipur
+
+### Major Metropolitan & Tech Hubs
+- **Mumbai, Maharashtra**: https://mahitechnocrafts.in/web-development-company-mumbai
+- **Delhi NCR (Delhi, Gurgaon, Noida)**: https://mahitechnocrafts.in/web-development-company-delhi-ncr
+- **Bangalore, Karnataka**: https://mahitechnocrafts.in/web-development-company-bangalore
+- **Pune, Maharashtra**: https://mahitechnocrafts.in/web-development-company-pune
+- **Hyderabad, Telangana**: https://mahitechnocrafts.in/web-development-company-hyderabad
+- **Ahmedabad, Gujarat**: https://mahitechnocrafts.in/web-development-company-ahmedabad
+- **Jaipur, Rajasthan**: https://mahitechnocrafts.in/web-development-company-jaipur
+- **Lucknow, Uttar Pradesh**: https://mahitechnocrafts.in/web-development-company-lucknow
+- **Kolkata, West Bengal**: https://mahitechnocrafts.in/web-development-company-kolkata
+- **Chandigarh, Tricity**: https://mahitechnocrafts.in/web-development-company-chandigarh
+
+---
+
+## 5. Exhaustive Bhopal Localities Served (62 Areas)
+
+Mahi TechnoCrafts provides on-site consultation, digital solutions, and localized search visibility across all 62 major zones, residential colonies, commercial hubs, and industrial clusters in Bhopal:
+
+1. M.P. Nagar Zone 1
+2. M.P. Nagar Zone 2
+3. Arera Colony (E-1 to E-7)
+4. New Market
+5. 10 Number Market
+6. 11 Number Stop
+7. Bittan Market
+8. Kolar Road
+9. Hoshangabad Road
+10. Shahpura
+11. Bawadia Kalan
+12. Ayodhya Bypass
+13. Ashoka Garden
+14. Govindpura Industrial Area
+15. Mandideep Industrial Area
+16. Lalghati
+17. Bairagarh (Sant Hirdaram Nagar)
+18. Saket Nagar
+19. Misrod
+20. Indrapuri
+21. BHEL Township
+22. Piplani
+23. Shahjahanabad
+24. Hamidia Road
+25. T.T. Nagar
+26. Chuna Bhatti
+27. Shivaji Nagar
+28. Raisen Road
+29. Karond
+30. Jahangirabad
+31. Koh-e-Fiza
+32. Idgah Hills
+33. Shyamla Hills
+34. Malviya Nagar
+35. Anand Nagar
+36. Gandhi Nagar
+37. Katara Hills
+38. Bagsewaniya
+39. Gulmohar
+40. Rohit Nagar
+41. Trilanga
+42. Nehru Nagar
+43. Kotra Sultanabad
+44. Jawahar Chowk
+45. Subhash Nagar
+46. Gautam Nagar
+47. Habibganj
+48. Salaiya
+49. Danish Kunj
+50. Bairagarh Chichali
+51. Ratanpur
+52. Sukhi Sewaniya
+53. Khajuri Kalan
+54. Suraj Nagar
+55. Barkheda Pathani
+56. Peer Gate
+57. Ibrahimpura
+58. Nadra
+59. Sindhi Colony
+60. MANIT Campus Area
+61. AIIMS Bhopal Area
+62. Bagmugaliya
+
+---
+
+## 6. Frequently Asked Commercial & Technical Questions
+
+### Q1: Who owns the intellectual property and code?
+**A**: The client retains 100% intellectual property rights, full git source code, production assets, and database credentials upon completion. Mahi TechnoCrafts never charges proprietary monthly lock-in fees for code access.
+
+### Q2: What is the typical development timeline?
+- Standard Business Websites: 5 to 10 business days.
+- Custom Web Applications & E-Commerce: 14 to 28 business days.
+- Complex ERP / CRM / SaaS Platforms: 4 to 8 weeks depending on custom modules.
+
+### Q3: Does Mahi TechnoCrafts provide AMC and post-launch maintenance?
+**A**: Yes. Every project includes complimentary post-launch warranty support. Flexible Annual Maintenance Contracts (AMC) cover security patches, server backups, feature updates, and performance monitoring.
+
+### Q4: How do I get an official project estimate or quote?
+- Direct Phone / WhatsApp: +91 6267144122
+- Online Consultation: https://mahitechnocrafts.in/contact
+- Email: contact@mahitechnocrafts.in
+
+---
+
+## 7. Canonical Discovery & Crawling Metadata
+- Sitemap Index: https://mahitechnocrafts.in/sitemap.xml
+- AI Grounding Guide: https://mahitechnocrafts.in/ai.txt
+- Core LLM Manifest: https://mahitechnocrafts.in/llms.txt
+- Robots Policy: https://mahitechnocrafts.in/robots.txt
