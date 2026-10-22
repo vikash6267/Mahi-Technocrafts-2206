@@ -144,6 +144,7 @@ export async function renderHtmlToPdf(htmlBody: string, title: string = 'Proposa
   try {
     const page = await browser.newPage();
     await page.setViewport({ width: 1200, height: 1600, deviceScaleFactor: 2 });
+    await page.emulateMediaType('screen');
 
     // Wrap with full HTML shell including Tailwind & typography styles
     const fullHtml = `
@@ -152,23 +153,51 @@ export async function renderHtmlToPdf(htmlBody: string, title: string = 'Proposa
 <head>
   <meta charset="UTF-8">
   <title>${title}</title>
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Outfit', 'system-ui', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap');
+
     @page {
       size: A4 portrait;
-      margin: 10mm 12mm 12mm 12mm;
+      margin: 8mm 10mm 10mm 10mm;
+    }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
     }
     body {
       margin: 0;
       padding: 0;
       background-color: #ffffff !important;
       color: #0f172a !important;
-      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-      -webkit-print-color-adjust: exact !important;
-      print-color-adjust: exact !important;
+      font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif !important;
+    }
+    .font-display {
+      font-family: 'Outfit', system-ui, -apple-system, sans-serif !important;
+      letter-spacing: -0.02em !important;
+    }
+    .font-sans {
+      font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif !important;
+    }
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace !important;
     }
     .no-print {
       display: none !important;
@@ -176,10 +205,12 @@ export async function renderHtmlToPdf(htmlBody: string, title: string = 'Proposa
     #proposal-document {
       width: 100% !important;
       max-width: 100% !important;
-      margin: 0 !important;
+      margin: 0 auto !important;
       box-shadow: none !important;
-      border: none !important;
-      border-radius: 0 !important;
+      border: 1px solid #e2e8f0 !important;
+      border-radius: 16px !important;
+      overflow: hidden !important;
+      background-color: #ffffff !important;
     }
     table {
       page-break-inside: auto;
@@ -204,18 +235,19 @@ export async function renderHtmlToPdf(htmlBody: string, title: string = 'Proposa
       timeout: 30000
     });
 
-    // Wait a brief moment for any web fonts and images to settle
-    await new Promise((r) => setTimeout(r, 600));
+    // Wait until web fonts are completely loaded and painted
+    await page.evaluateHandle('document.fonts.ready');
+    await new Promise((r) => setTimeout(r, 400));
 
     const pdfBuffer = await page.pdf({
       format: 'A4',
       printBackground: true,
       preferCSSPageSize: true,
       margin: {
-        top: '10mm',
-        right: '12mm',
-        bottom: '12mm',
-        left: '12mm'
+        top: '8mm',
+        right: '10mm',
+        bottom: '10mm',
+        left: '10mm'
       }
     });
 

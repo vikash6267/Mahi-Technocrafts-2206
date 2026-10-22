@@ -63,7 +63,7 @@ export function ProposalDocument({ proposal, isPrintMode = false }: ProposalDocu
   return (
     <div
       id="proposal-document"
-      className="w-full max-w-[850px] mx-auto bg-white text-slate-800 font-sans shadow-xl print:shadow-none print:w-full print:max-w-none print:m-0 rounded-2xl print:rounded-none overflow-hidden border border-slate-200 print:border-none"
+      className="w-full max-w-[850px] mx-auto bg-white text-slate-800 font-sans shadow-xl print:shadow-none print:w-full print:max-w-none print:m-0 rounded-2xl overflow-hidden border border-slate-200"
     >
       {/* =========================================================================
           PRINT STYLES INJECTION
@@ -98,7 +98,11 @@ export function ProposalDocument({ proposal, isPrintMode = false }: ProposalDocu
           1. HEADER SECTION (Official Branding, Company Info & Proposal Metadata)
           Compact height <= 200px
       ========================================================================== */}
-      <div className="px-6 py-4 sm:px-8 sm:py-4.5 border-b border-slate-200 bg-gradient-to-r from-slate-50 via-sky-50/20 to-slate-50 print:px-6 print:py-3.5 print:border-b print:border-slate-300">
+      {/* Brand Accent Top Bar */}
+      <div className="h-1.5 w-full bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 shrink-0"></div>
+
+      {/* Header Section */}
+      <div className="px-6 py-4.5 sm:px-8 sm:py-5 border-b border-slate-200/90 bg-white">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           {/* Company Brand & Logo */}
           <div className="flex items-center gap-3.5 sm:gap-4">
@@ -141,7 +145,7 @@ export function ProposalDocument({ proposal, isPrintMode = false }: ProposalDocu
           </div>
 
           {/* Proposal Ref No & Dates Card (Compact) */}
-          <div className="w-full sm:w-auto bg-white border border-slate-200/90 rounded-xl px-3.5 py-2.5 sm:text-right shadow-xs print:border print:border-slate-300 shrink-0">
+          <div className="w-full sm:w-auto bg-white border border-slate-200/90 rounded-xl px-3.5 py-2.5 sm:text-right shadow-xs shrink-0">
             <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
               Proposal Number
             </div>
@@ -180,7 +184,7 @@ export function ProposalDocument({ proposal, isPrintMode = false }: ProposalDocu
             2. CLIENT INFORMATION ("Prepared For")
         ========================================================================== */}
         {showClientDetails && (
-          <div className="rounded-2xl border border-slate-200/90 bg-slate-50/50 p-5 print:p-4 print:bg-white print:border-slate-300">
+          <div className="rounded-2xl border border-slate-200/90 bg-slate-50/60 p-5">
             <div className="text-[10px] font-extrabold uppercase tracking-widest text-sky-700 flex items-center gap-1.5 mb-2">
               <Building2 size={12} />
               <span>Prepared Exclusively For</span>
@@ -258,7 +262,7 @@ export function ProposalDocument({ proposal, isPrintMode = false }: ProposalDocu
               {proposal.scopeOfWork.map((scope, idx) => (
                 <div
                   key={idx}
-                  className="flex items-start gap-2.5 p-3 rounded-xl bg-slate-50/80 border border-slate-200/70 text-xs text-slate-700 leading-snug print:bg-white print:border-slate-300"
+                  className="flex items-start gap-2.5 p-3 rounded-xl bg-slate-50/80 border border-slate-200/70 text-xs text-slate-700 leading-snug"
                 >
                   <CheckCircle2 size={14} className="text-emerald-600 shrink-0 mt-0.5" />
                   <span>{scope}</span>
