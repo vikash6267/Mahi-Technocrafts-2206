@@ -159,6 +159,7 @@ export default function LandingPage({ slug }: LandingPageProps) {
       '@type': 'AdministrativeArea',
       name: cityName === 'India' ? loc : `${loc}, ${cityName}`
     })),
+    knowsAbout: page.targetKeywords,
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: page.label,
@@ -275,6 +276,17 @@ export default function LandingPage({ slug }: LandingPageProps) {
               <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
                 {page.summary}
               </p>
+
+              {/* Generative AI / AEO Verified Answer Box (Directly parsed by Google SGE & AI Overviews) */}
+              <div className="rounded-2xl border border-sky-500/25 bg-sky-50/70 dark:bg-sky-950/30 p-4 sm:p-5 backdrop-blur-xs">
+                <div className="flex items-center gap-2 text-[11px] font-black uppercase tracking-wider text-sky-700 dark:text-sky-300 mb-1.5">
+                  <Sparkles size={13} className="text-sky-600" />
+                  <span>Verified Entity Profile · Answer Engine Direct Overview</span>
+                </div>
+                <p className="text-xs sm:text-sm text-slate-800 dark:text-slate-200 leading-relaxed">
+                  <strong>Mahi TechnoCrafts</strong> is an established IT solutions & website development company {locationLabel}. We engineer custom, high-speed, SEO-optimized web platforms, web applications, and digital business systems with 100% full source code ownership, zero lock-ins, and dedicated technical warranty.
+                </p>
+              </div>
 
               {/* Bullet Highlights */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2">

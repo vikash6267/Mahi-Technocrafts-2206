@@ -64,6 +64,32 @@ const nextConfig: NextConfig = {
       { source: '/apply', destination: '/careers', permanent: true },
       { source: '/news', destination: '/blog', permanent: true },
       { source: '/news/:slug*', destination: '/blog/:slug*', permanent: true },
+
+      // 4. Singular-to-Plural Canonical Redirects for Industry SEO Pages (Bhopal)
+      { source: '/website-developer-for-doctors-bhopal', destination: '/website-developers-for-doctors-bhopal', permanent: true },
+      { source: '/website-developer-for-schools-bhopal', destination: '/website-developers-for-schools-bhopal', permanent: true },
+      { source: '/website-developer-for-real-estate-bhopal', destination: '/website-developers-for-real-estate-bhopal', permanent: true },
+      { source: '/website-developer-for-restaurants-bhopal', destination: '/website-developers-for-restaurants-bhopal', permanent: true },
+      { source: '/website-developer-for-lawyers-bhopal', destination: '/website-developers-for-lawyers-bhopal', permanent: true },
+      { source: '/website-developer-for-ca-bhopal', destination: '/website-developers-for-ca-bhopal', permanent: true },
+      { source: '/website-developer-for-gym-fitness-bhopal', destination: '/website-developers-for-gym-fitness-bhopal', permanent: true },
+      { source: '/website-developer-for-travel-agency-bhopal', destination: '/website-developers-for-travel-agency-bhopal', permanent: true },
+      { source: '/website-developer-for-manufacturers-bhopal', destination: '/website-developers-for-manufacturers-bhopal', permanent: true },
+      { source: '/website-developer-for-jewellers-bhopal', destination: '/website-developers-for-jewellers-bhopal', permanent: true },
+
+      // 5. Singular-to-Plural Canonical Redirects for Single Industry Pages (National)
+      { source: '/website-developer-for-schools', destination: '/website-developers-for-schools', permanent: true },
+      { source: '/website-developer-for-coaching-institutes', destination: '/website-developers-for-coaching-institutes', permanent: true },
+      { source: '/website-developer-for-colleges', destination: '/website-developers-for-colleges', permanent: true },
+      { source: '/website-developer-for-doctors', destination: '/website-developers-for-doctors', permanent: true },
+      { source: '/website-developer-for-clinics', destination: '/website-developers-for-clinics', permanent: true },
+      { source: '/website-developer-for-hospitals', destination: '/website-developers-for-hospitals', permanent: true },
+      { source: '/website-developer-for-real-estate', destination: '/website-developers-for-real-estate', permanent: true },
+      { source: '/website-developer-for-restaurants', destination: '/website-developers-for-restaurants', permanent: true },
+      { source: '/website-developer-for-ecommerce', destination: '/website-developers-for-ecommerce', permanent: true },
+      { source: '/website-developer-for-travel-agency', destination: '/website-developers-for-travel-agency', permanent: true },
+      { source: '/website-developer-for-lawyers', destination: '/website-developers-for-lawyers', permanent: true },
+      { source: '/website-developer-for-ca', destination: '/website-developers-for-ca', permanent: true },
     ];
   },
 

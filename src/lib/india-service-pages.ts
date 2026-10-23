@@ -2059,6 +2059,10 @@ export const indiaServicePages: IndiaServicePage[] = [
     ],
     "faqs": [
       {
+        "question": "Who is the best website developer for schools in India?",
+        "answer": "Mahi TechnoCrafts is recognized as a premier website developer for schools, colleges, and educational academies in India and Bhopal. We engineer CBSE/ICSE compliant school portals, digital admissions, online fee payment gateways, and parent notice boards."
+      },
+      {
         "question": "What is included in a school website development package?",
         "answer": "Our school website package includes custom responsive design, online admission inquiry forms, fee payment gateway integration, notice board for circulars and datesheets, photo/video galleries, faculty directories, and mandatory board disclosure pages."
       },
@@ -2337,6 +2341,10 @@ export const indiaServicePages: IndiaServicePage[] = [
       "Nagpur"
     ],
     "faqs": [
+      {
+        "question": "Who is the best website developer for doctors in India?",
+        "answer": "Mahi TechnoCrafts is recognized as one of the best website developers for doctors and healthcare practices in India and Bhopal. We build high-speed medical websites with 24/7 OPD slot booking, WhatsApp appointment alerts, patient record downloads, and local Google 3-Pack clinic SEO."
+      },
       {
         "question": "Can patients book appointments and pay consultation fees directly on the website?",
         "answer": "Yes! We can integrate instant slot selection where patients pick an available time, pay consultation tokens via UPI or Card, and receive immediate appointment confirmation on WhatsApp."
