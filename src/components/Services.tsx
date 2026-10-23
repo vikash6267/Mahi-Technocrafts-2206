@@ -32,7 +32,7 @@ const businessServices = [
   {
     id: 'web-dev',
     slug: 'web-dev',
-    image: '/images/inext-web-reference.jpg',
+    image: '/images/inext-web-reference.webp',
     title: 'Custom Websites & Web Portals',
     desc: 'Responsive business websites with clear navigation, useful calls to action, and technical SEO foundations.',
     icon: <Globe className="w-5 h-5 text-sky-500" />,
@@ -43,7 +43,7 @@ const businessServices = [
   {
     id: 'mobile-dev',
     slug: 'mobile-dev',
-    image: '/images/inext-app-reference.png',
+    image: '/images/inext-app-reference.webp',
     title: 'Mobile Apps (iOS & Android)',
     desc: 'Plan an Android or iOS app around your users, workflows, and the features your business needs.',
     icon: <Smartphone className="w-5 h-5 text-purple-500" />,
@@ -65,7 +65,7 @@ const businessServices = [
   {
     id: 'ai-solutions',
     slug: 'ai-solutions',
-    image: '/images/inext-ai-reference.jpg',
+    image: '/images/inext-ai-reference.webp',
     title: 'WhatsApp Automation & 24/7 AI Chatbots',
     desc: 'Use chat and workflow automation to handle common questions, route enquiries, and support your team.',
     icon: <Bot className="w-5 h-5 text-amber-500" />,

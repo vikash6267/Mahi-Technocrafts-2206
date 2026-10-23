@@ -156,7 +156,7 @@ export default function LeadPopup() {
             {/* Lead Form */}
             <form onSubmit={handleSubmit} className="mt-4 space-y-3">
               <div>
-                <label className="text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider block">
+                <label htmlFor="popup-lead-name" className="text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider block">
                   Your Full Name <span className="text-rose-500">*</span>
                 </label>
                 <input
@@ -164,13 +164,13 @@ export default function LeadPopup() {
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder="e.g. Rajesh Sharma / Company Name"
+                  id="popup-lead-name" placeholder="e.g. Rajesh Sharma / Company Name"
                   className="w-full mt-1 px-3.5 py-2.5 text-xs rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none focus:border-sky-500 font-medium"
                 />
               </div>
 
               <div>
-                <label className="text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider block">
+                <label htmlFor="popup-lead-phone" className="text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider block">
                   WhatsApp / Phone Number <span className="text-rose-500">*</span>
                 </label>
                 <input
@@ -178,16 +178,18 @@ export default function LeadPopup() {
                   required
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  placeholder="+91 98765 43210"
+                  id="popup-lead-phone" placeholder="+91 98765 43210"
                   className="w-full mt-1 px-3.5 py-2.5 text-xs rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none focus:border-sky-500 font-mono font-bold"
                 />
               </div>
 
               <div>
-                <label className="text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider block">
+                <label htmlFor="popup-lead-service" className="text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider block">
                   What do you want to build? <span className="text-slate-400 font-normal">(Optional)</span>
                 </label>
                 <select
+                  id="popup-lead-service"
+                  aria-label="What do you want to build?"
                   value={service}
                   onChange={(e) => setService(e.target.value)}
                   className="w-full mt-1 px-3 py-2 text-xs rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none focus:border-sky-500 font-medium cursor-pointer"

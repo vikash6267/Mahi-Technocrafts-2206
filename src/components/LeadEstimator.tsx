@@ -135,10 +135,12 @@ Please follow up with a suitable project scope and next steps.`;
             {/* Step 2: Industry & Timeline Selection */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
               <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 block">
+                <label htmlFor="industry-select" className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 block">
                   2. Select Your Business Industry:
                 </label>
                 <select
+                  id="industry-select"
+                  aria-label="Select Your Business Industry"
                   value={industry}
                   onChange={(e) => setIndustry(e.target.value)}
                   className="w-full px-4 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs text-slate-800 dark:text-white focus:outline-none focus:border-sky-500"
