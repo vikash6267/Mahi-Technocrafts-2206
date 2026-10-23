@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { Send, Sparkles } from 'lucide-react';
+import { Send, Sparkles, ChevronDown, ChevronUp, MapPin, Building2, Globe2 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 const Instagram = ({ size = 16 }: { size?: number }) => (
@@ -33,6 +33,7 @@ export default function Footer() {
   const pathname = usePathname();
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [isSeoOpen, setIsSeoOpen] = useState(false);
 
   if (pathname?.startsWith('/admin')) {
     return null;
@@ -118,364 +119,244 @@ export default function Footer() {
           </h3>
           <ul className="space-y-3 text-sm">
             <li>
-              <Link href="/" className="hover:text-brand-blue transition-colors">Home</Link>
+              <Link href="/about" className="hover:text-brand-blue transition-colors">
+                About Us
+              </Link>
             </li>
             <li>
-              <Link href="/about" className="hover:text-brand-blue transition-colors">About Us</Link>
+              <Link href="/services" className="hover:text-brand-blue transition-colors">
+                All Services
+              </Link>
             </li>
             <li>
-              <Link href="/solutions" className="hover:text-brand-blue transition-colors">Industry Solutions</Link>
+              <Link href="/solutions" className="hover:text-brand-blue transition-colors">
+                Industry Solutions
+              </Link>
             </li>
             <li>
-              <Link href="/#projects" className="hover:text-brand-blue transition-colors">Case Studies</Link>
+              <Link href="/portfolio" className="hover:text-brand-blue transition-colors">
+                Portfolio Showcase
+              </Link>
             </li>
             <li>
-              <Link href="/blog" className="hover:text-brand-blue transition-colors">Our Blog</Link>
+              <Link href="/blog" className="hover:text-brand-blue transition-colors">
+                Tech Insights & Blog
+              </Link>
             </li>
             <li>
-              <Link href="/careers" className="hover:text-brand-blue transition-colors">Careers</Link>
+              <Link href="/careers" className="hover:text-brand-blue transition-colors">
+                Careers & Openings
+              </Link>
             </li>
           </ul>
         </div>
 
-        {/* Services Links */}
+        {/* Core Services */}
         <div className="space-y-6">
           <h3 className="font-display font-bold text-slate-900 dark:text-white text-sm uppercase tracking-wider">
-            Services
+            Core Expertise
           </h3>
           <ul className="space-y-3 text-sm">
             <li>
-              <Link href="/services/web-dev" className="hover:text-brand-blue transition-colors">Web Development</Link>
+              <Link href="/services/web-dev" className="hover:text-brand-blue transition-colors">
+                Web Development & SaaS
+              </Link>
             </li>
             <li>
-              <Link href="/services/mobile-dev" className="hover:text-brand-blue transition-colors">Mobile App Development</Link>
+              <Link href="/services/mobile-dev" className="hover:text-brand-blue transition-colors">
+                Mobile Apps (iOS & Android)
+              </Link>
             </li>
             <li>
-              <Link href="/services/uiux-design" className="hover:text-brand-blue transition-colors">App & Website Design</Link>
+              <Link href="/services/ai-solutions" className="hover:text-brand-blue transition-colors">
+                AI Solutions & Chatbots
+              </Link>
             </li>
             <li>
-              <Link href="/services/ai-solutions" className="hover:text-brand-blue transition-colors">AI & Automations</Link>
+              <Link href="/services/digital-marketing" className="hover:text-brand-blue transition-colors">
+                Digital Marketing & PPC
+              </Link>
             </li>
             <li>
-              <Link href="/services/erp-crm" className="hover:text-brand-blue transition-colors">Business Software</Link>
+              <Link href="/services/seo-services" className="hover:text-brand-blue transition-colors">
+                Google SEO & Local Maps
+              </Link>
             </li>
             <li>
-              <Link href="/services/cloud-services" className="hover:text-brand-blue transition-colors">Secure Cloud Hosting</Link>
+              <Link href="/services/erp-crm" className="hover:text-brand-blue transition-colors">
+                Custom ERP & Billing Software
+              </Link>
             </li>
           </ul>
         </div>
 
-        {/* Newsletter */}
+        {/* Newsletter & Contact */}
         <div className="space-y-6">
           <h3 className="font-display font-bold text-slate-900 dark:text-white text-sm uppercase tracking-wider">
-            Subscribe
+            Stay Updated
           </h3>
           <p className="text-sm">
-            Stay updated with our latest business tips, articles, and company news.
+            Subscribe to our tech newsletter for modern engineering tips and digital growth strategies.
           </p>
-          <form onSubmit={handleSubscribe} className="space-y-2">
-            <div className="flex gap-2">
+          <form onSubmit={handleSubscribe} className="space-y-3">
+            <div className="relative">
               <input
                 type="email"
-                placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email"
                 required
-                className="flex-1 px-4 py-2.5 bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl text-xs text-slate-800 dark:text-white placeholder-slate-400 focus:outline-none focus:border-brand-blue transition-colors"
+                className="w-full px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 text-sm focus:outline-none focus:border-brand-blue transition-colors"
               />
               <button
                 type="submit"
-                className="px-4 py-2.5 bg-brand-blue hover:bg-brand-blue/90 text-white rounded-xl flex items-center justify-center cursor-pointer transition-colors"
                 aria-label="Subscribe to newsletter"
+                className="absolute right-1.5 top-1.5 bottom-1.5 px-3 rounded-lg bg-brand-blue hover:bg-brand-blue/90 text-white flex items-center justify-center transition-colors cursor-pointer"
               >
                 <Send size={14} />
               </button>
             </div>
             {submitted && (
-              <span className="text-[10px] text-green-500 font-semibold flex items-center gap-1">
-                <Sparkles size={10} /> Thanks for subscribing!
-              </span>
+              <p className="text-xs text-emerald-500 font-medium flex items-center gap-1 animate-in fade-in">
+                <Sparkles size={12} />
+                <span>Thank you for subscribing!</span>
+              </p>
             )}
           </form>
+          <div className="text-xs space-y-1 text-slate-500">
+            <p><strong>Bhopal Office:</strong> Plot 12, Zone-II, MP Nagar, Bhopal (MP)</p>
+            <p><strong>Direct Hotline:</strong> +91 62671 44122</p>
+          </div>
         </div>
       </div>
 
-            {/* Bhopal & Pan-India SEO Strips (Internal Link Equity) */}
-      <div className="max-w-7xl mx-auto px-6 mt-12 pt-8 border-t border-slate-200 dark:border-slate-900/60 space-y-6">
-        {/* 1. Core IT Services */}
-        <div>
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2.5">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200">
-              Top IT & Web Development Services in Bhopal
-            </span>
-            <span className="text-[11px] text-slate-400">
-              Serving MP Nagar, Arera Colony, Kolar, BHEL & All Bhopal Localities
-            </span>
+      {/* Elegant & Modern Expandable Directory (Google Crawls Everything While Keeping Footer Sleek & Clean) */}
+      <div className="max-w-7xl mx-auto px-6 mt-12 pt-6 border-t border-slate-200 dark:border-slate-900/60">
+        <button
+          onClick={() => setIsSeoOpen(!isSeoOpen)}
+          type="button"
+          aria-expanded={isSeoOpen}
+          aria-controls="footer-seo-directory"
+          className="w-full py-3.5 px-5 rounded-2xl bg-slate-100/80 dark:bg-slate-900/50 hover:bg-slate-200/70 dark:hover:bg-slate-800/60 border border-slate-200 dark:border-slate-800/80 flex items-center justify-between transition-all cursor-pointer group"
+        >
+          <div className="flex items-center gap-2.5 text-xs font-bold text-slate-800 dark:text-slate-200">
+            <MapPin size={15} className="text-sky-600 dark:text-sky-400" />
+            <span>Explore Bhopal & Pan-India Service Locations (144+ Landing Pages)</span>
           </div>
-          <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs">
-            <Link href="/web-development-company-bhopal" className="hover:text-brand-blue transition-colors">
-              Web Development Company in Bhopal
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/website-design-company-bhopal" className="hover:text-brand-blue transition-colors">
-              Website Design Company in Bhopal
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/software-development-company-bhopal" className="hover:text-brand-blue transition-colors">
-              Software Development Company in Bhopal
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/it-company-in-bhopal" className="hover:text-brand-blue transition-colors">
-              IT Company in Bhopal
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/mobile-app-development-company-bhopal" className="hover:text-brand-blue transition-colors">
-              Mobile App Development in Bhopal
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/ecommerce-development-company-bhopal" className="hover:text-brand-blue transition-colors">
-              E-Commerce Development in Bhopal
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/digital-marketing-company-bhopal" className="hover:text-brand-blue transition-colors">
-              Digital Marketing Company in Bhopal
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/seo-company-bhopal" className="hover:text-brand-blue transition-colors">
-              SEO Company in Bhopal
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/google-ads-agency-bhopal" className="hover:text-brand-blue transition-colors">
-              Google Ads Agency in Bhopal
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/ai-development-company-bhopal" className="hover:text-brand-blue transition-colors">
-              AI Development in Bhopal
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/whatsapp-chatbot-development-company" className="hover:text-brand-blue transition-colors">
-              WhatsApp Chatbot Development
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/erp-crm-software-development-bhopal" className="hover:text-brand-blue transition-colors">
-              ERP & CRM Software in Bhopal
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/website-development-cost-in-bhopal" className="hover:text-brand-blue transition-colors font-semibold text-sky-600 dark:text-sky-400">
-              Website Cost & Pricing (Bhopal)
-            </Link>
+          <div className="flex items-center gap-2 text-xs font-semibold text-sky-600 dark:text-sky-400 group-hover:underline">
+            <span>{isSeoOpen ? 'Hide Directory' : 'Browse All Locations & Services'}</span>
+            {isSeoOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
           </div>
-        </div>
+        </button>
 
-        {/* 2. Industry-Specific Justdial-Style Categories */}
-        <div className="pt-4 border-t border-slate-200/60 dark:border-slate-800/60">
-          <div className="mb-2.5">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200">
-              Industry-Specific Website Developers in Bhopal (Justdial Categories)
-            </span>
+        {/* Directory Content (Always present in HTML for Googlebot SEO crawl, cleanly toggled for humans) */}
+        <div
+          id="footer-seo-directory"
+          className={`${isSeoOpen ? 'block mt-6 pt-6 border-t border-slate-200/80 dark:border-slate-800/80' : 'hidden'} space-y-6 animate-in fade-in duration-200`}
+        >
+          {/* 1. Bhopal Core Services */}
+          <div>
+            <div className="flex items-center gap-2 mb-2 text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white">
+              <Building2 size={13} className="text-sky-500" />
+              <span>Top Web & Software Services in Bhopal</span>
+            </div>
+            <div className="flex flex-wrap gap-2 text-xs">
+              {[
+                { name: 'Web Development in Bhopal', href: '/web-development-company-bhopal' },
+                { name: 'Website Design in Bhopal', href: '/website-design-company-bhopal' },
+                { name: 'Software Company in Bhopal', href: '/software-development-company-bhopal' },
+                { name: 'IT Company in Bhopal', href: '/it-company-in-bhopal' },
+                { name: 'Mobile App Development', href: '/mobile-app-development-company-bhopal' },
+                { name: 'E-Commerce Development', href: '/ecommerce-development-company-bhopal' },
+                { name: 'Digital Marketing Bhopal', href: '/digital-marketing-company-bhopal' },
+                { name: 'SEO Company in Bhopal', href: '/seo-company-bhopal' },
+                { name: 'Google Ads Agency', href: '/google-ads-agency-bhopal' },
+                { name: 'AI Solutions Bhopal', href: '/ai-development-company-bhopal' },
+                { name: 'WhatsApp Chatbot Automation', href: '/whatsapp-chatbot-development-company' },
+                { name: 'ERP & CRM Software', href: '/erp-crm-software-development-bhopal' },
+                { name: 'Website Cost & Pricing (Bhopal)', href: '/website-development-cost-in-bhopal' }
+              ].map((item, idx) => (
+                <Link
+                  key={idx}
+                  href={item.href}
+                  className="px-3 py-1 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-sky-500 text-slate-700 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 transition-colors shadow-xs"
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
           </div>
-          <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs">
-            <Link href="/website-developers-for-doctors-bhopal" className="hover:text-brand-blue transition-colors">
-              Website Developers For Doctors & Clinics
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/website-developers-for-schools-bhopal" className="hover:text-brand-blue transition-colors">
-              Website Developers For Schools & Coaching
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/website-developers-for-real-estate-bhopal" className="hover:text-brand-blue transition-colors">
-              Website Developers For Real Estate & Builders
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/website-developers-for-restaurants-bhopal" className="hover:text-brand-blue transition-colors">
-              Website Developers For Restaurants & Hotels
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/website-developers-for-lawyers-bhopal" className="hover:text-brand-blue transition-colors">
-              Website Developers For Advocates & Legal Firms
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/website-developers-for-ca-bhopal" className="hover:text-brand-blue transition-colors">
-              Website Developers For Chartered Accountants (CA)
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/website-developers-for-gym-fitness-bhopal" className="hover:text-brand-blue transition-colors">
-              Website Developers For Gyms & Salons
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/website-developers-for-travel-agency-bhopal" className="hover:text-brand-blue transition-colors">
-              Website Developers For Travel Agencies & Tours
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/website-developers-for-manufacturers-bhopal" className="hover:text-brand-blue transition-colors">
-              Website Developers For Manufacturers (Govindpura & Mandideep)
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/website-developers-for-jewellers-bhopal" className="hover:text-brand-blue transition-colors">
-              Website Developers For Jewellers & Showrooms
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/website-developers-for-logistics" className="hover:text-brand-blue transition-colors">
-              Website Developers For Logistics & Transport
-            </Link>
-          </div>
-        </div>
 
-        {/* 3. Pan-India & Major Indian Cities */}
-        <div className="pt-4 border-t border-slate-200/60 dark:border-slate-800/60">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2.5">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200">
-              Web & Software Development Across India (Pan-India Presence)
-            </span>
-            <span className="text-[11px] text-slate-400">
-              Nationwide Delivery Across All 28 States & Metro Hubs
-            </span>
+          {/* 2. Industry Specific Developers (Bhopal) */}
+          <div className="pt-4 border-t border-slate-200/60 dark:border-slate-800/60">
+            <div className="flex items-center gap-2 mb-2 text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white">
+              <Sparkles size={13} className="text-purple-500" />
+              <span>Industry-Specific Website Developers in Bhopal</span>
+            </div>
+            <div className="flex flex-wrap gap-2 text-xs">
+              {[
+                { name: 'Doctors & Clinics', href: '/website-developers-for-doctors-bhopal' },
+                { name: 'Schools & Coaching', href: '/website-developers-for-schools-bhopal' },
+                { name: 'Real Estate & Builders', href: '/website-developers-for-real-estate-bhopal' },
+                { name: 'Restaurants & Hotels', href: '/website-developers-for-restaurants-bhopal' },
+                { name: 'Advocates & Legal Firms', href: '/website-developers-for-lawyers-bhopal' },
+                { name: 'Chartered Accountants (CA)', href: '/website-developers-for-ca-bhopal' },
+                { name: 'Gyms & Salons', href: '/website-developers-for-gym-fitness-bhopal' },
+                { name: 'Travel & Tour Agencies', href: '/website-developers-for-travel-agency-bhopal' },
+                { name: 'Industrial Manufacturers', href: '/website-developers-for-manufacturers-bhopal' },
+                { name: 'Jewellers & Showrooms', href: '/website-developers-for-jewellers-bhopal' },
+                { name: 'Logistics & Transport', href: '/website-developers-for-logistics' }
+              ].map((item, idx) => (
+                <Link
+                  key={idx}
+                  href={item.href}
+                  className="px-3 py-1 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-purple-500 text-slate-700 dark:text-slate-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors shadow-xs"
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
           </div>
-          <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs">
-            <Link href="/web-development-company-in-india" className="font-semibold text-sky-600 dark:text-sky-400 hover:underline">
-              Web Development Company in India
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/software-development-company-in-india" className="hover:text-brand-blue transition-colors">
-              Custom Software Development India
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/ecommerce-development-company-in-india" className="hover:text-brand-blue transition-colors">
-              E-Commerce Development India
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/mobile-app-development-company-in-india" className="hover:text-brand-blue transition-colors">
-              Mobile App Development India
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/seo-company-in-india" className="hover:text-brand-blue transition-colors">
-              SEO Company in India
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/web-development-company-indore" className="hover:text-brand-blue transition-colors">
-              Indore
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/web-development-company-jabalpur" className="hover:text-brand-blue transition-colors">
-              Jabalpur
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/web-development-company-gwalior" className="hover:text-brand-blue transition-colors">
-              Gwalior
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/web-development-company-ujjain" className="hover:text-brand-blue transition-colors">
-              Ujjain
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/web-development-company-raipur" className="hover:text-brand-blue transition-colors">
-              Raipur
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/web-development-company-mumbai" className="hover:text-brand-blue transition-colors">
-              Mumbai
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/web-development-company-delhi-ncr" className="hover:text-brand-blue transition-colors">
-              Delhi NCR
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/web-development-company-bangalore" className="hover:text-brand-blue transition-colors">
-              Bangalore
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/web-development-company-pune" className="hover:text-brand-blue transition-colors">
-              Pune
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/web-development-company-hyderabad" className="hover:text-brand-blue transition-colors">
-              Hyderabad
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/web-development-company-ahmedabad" className="hover:text-brand-blue transition-colors">
-              Ahmedabad
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/web-development-company-jaipur" className="hover:text-brand-blue transition-colors">
-              Jaipur
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/web-development-company-lucknow" className="hover:text-brand-blue transition-colors">
-              Lucknow
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/web-development-company-kolkata" className="hover:text-brand-blue transition-colors">
-              Kolkata
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/web-development-company-chandigarh" className="hover:text-brand-blue transition-colors">
-              Chandigarh
-            </Link>
-          </div>
-        </div>
 
-        {/* 4. Single-Industry National & Metro Web Portals */}
-        <div className="pt-4 border-t border-slate-200/60 dark:border-slate-800/60">
-          <div className="mb-2.5">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200">
-              Industry Specific Website Developers (India & Bhopal)
-            </span>
+          {/* 3. Major Indian Cities & National Presence */}
+          <div className="pt-4 border-t border-slate-200/60 dark:border-slate-800/60">
+            <div className="flex items-center gap-2 mb-2 text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white">
+              <Globe2 size={13} className="text-emerald-500" />
+              <span>Pan-India Presence & Metro Hubs</span>
+            </div>
+            <div className="flex flex-wrap gap-2 text-xs">
+              {[
+                { name: 'Web Development India', href: '/web-development-company-in-india' },
+                { name: 'Software Development India', href: '/software-development-company-in-india' },
+                { name: 'E-Commerce India', href: '/ecommerce-development-company-in-india' },
+                { name: 'App Development India', href: '/mobile-app-development-company-in-india' },
+                { name: 'SEO Company India', href: '/seo-company-in-india' },
+                { name: 'Indore', href: '/web-development-company-indore' },
+                { name: 'Jabalpur', href: '/web-development-company-jabalpur' },
+                { name: 'Gwalior', href: '/web-development-company-gwalior' },
+                { name: 'Ujjain', href: '/web-development-company-ujjain' },
+                { name: 'Raipur', href: '/web-development-company-raipur' },
+                { name: 'Mumbai', href: '/web-development-company-mumbai' },
+                { name: 'Delhi NCR', href: '/web-development-company-delhi-ncr' },
+                { name: 'Bangalore', href: '/web-development-company-bangalore' },
+                { name: 'Pune', href: '/web-development-company-pune' },
+                { name: 'Hyderabad', href: '/web-development-company-hyderabad' },
+                { name: 'Ahmedabad', href: '/web-development-company-ahmedabad' },
+                { name: 'Jaipur', href: '/web-development-company-jaipur' },
+                { name: 'Lucknow', href: '/web-development-company-lucknow' },
+                { name: 'Kolkata', href: '/web-development-company-kolkata' },
+                { name: 'Chandigarh', href: '/web-development-company-chandigarh' }
+              ].map((item, idx) => (
+                <Link
+                  key={idx}
+                  href={item.href}
+                  className="px-3 py-1 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-emerald-500 text-slate-700 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors shadow-xs"
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
           </div>
-          <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs">
-            <Link href="/website-developers-for-schools" className="font-semibold text-sky-600 dark:text-sky-400 hover:underline">
-              Website Developers For Schools
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/website-developers-for-coaching-institutes" className="hover:text-brand-blue transition-colors">
-              Website Developers For Coaching Institutes
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/website-developers-for-colleges" className="hover:text-brand-blue transition-colors">
-              College & University Website Developers
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/website-developers-for-doctors" className="hover:text-brand-blue transition-colors">
-              Website Developers For Doctors
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/website-developers-for-clinics" className="hover:text-brand-blue transition-colors">
-              Clinic & Diagnostic Website Developers
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/website-developers-for-hospitals" className="hover:text-brand-blue transition-colors">
-              Hospital Website Developers
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/website-developers-for-real-estate" className="hover:text-brand-blue transition-colors">
-              Real Estate & Builder Website Developers
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/website-developers-for-restaurants" className="hover:text-brand-blue transition-colors">
-              Restaurant & Cafe Website Developers
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/website-developers-for-ecommerce" className="hover:text-brand-blue transition-colors">
-              E-Commerce Website Developers
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/website-developers-for-travel-agency" className="hover:text-brand-blue transition-colors">
-              Travel Agency Website Developers
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/website-developers-for-lawyers" className="hover:text-brand-blue transition-colors">
-              Lawyer & Law Firm Website Developers
-            </Link>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <Link href="/website-developers-for-ca" className="hover:text-brand-blue transition-colors">
-              Chartered Accountant (CA) Website Developers
-            </Link>
-          </div>
-        </div>
-
-        {/* 4. Bhopal Full Localities Text Cloud */}
-        <div className="pt-4 border-t border-slate-200/60 dark:border-slate-800/60 text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
-          <span className="font-bold text-slate-700 dark:text-slate-300">All Bhopal Localities Served: </span>
-          M.P. Nagar (Zone 1 & 2), Arera Colony (E1-E8), New Market, 10 Number Market, 11 Number Stop, Bittan Market, Kolar Road, Hoshangabad Road, Shahpura, Bawadia Kalan, Ayodhya Bypass, Ashoka Garden, Govindpura Industrial Area, Mandideep Industrial Area, Lalghati, Bairagarh (Sant Hirdaram Nagar), Saket Nagar, Misrod, Indrapuri, BHEL Township, Piplani, Shahjahanabad, Hamidia Road, T.T. Nagar, Chuna Bhatti, Shivaji Nagar, Raisen Road, Karond, Jahangirabad, Koh-e-Fiza, Idgah Hills, Shyamla Hills, Malviya Nagar, Anand Nagar, Gandhi Nagar, Katara Hills, Bagsewaniya, Gulmohar, Rohit Nagar, Trilanga, Nehru Nagar, Kotra Sultanabad, Jawahar Chowk, Subhash Nagar, Gautam Nagar, Habibganj, Salaiya, Danish Kunj, Bairagarh Chichali, Ratanpur, Sukhi Sewaniya, Khajuri Kalan, Suraj Nagar, Barkheda Pathani, Peer Gate, Ibrahimpura, Nadra, Sindhi Colony, MANIT, AIIMS Bhopal.
         </div>
       </div>
 
