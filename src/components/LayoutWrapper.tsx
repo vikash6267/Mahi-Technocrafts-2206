@@ -7,6 +7,7 @@ import Footer from './Footer';
 import Chatbot from './Chatbot';
 import CustomCursor from './CustomCursor';
 import FloatingWhatsApp from './FloatingWhatsApp';
+import LeadPopup from './LeadPopup';
 
 export default function LayoutWrapper({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -29,6 +30,7 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
       {/* Interactive Assistant & Instant Contact */}
       <Chatbot />
       <FloatingWhatsApp />
+      <LeadPopup />
     </>
   );
 }
