@@ -394,6 +394,64 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* 4. Single-Industry National & Metro Web Portals */}
+        <div className="pt-4 border-t border-slate-200/60 dark:border-slate-800/60">
+          <div className="mb-2.5">
+            <span className="text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200">
+              Industry Specific Website Developers (India & Bhopal)
+            </span>
+          </div>
+          <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs">
+            <Link href="/website-developers-for-schools" className="font-semibold text-sky-600 dark:text-sky-400 hover:underline">
+              Website Developers For Schools
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/website-developers-for-coaching-institutes" className="hover:text-brand-blue transition-colors">
+              Website Developers For Coaching Institutes
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/website-developers-for-colleges" className="hover:text-brand-blue transition-colors">
+              College & University Website Developers
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/website-developers-for-doctors" className="hover:text-brand-blue transition-colors">
+              Website Developers For Doctors
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/website-developers-for-clinics" className="hover:text-brand-blue transition-colors">
+              Clinic & Diagnostic Website Developers
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/website-developers-for-hospitals" className="hover:text-brand-blue transition-colors">
+              Hospital Website Developers
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/website-developers-for-real-estate" className="hover:text-brand-blue transition-colors">
+              Real Estate & Builder Website Developers
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/website-developers-for-restaurants" className="hover:text-brand-blue transition-colors">
+              Restaurant & Cafe Website Developers
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/website-developers-for-ecommerce" className="hover:text-brand-blue transition-colors">
+              E-Commerce Website Developers
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/website-developers-for-travel-agency" className="hover:text-brand-blue transition-colors">
+              Travel Agency Website Developers
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/website-developers-for-lawyers" className="hover:text-brand-blue transition-colors">
+              Lawyer & Law Firm Website Developers
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/website-developers-for-ca" className="hover:text-brand-blue transition-colors">
+              Chartered Accountant (CA) Website Developers
+            </Link>
+          </div>
+        </div>
+
         {/* 4. Bhopal Full Localities Text Cloud */}
         <div className="pt-4 border-t border-slate-200/60 dark:border-slate-800/60 text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
           <span className="font-bold text-slate-700 dark:text-slate-300">All Bhopal Localities Served: </span>

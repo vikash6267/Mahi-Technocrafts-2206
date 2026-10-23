@@ -1966,6 +1966,1057 @@ export const indiaServicePages: IndiaServicePage[] = [
       }
     ],
     coordinates: { lat: 30.7333, lng: 76.7794 }
+  },
+  /* =========================================================================
+     3. SINGLE HIGH-INTENT INDUSTRY LANDING PAGES (NATIONAL + LOCAL)
+  ========================================================================== */
+{
+    "slug": "website-developers-for-schools",
+    "regionType": "national",
+    "cityName": "India",
+    "stateName": "All States & UTs",
+    "title": "Website Developers For Schools | Top School Website Designing Company",
+    "h1": "Website Developers For Schools & Educational Institutions",
+    "tagline": "Custom School Portals, Digital Admissions, CBSE/ICSE Compliance & Parent Notice Boards · 4.9★ Rated",
+    "metaDescription": "Looking for expert website developers for schools? Mahi TechnoCrafts builds modern, mobile-friendly school websites with online admission forms, fee payment gateway, student notice boards & LMS across India & Bhopal. Call +91 62671 44122.",
+    "summary": "Mahi TechnoCrafts is a premier school website development agency delivering beautiful, responsive, and secure web portals for private, public, CBSE, ICSE, and international schools across India and Bhopal. We engineer end-to-end digital admissions, fee payment gateway integration, parent-student notice boards, and staff directories with 100% full source code ownership.",
+    "image": "https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1400&q=85",
+    "imageAlt": "School website development and digital campus portals by Mahi TechnoCrafts",
+    "label": "School Website Developers",
+    "startingPrice": "₹9,999",
+    "deliveryTime": "5 - 10 Days",
+    "ratingValue": 4.9,
+    "reviewCount": 168,
+    "focus": [
+      "Digital admission inquiry forms with automated SMS & WhatsApp notification to admission office",
+      "Instant online school fee payment collection (UPI, NetBanking, Debit/Credit Cards) with 0% hassle",
+      "Parent and student circular notice board for academic calendars, exam schedules, and holiday alerts",
+      "Interactive campus photo galleries, lab showcases, sports day reels & annual function video embeds",
+      "Faculty profiles, subject syllabi download vaults, and class timetable management",
+      "CBSE, ICSE & State Board mandatory public disclosure compliance sections"
+    ],
+    "packages": [
+      {
+        "name": "Essential School Showcase",
+        "price": "₹9,999 - ₹16,000",
+        "duration": "5 to 7 Days",
+        "bestFor": "Play schools, primary schools, daycare centers, and local academies",
+        "features": [
+          "Up to 8 Colorful, Mobile-Friendly School Pages",
+          "Online Admission Inquiry Form with Admin Alerts",
+          "Notice Board & Circular PDF Downloads",
+          "Photo Gallery & Facilities Showcase",
+          "Google Maps Location & Contact Integration"
+        ]
+      },
+      {
+        "name": "Comprehensive K-12 Portal",
+        "price": "₹18,500 - ₹35,000",
+        "duration": "8 to 14 Days",
+        "popular": true,
+        "bestFor": "CBSE, ICSE, and state board high schools and senior secondary institutions",
+        "features": [
+          "Unlimited Informational Pages (Academics, Sports, Labs)",
+          "Online Fee Payment Gateway Integration (Razorpay/Paytm)",
+          "Student & Parent Portal for Marks, Circulars & Attendance",
+          "Mandatory CBSE/ICSE Disclosure Compliance Section",
+          "Fast Next.js 16 Static Generation with 95+ PageSpeed"
+        ]
+      },
+      {
+        "name": "Enterprise School ERP & Multi-Branch System",
+        "price": "₹38,000 - ₹75,000",
+        "duration": "15 to 25 Days",
+        "bestFor": "Multi-branch school trusts, international academies, and large educational campuses",
+        "features": [
+          "Custom School ERP / Student Information Management",
+          "Parent Mobile App (Flutter for iOS & Android)",
+          "Automated WhatsApp/SMS Fee Reminders & Report Cards",
+          "Online Exam & Quiz Management Engine",
+          "Dedicated Server Setup, Cloud Backups & 1-Year AMC"
+        ]
+      }
+    ],
+    "value": "India & Bhopal schools trust Mahi TechnoCrafts for modern, easy-to-manage web platforms that boost new student admissions and streamline communication with parents.",
+    "targetKeywords": [
+      "Website Developers For Schools",
+      "School Website Designing",
+      "School Website Development Company",
+      "Best School Website Builders",
+      "CBSE School Website Developers",
+      "ICSE School Website Design",
+      "Online Admission Portal Developers",
+      "School Website Developers India",
+      "School Website Developers in Bhopal"
+    ],
+    "localities": [
+      "All States & UTs across India",
+      "Bhopal",
+      "Indore",
+      "Delhi NCR",
+      "Mumbai",
+      "Bangalore"
+    ],
+    "faqs": [
+      {
+        "question": "What is included in a school website development package?",
+        "answer": "Our school website package includes custom responsive design, online admission inquiry forms, fee payment gateway integration, notice board for circulars and datesheets, photo/video galleries, faculty directories, and mandatory board disclosure pages."
+      },
+      {
+        "question": "Can school teachers or office staff update notices and photos without coding?",
+        "answer": "Yes! We provide an ultra-simple, password-protected Admin Dashboard where authorized teachers or clerks can upload new circulars, photos, and event updates in less than 30 seconds."
+      },
+      {
+        "question": "How long does it take to develop and launch a school website?",
+        "answer": "Standard school websites are ready within 5 to 7 business days. Complex school portals with online fee gateways and student logins are delivered within 10 to 14 business days."
+      }
+    ],
+    "coordinates": {
+      "lat": 23.259933,
+      "lng": 77.412613
+    }
+  },
+  {
+    "slug": "website-developers-for-coaching-institutes",
+    "regionType": "national",
+    "cityName": "India",
+    "stateName": "All States & UTs",
+    "title": "Website Developers For Coaching Institutes | Coaching Website Design",
+    "h1": "Website Developers For Coaching Institutes & Competitive Academies",
+    "tagline": "High-Converting Course Landing Pages, Online Test Series, Demo Booking & Topper Showcase · 4.9★ Rated",
+    "metaDescription": "Best website developers for coaching institutes in India & Bhopal. We build high-lead coaching websites, demo class booking engines, test series portals & topper result showcases for IIT-JEE, NEET, UPSC & competitive classes. Call +91 62671 44122.",
+    "summary": "Mahi TechnoCrafts specializes in building high-conversion websites for competitive coaching institutes, test-prep academies, tuition centers, and entrance exam educators across India and Bhopal. Our platforms feature batch schedules, topper success showcases, downloadable study material vaults, and automated demo class lead funnels.",
+    "image": "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1400&q=85",
+    "imageAlt": "Coaching institute classroom and online test portal engineering at Mahi TechnoCrafts",
+    "label": "Coaching Website Developers",
+    "startingPrice": "₹9,999",
+    "deliveryTime": "5 - 10 Days",
+    "ratingValue": 4.9,
+    "reviewCount": 142,
+    "focus": [
+      "High-converting course & batch landing pages with syllabus and fee structures",
+      "Free demo class registration engine with instant WhatsApp lead notifications to counselors",
+      "Topper testimonials, AIR rank banner showcases & video interview embeds",
+      "Downloadable previous years question papers (PYQs) & study material PDF vaults",
+      "Online test series, MCQ quiz engines, and student performance dashboards",
+      "Google Ads & Meta Ads landing page conversion rate optimization (CRO)"
+    ],
+    "packages": [
+      {
+        "name": "Coaching Starter Showcase",
+        "price": "₹9,999 - ₹16,000",
+        "duration": "5 to 7 Days",
+        "bestFor": "Tuition classes, localized coaching centers, and individual faculty mentors",
+        "features": [
+          "Up to 8 High-Conversion Coaching Pages",
+          "Batch Timetable & Course Details Display",
+          "Demo Class Inquiry Form with WhatsApp Bot",
+          "Topper Wall of Fame & Results Showcase",
+          "On-Page Local SEO for Coaching Keywords"
+        ]
+      },
+      {
+        "name": "Test-Prep & Lead Machine",
+        "price": "₹18,500 - ₹35,000",
+        "duration": "8 to 14 Days",
+        "popular": true,
+        "bestFor": "IIT-JEE, NEET, UPSC, SSC, Banking, and Foundation coaching institutes",
+        "features": [
+          "Course Catalog with Online Admission & Token Fee Payment",
+          "Downloadable PDF Study Material & Notes Vault",
+          "Automated Lead Routing to Admissions Team CRM",
+          "Google Ads High-Quality Score Landing Pages",
+          "Next.js 16 High-Performance Architecture"
+        ]
+      },
+      {
+        "name": "Complete Coaching LMS & Test Series",
+        "price": "₹38,000 - ₹75,000",
+        "duration": "15 to 25 Days",
+        "bestFor": "Established institute chains, hybrid classroom academies, and digital test-prep platforms",
+        "features": [
+          "Online Test Series Engine (NTA-pattern CBT MCQs)",
+          "Live/Recorded Video Lecture Student Portal",
+          "Student Performance Analytics & All-India Rank (AIR)",
+          "Custom Android Mobile App for Coaching Students",
+          "Dedicated Cloud Hosting & 1-Year Priority Support"
+        ]
+      }
+    ],
+    "value": "Coaching academies rely on Mahi TechnoCrafts to turn website visitors into paid enrollments with conversion-tested design and instant lead notifications.",
+    "targetKeywords": [
+      "Website Developers For Coaching Institutes",
+      "Coaching Website Design",
+      "Coaching Institute Website Developers",
+      "Coaching Website Designing",
+      "IIT JEE NEET Coaching Website",
+      "Online Test Series Portal",
+      "Best Coaching Website Developers",
+      "Coaching Class Website in Bhopal",
+      "Coaching Institute Website India"
+    ],
+    "localities": [
+      "All States & UTs across India",
+      "Bhopal",
+      "Indore",
+      "Kota",
+      "Delhi NCR",
+      "Lucknow"
+    ],
+    "faqs": [
+      {
+        "question": "Can students take online tests or download study material from our coaching website?",
+        "answer": "Yes! We can configure downloadable PDF study material vaults, chapter-wise mock tests, and complete CBT (Computer Based Test) examination engines with automatic answer evaluation."
+      },
+      {
+        "question": "How does the coaching website capture student leads for demo classes?",
+        "answer": "We build prominent call-to-action buttons for \"Book Free Demo Class\", \"Download Syllabus\", and \"Talk to Counselor\" that immediately send the student's name, phone, and course interest to your staff's WhatsApp and email."
+      }
+    ],
+    "coordinates": {
+      "lat": 23.259933,
+      "lng": 77.412613
+    }
+  },
+  {
+    "slug": "website-developers-for-colleges",
+    "regionType": "national",
+    "cityName": "India",
+    "stateName": "All States & UTs",
+    "title": "College Website Developers | University & Higher Education Portals",
+    "h1": "Website Developers For Colleges & Universities",
+    "tagline": "AICTE, UGC & NAAC Compliant College Portals, Online Admission & Department Showcases · 4.9★ Rated",
+    "metaDescription": "Expert college website developers in India & Bhopal. NAAC compliant university portals, online admission inquiry systems, departmental faculties, fee gateways & student ERP portals. Call +91 62671 44122.",
+    "summary": "Mahi TechnoCrafts engineers comprehensive institutional web portals for degree colleges, engineering universities, management institutes, and polytechnics across India. Our higher education platforms adhere to NAAC, AICTE, and UGC statutory guidelines while offering modern digital admissions and alumni portals.",
+    "image": "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1400&q=85",
+    "imageAlt": "University campus and college educational portal developed by Mahi TechnoCrafts",
+    "label": "College Website Developers",
+    "startingPrice": "₹18,500",
+    "deliveryTime": "8 - 18 Days",
+    "ratingValue": 4.9,
+    "reviewCount": 118,
+    "focus": [
+      "Statutory NAAC, UGC, AICTE, and NIRF mandatory disclosure sections",
+      "Online college admission applications with digital document upload verification",
+      "Departmental landing pages showcasing HODs, faculty credentials, labs, and research",
+      "Campus placement statistics, recruiter logos, and student package package showcases",
+      "Examination schedules, online semester fee collection, and hall ticket downloads",
+      "Alumni association network, convocation galleries, and student council activities"
+    ],
+    "packages": [
+      {
+        "name": "College Institutional Web Portal",
+        "price": "₹18,500 - ₹35,000",
+        "duration": "8 to 14 Days",
+        "bestFor": "Degree colleges, polytechnics, nursing colleges, and autonomous institutes",
+        "features": [
+          "Up to 20 Comprehensive Academic Pages",
+          "Online Admission Lead & Application Form",
+          "NAAC / AICTE Statutory Compliance Center",
+          "Placement Cell & Top Recruiters Showcase",
+          "Ultra-Fast Next.js Cloud Hosting Setup"
+        ]
+      },
+      {
+        "name": "University Campus & ERP Ecosystem",
+        "price": "₹45,000 - ₹95,000",
+        "duration": "18 to 30 Days",
+        "popular": true,
+        "bestFor": "Private universities, multi-faculty engineering and medical college campuses",
+        "features": [
+          "Full Departmental Architecture (50+ Pages)",
+          "Online Semester Fee Payment Gateway",
+          "Faculty & Research Publications CMS",
+          "Alumni Network & Career Portal",
+          "Bank-Grade SSL, Daily Cloud Backups & SLA Support"
+        ]
+      }
+    ],
+    "value": "Higher education institutions choose Mahi TechnoCrafts for robust architecture that handles high admission season traffic effortlessly.",
+    "targetKeywords": [
+      "College Website Developers",
+      "College Website Designing",
+      "University Portal Developers",
+      "College Admission Portal",
+      "Higher Education Website Development",
+      "Educational ERP Software",
+      "College Website Developers in Bhopal",
+      "College Website Design India"
+    ],
+    "localities": [
+      "All States & UTs across India",
+      "Bhopal",
+      "Indore",
+      "Delhi NCR",
+      "Pune",
+      "Bangalore"
+    ],
+    "faqs": [
+      {
+        "question": "Does the college website comply with NAAC and AICTE disclosure standards?",
+        "answer": "Yes! We build dedicated NAAC, NIRF, and AICTE mandatory disclosure tabs with structured PDF archival for AQAR reports, governing body lists, and anti-ragging committees."
+      }
+    ],
+    "coordinates": {
+      "lat": 23.259933,
+      "lng": 77.412613
+    }
+  },
+  {
+    "slug": "website-developers-for-doctors",
+    "regionType": "national",
+    "cityName": "India",
+    "stateName": "All States & UTs",
+    "title": "Website Developers For Doctors | Best Doctor Website Design Company",
+    "h1": "Website Developers For Doctors & Private Practitioners",
+    "tagline": "Online OPD Appointment Booking, Patient Portals & Google 3-Pack Medical SEO · 4.9★ Rated",
+    "metaDescription": "Looking for website developers for doctors? Mahi TechnoCrafts designs high-converting doctor websites with 24/7 OPD appointment booking, patient reviews, treatment guides & local Google Maps SEO in India & Bhopal. Call +91 62671 44122.",
+    "summary": "Mahi TechnoCrafts develops custom websites for doctors, surgeons, pediatricians, gynecologists, dermatologists, and specialists across India and Bhopal. We equip medical professionals with 24/7 online OPD appointment booking, clinic directions, patient testimonial showcases, and local healthcare SEO.",
+    "image": "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1400&q=85",
+    "imageAlt": "Modern doctor consultation website and clinic appointment system by Mahi TechnoCrafts",
+    "label": "Doctor Website Developers",
+    "startingPrice": "₹9,999",
+    "deliveryTime": "4 - 8 Days",
+    "ratingValue": 4.9,
+    "reviewCount": 176,
+    "focus": [
+      "24/7 Online OPD consultation & clinic slot appointment booking system",
+      "Doctor credentials, degrees, hospital affiliations & surgical expertise highlight",
+      "Patient video reviews, Google review widget integration & success case studies",
+      "Interactive clinic route map & one-click WhatsApp appointment booking buttons",
+      "Specialty treatment guides & medical FAQ sections for patient education",
+      "100% HIPAA/MCI aware medical website architecture with SSL encryption"
+    ],
+    "packages": [
+      {
+        "name": "Doctor Practice Showcase",
+        "price": "₹9,999 - ₹16,000",
+        "duration": "4 to 7 Days",
+        "bestFor": "Individual specialist doctors, consultants, and private clinic practitioners",
+        "features": [
+          "Up to 6 Mobile-Friendly Specialty Pages",
+          "Online OPD Appointment Request Form with WhatsApp Alert",
+          "Doctor Bio, Degrees & Clinic Timings Display",
+          "Patient Testimonial Slider & Treatment FAQs",
+          "Google Maps 3-Pack Local Healthcare SEO Setup"
+        ]
+      },
+      {
+        "name": "Super-Specialist & Clinic Portal",
+        "price": "₹18,500 - ₹35,000",
+        "duration": "8 to 14 Days",
+        "popular": true,
+        "bestFor": "Surgeons, multi-doctor clinics, and diagnostic center owners",
+        "features": [
+          "Real-Time Available Slot Booking & Token Management",
+          "Online Consultation Fee Advance Gateway Integration",
+          "Digital Prescription & Report Download Vault",
+          "Dedicated Treatment Procedure Landing Pages",
+          "High Google Ranking for \"Best [Specialist] in [City]\""
+        ]
+      }
+    ],
+    "value": "Doctors across India choose Mahi TechnoCrafts to build credible digital clinic footprints that attract patients and eliminate manual phone booking friction.",
+    "targetKeywords": [
+      "Website Developers For Doctors",
+      "Doctor Website Design",
+      "Doctor Website Developers",
+      "Website Designing for Doctors",
+      "Clinic Website Design",
+      "Online Doctor Appointment Website",
+      "Medical Website Developers",
+      "Doctor Website Developers in Bhopal",
+      "Doctor Website Developers India"
+    ],
+    "localities": [
+      "All States & UTs across India",
+      "Bhopal",
+      "Indore",
+      "Delhi NCR",
+      "Mumbai",
+      "Nagpur"
+    ],
+    "faqs": [
+      {
+        "question": "Can patients book appointments and pay consultation fees directly on the website?",
+        "answer": "Yes! We can integrate instant slot selection where patients pick an available time, pay consultation tokens via UPI or Card, and receive immediate appointment confirmation on WhatsApp."
+      }
+    ],
+    "coordinates": {
+      "lat": 23.259933,
+      "lng": 77.412613
+    }
+  },
+  {
+    "slug": "website-developers-for-clinics",
+    "regionType": "national",
+    "cityName": "India",
+    "stateName": "All States & UTs",
+    "title": "Clinic Website Developers | Dental, Eye & Diagnostic Clinic Design",
+    "h1": "Website Developers For Clinics & Diagnostic Centers",
+    "tagline": "Patient Scheduling, Digital Prescriptions, Pathology Test Booking & WhatsApp Alerts · 4.9★ Rated",
+    "metaDescription": "Top clinic website developers in India & Bhopal. Custom websites for dental clinics, eye hospitals, pathology labs & diagnostic centers with online booking & test report downloads. Call +91 62671 44122.",
+    "summary": "Mahi TechnoCrafts builds high-performance websites for polyclinics, dental clinics, pathology laboratories, physiotherapy centers, and diagnostic scan centers across India and Bhopal.",
+    "image": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1400&q=85",
+    "imageAlt": "Dental and medical clinic web portal by Mahi TechnoCrafts",
+    "label": "Clinic Website Developers",
+    "startingPrice": "₹9,999",
+    "deliveryTime": "5 - 10 Days",
+    "ratingValue": 4.9,
+    "reviewCount": 134,
+    "focus": [
+      "Dental, Eye & Polyclinic appointment booking calendars with instant confirmation",
+      "Pathology lab home sample collection request engine",
+      "Online lab test report download portal with secure phone OTP verification",
+      "Doctor department schedules, OPD timings, and fee tariffs",
+      "Health checkup packages & preventive wellness promo banners",
+      "Google Maps 3-Pack clinic local SEO"
+    ],
+    "packages": [
+      {
+        "name": "Clinic Standard Portal",
+        "price": "₹9,999 - ₹18,000",
+        "duration": "5 to 8 Days",
+        "bestFor": "Dental clinics, physiotherapy centers, and specialty healthcare clinics",
+        "features": [
+          "Up to 8 Clean Medical Pages",
+          "Online Appointment & WhatsApp Booking",
+          "Doctors & Specialization List",
+          "Patient Reviews & Treatment Before/After Sliders",
+          "Google Maps Healthcare SEO Setup"
+        ]
+      },
+      {
+        "name": "Diagnostic & Pathology Portal",
+        "price": "₹22,000 - ₹45,000",
+        "duration": "10 to 16 Days",
+        "popular": true,
+        "bestFor": "Pathology labs, imaging centers, and multi-specialty polyclinics",
+        "features": [
+          "Test Catalog with Home Sample Collection Booking",
+          "Secure Patient Test Report Download by Mobile OTP",
+          "Multi-Doctor Roster & OPD Slot Management",
+          "Online Payment Gateway for Health Packages",
+          "Next.js 16 Fast Architecture & AWS Hosting Setup"
+        ]
+      }
+    ],
+    "value": "Clinics and diagnostic labs benefit from automated patient booking and zero waiting room clutter.",
+    "targetKeywords": [
+      "Clinic Website Developers",
+      "Dental Clinic Website Design",
+      "Pathology Lab Website Developers",
+      "Diagnostic Centre Website Developers",
+      "Eye Clinic Website Design",
+      "Medical Clinic Website Developers",
+      "Clinic Website Developers in Bhopal",
+      "Clinic Website Design India"
+    ],
+    "localities": [
+      "All States & UTs across India",
+      "Bhopal",
+      "Indore",
+      "Jabalpur",
+      "Gwalior",
+      "Raipur"
+    ],
+    "faqs": [
+      {
+        "question": "Can patients download their pathology or X-Ray reports from our website?",
+        "answer": "Yes! We can configure a secure patient report download module where patients enter their registered mobile number or Bill ID, receive an OTP, and download their PDF test reports."
+      }
+    ],
+    "coordinates": {
+      "lat": 23.259933,
+      "lng": 77.412613
+    }
+  },
+  {
+    "slug": "website-developers-for-hospitals",
+    "regionType": "national",
+    "cityName": "India",
+    "stateName": "All States & UTs",
+    "title": "Hospital Website Developers | Multi-Specialty Hospital Portals",
+    "h1": "Website Developers For Hospitals & Healthcare Centers",
+    "tagline": "Multi-Specialty Healthcare Portals, Doctor Directories, Emergency Call Routing & HMS Integration · 4.9★ Rated",
+    "metaDescription": "Leading hospital website developers in India & Bhopal. Custom hospital web portals, doctor department directories, emergency ambulance routing, OPD scheduling & hospital management software. Call +91 62671 44122.",
+    "summary": "Mahi TechnoCrafts provides enterprise web engineering for multi-specialty hospitals, maternity nursing homes, surgical hospitals, and medical trusts across India and Bhopal. We create intuitive digital reception desks with emergency hotlines, doctor department rosters, insurance cashless TPA guidelines, and bed availability inquiry funnels.",
+    "image": "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1400&q=85",
+    "imageAlt": "Multi specialty hospital web portal by Mahi TechnoCrafts",
+    "label": "Hospital Website Developers",
+    "startingPrice": "₹22,000",
+    "deliveryTime": "10 - 20 Days",
+    "ratingValue": 4.9,
+    "reviewCount": 98,
+    "focus": [
+      "24/7 Emergency casualty & ambulance one-click instant call triggers",
+      "Multi-specialty departmental rosters (Cardiology, Ortho, Neuro, Oncology, etc.)",
+      "Senior consultant doctors directory with searchable OPD time slots",
+      "TPA and Ayushman Bharat health insurance cashless claims guidelines",
+      "Hospital virtual tour, ICU/OT facilities showcase, and patient guidance",
+      "HMS (Hospital Management System) API and patient billing integration"
+    ],
+    "packages": [
+      {
+        "name": "Hospital Web Portal",
+        "price": "₹22,000 - ₹45,000",
+        "duration": "10 to 15 Days",
+        "bestFor": "Nursing homes, maternity hospitals, and 50-bed community hospitals",
+        "features": [
+          "Up to 15 Medical Department Pages",
+          "24/7 Emergency Hotline Bar & Ambulance Calling",
+          "Doctor Consultation OPD Booking Funnel",
+          "Insurance & TPA Cashless Partner Display",
+          "Healthcare Schema & SSL Security"
+        ]
+      },
+      {
+        "name": "Multi-Specialty Hospital Enterprise Ecosystem",
+        "price": "₹55,000 - ₹1,20,000",
+        "duration": "20 to 35 Days",
+        "popular": true,
+        "bestFor": "100+ bed multi-specialty hospital chains and medical institute campuses",
+        "features": [
+          "Comprehensive 30+ Department Architecture",
+          "Doctor OPD Slot Engine & Advance Payment",
+          "Patient Portal with E-Prescription & Lab Integration",
+          "Career & Nursing Recruitment Section",
+          "HIPAA Aware Security, Dedicated Server & 1-Year AMC"
+        ]
+      }
+    ],
+    "value": "Hospitals trust Mahi TechnoCrafts for robust, high-uptime digital infrastructure that saves patient lives during emergencies.",
+    "targetKeywords": [
+      "Hospital Website Developers",
+      "Hospital Website Designing",
+      "Hospital Web Portal Development",
+      "Hospital Management Software",
+      "Healthcare Website Developers India",
+      "Hospital Website Developers in Bhopal",
+      "Hospital Website Design India"
+    ],
+    "localities": [
+      "All States & UTs across India",
+      "Bhopal",
+      "Indore",
+      "Jabalpur",
+      "Gwalior",
+      "Delhi NCR"
+    ],
+    "faqs": [
+      {
+        "question": "Does the hospital website support emergency ambulance and casualty calling?",
+        "answer": "Yes! We configure sticky 24/7 Emergency and Ambulance call buttons on every mobile page that dial the hospital emergency room with a single tap."
+      }
+    ],
+    "coordinates": {
+      "lat": 23.259933,
+      "lng": 77.412613
+    }
+  },
+  {
+    "slug": "website-developers-for-real-estate",
+    "regionType": "national",
+    "cityName": "India",
+    "stateName": "All States & UTs",
+    "title": "Website Developers For Real Estate | Builder & Property Portal Design",
+    "h1": "Website Developers For Real Estate, Builders & Architects",
+    "tagline": "RERA Compliant Project Showcases, 2BHK/3BHK Interactive Floor Plans & Site Visit Funnels · 4.9★ Rated",
+    "metaDescription": "Top website developers for real estate, builders & property dealers in India & Bhopal. High-converting project landing pages, RERA disclosure badges, virtual tour galleries & lead capture funnels. Call +91 62671 44122.",
+    "summary": "Mahi TechnoCrafts engineers high-conversion websites and landing pages for real estate builders, residential township developers, property brokers, and architectural firms across India and Bhopal.",
+    "image": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1400&q=85",
+    "imageAlt": "Luxury real estate project landing page by Mahi TechnoCrafts",
+    "label": "Real Estate Website Developers",
+    "startingPrice": "₹9,999",
+    "deliveryTime": "5 - 10 Days",
+    "ratingValue": 4.9,
+    "reviewCount": 165,
+    "focus": [
+      "RERA approved project registration badges, legal disclosures & price sheets",
+      "Interactive 2BHK, 3BHK & 4BHK architectural floor plans & master layout maps",
+      "Instant \"Book a Free Site Visit\" with automated WhatsApp driver notification",
+      "High-converting Google Ads & Meta Ads landing pages for property leads",
+      "EMI calculator, bank home loan approval partners, and brochure PDF downloads",
+      "Amenity photo galleries (Clubhouse, Swimming Pool, Gym, Landscaped Gardens)"
+    ],
+    "packages": [
+      {
+        "name": "Single Project Launch Landing Page",
+        "price": "₹9,999 - ₹16,000",
+        "duration": "4 to 6 Days",
+        "bestFor": "Township launches, luxury apartment towers, and commercial complex projects",
+        "features": [
+          "High-Conversion Single-Page Real Estate Funnel",
+          "Interactive Floor Plans & Amenities Slider",
+          "Book Site Visit / Instant Brochure Download Form",
+          "Google Ads High Quality Score CRO Optimization",
+          "RERA Number Display & Map Location Pins"
+        ]
+      },
+      {
+        "name": "Builder & Real Estate Portal",
+        "price": "₹22,000 - ₹45,000",
+        "duration": "10 to 18 Days",
+        "popular": true,
+        "bestFor": "Real estate developers with ongoing, upcoming & completed projects",
+        "features": [
+          "Multi-Project Showcase (Ongoing, Completed, Upcoming)",
+          "Property Search by Location, Budget & Configuration",
+          "Builder Credibility, Awards & Delivered Square Feet",
+          "CRM Integration (LeadSquared / HubSpot / WhatsApp)",
+          "Next.js 16 Ultra-Fast Cloud Architecture"
+        ]
+      }
+    ],
+    "value": "Real estate builders rely on Mahi TechnoCrafts to deliver low-cost-per-lead landing pages that convert prospective buyers into registered site visits.",
+    "targetKeywords": [
+      "Website Developers For Real Estate",
+      "Real Estate Website Developers",
+      "Property Dealer Website Designing",
+      "Builder Website Developers",
+      "Construction Company Website Design",
+      "Property Portal Developers",
+      "Real Estate Website Developers Bhopal",
+      "Real Estate Website Design India"
+    ],
+    "localities": [
+      "All States & UTs across India",
+      "Bhopal",
+      "Indore",
+      "Mumbai",
+      "Pune",
+      "Delhi NCR"
+    ],
+    "faqs": [
+      {
+        "question": "Can the real estate landing page directly send buyer leads to our sales team?",
+        "answer": "Yes! As soon as a buyer fills the \"Download Brochure\" or \"Book Site Visit\" form, an instant WhatsApp and email alert with the buyer's phone number and preferred 2BHK/3BHK configuration is dispatched to your sales counselors."
+      }
+    ],
+    "coordinates": {
+      "lat": 23.259933,
+      "lng": 77.412613
+    }
+  },
+  {
+    "slug": "website-developers-for-restaurants",
+    "regionType": "national",
+    "cityName": "India",
+    "stateName": "All States & UTs",
+    "title": "Website Developers For Restaurants | Cafe & Food Ordering Web Design",
+    "h1": "Website Developers For Restaurants, Cafes & Cloud Kitchens",
+    "tagline": "Contactless QR Digital Menus, Table Reservation Engines & Direct Swiggy/Zomato Ordering · 4.9★ Rated",
+    "metaDescription": "Bespoke website developers for restaurants, cafes, hotels & cloud kitchens in India & Bhopal. Digital QR menus, online table booking, party hall inquiries & direct WhatsApp food ordering. Call +91 62671 44122.",
+    "summary": "Mahi TechnoCrafts crafts mouth-watering websites and digital ordering platforms for fine dining restaurants, rooftop cafes, lounges, bakery chains, and cloud kitchens across India and Bhopal.",
+    "image": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=85",
+    "imageAlt": "Restaurant dining ambience and QR menu web platform by Mahi TechnoCrafts",
+    "label": "Restaurant Website Developers",
+    "startingPrice": "₹9,999",
+    "deliveryTime": "4 - 8 Days",
+    "ratingValue": 4.9,
+    "reviewCount": 147,
+    "focus": [
+      "Contactless QR code digital menu accessible instantly without app download",
+      "Direct WhatsApp food delivery & takeaway ordering with 0% third-party commission",
+      "Table reservation engine with guest count, time slot & occasion preferences",
+      "Banquet hall, birthday party & corporate event booking inquiry funnels",
+      "Instagram visual feed integration showcasing signature dishes & cocktails",
+      "Google Maps 3-Pack restaurant local SEO for \"Best Restaurant in [City]\""
+    ],
+    "packages": [
+      {
+        "name": "Restaurant & QR Menu Showcase",
+        "price": "₹9,999 - ₹16,000",
+        "duration": "4 to 7 Days",
+        "bestFor": "Cafes, family restaurants, bakeries, and cloud kitchen outlets",
+        "features": [
+          "Up to 6 Mobile-First Visual Restaurant Pages",
+          "Interactive Digital Food Menu with Price & Dietary Tags",
+          "Online Table Reservation Form with WhatsApp Alert",
+          "Google Maps Location, Ambience Photos & Hours",
+          "Direct Swiggy & Zomato Ordering Action Buttons"
+        ]
+      },
+      {
+        "name": "Direct Food Ordering Platform",
+        "price": "₹18,500 - ₹35,000",
+        "duration": "8 to 14 Days",
+        "popular": true,
+        "bestFor": "High-volume restaurants, food chains, and boutique hotels",
+        "features": [
+          "Self-Hosted Online Food Ordering Engine (Zero Commission)",
+          "UPI QR & Razorpay Instant Online Payment",
+          "Kitchen Display Order Notification via WhatsApp",
+          "Party & Banquet Hall Booking Inquiry Funnel",
+          "Google 3-Pack Food SEO Optimization"
+        ]
+      }
+    ],
+    "value": "Restaurateurs save thousands every month on aggregator commissions by collecting direct orders and banquet bookings via custom websites.",
+    "targetKeywords": [
+      "Website Developers For Restaurants",
+      "Restaurant Website Developers",
+      "Cafe Website Design",
+      "Online Food Ordering Website",
+      "QR Menu Website Design",
+      "Hotel Booking Website Developers",
+      "Restaurant Website Developers in Bhopal",
+      "Restaurant Website Design India"
+    ],
+    "localities": [
+      "All States & UTs across India",
+      "Bhopal",
+      "Indore",
+      "Mumbai",
+      "Delhi NCR",
+      "Goa"
+    ],
+    "faqs": [
+      {
+        "question": "Can customers order food directly from our website without paying commissions to Swiggy or Zomato?",
+        "answer": "Yes! We configure direct ordering where customers pick dishes, pay via UPI, and your kitchen receives the exact order details on WhatsApp instantly with zero commission deduction."
+      }
+    ],
+    "coordinates": {
+      "lat": 23.259933,
+      "lng": 77.412613
+    }
+  },
+  {
+    "slug": "website-developers-for-ecommerce",
+    "regionType": "national",
+    "cityName": "India",
+    "stateName": "All States & UTs",
+    "title": "E-Commerce Website Developers | Custom Online Shopping Store Design",
+    "h1": "E-Commerce Website Developers & Direct-to-Consumer (D2C) Stores",
+    "tagline": "High-Converting Online Stores with Razorpay/UPI Checkout, Courier APIs & Zero Commission · 4.9★ Rated",
+    "metaDescription": "Top e-commerce website developers in India & Bhopal. We build custom Next.js & Shopify online shopping stores with instant UPI QR checkout, Shiprocket automated shipping & WhatsApp order tracking. Call +91 62671 44122.",
+    "summary": "Mahi TechnoCrafts engineers high-converting e-commerce web applications for direct-to-consumer (D2C) brands, retail stores, clothing boutiques, and B2B wholesale distributors across India and Bhopal.",
+    "image": "https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format&fit=crop&w=1400&q=85",
+    "imageAlt": "E-commerce shopping portal and online payment checkout by Mahi TechnoCrafts",
+    "label": "E-Commerce Website Developers",
+    "startingPrice": "₹14,999",
+    "deliveryTime": "7 - 16 Days",
+    "ratingValue": 4.9,
+    "reviewCount": 215,
+    "focus": [
+      "Sub-second Next.js 16 product catalog with instant search & filter attributes",
+      "Frictionless 1-step checkout with Razorpay, Cashfree, PhonePe, and UPI QR codes",
+      "Automated courier shipping API integration (Shiprocket, Delhivery, Bluedart, NimbusPost)",
+      "Automated WhatsApp notifications for Order Confirmation, Dispatch, and Delivery tracking",
+      "Abandoned cart recovery automations & discount promo code engine",
+      "Admin inventory management, GST invoice generation, and sales revenue analytics"
+    ],
+    "packages": [
+      {
+        "name": "D2C Brand Starter Store",
+        "price": "₹14,999 - ₹25,000",
+        "duration": "7 to 10 Days",
+        "bestFor": "Boutiques, organic foods, dry fruits, apparel, and direct-to-consumer startups",
+        "features": [
+          "Up to 100 Products Catalog Setup",
+          "Razorpay / PhonePe / UPI Instant Checkout",
+          "Shiprocket / Delhivery Courier Integration",
+          "Mobile-First Responsive Shopping Experience",
+          "Admin Inventory & Order Management Panel"
+        ]
+      },
+      {
+        "name": "Scale E-Commerce & Marketplace",
+        "price": "₹28,000 - ₹65,000",
+        "duration": "12 to 20 Days",
+        "popular": true,
+        "bestFor": "High-volume fashion brands, electronics retailers, and multi-category stores",
+        "features": [
+          "Unlimited Products & Category Tree",
+          "Automated WhatsApp Order & Shipping Updates",
+          "Automated GST Invoices & Abandoned Cart Recovery",
+          "Multi-Variant (Size, Color, Material) Attribute Filtering",
+          "Next.js 16 Static Generation with 95+ Core Web Vitals"
+        ]
+      }
+    ],
+    "value": "Brands scale faster when their online store loads in under 1 second with native Indian payment checkouts.",
+    "targetKeywords": [
+      "E-Commerce Website Developers",
+      "Online Shopping Website Developers",
+      "Shopify Website Developers",
+      "WooCommerce Developers India",
+      "D2C Store Developers",
+      "Custom E-Commerce Development",
+      "E-Commerce Developers Bhopal",
+      "E-Commerce Website Design India"
+    ],
+    "localities": [
+      "All States & UTs across India",
+      "Bhopal",
+      "Indore",
+      "Surat",
+      "Mumbai",
+      "Bangalore"
+    ],
+    "faqs": [
+      {
+        "question": "Which payment gateways can be integrated into our online shopping website?",
+        "answer": "We integrate all leading Indian payment providers including Razorpay, Cashfree, PhonePe, Paytm, and direct UPI QR payments, supporting zero-convenience fee checkouts."
+      }
+    ],
+    "coordinates": {
+      "lat": 23.259933,
+      "lng": 77.412613
+    }
+  },
+  {
+    "slug": "website-developers-for-travel-agency",
+    "regionType": "national",
+    "cityName": "India",
+    "stateName": "All States & UTs",
+    "title": "Website Developers For Travel Agency | Tour & Travel Portal Design",
+    "h1": "Website Developers For Travel Agencies & Tour Operators",
+    "tagline": "Interactive Tour Itinerary Builders, MP Tourism Showcases, Cab Booking & Advance Payments · 4.9★ Rated",
+    "metaDescription": "Best website developers for travel agencies & tour operators in India & Bhopal. Dynamic holiday package filters, MP Tourism booking engines, PDF itinerary downloads & online token payment gateways. Call +91 62671 44122.",
+    "summary": "Mahi TechnoCrafts develops custom travel web portals and tour operator booking engines for travel agencies, destination management companies (DMCs), cab rental fleets, and holiday planners across India and Bhopal.",
+    "image": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1400&q=85",
+    "imageAlt": "Travel agency tour package booking website by Mahi TechnoCrafts",
+    "label": "Travel Agency Website Developers",
+    "startingPrice": "₹10,999",
+    "deliveryTime": "6 - 12 Days",
+    "ratingValue": 4.9,
+    "reviewCount": 122,
+    "focus": [
+      "Dynamic holiday tour package search by destination, budget, duration & theme",
+      "Day-wise detailed travel itineraries with printable branded PDF downloads",
+      "Advance token payment collection via UPI, Credit/Debit cards & NetBanking",
+      "Outstation cab rental booking calculator with one-way & round-trip fare charts",
+      "Direct WhatsApp inquiry buttons on every holiday package card",
+      "Search engine optimization for domestic, international & pilgrimage tourism queries"
+    ],
+    "packages": [
+      {
+        "name": "Tour Agency Showcase",
+        "price": "₹10,999 - ₹18,000",
+        "duration": "6 to 8 Days",
+        "bestFor": "Local travel desks, cab rental operators, and regional tour guides",
+        "features": [
+          "Up to 12 Top Holiday Package Pages",
+          "Day-Wise Itinerary & Inclusions/Exclusions List",
+          "Instant WhatsApp Quote & Inquiry Bot",
+          "Cab Fleet & Per-Kilometer Rate Card Display",
+          "Google Maps Local Tourism SEO"
+        ]
+      },
+      {
+        "name": "Full Travel & Booking Portal",
+        "price": "₹22,000 - ₹48,000",
+        "duration": "10 to 16 Days",
+        "popular": true,
+        "bestFor": "Established travel companies offering domestic, international & religious tours",
+        "features": [
+          "Package Filtering by Duration, Budget & Destination",
+          "Download PDF Itinerary with Tour Agent Branding",
+          "Online Advance Booking Token Payment Gateway",
+          "Admin CMS to add new holiday packages anytime",
+          "SEO for India & MP destination queries"
+        ]
+      }
+    ],
+    "value": "Travel agencies turn itinerary browsers into paying holiday bookings with instant WhatsApp quotes and branded PDF downloads.",
+    "targetKeywords": [
+      "Website Developers For Travel Agency",
+      "Tour Operator Website Developers",
+      "Travel Portal Developers",
+      "Holiday Package Website Design",
+      "Travel Agency Website Design",
+      "Cab Rental Website Developers",
+      "Travel Agency Website in Bhopal",
+      "Travel Website Design India"
+    ],
+    "localities": [
+      "All States & UTs across India",
+      "Bhopal",
+      "Indore",
+      "Delhi NCR",
+      "Jaipur",
+      "Goa"
+    ],
+    "faqs": [
+      {
+        "question": "Can tourists download printable PDF itineraries from our travel website?",
+        "answer": "Yes! We configure automatic one-click PDF itinerary generation branded with your agency logo, phone number, day-wise schedule, and inclusions/exclusions."
+      }
+    ],
+    "coordinates": {
+      "lat": 23.259933,
+      "lng": 77.412613
+    }
+  },
+  {
+    "slug": "website-developers-for-lawyers",
+    "regionType": "national",
+    "cityName": "India",
+    "stateName": "All States & UTs",
+    "title": "Website Developers For Lawyers | Advocate & Legal Firm Web Design",
+    "h1": "Website Developers For Lawyers, Advocates & Legal Firms",
+    "tagline": "Bar Council Compliant Legal Practice Profiles, Practice Areas & Confidential Schedulers · 4.9★ Rated",
+    "metaDescription": "Professional website developers for lawyers, advocates & legal firms in India & Bhopal. Bar Council of India compliant practice websites, confidential consultation booking & case area portfolios. Call +91 62671 44122.",
+    "summary": "Mahi TechnoCrafts designs dignified, authoritative, and strictly Bar Council of India compliant informational websites for advocates, High Court practitioners, corporate legal advisors, and partnership law firms across India and Bhopal.",
+    "image": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1400&q=85",
+    "imageAlt": "Law firm and legal consultancy website by Mahi TechnoCrafts",
+    "label": "Lawyer Website Developers",
+    "startingPrice": "₹9,999",
+    "deliveryTime": "5 - 9 Days",
+    "ratingValue": 4.9,
+    "reviewCount": 96,
+    "focus": [
+      "100% Bar Council of India (BCI) Rule 36 informational compliance standards",
+      "Specialized practice area showcases (Corporate, Criminal, Civil, RERA, Cyber Law, Tax)",
+      "Partner, associate & senior advocate educational pedigree & court admission profiles",
+      "Secure, confidential legal consultation appointment booking scheduler",
+      "Published legal insights, case law summaries & compliance advisory articles",
+      "Fast SSL encrypted mobile-first layout with instant phone & email communication"
+    ],
+    "packages": [
+      {
+        "name": "Advocate Practice Showcase",
+        "price": "₹9,999 - ₹16,000",
+        "duration": "5 to 7 Days",
+        "bestFor": "Individual advocates, litigation counsels, and independent legal advisors",
+        "features": [
+          "Up to 6 Elegant Informational Practice Pages",
+          "Bar Council Compliant Disclaimer & Pedigree",
+          "Confidential Consultation Request Form",
+          "Chamber Location & Contact Details Display",
+          "SSL Security & Professional Domain Setup"
+        ]
+      },
+      {
+        "name": "Full Law Firm & Corporate Practice",
+        "price": "₹18,500 - ₹38,000",
+        "duration": "8 to 14 Days",
+        "popular": true,
+        "bestFor": "Multi-partner law firms, corporate legal consultancies, and tax advocates",
+        "features": [
+          "Comprehensive Practice Area Breakdown (15+ Pages)",
+          "Partner & Associate Detailed Profiles with Publications",
+          "Legal Insights, Blog & Case Analysis Vault",
+          "Confidential Client Document Upload Vault",
+          "High Prestige Typography & Google Search Authority"
+        ]
+      }
+    ],
+    "value": "Legal professionals trust Mahi TechnoCrafts to project authority, integrity, and strict Bar Council compliance in their digital representation.",
+    "targetKeywords": [
+      "Website Developers For Lawyers",
+      "Lawyer Website Design",
+      "Advocate Website Developers",
+      "Law Firm Website Development",
+      "Legal Consultancy Website Developers",
+      "Bar Council Compliant Websites",
+      "Lawyer Website Developers Bhopal",
+      "Lawyer Website Design India"
+    ],
+    "localities": [
+      "All States & UTs across India",
+      "Bhopal",
+      "Indore",
+      "Delhi NCR",
+      "Mumbai",
+      "Jabalpur"
+    ],
+    "faqs": [
+      {
+        "question": "Is the lawyer website compliant with Bar Council of India regulations?",
+        "answer": "Yes! We strictly design according to Bar Council of India Rule 36, ensuring the website serves solely as a professional informational profile with mandatory non-solicitation disclaimers."
+      }
+    ],
+    "coordinates": {
+      "lat": 23.259933,
+      "lng": 77.412613
+    }
+  },
+  {
+    "slug": "website-developers-for-ca",
+    "regionType": "national",
+    "cityName": "India",
+    "stateName": "All States & UTs",
+    "title": "Website Developers For CA | Chartered Accountant & Tax Firm Portals",
+    "h1": "Website Developers For Chartered Accountants & CA Firms",
+    "tagline": "ICAI Code of Ethics Compliant Portals, Tax Due-Date Tickers & Secure Document Vaults · 4.9★ Rated",
+    "metaDescription": "Specialized website developers for Chartered Accountants (CA) & tax audit firms in India & Bhopal. ICAI compliant firm profiles, GST & ITR due date tickers, secure client document upload vaults. Call +91 62671 44122.",
+    "summary": "Mahi TechnoCrafts provides specialized web development for Chartered Accountants (CAs), tax consultants, company secretaries (CS), and financial advisory firms across India and Bhopal adhering strictly to ICAI guidelines.",
+    "image": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1400&q=85",
+    "imageAlt": "Chartered accountant tax consulting and financial audit portal by Mahi TechnoCrafts",
+    "label": "CA Website Developers",
+    "startingPrice": "₹9,999",
+    "deliveryTime": "5 - 9 Days",
+    "ratingValue": 4.9,
+    "reviewCount": 104,
+    "focus": [
+      "100% ICAI Guidelines & Code of Ethics compliance with mandatory disclaimer modal",
+      "Dynamic statutory tax calendar with GST, TDS, ROC, and ITR compliance countdown tickers",
+      "Core service breakdowns: Statutory Audit, GST, Company Incorporation & Income Tax",
+      "Secure client document upload vault for balance sheets, invoices & PAN/Aadhaar",
+      "Firm partner profiles, ICAI membership numbers, and years of audit experience",
+      "Downloadable utility forms, budget highlights, and tax rate summary sheets"
+    ],
+    "packages": [
+      {
+        "name": "CA Practice Informational Portal",
+        "price": "₹9,999 - ₹16,000",
+        "duration": "5 to 7 Days",
+        "bestFor": "Proprietorship CA firms, tax advocates, and independent financial consultants",
+        "features": [
+          "Up to 7 Clean Informational Pages",
+          "ICAI Compliant Disclaimer & Partner Bio",
+          "GST & ITR Tax Due Dates Ticker Widget",
+          "Client Appointment & Consultation Form",
+          "Fast SSL Security & Professional Domain Setup"
+        ]
+      },
+      {
+        "name": "Corporate CA Firm & Tax Portal",
+        "price": "₹18,500 - ₹38,000",
+        "duration": "8 to 14 Days",
+        "popular": true,
+        "bestFor": "Partnership CA firms, statutory auditors, and corporate finance advisors",
+        "features": [
+          "Comprehensive Service Breakdown (Audit, GST, NRI Taxation)",
+          "Secure Client Document Upload Portal",
+          "Dynamic Tax Due Date Calendar & Daily News Feed",
+          "Downloadable Tax Acts, Circulars & Return Forms",
+          "Search Engine Dominance for \"Best CA Firm in [City]\""
+        ]
+      }
+    ],
+    "value": "Chartered Accountants trust Mahi TechnoCrafts for modern, ethical digital portals that keep clients informed of statutory due dates.",
+    "targetKeywords": [
+      "Website Developers For CA",
+      "CA Firm Website Designing",
+      "Chartered Accountant Website Developers",
+      "Tax Consultant Website Design",
+      "ICAI Compliant CA Websites",
+      "Company Secretary Website Developers",
+      "CA Website Developers in Bhopal",
+      "CA Website Design India"
+    ],
+    "localities": [
+      "All States & UTs across India",
+      "Bhopal",
+      "Indore",
+      "Delhi NCR",
+      "Mumbai",
+      "Ahmedabad"
+    ],
+    "faqs": [
+      {
+        "question": "Is the CA website compliant with the Institute of Chartered Accountants of India (ICAI) guidelines?",
+        "answer": "Yes! We follow ICAI Council guidelines strictly, including the display of mandatory disclaimers, partner qualifications, and informational non-advertisement structures."
+      }
+    ],
+    "coordinates": {
+      "lat": 23.259933,
+      "lng": 77.412613
+    }
   }
 ];
 
