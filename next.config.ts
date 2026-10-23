@@ -66,6 +66,9 @@ const nextConfig: NextConfig = {
       { source: '/news/:slug*', destination: '/blog/:slug*', permanent: true },
 
       // 4. Singular-to-Plural Canonical Redirects for Industry SEO Pages (Bhopal)
+      { source: '/website-developer-in-bhopal', destination: '/web-development-company-bhopal', permanent: true },
+      { source: '/website-developers-in-bhopal', destination: '/web-development-company-bhopal', permanent: true },
+      { source: '/best-website-developer-in-bhopal', destination: '/web-development-company-bhopal', permanent: true },
       { source: '/website-developer-for-doctors-bhopal', destination: '/website-developers-for-doctors-bhopal', permanent: true },
       { source: '/website-developer-for-schools-bhopal', destination: '/website-developers-for-schools-bhopal', permanent: true },
       { source: '/website-developer-for-real-estate-bhopal', destination: '/website-developers-for-real-estate-bhopal', permanent: true },

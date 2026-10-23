@@ -3,6 +3,8 @@ import { getSiteData, getApprovedReviews } from '@/lib/db';
 import HomeClient from './HomeClient';
 
 export const metadata: Metadata = {
+  title: 'Website Developer in Bhopal | Best Web Development Company - Mahi TechnoCrafts',
+  description: 'Looking for the best website developer in Bhopal? Mahi TechnoCrafts builds high-speed custom websites, web portals, mobile apps & e-commerce software across MP Nagar, Arera Colony & Bhopal. Call +91 62671 44122.',
   alternates: {
     canonical: 'https://mahitechnocrafts.in',
   },
