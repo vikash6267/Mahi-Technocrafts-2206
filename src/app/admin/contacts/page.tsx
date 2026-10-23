@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useMemo } from 'react';
+import Link from 'next/link';
 import {
   Inbox,
   Search,
@@ -15,7 +16,8 @@ import {
   MessageCircle,
   Plus,
   Building2,
-  Send
+  Send,
+  Bot
 } from 'lucide-react';
 import { AdminLayoutShell } from '@/components/admin/AdminLayoutShell';
 import { ReminderModal } from '@/components/admin/ReminderModal';
@@ -123,6 +125,20 @@ export default function AdminContactsPage() {
       subtitle="View customer messages, respond on WhatsApp/Email, and set client follow-up reminders"
     >
       <div className="space-y-6">
+        {/* Switcher Tabs */}
+        <div className="flex flex-wrap items-center gap-3">
+          <span className="px-4 py-2 rounded-xl bg-sky-600 text-white text-xs font-bold shadow-xs">
+            📥 Form & Popup Leads ({contacts.length})
+          </span>
+          <Link
+            href="/admin/chats"
+            className="px-4 py-2 rounded-xl bg-white dark:bg-[#070918] border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:text-sky-600 text-xs font-bold transition-all shadow-xs flex items-center gap-2 hover:border-sky-500/50"
+          >
+            <Bot size={14} className="text-sky-500" />
+            <span>🤖 AI Chatbot Live Logs & Transcripts →</span>
+          </Link>
+        </div>
+
         {/* Top Summary Bar */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div className="p-4 rounded-2xl bg-white dark:bg-[#070918] border border-slate-200 dark:border-slate-800 shadow-sm flex items-center justify-between">

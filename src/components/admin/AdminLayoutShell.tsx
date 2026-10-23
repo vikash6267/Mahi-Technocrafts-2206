@@ -33,7 +33,8 @@ import {
   Lock,
   ArrowRight,
   History,
-  FileSignature
+  FileSignature,
+  Bot
 } from 'lucide-react';
 import { ReminderModal } from './ReminderModal';
 import { ClientReminder } from '@/lib/db';
@@ -187,6 +188,17 @@ export function AdminLayoutShell({ children, title, subtitle }: AdminLayoutShell
       href: '/admin/contacts',
       icon: <Inbox size={18} />,
       badge: null
+    },
+    {
+      id: 'chats',
+      label: 'AI Chatbot Logs',
+      href: '/admin/chats',
+      icon: <Bot size={18} />,
+      badge: (
+        <span className="px-1.5 py-0.2 rounded text-[9px] font-bold bg-sky-500/10 dark:bg-sky-500/20 text-sky-600 dark:text-sky-400 border border-sky-200 dark:border-sky-800">
+          Live AI
+        </span>
+      )
     },
     {
       id: 'portal',

@@ -57,6 +57,12 @@ export const ADMIN_PERMISSIONS: AdminPermissionDef[] = [
     href: '/admin/contacts'
   },
   {
+    id: 'chats',
+    label: 'AI Chatbot Logs',
+    description: 'View live visitor chat logs, questions asked, and AI bot responses',
+    href: '/admin/chats'
+  },
+  {
     id: 'portal',
     label: 'Portal & Support',
     description: 'Manage staff/client accounts and client support issues',

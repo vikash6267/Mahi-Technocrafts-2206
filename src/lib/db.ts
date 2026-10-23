@@ -1057,6 +1057,18 @@ export async function getAllChatSessions(limit = 100): Promise<ChatSession[]> {
   }
 }
 
+export async function deleteChatSession(sessionId: string): Promise<boolean> {
+  try {
+    const { db } = await connectToDatabase();
+    const collection = db.collection('chat_sessions');
+    const res = await collection.deleteOne({ sessionId });
+    return res.deletedCount > 0;
+  } catch (error) {
+    console.error('deleteChatSession failed:', error);
+    return false;
+  }
+}
+
 // ---------------------------------------------------------------------------
 // Client Reminders & Expiry Tracking Engine
 // ---------------------------------------------------------------------------
