@@ -248,6 +248,22 @@ export default function Footer() {
             <Link href="/google-ads-agency-bhopal" className="hover:text-brand-blue transition-colors">
               Google Ads Agency in Bhopal
             </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/ai-development-company-bhopal" className="hover:text-brand-blue transition-colors">
+              AI Development in Bhopal
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/whatsapp-chatbot-development-company" className="hover:text-brand-blue transition-colors">
+              WhatsApp Chatbot Development
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/erp-crm-software-development-bhopal" className="hover:text-brand-blue transition-colors">
+              ERP & CRM Software in Bhopal
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/website-development-cost-in-bhopal" className="hover:text-brand-blue transition-colors font-semibold text-sky-600 dark:text-sky-400">
+              Website Cost & Pricing (Bhopal)
+            </Link>
           </div>
         </div>
 
@@ -297,6 +313,10 @@ export default function Footer() {
             <span className="text-slate-300 dark:text-slate-700">•</span>
             <Link href="/website-developers-for-jewellers-bhopal" className="hover:text-brand-blue transition-colors">
               Website Developers For Jewellers & Showrooms
+            </Link>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <Link href="/website-developers-for-logistics" className="hover:text-brand-blue transition-colors">
+              Website Developers For Logistics & Transport
             </Link>
           </div>
         </div>

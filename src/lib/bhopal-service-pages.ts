@@ -2124,6 +2124,487 @@ export const bhopalServicePages: BhopalServicePage[] = [
         answer: 'A luxury showroom catalog website starts from ₹14,999. Full e-commerce jewellery stores range from ₹38,000 to ₹65,000, and complete multi-branch retail suites start from ₹75,000.'
       }
     ]
+  },
+  {
+    slug: 'ai-development-company-bhopal',
+    title: 'AI Development Company in Bhopal | AI Solutions & Automation',
+    h1: 'AI Development Company in Bhopal',
+    tagline: 'Custom AI Chatbots, Business Process Automation & Generative AI Solutions · 4.9★ Rated',
+    metaDescription: 'Top AI development and business automation company in Bhopal. Custom AI chatbots, WhatsApp business automation, LLM integration & workflow systems. Call +91 62671 44122.',
+    summary: 'Mahi TechnoCrafts is a premier AI development company in Bhopal and Madhya Pradesh. We engineer custom artificial intelligence models, intelligent WhatsApp chatbots, automated customer support systems, and business process automation solutions for businesses, clinics, and startups looking to cut operational costs and scale 24/7.',
+    image: 'https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=1400&q=85',
+    imageAlt: 'AI neural network, machine learning algorithms and business automation',
+    label: 'AI & Automation',
+    startingPrice: '₹14,999',
+    deliveryTime: '5 - 14 Days',
+    ratingValue: 4.9,
+    reviewCount: 144,
+    focus: [
+      'Custom AI chatbots trained on your company data, PDFs, and product catalogues',
+      'End-to-end business process workflow automation (CRM, lead routing, billing)',
+      'Automated customer support bots for WhatsApp, web chat, and Instagram',
+      'Integration with OpenAI GPT-4, Claude, Google Gemini, and open-source LLMs',
+      'Automated invoice data extraction, document processing & OCR pipelines',
+      'Voice AI agents, appointment booking bots, and outbound alert systems'
+    ],
+    packages: [
+      {
+        name: 'Essential AI Business Chatbot',
+        price: '₹14,999 - ₹25,000',
+        duration: '5 to 8 Days',
+        bestFor: 'Clinics, coaching institutes, salons, and local service providers in Bhopal',
+        features: [
+          'Website AI Chat Widget with Custom Brand Colors',
+          'Trained on Your FAQs, Services & Pricing Documents',
+          'Automated Lead Capture (Name, Phone, Inquiry) to Email & WhatsApp',
+          'Zero Code Maintenance & 1-Month Cloud Hosting Included'
+        ]
+      },
+      {
+        name: 'Omnichannel AI Support & WhatsApp Bot',
+        price: '₹28,000 - ₹55,000',
+        duration: '10 to 18 Days',
+        popular: true,
+        bestFor: 'E-commerce stores, real estate agencies, and busy retail businesses',
+        features: [
+          'Meta Cloud API WhatsApp Chatbot Integration',
+          'Automated Appointment Booking & Slot Availability Check',
+          'Live Google Sheets & CRM Lead Synchronization',
+          'Human Handover Mode when user requests a manager',
+          '90 Days Free Post-Launch Technical Support'
+        ]
+      },
+      {
+        name: 'Enterprise AI Agent & Workflow Suite',
+        price: '₹65,000 - ₹1,40,000',
+        duration: '3 to 6 Weeks',
+        bestFor: 'Enterprises, logistics, hospitals, and multi-branch companies',
+        features: [
+          'Custom Fine-Tuned AI Models / RAG Architecture',
+          'Automated Document OCR & Invoice Verification',
+          'ERP / Database Direct Query AI Assistant for Staff',
+          'Bank-Grade Data Privacy, On-Premise / Private Cloud Setup',
+          'Complete Source Code Ownership & Admin Handover'
+        ]
+      }
+    ],
+    value: 'Designed to eliminate repetitive manual queries, cut support overhead by 80%, and capture customers around the clock.',
+    targetKeywords: [
+      'AI development company in bhopal',
+      'AI automation company in india',
+      'AI solutions company in bhopal',
+      'business automation company in bhopal',
+      'AI chatbot development company',
+      'WhatsApp chatbot development company',
+      'WhatsApp automation services',
+      'AI chatbot for business',
+      'customer support chatbot development',
+      'AI agent development company',
+      'business process automation services',
+      'workflow automation company',
+      'WhatsApp business automation',
+      'AI integration services',
+      'How can I automate my business using AI',
+      'Which company develops custom software in Bhopal',
+      'automated lead generation system',
+      'business workflow automation software'
+    ],
+    faqs: [
+      {
+        question: 'How can I automate my business using AI in Bhopal?',
+        answer: 'Mahi TechnoCrafts builds AI chatbots for your website and WhatsApp that answer client inquiries instantly, capture contact details, and book appointments without human intervention. We also automate repetitive tasks like invoicing, data entry, and CRM lead follow-ups.'
+      },
+      {
+        question: 'Does the AI chatbot understand Hindi, Hinglish, and English?',
+        answer: 'Yes! Our custom AI bots are trained using state-of-the-art multilingual LLMs that seamlessly understand Hindi, Hinglish, and conversational slang commonly used by Bhopal and Indian customers.'
+      },
+      {
+        question: 'What is the cost of AI development in Bhopal?',
+        answer: 'Basic AI website chat assistants start from ₹14,999. Full WhatsApp AI automation systems range between ₹28,000 to ₹55,000, while custom enterprise AI agents and internal workflow automation suites start from ₹65,000.'
+      }
+    ]
+  },
+  {
+    slug: 'whatsapp-chatbot-development-company',
+    title: 'WhatsApp Chatbot Development Company | WhatsApp Business Automation',
+    h1: 'WhatsApp Chatbot Development Company',
+    tagline: 'Official Meta Cloud API Bots, Automated Customer Support & Order Management · 4.9★ Rated',
+    metaDescription: 'Leading WhatsApp chatbot development company in India & Bhopal. Automated booking, customer enquiry bots, ecommerce order alerts & lead generation. Call +91 62671 44122.',
+    summary: 'Mahi TechnoCrafts is a specialized WhatsApp chatbot development company in Bhopal and India. We build official Meta Cloud API WhatsApp bots for 24/7 automated customer inquiries, clinic and salon appointment booking, e-commerce order updates, and instant lead capture that converts chat conversations into paying clients.',
+    image: 'https://images.unsplash.com/photo-1611746872915-64382b5c76da?auto=format&fit=crop&w=1400&q=85',
+    imageAlt: 'WhatsApp messaging on smartphone for business automation',
+    label: 'WhatsApp Chatbots',
+    startingPrice: '₹11,999',
+    deliveryTime: '4 - 8 Days',
+    ratingValue: 4.9,
+    reviewCount: 152,
+    focus: [
+      'Official Meta WhatsApp Business Cloud API setup & verification assistance',
+      'Interactive button menus, list pickers, and product catalogue showcases',
+      'Automated OPD / consultation appointment booking calendar',
+      'Instant lead alert notifications sent directly to business owner mobile',
+      'E-commerce order tracking, dispatch alerts, and payment link sharing',
+      'Automated drip broadcast sequences complying with WhatsApp anti-spam policies'
+    ],
+    packages: [
+      {
+        name: 'Starter WhatsApp Inquiry Bot',
+        price: '₹11,999 - ₹19,000',
+        duration: '4 to 6 Days',
+        bestFor: 'Coaching centers, local doctors, retailers, and service providers',
+        features: [
+          'Menu-Driven Bot (Services, Pricing, Address, Timing)',
+          'Instant Lead Notification to Owner Phone',
+          'Google Sheets Customer Database Sync',
+          'Click-to-WhatsApp Ads Landing Setup'
+        ]
+      },
+      {
+        name: 'AI-Powered Conversational WhatsApp Bot',
+        price: '₹24,000 - ₹42,000',
+        duration: '7 to 12 Days',
+        popular: true,
+        bestFor: 'E-commerce brands, real estate firms, and customer-heavy businesses',
+        features: [
+          'Natural Language AI understanding of custom customer queries',
+          'Appointment & Slot Booking with Calendar Confirmation',
+          'Razorpay / UPI Payment Link Generation in Chat',
+          'Admin Dashboard with Live Chat Takeover',
+          '90 Days Free Technical Support'
+        ]
+      },
+      {
+        name: 'Enterprise WhatsApp CRM & Order Suite',
+        price: '₹50,000 - ₹95,000',
+        duration: '2 to 4 Weeks',
+        bestFor: 'Distributors, FMCG, courier companies, and multi-agent call centers',
+        features: [
+          'Multi-Agent Shared Inbox for Support Team',
+          'ERP & Invoicing Database Live Synchronization',
+          'Automated Bulk Notifications & Status Updates',
+          'Complete Source Code Ownership & Private Server Hosting'
+        ]
+      }
+    ],
+    value: 'Engages customers instantly on their favourite messaging app, boosting conversion rates by 4X over traditional email or web forms.',
+    targetKeywords: [
+      'WhatsApp chatbot development company',
+      'WhatsApp automation services',
+      'WhatsApp chatbot for business',
+      'customer support chatbot development',
+      'WhatsApp business automation',
+      'automated customer support system',
+      'WhatsApp chatbot for small business',
+      'WhatsApp automation for ecommerce',
+      'WhatsApp appointment booking automation',
+      'AI chatbot for website',
+      'automated lead generation system',
+      'customer enquiry automation',
+      'WhatsApp order management system',
+      'Which company can build a WhatsApp chatbot',
+      'whatsapp chatbot developers in bhopal',
+      'whatsapp automation company in india'
+    ],
+    faqs: [
+      {
+        question: 'Which company can build a WhatsApp chatbot in Bhopal?',
+        answer: 'Mahi TechnoCrafts is recognized as the premier WhatsApp chatbot development company in Bhopal and India. We provide official Meta Cloud API integration, automated appointment booking, customer support bots, and live CRM lead synchronization.'
+      },
+      {
+        question: 'Do I need official Meta approval for a WhatsApp chatbot?',
+        answer: 'Yes, we assist you with Meta Business Manager verification, WhatsApp Business API activation, and green tick verification so your business can send automated notifications safely without risk of phone number blocking.'
+      },
+      {
+        question: 'What is the cost of a WhatsApp chatbot?',
+        answer: 'A standard menu-driven WhatsApp inquiry bot starts from ₹11,999. AI-powered conversational bots with appointment booking range from ₹24,000 to ₹42,000, while complete enterprise multi-agent CRM suites start from ₹50,000.'
+      }
+    ]
+  },
+  {
+    slug: 'erp-crm-software-development-bhopal',
+    title: 'ERP & CRM Software Development Company in Bhopal | Billing Software',
+    h1: 'ERP & CRM Software Development Company in Bhopal',
+    tagline: 'Custom Business Software, Billing Portals & Inventory Management Systems · 4.9★ Rated',
+    metaDescription: 'Leading ERP and CRM software development company in Bhopal. Custom billing software, inventory management, staff dashboards & workflow automation for businesses. Call +91 62671 44122.',
+    summary: 'Mahi TechnoCrafts is an enterprise ERP and CRM software development company in Bhopal. We build tailor-made business management software, GST billing engines, real-time inventory management dashboards, and employee tracking systems for shops, factories, schools, and distributors across Bhopal and Madhya Pradesh.',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=85',
+    imageAlt: 'Business analytics dashboard, ERP charts and software metrics',
+    label: 'ERP & CRM Software',
+    startingPrice: '₹35,000',
+    deliveryTime: '2 - 6 Weeks',
+    ratingValue: 4.9,
+    reviewCount: 163,
+    focus: [
+      'Tailor-made cloud ERP & CRM engineered precisely for your business workflows',
+      'GST invoice generation, thermal receipt printing, and automated tax accounting',
+      'Real-time multi-warehouse inventory stock tracking with low-stock alerts',
+      'Employee attendance, role-based permissions, and payroll calculation modules',
+      'Interactive executive dashboards with visual revenue, expense & profit charts',
+      'Secure PostgreSQL / MongoDB cloud database with automated daily backups'
+    ],
+    packages: [
+      {
+        name: 'Custom Billing & Inventory Software',
+        price: '₹35,000 - ₹55,000',
+        duration: '2 to 3 Weeks',
+        bestFor: 'Retail shops, wholesale distributors, medical stores, and traders in Bhopal',
+        features: [
+          'Fast Point-of-Sale (POS) & GST Invoice Generator',
+          'Product Barcode Scanning & Stock In/Out Tracking',
+          'Customer Credit (Udhar / Khata) Ledger & Reminders',
+          'Daily Sales, Cash Register & Profit Summary Reports'
+        ]
+      },
+      {
+        name: 'Full Business CRM & Lead Pipeline Suite',
+        price: '₹48,000 - ₹85,000',
+        duration: '3 to 5 Weeks',
+        popular: true,
+        bestFor: 'Real estate brokers, consulting agencies, and B2B sales organizations',
+        features: [
+          'Lead Stage Pipeline (New, Contacted, Proposal, Won, Lost)',
+          'Automated WhatsApp & Email Follow-Up Sequences',
+          'Sales Executive Target & Activity Tracking',
+          'Customer Document Vault & Quote Generator',
+          '90 Days Free Post-Launch Support & Training'
+        ]
+      },
+      {
+        name: 'Enterprise Multi-Branch ERP System',
+        price: '₹95,000 - ₹2,20,000+',
+        duration: '6 to 12 Weeks',
+        bestFor: 'Manufacturing plants, school trusts, hospital chains, and supply chains',
+        features: [
+          'Multi-Location Centralized Database & Sync',
+          'Procurement, Purchase Orders & Vendor Management',
+          'HRMS, Biometric Attendance & Payroll Processing',
+          'Custom Advanced Reporting & Business Intelligence Analytics',
+          '100% Full Source Code Ownership & On-Site Staff Training'
+        ]
+      }
+    ],
+    value: 'Eliminates repetitive manual paperwork, stops stock leakage, and gives business owners total real-time control from their smartphone.',
+    targetKeywords: [
+      'ERP software development company',
+      'CRM software development company',
+      'billing software development company',
+      'inventory management software development',
+      'custom dashboard development company',
+      'custom software for my business',
+      'software to manage my business',
+      'custom ERP for small business',
+      'custom CRM software development',
+      'employee management software development',
+      'business automation software company',
+      'manual work automation for business',
+      'custom reporting dashboard development',
+      'Can someone build custom billing software for my shop',
+      'Which company develops custom software in Bhopal',
+      'ERP software developers in bhopal',
+      'billing software company in bhopal'
+    ],
+    faqs: [
+      {
+        question: 'Can someone build custom billing software for my shop in Bhopal?',
+        answer: 'Yes! Mahi TechnoCrafts builds custom GST billing software tailored to your specific trade. Unlike rigid off-the-shelf software like Busy or Tally, we create lightweight, fast web-based billing systems with barcode scanning, automated customer WhatsApp bills, and zero monthly fees.'
+      },
+      {
+        question: 'Can I access the ERP software from my mobile phone when away from the office?',
+        answer: 'Yes. All our ERP and CRM solutions are cloud-based and mobile-responsive, allowing business owners to monitor live sales, approve purchases, and check cash registers from anywhere in the world on a smartphone.'
+      },
+      {
+        question: 'What is the cost of custom ERP and CRM software in Bhopal?',
+        answer: 'Custom billing and inventory software starts from ₹35,000. Full business sales CRM pipelines range between ₹48,000 to ₹85,000, while multi-branch enterprise ERP systems range from ₹95,000 upwards with complete source code ownership.'
+      }
+    ]
+  },
+  {
+    slug: 'website-development-cost-in-bhopal',
+    title: 'Website Development Cost in Bhopal | 2026 Price List & Packages',
+    h1: 'Website Development Cost in Bhopal (2026 Price List)',
+    tagline: 'Transparent Pricing Packages, Zero Hidden Fees & Full Source Code Ownership · 4.9★ Rated',
+    metaDescription: 'Check website development cost in Bhopal (2026). Business websites from ₹7,999, e-commerce stores from ₹18,000, custom web apps from ₹35,000. Transparent price list. Call +91 62671 44122.',
+    summary: 'Wondering how much a website costs in Bhopal? Mahi TechnoCrafts offers 100% transparent website development pricing starting from ₹7,999 for small business websites, ₹18,000 for e-commerce portals, and ₹35,000+ for custom web applications. No monthly rental hostage, no hidden maintenance fees, and complete source code ownership included.',
+    image: 'https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&w=1400&q=85',
+    imageAlt: 'Website development cost, transparent pricing quotation and budget calculator',
+    label: 'Website Cost & Pricing',
+    startingPrice: '₹7,999',
+    deliveryTime: '4 - 10 Days',
+    ratingValue: 4.9,
+    reviewCount: 178,
+    focus: [
+      '100% transparent quotation with itemized milestone deliverables and no surprise bills',
+      'Full source code ownership, production database credentials & domain control',
+      'Zero mandatory monthly software rental or hostage subscription fees',
+      'Sub-second Google Core Web Vitals speed guarantee (90+ PageSpeed score)',
+      'Built-in Technical On-Page SEO, Schema.org and Google Maps 3-Pack readiness',
+      '90 Days of complimentary technical warranty support post-launch'
+    ],
+    packages: [
+      {
+        name: 'Starter Business Showcase Plan',
+        price: '₹7,999 - ₹12,999',
+        duration: '4 to 7 Days',
+        bestFor: 'Local shops, private clinics, consultants, and startups in Bhopal',
+        features: [
+          'Up to 5 Mobile-First Responsive Pages',
+          'Free 1 Year Domain & SSL Security Certificate',
+          'Fast Next.js Static Architecture',
+          'Direct WhatsApp Chat & Click-to-Call Buttons',
+          'Google Maps Location & Contact Integration',
+          'Basic On-Page SEO Setup'
+        ]
+      },
+      {
+        name: 'Commercial E-Commerce / Growth Portal',
+        price: '₹18,000 - ₹34,000',
+        duration: '8 to 14 Days',
+        popular: true,
+        bestFor: 'E-commerce brands, coaching institutes, schools, and established companies',
+        features: [
+          'Up to 15 Pages with Custom Visual Branding',
+          'Payment Gateway (UPI, Cards, NetBanking)',
+          'Product / Service Catalog with Admin CMS',
+          'Lead Capture Dashboard with Export options',
+          'Advanced LocalBusiness & FAQ Schema',
+          '90 Days Free Post-Launch Support'
+        ]
+      },
+      {
+        name: 'Custom Web Application / SaaS Suite',
+        price: '₹40,000 - ₹95,000+',
+        duration: '3 to 6 Weeks',
+        bestFor: 'Multi-branch companies, portals, custom booking engines, and marketplaces',
+        features: [
+          'Full-Stack Node.js & Database Architecture',
+          'Role-Based User / Admin Authentication',
+          'Automated WhatsApp Alerts & PDF Invoicing',
+          'High-Availability Cloud Hosting Setup',
+          'Complete Source Code Ownership Handover'
+        ]
+      }
+    ],
+    value: 'Best price-to-performance ratio in Central India, giving you enterprise-grade engineering at transparent local rates.',
+    targetKeywords: [
+      'website development cost in bhopal',
+      'website design cost in bhopal',
+      'website development price in india',
+      'business website cost in india',
+      'ecommerce website development cost',
+      'custom software development cost in india',
+      'mobile app development cost in india',
+      'website development company price list',
+      'website development packages in bhopal',
+      'affordable website development services',
+      'website developer for small business cost',
+      'custom CRM software cost',
+      'ERP software development cost',
+      'How much does a business website cost in India',
+      'low cost website development',
+      'affordable website development company'
+    ],
+    faqs: [
+      {
+        question: 'How much does a business website cost in Bhopal?',
+        answer: 'A standard professional business website in Bhopal costs between ₹7,999 to ₹12,999 with Mahi TechnoCrafts. Dynamic corporate portals range between ₹18,000 to ₹34,000, while custom web applications and full e-commerce stores range from ₹40,000 to ₹95,000.'
+      },
+      {
+        question: 'Are there any hidden renewal fees or monthly maintenance charges?',
+        answer: 'No. Mahi TechnoCrafts does not charge hidden monthly fees. You own 100% of your source code and website assets. You only pay standard domain and server hosting renewal fees once a year, which you can manage directly.'
+      },
+      {
+        question: 'How much does an e-commerce website cost in Bhopal?',
+        answer: 'A complete custom e-commerce website with product catalog, online payment gateway (UPI, Cards), and order management starts from ₹18,000.'
+      }
+    ]
+  },
+  {
+    slug: 'website-developers-for-logistics',
+    title: 'Logistics & Transport Website Developers | Fleet & Courier Portals',
+    h1: 'Logistics & Transport Software & Website Developers',
+    tagline: 'Live Consignment Tracking, Fleet Booking & Transporter Invoicing Systems · 4.9★ Rated',
+    metaDescription: 'Top website developers for logistics, transport companies & packers and movers in India & Bhopal. Real-time consignment tracking, LR generation & fleet booking. Call +91 62671 44122.',
+    summary: 'Mahi TechnoCrafts develops robust web portals and software systems for logistics firms, transport agencies, freight forwarders, and packers & movers across Bhopal and India. We build live consignment tracking, lorry receipt (LR) generation, distance fare calculators, and transport fleet booking engines.',
+    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1400&q=85',
+    imageAlt: 'Logistics cargo shipping, freight trucks and transport supply chain warehouse',
+    label: 'Logistics & Transport',
+    startingPrice: '₹18,000',
+    deliveryTime: '7 - 15 Days',
+    ratingValue: 4.9,
+    reviewCount: 134,
+    focus: [
+      'Live consignment tracking system with Docket / Tracking Number status lookup',
+      'Digital Lorry Receipt (LR) and Bilty PDF generation with GST compliance',
+      'Online fleet vehicle booking (Mini Trucks, Open Trucks, Containers) with distance calculator',
+      'Driver, vehicle, and insurance document verification dashboard',
+      'Customer quotation inquiry forms for full truck load (FTL) and part truck load (PTL)',
+      'Packers and Movers house shifting inventory calculator with instant estimates'
+    ],
+    packages: [
+      {
+        name: 'Transporter / Packers & Movers Showcase',
+        price: '₹18,000 - ₹28,000',
+        duration: '6 to 9 Days',
+        bestFor: 'Local transport agencies, packers & movers, and goods booking offices',
+        features: [
+          'High-Converting Service & Route Showcase Pages',
+          'Online Rate Inquiry & House Shifting Estimate Form',
+          'Customer Reviews & Fleet Showcase Gallery',
+          'Direct WhatsApp & Phone Booking Actions'
+        ]
+      },
+      {
+        name: 'Consignment Tracking & Booking Portal',
+        price: '₹34,000 - ₹58,000',
+        duration: '10 to 18 Days',
+        popular: true,
+        bestFor: 'Regional logistics companies, express parcel couriers, and cargo carriers',
+        features: [
+          'Real-Time Docket / AWB Tracking for Customers',
+          'Digital LR / Bilty Generation with WhatsApp Sharing',
+          'Branch & Hub Management Network Directory',
+          'Advance Booking Deposit Payment Gateway',
+          '90 Days Free Technical Support'
+        ]
+      },
+      {
+        name: 'Full Fleet & Warehouse Supply Chain Suite',
+        price: '₹68,000 - ₹1,35,000',
+        duration: '3 to 6 Weeks',
+        bestFor: 'Large fleet operators, 3PL logistics providers, and supply chain enterprises',
+        features: [
+          'Driver & Vehicle Fleet Management System',
+          'Fuel & Toll Expense Tracking Dashboard',
+          'Automated GST Invoicing & Transporter Accounting Sync',
+          'Complete Source Code Ownership & Admin Handover'
+        ]
+      }
+    ],
+    value: 'Empowers transporters to provide modern corporate-grade consignment tracking, winning long-term factory and industrial logistics contracts.',
+    targetKeywords: [
+      'logistics software development company',
+      'transport website development company',
+      'fleet management software developers',
+      'courier booking portal developers',
+      'supply chain tracking software',
+      'packers and movers website developer',
+      'transport agency software bhopal',
+      'logistics website developers in bhopal'
+    ],
+    faqs: [
+      {
+        question: 'Can customers track their consignment using a tracking number?',
+        answer: 'Yes! We build real-time docket / LR tracking lookup bars on the website where customers enter their receipt number to view the shipment current status (In-Transit, Dispatched, Delivered).'
+      },
+      {
+        question: 'Can the software generate printable GST Lorry Receipts (Bilty)?',
+        answer: 'Yes. Transporters can generate professional PDF Bilty receipts carrying consignor, consignee, goods weight, and freight charges, ready to print or share instantly on WhatsApp.'
+      },
+      {
+        question: 'What is the cost of a transport or logistics website?',
+        answer: 'A standard transport company showcase website starts from ₹18,000. Comprehensive consignment tracking portals range from ₹34,000 to ₹58,000, while complete fleet management suites start from ₹68,000.'
+      }
+    ]
   }
 ];
 

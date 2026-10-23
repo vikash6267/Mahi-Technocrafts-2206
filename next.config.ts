@@ -93,6 +93,15 @@ const nextConfig: NextConfig = {
       { source: '/website-developer-for-travel-agency', destination: '/website-developers-for-travel-agency', permanent: true },
       { source: '/website-developer-for-lawyers', destination: '/website-developers-for-lawyers', permanent: true },
       { source: '/website-developer-for-ca', destination: '/website-developers-for-ca', permanent: true },
+
+      // 6. Convenience Aliases for AI, WhatsApp, ERP & Pricing Pages
+      { source: '/ai-company-bhopal', destination: '/ai-development-company-bhopal', permanent: true },
+      { source: '/whatsapp-chatbot-bhopal', destination: '/whatsapp-chatbot-development-company', permanent: true },
+      { source: '/billing-software-company-bhopal', destination: '/erp-crm-software-development-bhopal', permanent: true },
+      { source: '/erp-software-company-bhopal', destination: '/erp-crm-software-development-bhopal', permanent: true },
+      { source: '/crm-software-company-bhopal', destination: '/erp-crm-software-development-bhopal', permanent: true },
+      { source: '/website-cost-bhopal', destination: '/website-development-cost-in-bhopal', permanent: true },
+      { source: '/website-price-bhopal', destination: '/website-development-cost-in-bhopal', permanent: true },
     ];
   },
 
