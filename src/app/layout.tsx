@@ -37,7 +37,19 @@ export const metadata: Metadata = {
   formatDetection: {
     email: false,
     address: false,
+    
     telephone: false,
+  },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon-96x96.png', type: 'image/png', sizes: '96x96' },
+      { url: '/web-app-manifest-192x192.png', type: 'image/png', sizes: '192x192' }
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }
+    ],
+    shortcut: '/favicon.ico'
   },
   openGraph: {
     type: 'website',
